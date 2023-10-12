@@ -9,7 +9,7 @@
 
 # Model
 - Modelování je prováděno jistým typem systému pro řízení báze dat, tedy, např.:
-	- **_relačním modelem_** _(_nejčastěji),
+	- **_relačním modelem_** (nejčastěji),
 	- objektovým modelem,
 	- případně jinak.
 
