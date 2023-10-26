@@ -1,7 +1,7 @@
 # Aplikační frameworky
 
 - Rámcová řešení pro implementaci serverových aplikací
-	- Neplést s frontend frameworky!
+	- Neplést s klientskými frontend frameworky (v JavaScriptu)!
 - Poskytují API (třídy a metody) pro běžné úlohy a situace
 	- Zpracování požadavku apod.
 - Vynucují pevnou strukturu aplikace

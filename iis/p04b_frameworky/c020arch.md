@@ -21,11 +21,13 @@
 -- viz [definice na Wikipedii](https://en.wikipedia.org/wiki/Bootstrapping)
 
 - Aktivace funkcionality frameworku při příchodu HTTP požadavku
-- Typický scénář:
-	- Všechny požadavky se směrují na jeden vstupní skript
-		- `index.php`, `bootstrap.php`, ...
-	- Ten dekóduje požadavek, aktivuje aplikační logiku a vrátí výsledek (HTTP odpověď)
-
+- Všechny požadavky se směrují na jeden vstupní skript
+	- `index.php`, `bootstrap.php`, ...
+	- Zařízeno nejčasteji konfigurací HTTP serveru (apache, nginx, ...)
+- Vstupní skript
+	- Nastartuje framework (vlastní *bootstraping*)
+		- Přečte konfiguraci, vytvoří instance služeb, spojení s databází, atd.
+	- Dekóduje požadavek, aktivuje logiku frameworku a vrátí výsledek (HTTP odpověď)
 
 ---
 
