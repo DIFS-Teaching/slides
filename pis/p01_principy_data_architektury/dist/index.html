@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>PIS - Principy, data, modely, architektury</title>
+
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/reveal.css">
+
+</head>
+<body id="gitshow-main">
+
+    <div class="reveal">
+        <div class="slides">
+
+            <section class="title">
+                <h1>Empty presentation</h1>
+                <p>It's time to add some contents :-)</p>
+            </section>
+        </div>
+    </div>
+
+    <script src="gitshow.js"></script>
+    <script>
+        const presentationConfig = JSON.parse('{"id":"p01_principy_data_architektury","title":"PIS - Principy, data, modely, architektury","author":"Radek Burget <burgetr@fit.vut.cz>","lang":"cs","template":{"name":"fit","properties":{"footer":"PIS &ndash; Principy, data, modely, architektury","highlight":"googlecode"}},"contents":["c000title.md","c010uvod.md","c020data.md","c030system.md","c040navrh.md","c050metadata.md","c060databazove_modely.md","c070architektury.md","c999final.md"]}');
+        const templateData = '{"id":"fit","description":"FIT template","properties":{"footer":{"description":"Footer text","default":""}},"slideClasses":["normal","title","section"],"addSlideClasses":["centered","fullspace"],"defaultClass":"normal","baseTheme":"sky","styles":["fit.css","googlecode.css"],"reveal":{"width":1920,"height":1080,"margin":0,"hash":true,"center":false,"pdfMaxPagesPerSlide":1,"pdfSeparateFragments":false,"rewrite":{"properties":{"footer":"${footer}"},"rules":[{"pattern":"--","result":"&ndash;","flags":"g"},{"pattern":"\\\\.\\\\.\\\\.","result":"&hellip;","flags":"g"},{"pattern":"``","result":"&bdquo;","flags":"g"},{"pattern":"\'\'","result":"&ldquo;","flags":"g"},{"pattern":"@@([^@]+)@@","result":"<$1>","flags":"g"},{"pattern":">\\\\?\\\\?","result":" class=\\"fragment\\">","flags":"g"},{"pattern":"\\\\|\\\\|([^\\\\|]+)\\\\|\\\\|","result":"<span class=\\"fragment\\">$1</span>","flags":"g"},{"match":".normal","pattern":"$","result":"</div><footer>{{footer}} <span class=\\"slideno\\">{{totalIndex}} / {{totalSlides}}</span></footer>"},{"match":".section","pattern":"$","result":"</div><footer>{{footer}} <span class=\\"slideno\\">{{totalIndex}} / {{totalSlides}}</span></footer>"},{"match":".normal","pattern":"<h1","result":"<header><h1"},{"match":".normal","pattern":"</h1>","result":"</h1></header><div class=\\"content\\">"}]}}}';
+        let gitShow = new GitShow();
+        gitShow.init(presentationConfig, templateData);
+    </script>
+</body>
+</html>
