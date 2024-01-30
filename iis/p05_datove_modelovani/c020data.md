@@ -56,8 +56,10 @@ Výsledkem je **množina dvojic** -- celkem `$4x3=12$` dvojic.
 ---
 
 # Struktura
-- Uspořádané n-tice, které jsou prvky kartézského součinu jsou strukturované hodnoty vytvářené:
-	- *__Pevným počtem__ pojmenovaných dílčích hodnot (dvojic jméno, hodnota) obecně __různých__ typů*
+- Strukturované hodnoty vytvářené:
+	- __Pevným počtem__ dílčích hodnot obecně __různých__ typů
+	- Tedy uspořádané n-tice, které jsou prvky kartézského součinu množin dílčích datových typů
+	- Hodnoty jsou pojmenované, tzn. přistupuje se k nim přes jejich unikátní jméno
 - Jako synonymum pro uspořádanou n-tici (tedy hodnotu) je velmi často užíván termín _struktura_ nebo _záznam_. Jako synonymum pro kartézský součin (tedy datový typ) budeme často používat _typ struktura_ nebo _typ záznam_.
 
 ---
