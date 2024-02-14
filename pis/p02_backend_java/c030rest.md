@@ -71,10 +71,8 @@
 - Není specifikován, záleží na službě
 	- Obvykle JSON nebo XML (schéma záleží na aplikaci)
 - Často více formátu k dispozici
-	- Např.
-http://noviny.cz/clanky.xml
-http://noviny.cz/clanky.json
-	- Využití MIME pro rozlišení typu, HTTP content negotiation
+	- Využití MIME pro rozlišení typu, HTTP content negotiation \
+	(hlavička `Accept:`)
 
 ---
 
@@ -87,7 +85,7 @@ http://noviny.cz/clanky.json
 - Různé implementace
 	- JAX-RS – Jersey (Glassfish), Apache Axis
 	- Serializace – Jackson, gson, MOXy, …
-	- Neřešíme - je vždy součástí aplikačního serveru
+	- Neřešíme – je vždy součástí aplikačního serveru
 
 ---
 
@@ -110,6 +108,7 @@ public class UserResource {
 }
 ```
 
+- Definované typy pro přenos dat -- **Data Transfer Objects (DTO)**
 - Jednoduchý příklad: [ping endpoint](https://github.com/DIFS-Teaching/jakartaee-starter/blob/main/src/main/java/cz/vut/fit/pis/start/rest/PingEndpoint.java)
 
 ---

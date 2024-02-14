@@ -20,7 +20,7 @@
 ---
 
 # Jakarta EE
-- V současnosti [Jakarta EE 10](https://jakarta.ee/specifications/), většina implementací podporuje verzi 9.1.
+- V současnosti [Jakarta EE 10](https://jakarta.ee/specifications/), více dostupných implementací
 	- Aka Enterprise Java (dříve Java EE)
 - Platforma pro vývoj podnikových aplikací a IS v Javě
 - Množina standardních technologií a API
@@ -33,11 +33,11 @@
 
 ---
 
-# Vrstvy aplikace Java EE
+# Vrstvy aplikace Jakarta EE
 - Databázová vrstva
 	- Abstrakce nad db serverem
 - Business vrstva
-	- Implementace chování aplikace (transakce)
+	- Implementace business operací (transakce)
 	- Potenciálně distribuovaná
 - Webová vrstva
 	- Webové API nebo komponentový serverový framework
@@ -96,14 +96,15 @@
 ---
 
 # Profily
-- [Jakarta EE Full](https://jakarta.ee/specifications/webprofile/9/jakarta-webprofile-spec-9.html#a43)
+- [Jakarta EE Full](https://jakarta.ee/specifications/platform/10/jakarta-platform-spec-10.0#a3252)
 	- Všechny vlastnosti (features)
-- [Jakarta EE Web Profile](https://jakarta.ee/specifications/webprofile/9/jakarta-webprofile-spec-9.html#a43)
+- [Jakarta EE Web Profile](https://jakarta.ee/specifications/webprofile/10/jakarta-webprofile-spec-10.0#a43)
 	- Zaměření na webové aplikace (zahrnuje např. i JSF)
-	- Profil zaměřený na webové aplikace
+- [Jakarta EE Core Profile](https://jakarta.ee/specifications/coreprofile/10/jakarta-coreprofile-spec-10.0#required_components)
+	- Zaměření na mikroslužby (minimální sada vlastností)
 - [Microprofile](https://microprofile.io/)
+	- Jakarta EE Core + doplňující standardy
 	- Zaměření na mikroslužby (API)
-	- Sada nových vlastností + některé z Jakarta EE
 
 ---
 
@@ -147,19 +148,10 @@
 
 ---
 
-# Servery
-
-- Open Liberty [openliberty.io](https://openliberty.io/)
-	- Konfigurovatelný server
-- Payara community edition [payara.fish](https://www.payara.fish/downloads/payara-platform-community-edition/)
-	- Server (full, web profile), Payara Micro
-
----
-
 # Konfigurace -- Open liberty
-- Plný server
+- Plný server (více aplikací)
 	- Konfigurovatelné *features* (`server.xml`)
-- Maven plugin
+- Lokální server specifický pro aplikaci (maven plugin)
 	- [Building a web application with Maven](https://openliberty.io/guides/maven-intro.html)
 
 ---
@@ -168,7 +160,7 @@
 - Plný server (Payara full, Payara web profile)
 - Payara micro
 	- Jeden spustitelný JAR balík
+	- Při spuštění se nasadí aplikace (WAR archiv)
 - Payara micro maven plugin
 	- Vytvoří spustitelný JAR s aplikací
 	- Např. [payara-micro-javaee-crud-rest-starter-project](https://github.com/cicekhayri/payara-micro-javaee-crud-rest-starter-project)
-

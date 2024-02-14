@@ -40,6 +40,9 @@
 	- Eclipse Marketplace
 - Definovat server v IDE
 	- Podle způsobu spouštění serveru
+- Alternativy
+	- VS Code, IntelliJ IDEA, ...
+	- [Liberty tools](https://openliberty.io/start/#_develop_with_liberty_tools)
 
 ---
 
@@ -60,7 +63,7 @@
 	- [Microprofile starter](https://start.microprofile.io/)
 - Maven archetypes
 	- [JakartaEE-essentials-archetype](https://github.com/AdamBien/JakartaEE-essentials-archetype)
-
+	- [WildFly-getting-started-archetype](https://www.wildfly.org/get-started/)
 
 ---
 
@@ -84,7 +87,7 @@
 	- `src/java`
 - Překlad
 	- `mvn clean package`
-	- Výsledný balík v `target/`
+	- Výsledný balík v `target/*.war`
 
 ---
 

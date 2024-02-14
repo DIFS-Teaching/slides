@@ -84,6 +84,19 @@ public class Person
 
 ---
 
+# Konfigurace -- Open Liberty
+
+- Pro ``velký'' server
+	- `wlp/usr/servers/<nazev>/server.xml`
+	- Definice ovladačů i datového zdroje
+- Pro aplikaci
+	- `src/main/liberty/config/server.xml` 
+	- Příklad [knihovny](https://github.com/DIFS-Teaching/jakartaee-basic/blob/main/web-frontend/pom.xml), [konfigurace zdroje](https://github.com/DIFS-Teaching/jakartaee-basic/blob/main/web-frontend/src/main/liberty/config/server.xml)
+
+Viz [Relational database connections with JDBC](https://openliberty.io/docs/22.0.0.1/relational-database-connections-JDBC.html)
+
+---
+
 # Konfigurace -- Payara
 - Pro server
 	- Webové administrační rozhraní http://localhost:4848
@@ -92,16 +105,3 @@ public class Person
 - Pro aplikaci
 	- Soubor `WEB-INF/glassfish-resources.xml` 
 	- Příklad: [knihovny](https://github.com/cicekhayri/payara-micro-javaee-crud-rest-starter-project/blob/master/pom.xml), [konfigurace zdroje](https://github.com/cicekhayri/payara-micro-javaee-crud-rest-starter-project/blob/master/src/main/webapp/WEB-INF/glassfish-resources.xml)
-
----
-
-# Konfigurace -- Open Liberty
-
-- Pro server
-	- `wlp/usr/servers/<nazev>/server.xml`
-	- Definice ovladačů i datového zdroje
-- Pro aplikaci
-	- `src/main/liberty/config/server.xml` 
-	- Příklad" [knihovny](https://github.com/DIFS-Teaching/jakartaee-basic/blob/main/web-frontend/pom.xml), [konfigurace zdroje](https://github.com/DIFS-Teaching/jakartaee-basic/blob/main/web-frontend/src/main/liberty/config/server.xml)
-
-[Relational database connections with JDBC](https://openliberty.io/docs/22.0.0.1/relational-database-connections-JDBC.html)
