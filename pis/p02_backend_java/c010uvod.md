@@ -48,6 +48,46 @@ Datový model (objektový, relační, ...)
 
 ---
 
+# Informační systém a vrstvy
+
+![Informační systém](assets/is1.svg) <!-- .element: style="height:350px;margin:150px auto;display:block" -->
+
+<div class="fragment fade-in-then-out box shadow" style="position:absolute;left:900px;top:180px;padding:10px;">
+<ul>
+<li><strong>Data layer</strong></li>
+<li>Třídy reprezentující data, databázové operace</li>
+</ul>
+</div>
+
+<div class="fragment fade-in-then-out box shadow" style="position:absolute;left:700px;bottom:180px;padding:10px;">
+<ul>
+<li><strong>Business vrstva</strong></li>
+<li>Business funkce (transakce)</li>
+</ul>
+</div>
+
+<div class="fragment fade-in-then-out box shadow" style="position:absolute;left:100px;bottom:180px;padding:10px;">
+<ul>
+<li><strong>Prezentační vrstva</strong></li>
+<li>Vstupní prvky, <b>logika GUI</b></li>
+</ul>
+</div>
+
+<div class="fragment fade-in-then-out box shadow" style="position:absolute;left:1100px;bottom:180px;padding:10px;">
+<ul>
+<li><strong>Prezentační vrstva</strong></li>
+<li>Zobrazení dat, <b>logika GUI</b></li>
+</ul>
+</div>
+
+---
+
+# Jiné aplikace
+
+![Jiná aplikace](assets/nois.svg) <!-- .element: style="height:350px;margin:150px auto;display:block" -->
+
+---
+
 # Webový IS
 
 <!-- .slide: class="normal centered fullspace" -->
