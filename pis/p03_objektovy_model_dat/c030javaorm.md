@@ -15,6 +15,9 @@
 - Primárně počítá s mapováním do relačních tabulek
 	- Využívá JDBC
 	- Mnoho ovladačů pro různé databáze
+	- Viz [konfigurace persistence](https://gitshow.net/gh/DIFS-Teaching/slides/pis/p02_backend_java#/46)
+- Demo
+	- https://github.com/DIFS-Teaching/jakartaee-basic
  
 ---
 
