@@ -3,13 +3,13 @@
 
 <header>
 	<h1>Objektový DB model v Javě</h1>
-    <p>Objektově-relační mapování, Java Persistence API</p>
+    <p>Objektově-relační mapování, Jakarta Persistence</p>
 </header>
 
 ---
 
-# Java EE – Objektově-relační mapování
-- Java Persistence API (JPA)
+# Jakarta EE – Objektově-relační mapování
+- Jakarta Persistence (Dříve Java Persistence API -- JPA)
 	- Více implementací (EclipseLink, Hibernate, DataNucleus, …)
 	- Existují alternativy (JDO)
 - Primárně počítá s mapováním do relačních tabulek
