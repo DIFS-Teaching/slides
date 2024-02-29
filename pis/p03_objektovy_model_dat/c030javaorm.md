@@ -234,7 +234,7 @@ List<Person> people =
 		- potenciálně inverzní (obousměrný) vztah
 	- Anotace `@OneToOne`, `@OneToMany`, `@ManyToOne`, `@ManyToMany`
 	- Reprezentace v relační databázi
-		- `@JoinColumn`, `@JoinTable`
+		- `@JoinColumn`, `@JoinTable` ([příklady](https://www.baeldung.com/jpa-many-to-many))
 - Slabé entitní množiny
 - Dědičnost
 

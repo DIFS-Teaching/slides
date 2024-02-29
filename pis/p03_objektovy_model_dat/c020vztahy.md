@@ -349,3 +349,14 @@ end concept
 - V extentu typu A se budou vyskytovat **všechny objekty typu A, ale i objekty všech následníků typu A**. 
 - Naopak, při vzniku není objekt zařazen pouze do extentu  typu, který byl pro něj zvolen jako typ vzniku, ale rovněž do všech extentů jeho všech předchůdců.
 - Musí platit, že pro každý objekt musí být deklarován alespoň jeden extent. Na druhé straně deklarace extentů pro všechny úrovně dědění může značně zneefektivnit operace vytváření a rušení objektu.
+
+---
+
+# Objektový model dat -- shrnutí
+
+|          | Relační model | Objektový model |
+|----------|---------------|-----------------|
+| **Metadata** | Definice tabulek (sloupce) | Definice tříd (vlastnosti) |
+| **Data**     | Řádky tabulek (n-tice hodnot jednoduchých typů) | Objekty -- instance tříd (n-tice hodnot jednoduchých i strukturovaných datových typů -- struktury, kolekce) |
+| **Vztahy**   | Nejsou součástí metadat ani dat | Definovány v metadatech, uloženy v datech -- vnořené objekty, odkazy na objekty přes OID (i kolekce) |
+
