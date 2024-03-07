@@ -280,6 +280,10 @@ const User = sequelize.define('user', {
 });
 ```
 
+---
+
+# Sequelize -- operace
+
 ```javascript
 // Vytvoří tabulku
 User.sync({force: true}).then(() => {
