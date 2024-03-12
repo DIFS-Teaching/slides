@@ -122,10 +122,10 @@ https://github.com/payara/Payara-Examples/tree/master/microprofile
 	- Counter – počítadlo, např. počet reg. uživatelů
 	- Timer – časové údaje, např. průměrný čas operace, atd.
 - Počty volání a čas strávený v metodách
-	- `@Metered`, `@Timed`
+	- `@Counted`, `@Timed`
 - Centrální API pro sběr metrik
 	- Data sbírá a zpřístupňuje server
-	- /metrics, /metrics/application
+	- Cesta `/metrics`, `/metrics?scope=application`
 - Předpokládá využití řešení pro sběr metrik (např. [Prometheus](https://prometheus.io/)) a případně vizualizaci (např. [Grafana](https://prometheus.io/docs/visualization/grafana/))
 	
 ---
