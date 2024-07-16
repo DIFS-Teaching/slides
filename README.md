@@ -1,6 +1,6 @@
 ![Logos](img/logos.png)
 
-# Online prezentace k přednáškám do předmětů FIT VUT
+# Online prezentace k přednáškám do předmětů FIT VUT v Brně
 
 Radek Burget burgetr@fit.vut.cz
 
