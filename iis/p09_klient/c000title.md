@@ -6,7 +6,7 @@
         <h1>JavaScript a REST</h1>
         <p class="subtitle">Klientská strana informačního systému</p>
     </header>
-    <p class="author" style="margin: 0"><strong>Doc. Ing. Radek Burget, Ph.D.</strong><br>
+    <p class="author" style="margin: 0"><strong>doc. Ing. Radek Burget, Ph.D.</strong><br>
         <a href="mailto:burgetr@fit.vutbr.cz">burgetr@fit.vutbr.cz</a>
     </p>
 </div>

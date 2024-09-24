@@ -39,7 +39,7 @@
 - Semestrální zkouška: 51 bodů
 - Projekt: 30 bodů
 	- Realizace IS na dané téma v týmu (2-3 řešitelé)
-	- Zadání a přihlašování přes WIS
+	- Zadání a přihlašování přes IS VUT
 
 ---
 
