@@ -65,7 +65,7 @@ https://docs.python.org/3/library/html.parser.html
 # Document Object Model
 
 - HTML kód reprezentovaný jako **strom objektů**
-- Různé typy objektů (viz přednášky IIS)
+- Různé typy objektů (viz [přednášky IIS](https://gitshow.net/gh/DIFS-Teaching/slides/iis/p08_xml#/24))
 
 ![Typy DOM objektů](assets/domclasses.svg) <!-- .element: height="600px" -->
 
@@ -97,6 +97,14 @@ Obsah elementu<br> Další obsah elementu.
 	- `Element` -- vnořené prvky
 	- `text` -- textový obsah, vždy listový uzel
 	- výjimečně jiné (např. `Entity`)
+
+---
+
+# DOM strom
+
+![DOM strom](assets/img_htmltree.gif) <!-- .element: height="600px" style="margin:auto;display:block;" -->
+
+https://www.w3schools.com/whatis/whatis_htmldom.asp
 
 ---
 

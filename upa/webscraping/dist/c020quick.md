@@ -19,7 +19,7 @@ wget https://www.fit.vut.cz/study/courses/ -O - | grep 'list-links__link' | sed 
 
 ---
 
-# Totéž v python3
+# Totéž v pythonu
 
 ```python
 import urllib.request
@@ -46,8 +46,8 @@ public class Courses {
 	
 	public static void main(String[] args) {
 		try {
-			URL url = new URL("https://www.fit.vut.cz/study/courses/");
-			HttpURLConnection con = (HttpURLConnection) url.openConnection();
+			URI url = new URI("https://www.fit.vut.cz/study/courses/");
+			HttpURLConnection con = (HttpURLConnection) url.toURL().openConnection();
 			
 			BufferedReader in = new BufferedReader(
 					  new InputStreamReader(con.getInputStream()));
@@ -72,9 +72,9 @@ public class Courses {
 
 # Omezení jednoduchého přístupu
 
-![opice](assets/opice.png) <!-- .element: style="height:600px" -->
+![opice](assets/imdb.png) <!-- .element: style="height:600px" -->
 
-[Zdrojová stránka](https://www.zomato.com/cs/brno/u-3-opic-kr%C3%A1lovo-pole-brno-sever/denn%C3%AD-menu) -- regex?!
+[Zdrojová stránka](https://www.imdb.com/title/tt6468322/fullcredits) -- regex?!
 
 ---
 

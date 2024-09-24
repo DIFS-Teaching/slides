@@ -18,6 +18,8 @@
 	- Prvotním cílem je *vizuální prezentace*
 	- Kód je druhotný, *podřízený prvnímu cíli*
 	- Není určen k dalšímu zpracování
+    - Často proměnlivé schéma
+- **Slabě strukturované dokumenty**
 
 ---
 
