@@ -44,13 +44,12 @@
 ---
 
 # Kontakty
-- **Doc. Ing. Radek Burget, Ph.D.** \
-burgetr@fit.vutbr.cz \
+- **doc. Ing. Radek Burget, Ph.D.** \
+burgetr@fit.vut.cz \
 C215
 	- **Přednášky**, zkoušky, všechno ostatní
 
 - **Ing. Jiří Hynek, Ph.D.** \
-ihynek@fit.vutbr.cz
+hynek@vut.cz
 	- **Projekty**, zadání, hodnocení
-
 
