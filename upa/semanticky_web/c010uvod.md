@@ -1,6 +1,6 @@
 
 # Sémantický web
-- Představa *webu dat* (*web of data* (oproti *web of documents*)
+- Představa *webu dat* (*web of data* oproti *web of documents*)
 	- Publikování strojově srozumitelných dat
 - Základní prvky:
 	- Reprezentace znalostí -- Resource description framework (RDF)

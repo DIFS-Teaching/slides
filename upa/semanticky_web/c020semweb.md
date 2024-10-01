@@ -179,10 +179,10 @@
 # RDF jako databáze
 - Repozitář – úložiště RDF trojic
 - Dotazování – jazyk SPARQL
-- Lokální úložiště:
+- Lokální úložiště (triplestore):
 	- Virtuoso http://virtuoso.openlinksw.com/ 
 	- RDF4J (dříve Sesame) http://rdf4j.org/ 
-	- Blazegraph https://www.blazegraph.com/product/ 
+	- ...
 - Globální *znalostní báze* (*knowledge base*)
 	- DBPedia http://dbpedia.org
 	- WikiData https://www.wikidata.org/
