@@ -6,6 +6,7 @@
 </header>
 
 ---
+
 # Pojmy v názvu informační systém
 - Informační
 	- Abychom název vůbec pochopili, bylo by dobré si ujasnit a definovat, co je to _informace_

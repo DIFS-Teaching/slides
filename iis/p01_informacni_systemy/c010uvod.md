@@ -1,4 +1,3 @@
-
 # Předmět IIS – Cíle předmětu
 - Zvládnutí kvalifikovaného návrhu informačního systému
 	- Analýza domény a procesů
