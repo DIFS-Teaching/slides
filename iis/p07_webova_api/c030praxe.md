@@ -20,6 +20,22 @@
 
 ---
 
+<!-- .slide: class="normal centered" data-transition="slide-in fade-out" -->
+
+# Vrstvy aplikace - serverové GUI
+
+![Vrstvy aplikace](assets/vrstvy_web.svg) <!-- .element: style="height: 750px"; text-align: center" -->
+
+---
+
+<!-- .slide: class="normal centered" data-transition="fade-in slide-out" -->
+
+# Vrstvy aplikace - využití API
+
+![Vrstvy aplikace](assets/vrstvy_api.svg) <!-- .element: style="height: 750px"; text-align: center" -->
+
+---
+
 # REST v čistém PHP
 
 - Vyhodnocení metody a cesty požadavku
