@@ -65,3 +65,28 @@
 	- 404 Not found
 	- 500 Internal server error
 
+---
+
+# Návrh REST rozhraní
+
+- Architektura REST je volná, umožňuje ``chaoticky'' přidávat endpointy podle potřeby
+- **Systematický návrh je nutný**
+	- Pevné datové struktury (vycházející z doménového modelu)
+		- Včetně reprezentace chybových stavů
+	- Mapování business operací na endpointy (vycházející z případů použití)
+- **Ideálně formální popis rozhraní**
+	- Mnohem lepší než sdílená tabulka
+
+---
+
+# OpenAPI
+
+- Strukturovaný popis REST rozhraní v YAML nebo JSON\
+	https://swagger.io/specification/ 
+- Generátory rozhraní v cílových jazycích, např. \
+	https://github.com/OpenAPITools 
+- Generování dokumentace \
+	[Popis rozhraní](fitlayout.github.io/restapi/openapi.yaml) --
+	[HTML dokumentace](http://fitlayout.github.io/restapi/)
+- Popis rozhraní je možno generovat automatizovaně
+	- Např. z implementace API v Javě
