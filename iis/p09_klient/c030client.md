@@ -95,7 +95,7 @@
 
 ---
 
-# Klient v JavaScriptu
+# Klient v JavaScriptu (starý)
 
 -   Rozhraní `XMLHTTPRequest`
 
@@ -155,6 +155,7 @@ async function doPost() {
 ```
 
 - viz též asynchronní zpracování, `await` apod.
+-   [Příklad klienta](https://github.com/DIFS-Teaching/basic-demos/blob/master/php-rest-db/client.html)
 
 ---
 
@@ -182,7 +183,7 @@ async function doPost() {
     -   Funkce `jQuery.getJSON()`
 -   Zobrazení dat ve stránce
     -   Mnoho možností, např. funkce `append()`
--   [Příklad klienta](https://github.com/DIFS-Teaching/basic-demos/blob/master/php-rest-db/client.html)
+-   [Příklad klienta](https://github.com/DIFS-Teaching/basic-demos/blob/master/php-rest-db/clientjq.html)
 
 ---
 
@@ -192,6 +193,7 @@ async function doPost() {
 -   Skript může posílat požadavky jen na zdroje se stejným _origin_
     -   Cíl požadavku má stejné **schéma**, **hostname** a **port**, jako má URL skriptu
 -   Je možno rozvolnit toto omezení na cílovém serveru
+    -   Cross-origin resource sharing (CORS)
     -   Server posílá hlavičku `Access-Control-Allow-Origin`, případně další.
     -   Např. `Access-Control-Allow-Origin: *`
     -   Vhodné pro veřejná API, používat opatrně
