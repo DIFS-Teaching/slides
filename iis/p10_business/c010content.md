@@ -95,18 +95,20 @@
 - Budou údaje v databázi stále smysluplné ?
 - Hledáním odpovědí a jejich aplikací při zajištění spolehlivosti se zabývají **_transakční modely_** a celý obor **_transakčního zpracování_**.
 
+---
 
+# Pojem transakce
+- **_Transakce_** představuje jednotku práce vykonávanou **_souvislým a bezpečným způsobem nezávisle na jiných transakcích_**.
+	- *Databázové transakce* -- omezeno pouze na DB vrstvu (zajišťuje DB server)
+	- *Business transakce* -- jednotka business logiky, nutno řešit na business vrstvě
+		- Podpora na pokročilejších platformách pro implementaci IS, např. Java (ne PHP, Python)
+- Transakce má dva základní účely:
 
 ---
 
 # Pojem transakce
-- **_Transakce_** představuje jednotku práce vykonávanou v databázovém (informačním nebo podobném) systému nad databází a  zpracovávanou  **_souvislým a bezpečným způsobem nezávisle na jiných transakcích_**. Transakce v databázovém prostředí má dva základní účely:
-
----
-
-# Pojem transakce
-1. Poskytnout bezpečnou jednotku práce, která dovoluje správné **_zotavení z poruch_** a udržuje databázi v konzistentním stavu i v případě poruchy systému, když je zastaveno provádění (úplně nebo částečně) a některé operace nad databází zůstávají nedokončené nebo v nejistém  stavu 
-2. Poskytnout **_izolaci programům přistupujícím k databází současně_**. Pokud tato izolace není poskytnuta, výstupy programů jsou potenciálně chybové.
+1. Poskytnout bezpečnou jednotku práce, která dovoluje správné **_zotavení z poruch_** a udržuje systém v konzistentním stavu i v případě poruchy systému, když je zastaveno provádění (úplně nebo částečně) a některé operace zůstávají nedokončené nebo v nejistém stavu 
+2. Poskytnout **_izolaci souběžně prováděných operací_**. Pokud tato izolace není poskytnuta, výstupy jsou potenciálně chybové (souběh).
 
 ---
 
