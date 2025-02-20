@@ -8,7 +8,7 @@
 ---
 
 # Prerekvizity
-- Java 17 (nebo 11) – **musí být JDK**
+- Java 17+ (21) – **musí být JDK**
 	- V Linuxu v distribuci (OpenJDK)
 	- Nebo např. [Adoptium](https://adoptium.net/temurin/releases/)
 - Maven
@@ -84,7 +84,7 @@
 	- Packaging `war`
 	- Dependencies (provided?)
 - Zdrojové soubory
-	- `src/java`
+	- `src/main/java`
 - Překlad
 	- `mvn clean package`
 	- Výsledný balík v `target/*.war`
