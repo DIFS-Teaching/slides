@@ -93,7 +93,7 @@ public class Person
 	- `src/main/liberty/config/server.xml` 
 	- Příklad [knihovny](https://github.com/DIFS-Teaching/jakartaee-basic/blob/main/web-frontend/pom.xml), [konfigurace zdroje](https://github.com/DIFS-Teaching/jakartaee-basic/blob/main/web-frontend/src/main/liberty/config/server.xml)
 
-Viz [Relational database connections with JDBC](https://openliberty.io/docs/22.0.0.1/relational-database-connections-JDBC.html)
+Viz [Relational database connections with JDBC](https://openliberty.io/docs/latest/relational-database-connections-JDBC.html)
 
 ---
 
