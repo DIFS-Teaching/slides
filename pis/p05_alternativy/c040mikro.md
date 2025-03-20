@@ -100,6 +100,17 @@
 - Příklady
 https://github.com/payara/Payara-Examples/tree/master/microprofile 
 
+---
+
+# Config Injection
+- Hodnoty parametrů dodaných z vnějšku (`@Inject`, `@ConfigProperty`)
+- Různé datové typy (zabudované a vlastní konvertory)
+- Zdroje konfiguračních hodnot
+	- `META-INF/microprofile-config.properties`
+	- Environment variables
+	- System properties
+		- Např. Open Liberty: `server/jvm.options`
+	- Možné vlastní zdroje konfigurace
 
 ---
 
@@ -119,13 +130,10 @@ https://github.com/payara/Payara-Examples/tree/master/microprofile
 - Sběr metrik různých typů v aplikaci
 	- Gauge – spojitá hodnota (měřidlo), např. délka fronty
 	- Counter – počítadlo, např. počet reg. uživatelů
-	- Timer – časové údaje, např. průměrný čas strávený v metodě, atd.
-	- Meter - frekvence volání, atd.
-- Počty volání a čas strávený v metodách
-	- `@Counted`, `@Timed`, `@Metered` ([OpenLiberty: Microservice observability with metrics](https://openliberty.io/docs/latest/microservice-observability-metrics.html))
+- Počty volání, čas strávený v metodách, frekvence volání
+	- `@Counted`, `@Timed`, `@Metered` (viz [OpenLiberty](https://openliberty.io/docs/latest/microservice-observability-metrics.html))
 - Centrální API pro sběr metrik
-	- Data sbírá a zpřístupňuje server
-	- Cesta `/metrics`, `/metrics?scope=application`
+	- Data sbírá a zpřístupňuje server: `/metrics`, `/metrics?scope=application`
 - Předpokládá využití řešení pro sběr metrik (např. [Prometheus](https://prometheus.io/)) a případně vizualizaci (např. [Grafana](https://prometheus.io/docs/visualization/grafana/))
 	
 ---
@@ -154,62 +162,13 @@ https://github.com/payara/Payara-Examples/tree/master/microprofile
 
 ---
 
-# Distribuované sledování
+# Distribuované sledování (Tracing)
 
 - Nástroje pro sledování aplikací
 	- Např. [Jaeger](https://www.jaegertracing.io/), [Zipkin](https://zipkin.io/)
 - Podpora v aplikacích
-	- Např. Microprofile Metrics, [Microprofile Open Tracing](https://download.eclipse.org/microprofile/microprofile-opentracing-2.0/microprofile-opentracing-spec-2.0.html), [Spring Cloud Sleuth](http://spring.io/projects/spring-cloud-sleuth)
-
----
-
-# Microprofile Open Tracing
-
-```java
-@RequestScoped
-@Path("/items")
-@Produces(MediaType.APPLICATION_JSON)
-public class CatalogService {
-  @Inject
-  Tracer tracer;
- 
-  @Timeout(value = 2, unit = ChronoUnit.SECONDS)
-  @Retry(maxRetries = 2, maxDuration = 2000)
-  @Fallback(fallbackMethod = "fallbackInventory")
-  @GET
-  @Traced(value = true, operationName = "getCatalog.list")
-   public List<Item> getInventory() {
-        ...snip...
-    // Return all items in Inventory
-  }
- 
-  public List<Item> fallbackInventory() {
-    try (ActiveSpan childSpan =
-      tracer
-        .buildSpan("Grabbing messages from Messaging System")
-        .startActive()) {
-            ...snip...
-          // Return a default fallback list
-        }
-    }
-  }
-
-}
-```
-
-Viz [Monitor and Debug Java Microservices with MicroProfile OpenTracing](https://www.ibm.com/cloud/blog/monitoring-java-microservices-with-microprofile-opentracing) nebo [Open Liberty guides](https://openliberty.io/guides/microprofile-telemetry-jaeger.html).
-
----
-
-# Config Injection
-- Hodnoty parametrů dodaných z vnějšku (`@Inject`, `@ConfigProperty`)
-- Různé datové typy (zabudované a vlastní konvertory)
-- Zdroje konfiguračních hodnot
-	- `META-INF/microprofile-config.properties`
-	- Environment variables
-	- System properties
-		- Např. Open Liberty: `server/jvm.options`
-	- Možné vlastní zdroje konfigurace
+	- Např. [Open Telemetry](https://opentelemetry.io/), [Microprofile Open Tracing](https://download.eclipse.org/microprofile/microprofile-opentracing-2.0/microprofile-opentracing-spec-2.0.html), [Spring Cloud Sleuth](http://spring.io/projects/spring-cloud-sleuth)
+	- [Open Liberty guides](https://openliberty.io/guides/microprofile-telemetry-jaeger.html).
 
 ---
 
@@ -232,7 +191,7 @@ Viz [Monitor and Debug Java Microservices with MicroProfile OpenTracing](https:/
 	-  `@Timeout`
 - Fallback metody
 	- `@Fallback`
-	- `@CircuitBreaker`
+	- [`@CircuitBreaker`](https://download.eclipse.org/microprofile/microprofile-fault-tolerance-3.0/microprofile-fault-tolerance-spec-3.0.html#circuitbreaker)
 - https://github.com/eclipse/microprofile-fault-tolerance
 - https://github.com/payara/Payara-Examples/tree/master/microprofile/fault-tolerance
 
