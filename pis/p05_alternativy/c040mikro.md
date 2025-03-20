@@ -58,13 +58,12 @@
 
 # V čem implementovat mikroslužby?
 - V čemkoliv – spojovacím bodem je pouze API
+	- Ale může být ruzně obtížné implementovat výše uvedené vlastnosti (logování, etc.)
 - Node.js (+ express + MongoDB)
 	- Populární rychlé řešení
 - Java
+	- Eclipse Microprofile
 	- Spring Boot
-	- Ultralehké frameworky
-Např. Spark - https://github.com/perwendel/spark 
-	- Microprofile
 	- Quarkus.io, Helidon.io
 
 ---
@@ -159,7 +158,7 @@ https://github.com/payara/Payara-Examples/tree/master/microprofile
 - Nástroje pro sledování aplikací
 	- Např. [Jaeger](https://www.jaegertracing.io/), [Zipkin](https://zipkin.io/)
 - Podpora v aplikacích
-	- Např. [Microprofile Open Tracing](https://download.eclipse.org/microprofile/microprofile-opentracing-2.0/microprofile-opentracing-spec-2.0.html), [Spring Cloud Sleuth](http://spring.io/projects/spring-cloud-sleuth)
+	- Např. Microprofile Metrics, [Microprofile Open Tracing](https://download.eclipse.org/microprofile/microprofile-opentracing-2.0/microprofile-opentracing-spec-2.0.html), [Spring Cloud Sleuth](http://spring.io/projects/spring-cloud-sleuth)
 
 ---
 
@@ -197,7 +196,7 @@ public class CatalogService {
 }
 ```
 
-Viz [Monitor and Debug Java Microservices with MicroProfile OpenTracing](https://www.ibm.com/cloud/blog/monitoring-java-microservices-with-microprofile-opentracing) nebo [Open Liberty guides](https://openliberty.io/guides/microprofile-opentracing.html).
+Viz [Monitor and Debug Java Microservices with MicroProfile OpenTracing](https://www.ibm.com/cloud/blog/monitoring-java-microservices-with-microprofile-opentracing) nebo [Open Liberty guides](https://openliberty.io/guides/microprofile-telemetry-jaeger.html).
 
 ---
 
