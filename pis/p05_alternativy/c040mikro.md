@@ -119,9 +119,10 @@ https://github.com/payara/Payara-Examples/tree/master/microprofile
 - Sběr metrik různých typů v aplikaci
 	- Gauge – spojitá hodnota (měřidlo), např. délka fronty
 	- Counter – počítadlo, např. počet reg. uživatelů
-	- Timer – časové údaje, např. průměrný čas operace, atd.
+	- Timer – časové údaje, např. průměrný čas strávený v metodě, atd.
+	- Meter - frekvence volání, atd.
 - Počty volání a čas strávený v metodách
-	- `@Counted`, `@Timed`
+	- `@Counted`, `@Timed`, `@Metered` ([OpenLiberty: Microservice observability with metrics](https://openliberty.io/docs/latest/microservice-observability-metrics.html))
 - Centrální API pro sběr metrik
 	- Data sbírá a zpřístupňuje server
 	- Cesta `/metrics`, `/metrics?scope=application`
