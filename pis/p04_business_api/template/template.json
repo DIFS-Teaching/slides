@@ -12,6 +12,7 @@
     "defaultClass": "normal",
     "baseTheme": "sky",
     "styles": [ "fit.css", "googlecode.css" ],
+    "usePlugins": [ "rewrite" ],
     "reveal": {
         "width": 1920,
         "height": 1080,
