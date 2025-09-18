@@ -662,7 +662,3 @@ hr {
 Udělejme za tímto tlustou čáru.
 <hr>
 </pre>
-
-
-
-	

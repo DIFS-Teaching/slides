@@ -41,7 +41,6 @@
 - různé druhy elementů -- dle specifikace tzv. <i>***flow content***</i>
   - obsahové elementy, <i>„většina elementů, které se používají v těle dokumentů a aplikací“</i>
 
-
 <iframe src="https://html.spec.whatwg.org/images/content-venn.svg" alt="Elements"
   style="width: 100%; height: 80px; zoom: 10; position: absolute; bottom: 0; left: 0; z-index: -1">
 </iframe>

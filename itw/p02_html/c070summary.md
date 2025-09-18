@@ -14,8 +14,10 @@
 - validace: https://validator.w3.org/
 - normální tok (<i>normal flow</i>)
 - řádkové vs. řádkově blokové vs. blokové elementy
-- 
 
----
+<br>
 
-# Odkazy
+- ***důležité je si vše prakticky vyzkoušet***
+- tutoriály, uživatelsky přívětivé manuály:
+  - https://www.w3schools.com/html/
+  - https://developer.mozilla.org/en-US/docs/Web/HTML

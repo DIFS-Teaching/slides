@@ -100,13 +100,11 @@
 
 - ***`<body>`*** -- tělo dokumentu, obsah zobrazený uživateli
 
-
-
 ---
 
 # HTML dokument: DOM
 
-- dokument tvoří ***strom elementů*** skládájící se z ***uzlů*** (element, atribut, komentář, text, ...)
+- dokument tvoří ***strom*** skládájící se z ***uzlů*** (element, atribut, komentář, text, ...)
 
 <div style="text-align: center">
   <img src="assets/dom.svg" alt="DOM">
@@ -155,11 +153,11 @@ Obsah elementu<br> Další obsah elementu.
 </iframe>
 
 - specifikace HTML určuje existující elementy a jejich vlastnosti:
-  - syntaxe (např. možnost vypuštění uzavírací značky)
   - sémantika (význam, co reprezentuje)
   - kontext, kde může být použitý
   - povolený obsah (další elementy, text)
   - povolené atributy
+  - možnost vypuštění uzavírací značky
 
 <br>
 
