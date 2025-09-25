@@ -124,6 +124,18 @@ Datový model (objektový, relační, ...)
 
 ---
 
+# Dvojvrstvá ⨉ Třívrstvá architektura
+
+- Základní rozdíl: Oddělená prezentační vrstva
+	- Standardní webový prohlížeč
+- Snazší nasazení
+	- Není třeba nic instalovat na klientská zařízení
+	- Centrální aktualizace
+- Lepší přístupnost
+	- Klient není omezen na konkrétní zařízení nebo operační systém
+
+---
+
 # Distribuované architektury
 - Monolitický systém (typické pro třívrstvou architekturu)
 	- Vyvíjí se a nasazuje jako jeden celek
