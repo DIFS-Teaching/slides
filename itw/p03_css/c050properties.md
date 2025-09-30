@@ -370,16 +370,234 @@ p {
 
 ---
 
-# Barva textu
+# Barva a stíny textu
+
+- ***`color`***`: blue; `***`text-shadow`***`: offset-x offset-y blur-radius color;`
+
+<pre class="code-render" default-style="
+p {
+  font-size: 2rem;
+}
+
+p.simple {
+  text-shadow: 4px 4px 20px black; /* jednoduchý jemný stín */
+}
+
+p.multiple {
+  text-shadow: 
+    4px 4px 2px red,
+    -4px -4px 2px blue; /* více stínů současně */
+}
+
+p.neon {
+  color: #0f0;
+  text-shadow:
+    0 0 5px #0f0,
+    0 0 10px #0f0,
+    0 0 20px #0f0,
+    0 0 40px #0f0; /* neonový efekt */
+}" resizable="true" style="height: 600px; width: 50%; float: right; z-index: 1; margin-left: 1rem">
+
+<p class="simple">Jednoduchý stín</p>
+<p class="multiple">Vícebarevné stíny</p>
+<p class="neon">Neonový text</p>
+
+</pre>
+
+```css
+p.simple {
+  text-shadow: 4px 4px 10px black;
+}
+
+p.multiple {
+  text-shadow: 
+    4px 4px 2px red,
+    -4px -4px 2px blue;
+}
+
+p.neon {
+  color: #0f0;
+  text-shadow:
+    0 0 5px #0f0,
+    0 0 10px #0f0,
+    0 0 20px #0f0,
+    0 0 40px #0f0;
+}
+```
 
 ---
 
-# Pozadí
+# Pozadí: barva, obrázek, opakování
+
+- ***`background-color`***`: teal; `***`background-image`***`: url(...);`
+- ***`background-repeat`***`: repeat | repeat-x | repeat-y | no-repeat;`
+
+<pre class="code-render" default-style="
+body {
+      font-family: sans-serif;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 20px;
+      background: #f0f0f0;
+    }
+
+    div {
+      color: blue;
+      width: 400px;
+      height: 300px;
+    }
+
+    /* Jednotlivé příklady */
+    .color {
+      background-color: teal;
+    }
+
+    .image {
+      background-image: url('https://www.fit.vut.cz/study/course/ITW/public/assets/cat-fall-small.jpg');
+    }
+
+    .repeat {
+      background-image: url('https://www.fit.vut.cz/study/course/ITW/public/assets/cat-fall-small.jpg');
+      width: 100%;
+      background-repeat: repeat-x;
+    }
+" resizable="true" style="height: 700px; width: 50%; float: right; z-index: 1; margin-left: 1rem">
+
+  <div class="color">background-color</div>
+  <div class="image">background-image</div>
+  <div class="repeat">background-repeat</div>
+
+</pre>
+
+```css
+.color {
+  background-color: teal;
+}
+
+.background {
+  background-image: url("cat.jpg");
+}
+
+.repeat {
+  background-image: url("cat.jpg");
+  background-repeat: repeat-x;
+}
+```
+
+- deafult hodnota *`background-repeat`* je ***`repeat`***
 
 ---
 
-# Rámečky
+# Pozadí: velikost, pozice, kombinace pozadí
+
+- ***`background-size`***`: auto | 200px | 50% 200px | cover | contain | ...;`
+- ***`background-position`***`: 10px 20px | 50% 50% | top left | ...;`
+
+<pre class="code-render" default-style="
+.box {
+  width: 100%;
+  height: 600px;
+
+  /* Více vrstev pozadí */
+  background-image: 
+    url('https://www.fit.vut.cz/study/course/ITW/public/assets/gandalf.png'),
+    url('https://www.fit.vut.cz/study/course/ITW/public/assets/cat-fall-small.jpg');
+
+  background-repeat: no-repeat, no-repeat;
+  background-size: 200px, cover;
+  background-position: top left, center;
+}
+" resizable="true" style="height: 700px; width: 50%; float: right; z-index: 1; margin-left: 1rem">
+
+  <div class="box"></div>
+
+</pre>
+
+```css
+.box {
+  width: 100%;
+  height: 600px;
+
+  background-image:
+    url('gandalf.jpg'),
+    url('cat.jpg');
+
+  background-repeat:
+    no-repeat,
+    no-repeat;
+  background-size:
+    200px,
+    cover;
+  background-position:
+    top left,
+    center;
+}
+```
+
+---
+
+# Rámečky a stíny boxu
+
+<pre class="code-render" default-style="
+.box {
+  box-sizing: border-box;
+  width: 90%;
+  height: 600px;
+  margin: auto;
+  margin-top: 50px;
+  border-radius: 40px 20% 80px 10%;
+  border: 10px solid red;
+  box-shadow: inset 0px 0px 50px 5px yellow,
+              0px 0px 50px 5px red;
+
+  /* Více vrstev pozadí */
+  background-image: 
+    url('https://www.fit.vut.cz/study/course/ITW/public/assets/cat-fall-small.jpg');
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+" resizable="true" style="height: 800px; width: 50%; float: right; z-index: 1; margin-left: 1rem">
+
+  <div class="box"></div>
+
+</pre>
+
+```css
+.box {
+  border:
+    10px solid red;
+  border-radius:
+    40px 20% 80px 10%;
+  box-shadow:
+    inset 0px 0px 50px yellow,
+    0px 0px 50px red;
+}
+```
+
+- ***`border`***`: thickness style color`
+- ***`border-radius`***`:`
+   - `20px;`
+   - `TL TR BR BL;`
+- ***`box-shadow`***`: offset-x offset-y blur-radius spread-radius color inset`  
 
 ---
 
 # Zobrazení
+
+- ***`display`***`:`
+  - `none` -- prvek se vůbec nezobrazí (nezabírá místo)
+  - `block` -- blokový prvek (zabírá celou šířku, začíná na novém řádku)
+  - `inline` -- řádkový prvek (tekoucí v řádku, neumožňuje měnit šířku/výšku)
+  - `inline-block` -- řádkový, ale s možností nastavit šířku/výšku
+
+<br>
+
+
+- ***pozicování a tvorba layoutů...***
+  - `table`, `inline-table`
+  - `table-row`, `table-cell`, ...
+  - `flex`
+  - `grid`

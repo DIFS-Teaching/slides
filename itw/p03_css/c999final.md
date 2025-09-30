@@ -2,5 +2,5 @@
  
 <header>
     <h1>Pokračování příště...</h1>
-    <p>CSS, ...</p>
+    <p>CSS -- základní mechanismy</p>
 </header>

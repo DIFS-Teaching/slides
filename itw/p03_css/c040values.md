@@ -285,9 +285,14 @@ div {
       rootElement.append(colorElement);
       
       // text color based on brightness
-      const [r, g, b] = getComputedStyle(colorElement)["background-color"].match(/\d+/g).map(Number);
-      const brightness = (r * 299 + g * 587 + b * 114) / 1000;
-      colorElement.style.color = brightness < 128 ? "white" : "black";
+      const s = getComputedStyle(colorElement);
+      if(s && s["background-color"]) {
+        const [r, g, b] = s["background-color"].match(/\d+/g).map(Number);
+        if(r & g & b) {
+          const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+          colorElement.style.color = brightness < 128 ? "white" : "black";
+        }
+      }
     });
   }
 

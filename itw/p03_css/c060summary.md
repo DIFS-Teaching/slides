@@ -9,13 +9,13 @@
 
 # Podstatné informace
 
-- pojmy: značka, element, atribut, Document Object Model
-- HTML Living standard: https://html.spec.whatwg.org/
-- validace: https://validator.w3.org/
-- normální tok (<i>normal flow</i>)
-- řádkové vs. řádkově blokové vs. blokové elementy
-- 
+- pojmy: stylový předpis, kaskáda, pravodlo, selektor, vlastnost, hodnota
+- externí, interní a inline stylový předpis
+- W3C specifikace: https://www.w3.org/Style/CSS/
+- validace: https://jigsaw.w3.org/css-validator/
 
----
+<br>
 
-# Odkazy
+- příklady, tutoriály
+  - https://developer.mozilla.org/en-US/docs/Web/CSS
+  - https://www.w3schools.com/css/
