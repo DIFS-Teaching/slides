@@ -1,9 +1,9 @@
 <!-- .slide: class="title" -->
 
 <header>
-  <h1>HTML</h1>
-  <p class="subtitle">Structure and Content of a Document</p>
-  <p class="subsubtitle">tag, element, attribute, block/inline, DOM</p>
+  <h1>CSS</h1>
+  <p class="subtitle">Introduction to Cascading Style Sheets</p>
+  <p class="subsubtitle">syntax, rule, selector, property, value</p>
 </header>
 <div class="logo"></div>
 <div class="authors">
