@@ -158,17 +158,17 @@ Tags are still interpreted <b>normally</b>.
 <pre class="code-render" default-style="" resizable="true" style="width: 45%; height: 500px; float: right; z-index: 1">
 <ul>
   <li>Red team
-  <ol>
-    <li>Ice Truck Killer</li>
-    <li>The Trinity Killer</li>
-    <li>The Doomsday Killer</li>
-  </ol>
+    <ol>
+      <li>Ice Truck Killer</li>
+      <li>The Trinity Killer</li>
+      <li>The Doomsday Killer</li>
+    </ol>
   </li>
   <li>Blue team
-  <ol>
-    <li>Little Chino</li>
-    <li>The Bay Harbor Butcher</li>
-  </ol>
+    <ol>
+      <li>Little Chino</li>
+      <li>The Bay Harbor Butcher</li>
+    </ol>
   </li>
 </ul>
 </pre>
@@ -203,14 +203,14 @@ Tags are still interpreted <b>normally</b>.
 <dl>
   <dt>Ice Truck Killer</dt>
   <dd>
-   Brian Moser, known for dismembering
-   and arranging bodies.
+    Brian Moser, known for dismembering
+    and arranging bodies.
   </dd>
 
   <dt>The Doomsday Killer</dt>
   <dd>
-  Travis Marshall, murders inspired by
-  the biblical Book of Revelation.
+    Travis Marshall, murders inspired by
+    the biblical Book of Revelation.
   </dd>
 </dl>
 </pre>
@@ -431,13 +431,13 @@ th {
 ```html
 <table>
   <thead>
-  <!-- group of rows with column headers -->
+    <!-- group of rows with column headers -->
   <thead>
   <tbody>
-  <!-- group of rows with main content -->
+    <!-- group of rows with main content -->
   </tbody>
   <tfoot>
-  <!-- group of rows with summary or notes -->
+    <!-- group of rows with summary or notes -->
   <tfoot>
 </table>
 ```
