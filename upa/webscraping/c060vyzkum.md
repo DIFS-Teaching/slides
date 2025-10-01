@@ -1,3 +1,12 @@
+<!-- .slide: class="section" -->
+
+<header>
+	<h1>Budoucnost</h1>
+	<p>Mohou stroje pracovat za nás (programátory)?</p>
+</header>
+
+---
+
 # Současný stav
 
 ![Manufaktura](assets/openspace.jpg) <!-- .element: style="float:right;height:700px" -->
@@ -15,12 +24,11 @@
 Tzn. bez ``ruční práce'' v podobě hledání elementů, regulárních výrazů, CSS selektorů, XPath výrazů, apod.
 
 1. **Strojové učení**
-	- Ručně anotované příklady stránek
-	- Z nich se automaticky odvodí parametry wrapperu / extraktoru
-2. **Modelem řízená extrakce**
-	- Specifikace předpokládané struktury dat
-		- Entity, atributy, vztahy (ER diagram?, ještě lépe *ontologie*)
-		- Způsob rozpoznání jednotlivých atributů
+	- ``Naučení'' extraktoru na anotovaných příkladech
+2. **Jazykové modely**
+	- Text dokumentu nebo kód jako součást promptu
+3. **Modelem řízená extrakce**
+	- Specifikace předpokládané struktury dat (ER diagram?, *ontologie*, ...)
 	- Nalezení výskytu požadovaných skupin dat ve zdrojové stránce
 
 ---
@@ -60,3 +68,53 @@ Tzn. bez ``ruční práce'' v podobě hledání elementů, regulárních výraz�
 	- Mapování na databázi
 - Nalezení datových záznamů
 	- Využití pravidelnosti, opakující se vzory
+
+---
+
+# Jazykové modely
+
+- Předáme text nebo kód dokumentu a ptáme se
+
+<p class="cite">Je-li toto stránka produktu, jak se tento produkt jmenuje a kolik stojí?</p>
+
+- V případě webových stránek poněkud drahý přístup
+	- Použití LLM se platí per-token
+	- Lokální použití se platí výpočetní náročností
+
+---
+
+# Jazykové modely - prompty
+
+- Zero-shot prompt
+	- Pouze instrukce (cíl extrakce), žádné příklady
+- One (few)-shot prompt (~ )
+	- Příklady hodnot atributů
+	- Příklady zdrojových dat a očekávaných výsledků
+- Specifikace cílového formátu odpovědi
+	- Instrukce (použij JSON, názvy atributů)
+	- Schéma (Ukázka JSON s příklady, JSON Schema, ...)
+
+<p class="cite">A. Brinkmann et al.: <a href="https://arxiv.org/abs/2310.12537">ExtractGPT: Exploring the Potential of Large Language Models for Product Attribute Value Extraction</a></p>
+
+---
+
+# Příklad promptu - zero shot
+
+![Zero-shot prompt](assets/prompt1.svg) <!-- .element: style="height:700px" -->
+
+---
+
+# Příklad promptu s příklady
+
+![Few-shot prompt](assets/prompt2.svg) <!-- .element: style="height:700px" -->
+
+---
+
+# AI agenti
+
+- LLM nejen analyzuje vstup, ale i řídí nástroje
+	- Popíšeme schopnosti a API dostupných nástrojů textově
+	- Dáme instrukci k vykonání činnosti
+	- LLM generuje sekvenci příkazů pro nástroje a analyzuje výstup
+- Mnoho dostupných nástrojů
+	- Např. [LangChain](https://www.langchain.com/) obsahuje i [rozhraní pro Playwright](https://python.langchain.com/docs/integrations/tools/playwright/)
