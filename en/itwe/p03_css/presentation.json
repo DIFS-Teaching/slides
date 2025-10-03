@@ -1,8 +1,8 @@
 {
-    "id": "p02_html",
+    "id": "p03_css",
     "title": "ITWe - Introduction to Cascading Style Sheets",
     "author": "Jiri Hynek <hynek@vut.cz>",
-    "lang": "cs",
+    "lang": "en",
     "template": {
         "name": "fit",
         "properties": {
