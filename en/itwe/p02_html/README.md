@@ -1,3 +1,3 @@
-# IIS - Pojem informačního systému, data, informace
+# ITWe - Introduction to HTML
 
-[Zobrazit online](https://gitshow.net/gh/DIFS-Teaching/slides/iis/p01_informacni_systemy) - [PDF verze](https://raw.githubusercontent.com/DIFS-Teaching/slides/main/iis/p01_informacni_systemy/p01_informacni_systemy.pdf)
+[Show online](https://gitshow.net/gh/DIFS-Teaching/slides@main/en/itwe/p02_html) - [PDF version](https://raw.githubusercontent.com/DIFS-Teaching/slides/main/en/itwe/p02_html/p02_html.pdf)

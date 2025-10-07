@@ -1,3 +1,12 @@
+<!-- .slide: class="section" -->
+
+<header>
+	<h1>Quick &amp; Dirty</h1>
+	<p>Když potřebujeme rychle a jednorázově data z jednoduššího webu a nikdo se nás nebude ptát, jak jsme to udělali.</p>
+</header>
+
+---
+
 # Shell je přítel
 
 Motivace: [Evolution of a programmer](https://cgg.mff.cuni.cz/~semancik/cvika/programmer.html)

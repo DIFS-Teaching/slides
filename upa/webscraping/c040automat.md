@@ -1,3 +1,12 @@
+<!-- .slide: class="section" -->
+
+<header>
+	<h1>Automatizace prohlížeče</h1>
+	<p>Když se ke stránce nedá dostat na jeden HTTP GET.</p>
+</header>
+
+---
+
 # Mechanical Soup
 
 - Automatizace ``prohlížeče'' pro [BeautifulSoup](#/beautifulsoup)

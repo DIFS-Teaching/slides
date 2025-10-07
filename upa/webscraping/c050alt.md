@@ -1,3 +1,12 @@
+<!-- .slide: class="section" -->
+
+<header>
+	<h1>Alternativy</h1>
+	<p>Je analýza HTML kódu jediná možnost?</p>
+</header>
+
+---
+
 # Využití API
 
 - Některé stránky načítají zajímavý obsah dynamicky JavaScriptem
@@ -37,4 +46,4 @@ Opět např. https://www.uci.org/road/rankings
 	- Identifikace objektů a vlastností pomocí **URI**
 	- Existuje celá řada slovníků (*ontologií*) pro různé domény
 		- Např. [FOAF](http://www.foaf-project.org/), [schema.org](https://schema.org/), ...
-- Viz přednáška [Sémanticky web](https://www.fit.vutbr.cz/~burgetr/upa/semanticky_web)
+- Viz přednáška [Sémanticky web](https://github.com/DIFS-Teaching/slides/tree/main/upa/semanticky_web)
