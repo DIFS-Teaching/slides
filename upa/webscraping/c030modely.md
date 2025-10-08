@@ -31,7 +31,7 @@
 	- **R**ight -- pravý oddělovač (pro každé datové pole)
 	- **T**tail -- podřetězec za datovým blokem
 
-`$$ wrapper = (h, t, l_1, r_1, l_2, r_2, \dots, l_n, r_n ) $$`
+$$wrapper = (h, t, l_1, r_1, l_2, r_2, \dots, l_n, r_n )$$
 
 <p class="cite">
 Nicholas Kushmerick:
