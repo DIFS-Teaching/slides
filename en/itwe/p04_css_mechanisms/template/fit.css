@@ -7,6 +7,7 @@
   --colorEmp2: #4136e6;
   --colorEmp: #bb1e09;
   --colorEmpA:#7772bc;
+  --colorCode: #008;
   --echtGold: 0.55;
   --fontAwesomeFree: "Font Awesome 7 Free";
 }
@@ -217,7 +218,7 @@ html.print-pdf .reveal .slides section .fragment { /* show fragments when printi
 }
 
 .reveal code {
-  color: var(--fit-blue);
+  color: var(--colorCode);
 }
 
 .reveal .cite {

@@ -1,5 +1,6 @@
+<!-- .slide: class="section" -->
 
-# Style of Block Elements
+# Styling the Block Elements
 
 ---
 
@@ -16,29 +17,35 @@
 
 # Box model
 
-Margin 
-
-Padding 
-
-Element contents   
-  
-`<----------------- width ----------------->`
-
-border
+<pre class="code-render" default-style="" resizable="false" style="height: 20em;">
+<div class="textbox" style="border-style: dashed; box-shadow: none; text-align: center; font-family: sans-serif; padding: 2em">
+	<span title="Outer margin, always transparent">Margin</span>
+	<div style="background-color: gray; border: 10px solid green; padding: 0.5em 2em; margin-top: 1em">
+		<span title="Inner padding, background color (image)">Padding</span>
+		<div style="background-color: white; color: black; padding: 3em 0em; margin: 1em;">
+			Element content
+			<br/><br/>
+			<code style="color: red;">&lt;-----------------&nbsp;width&nbsp;-----------------&gt;</code>
+		</div>		
+		<div style="width: 4em; background-color: #057205ff; color: white; position: relative; left: -1.5em; top: 1.1em;">border</div>
+	</div>
+</div>
+</pre>
 
 ---
 
 # Content width and height
 
-  * For **inline** elements by the width and height of the text
-  * For block elements it can be 
-    * Specified using the `width` a `height` properties
-    * Computed from remaining features: 
-      * Size of the parent element
-      * Content size
-      * Margins and borders
-  * Root element (`<html>`) 
-    * The size is influenced by the browser window size
+* **Inline elements**
+  * Always computed automatically
+* **Block elements**
+  * Set explicitly using the `width` a `height` properties
+  * Computed from remaining features: 
+    * Size of the parent element
+    * Content size
+    * Margins and borders
+* **Root element** (`<html>`) 
+  * The size is given by the browser window size
 
 ---
 
@@ -57,15 +64,14 @@ border
 
 # Minimal width and height
 
-  * Maximal size 
-    * `max-width: 20em;`
-    * `max-height: 50em;`
-  * Minimal size 
-    * `min-width: 20em;`
-    * `min-height: 50em;`
-    * Limited support in browsers
-  * Application order 
-    * `width` -> `max-width` -> `min-width`
+* Maximal size 
+  * `max-width: 20em;`
+  * `max-height: 50em;`
+* Minimal size 
+  * `min-width: 20em;`
+  * `min-height: 50em;`
+* Application order 
+  * `width` -> `max-width` -> `min-width`
 
 ---
 
@@ -98,8 +104,8 @@ border
 # `auto` Values
 
   * The `margin`, `width` and `height` properties may have the value of `auto`
-    * The default value for `width` and `height`
-    * For `margin` the default is 0
+    * `width` and `height` are set to `auto` by default
+    * For `margin` the default is 0 but `auto` can be used
   * The real values for the `auto` properties are computed automatically
   * The algorithm depends on the layout mode
 
@@ -107,16 +113,15 @@ border
 
 # Layout Modes
 
-  * Normal flow 
-    * So called _in-flow_ elements
-    * Elements are laid out in the document order
-    * Inline elements on the lines, block elements below each other
-  * Floating blocks 
-    * Elements moved to left or right side
-    * The `float` property
-  * Positioned elements 
-    * The element position is specified explicitly
-    * The `position` property
+* **Normal flow** (default)
+  * So called _in-flow_ elements
+  * Elements are laid out in the document order
+  * Inline elements on the lines, block elements below each other
+* Other layout modes
+  * Floating blocks
+  * Positioned elements
+  * Flexbox, Grid layout
+  * ... will be explained later
 
 ---
 
@@ -130,6 +135,25 @@ margin-left + border-left-width +
 \+ border-right-width + margin-right = _containing_block_width_
   * This allows computing the eventual `auto` values
   * If none of the values is `auto`, the _right margin_ specfication is ignored and computed automatically
+
+=--
+
+# Box model
+
+<pre class="code-render" default-style="" resizable="false" style="height: 20em;">
+<div class="textbox" style="border-style: dashed; box-shadow: none; text-align: center; font-family: sans-serif; padding: 2em">
+	<span title="Outer margin, always transparent">Margin</span>
+	<div style="background-color: gray; border: 10px solid green; padding: 0.5em 2em; margin-top: 1em">
+		<span title="Inner padding, background color (image)">Padding</span>
+		<div style="background-color: white; color: black; padding: 3em 0em; margin: 1em;">
+			Element content
+			<br/><br/>
+			<code style="color: red;">&lt;-----------------&nbsp;width&nbsp;-----------------&gt;</code>
+		</div>		
+		<div style="width: 4em; background-color: #057205ff; color: white; position: relative; left: -1.5em; top: 1.1em;">border</div>
+	</div>
+</div>
+</pre>
 
 ---
 
@@ -152,13 +176,14 @@ margin-left + border-left-width +
 
 # Margin Collapsing
 
-  * **Horizontal** margins are **never collapsed**
-  * **Vertical** margins are collapsed 
-    * For two **not floating** blocks placed below each other
+* **Horizontal** margins are **never collapsed**
+* **Vertical** adjacent margins are collapsed 
+    * For two **non-floating** blocks placed below each other
     * For two nested blocks (top or bottom margin) 
-      * Top margin only if the nested object has `clear: none`
-    * The resulting margin is the **maximum** of the margins being collapsed
-  * [Example](data/collapse1.html)
+        * Top margin only if the nested object has `clear: none`
+    * Empty blocks (top and bottom margin)
+* The resulting margin is the **maximum** of the margins being collapsed
+* [Example](data/collapse1.html)
 
 ---
 

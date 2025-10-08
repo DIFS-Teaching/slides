@@ -2,42 +2,40 @@
 # Property inheritance
 
   * Some property values are inherited by the child elements
+    - *When not explicitly specified*
 
 ```html
-@HTML@
-<p class="intro concl">Following text is@@
-    <span class="imp">important</span></p>@@
-@/HTML@
-``` ```html
-@CSS@
+<p class="intro concl">Following text is
+    <span class="imp">important</span></p>
+```
+
+```css
 p { color: red; border: 1px solid blue; }
-@/CSS@
 ``` 
+
   * The text color applies to the child element too
   * Only the parent element `<p>` has the border
-  * The [CSS specification](http://www.w3.org/TR/CSS21/propidx.html) defines which properties are inherited
+  * The [CSS specification](https://www.w3.org/TR/CSS22/propidx.html) defines which properties are inherited
 
 ---
 
 # Typical Usage of Inheritance
 
-```html
-@CSS@
-body {@@
-    color: white;@@
-    background-color: black;@@
-}@@
-@@
-h1 {@@
-    color: red;@@
+```css
+body {
+    color: white;
+    background-color: black;
 }
-@/CSS@
+
+h1 {
+    color: red;
+}
 ``` 
 
-  * All the text will be white 
-    * All the elements inherit their color from the `body` element
-  * Only the headings (and their descendant elements) will be red 
-    * We define red color for `h1`
+* All the text will be white 
+  * All the elements inherit their color from the `body` element
+* Only the headings (and their descendant elements) will be red 
+  * We define red color for `h1`
 
 ---
 
@@ -47,62 +45,70 @@ h1 {@@
   * The property value is then always inherited from the parent
 
 ```html
-@HTML@
-<div id="menu">@@
-	<h1>Menu</h1>@@
-	<p>First paragraph</p>@@
-	<p>Second paragraph</p>@@
+<div id="menu">
+	<h1>Menu</h1>
+	<p>First paragraph</p>
+	<p>Second paragraph</p>
 </div>
-@/HTML@
 ```
 
 ---
 
 # Example
 
-# Menu
+<pre class="code-render" default-style="" resizable="true" style="height: 400px">
+<style>
+#menu { border: 3px #057205ff solid; }
+</style>
+<div id="menu">
+	<h1>Menu</h1>
+	<p>First paragraph</p>
+	<p>Second paragraph</p>
+</div>
+</pre>
 
-First paragraph
 
-Second paragraph
-
-```html
-@CSS@
-#menu { border: 3px #99ff99 solid; }
-@/CSS@
+```css
+#menu { border: 3px #057205ff solid; }
 ```
 
 ---
 
-# Example
+# Example (II)
 
-# Menu
-
-First paragraph
-
-Second paragraph
-
-```html
-@CSS@
-#menu { border: 3px #99ff99 solid; }@@
+<pre class="code-render" default-style="" resizable="true" style="height: 400px">
+<style>
+#menu { border: 3px #057205ff solid; }
 #menu p { border: inherit; }
-@/CSS@
-```
+</style>
+<div id="menu">
+	<h1>Menu</h1>
+	<p>First paragraph</p>
+	<p>Second paragraph</p>
+</div>
+</pre>
 
+```css
+#menu { border: 3px #057205ff solid; }
+#menu p { border: inherit; }
+```
 ---
 
 # Example
 
-# Menu
-
-First paragraph
-
-Second paragraph
-
-```html
-@CSS@
-#menu { border: 10px #99ff99 solid; }@@
+<pre class="code-render" default-style="" resizable="true" style="height: 400px">
+<style>
+#menu { border: 3px #057205ff solid; }
 #menu p { border-style: dashed; border-color: inherit; }
-@/CSS@
-```
+</style>
+<div id="menu">
+	<h1>Menu</h1>
+	<p>First paragraph</p>
+	<p>Second paragraph</p>
+</div>
+</pre>
 
+```css
+#menu { border: 3px #057205ff solid; }
+#menu p { border-style: dashed; border-color: inherit; }
+```

@@ -22,8 +22,8 @@
 ``` 
 
 ```css
-p span { color: blue; font-weight: bold; }
 p.intro span { color: red; }
+p span { color: blue; font-weight: bold; }
 ``` 
 
   * What color will be used to display the word ``important''?
@@ -31,6 +31,6 @@ p.intro span { color: red; }
 **Side note:** The `!important` directive (**very specific use**)
 
 ```css
-p span { color: blue !important; font-weight: bold; }
 p.intro span { color: red; }
+p span { color: blue !important; font-weight: bold; }
 ```

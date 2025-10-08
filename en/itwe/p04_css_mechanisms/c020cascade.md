@@ -20,70 +20,72 @@
 
 ---
 
-# Specificity
+# Rule specificity
 
-  * Specificity is a number `abcd`, where 
-    * `a=1` in case of inline style, `a=0` otherwise
-    * `b` is the number of `id` attributes in selector
-    * `c` is the number of classes in selector
-    * `d` is the number of element names in selector
-  * `p.intro span { .... }`: 0 - 0 - 1 - 2 ~ **12**
-  * `p span { .... }`: 0 - 0 - 0 - 2 ~ **2**
+- Specificity is a number `abcd`, where 
+    - `a=1` in case of inline style, `a=0` otherwise
+    - `b` is the number of `id` attributes in selector
+    - `c` is the number of classes in selector
+    - `d` is the number of element names in selector
+- Shortly:
+    * `id` > `class` > `element`
+
+```css
+#main p.intro span { ... } /* 0 - 1 - 1 - 2 ~ 112 */
+p.intro span { ... } /* 0 - 0 - 1 - 2 ~ 12 */
+p span { ... } /* 0 - 0 - 0 - 2 ~ 2 */
+```
 
 ---
 
 # Back to the Question
 
-  * What color will have the text „important” ?
+  * What color will be used to display the word ``important''?
 
 ```html
-@HTML@
-<p class="intro">Following text is@@
-    <span class="imp">important</span></p>@@
-@/HTML@
-``` ```html
-@CSS@
-p.intro span { @/color: red;/@ } @@
-p span { @/color: blue;/@ font-weight: bold; } @@
-@/CSS@
+<p class="intro">Following text is
+    <span class="imp">important</span></p>
 ``` 
+
+```css
+p.intro span { color: red; }
+p span { color: blue; font-weight: bold; }
+``` 
+
   * More specific rule wins => ?
 
 ---
 
 # Back to the question (II)
 
-  * What color will have the text „important” ?
+  * What color will be used to display the word ``important''?
 
 ```html
-@HTML@
-<p class="concl">Following text is@@
-    <span class="imp">important</span></p>@@
-@/HTML@
-``` ```html
-@CSS@
-p.intro span { @/color: red;/@ } @@
-p span { @/color: blue;/@ font-weight: bold; } @@
-@/CSS@
+<p class="concl">Following text is
+    <span class="imp">important</span></p>
 ``` 
+
+```css
+p.intro span { color: red; }
+p span { color: blue; font-weight: bold; }
+``` 
+
   * Only one candidate => ?
 
 ---
 
 # Back to the question (III)
 
-  * What color will have the text „important” ?
+  * What color will be used to display the word ``important''?
 
 ```html
-@HTML@
-<p class="intro concl">Following text is@@
-    <span class="imp">important</span></p>@@
-@/HTML@
-``` ```html
-@CSS@
-p.intro span { @/color: red;/@ } @@
-p.concl span { @/color: blue;/@ font-weight: bold; } @@
-@/CSS@
+<p class="intro concl">Following text is
+    <span class="imp">important</span></p>
 ``` 
-  * Definition order decides => ?
 
+```css
+p.intro span { color: blue; font-weight: bold; }
+p.concl span { color: red; }
+``` 
+
+  * Definition order decides => ?
