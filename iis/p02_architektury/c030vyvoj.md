@@ -237,36 +237,35 @@ Cookie: theme=light; sessionToken=abc123
 # Architektura znovu
 <!-- .slide: class="normal centered fullspace" data-transition="slide-in fade-out" -->
 
-![PHP modul](assets/v0.svg) <!-- .element: style="transform:scale(0.7);margin-top:-100px;" -->
-
+![PHP modul](assets/v0.svg) <!-- .element: style="width:1200px;margin-top:30px;" -->
 
 ---
 
 # Databázová vrstva
 <!-- .slide: class="normal centered fullspace" data-transition="fade-in fade-out" -->
 
-![Databázová vrstva](assets/v1.svg) <!-- .element: style="transform:scale(0.7);margin-top:-110px;" -->
+![Databázová vrstva](assets/v1.svg) <!-- .element: style="width:1200px;margin-top:30px;" -->
 
 ---
 
 # Třívrstvá architektura
 <!-- .slide: class="normal centered fullspace" data-transition="fade-in fade-out" -->
 
-![Třívrstvá architektura](assets/v2.svg) <!-- .element: style="transform:scale(0.7);margin-top:-120px;margin-left:-40px" -->
+![Třívrstvá architektura](assets/v2.svg) <!-- .element: style="width:1200px;margin-top:30px;margin-left:-40px;" -->
 
 ---
 
 # Základní technologie
 <!-- .slide: class="normal centered fullspace" data-transition="fade-in fade-out" -->
 
-![Třívrstvá architektura](assets/v3.svg) <!-- .element: style="transform:scale(0.7);margin-top:-110px;margin-left:-40px" -->
+![Třívrstvá architektura](assets/v3.svg) <!-- .element: style="width:1200px;margin-top:30px;margin-left:-40px;" -->
 
 ---
 
 # Rozšiřující technologie
 <!-- .slide: class="normal centered fullspace" data-transition="fade-in slide-out" -->
 
-![Třívrstvá architektura](assets/v4.svg) <!-- .element: style="transform:scale(0.7);margin-top:-110px;margin-left:-40px" -->
+![Třívrstvá architektura](assets/v4.svg) <!-- .element: style="width:1200px;margin-top:30px;margin-left:-40px;" -->
 
 ---
 

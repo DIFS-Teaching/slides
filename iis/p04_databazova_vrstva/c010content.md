@@ -11,14 +11,14 @@
 # Architektura serveru s PHP
 <!-- .slide: class="normal centered fullspace" data-transition="slide-in fade-out" -->
 
-![PHP modul](assets/v0.svg) <!-- .element: style="transform:scale(0.7);margin-top:-140px;" -->
+![PHP modul](assets/v0.svg) <!-- .element: style="width:1200px;margin-top:30px;" -->
 
 ---
 
 # Integrace databázového serveru (SŘBD)
 <!-- .slide: class="normal centered fullspace" data-transition="fade-in slide-out" -->
 
-![Databázová vrstva](assets/v1.svg) <!-- .element: style="transform:scale(0.7);margin-top:-210px;" -->
+![Databázová vrstva](assets/v1.svg) <!-- .element: style="width:1200px;margin-top:30px;" -->
 
 ---
 
