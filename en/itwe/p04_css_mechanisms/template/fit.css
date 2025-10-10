@@ -65,6 +65,12 @@
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2)
 }
 
+.reveal .textbox {
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
+  margin: 1em;
+  padding: 0.3em 1em;
+}
+
 .reveal .block-center {
   display: flex;
   justify-content: center;
@@ -242,6 +248,10 @@ html.print-pdf .reveal .slides section .fragment { /* show fragments when printi
   float: left;
   margin-left: 2%;
   margin-right: 2%;
+}
+
+.reveal .slides .clear {
+  clear: both;
 }
 
 .reveal .slides .small {
