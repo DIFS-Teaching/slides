@@ -58,12 +58,12 @@
 
 ---
 
-# Reprezentace faktů
-- XML
-	- Mapování elementů na vlastnosti ontologií
-	- Pouze hierarchická struktura – omezující
-- RDF
-	- Grafová struktura
+# Reprezentace faktů: RDF
+- RDF: Resource Description Framework
+	- Umožňuje reprezentovat elementární *tvrzení* reprezentující data (fakta)
+- Grafová struktura
+	- Jednotlivá tvrzení jsou propojena pomocí URI, tvoří orientovaný graf (uzly, hrany)
+- Serializace (uložení do souboru, přenos)
 	- Lze zapsat pomocí XML nebo jiných jazyků
 
 ---
@@ -95,6 +95,20 @@
 
 ---
 
+# Kde vzít URI?
+
+- Vlastní data - vlastní URI
+	- Např. `http://fit.vut.cz/student/938272`
+	- Často společný *prefix*
+- Existující data - např. veřejné znalostní báze
+	- `http://dbpedia.org/resource/Berlin`
+- Strukturované slovníky - ontologie
+	- URI pro predikáty, typy (třídy) objektů (Person, Event, ...)
+- Zabudované
+	- `rdf:type`
+
+---
+
 # RDF Graf
 
 ![RDF graf](assets/graph1.svg) <!-- .element: style="height:300px;margin:1em auto;display:block" -->
@@ -113,7 +127,7 @@
 ![RDF graf](assets/graph2.svg) <!-- .element: style="height:300px;margin:1em auto;display:block" -->
 
 - RDF data lze propojit s metadaty (ontologií, schématem)
-	- Pomocí predikátu rdf:type
+	- Pomocí predikátu `rdf:type` (`http://www.w3.org/1999/02/22-rdf-syntax-ns#type`)
 - Definice metadat opět pomocí RDF
 	- Je možné (ale ne nutné) spojit data i metadata do jednoho grafu.
 
@@ -127,8 +141,6 @@
 	- RDF/XML (standard W3C)
 	- N-triples (N3)
 	- Turtle (podmnožina N3)
-
-
 
 ---
 

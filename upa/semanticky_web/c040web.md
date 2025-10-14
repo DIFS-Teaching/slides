@@ -39,28 +39,6 @@
 
 ---
 
-# Anotace celého dokumentu
-
-```html
-<html xmlns=“…”>
-<head>
-<rdf:RDF
-    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-    xmlns:dc="http://purl.org/dc/elements/1.1/">
-
-  <rdf:Description rdf:about="http://www.about.me/"
-    dc:creator="John Smith"
-    dc:title="Document title"
-    dc:description="A description"
-    dc:date="2021-09-10"/>
-
-</rdf:RDF>
-
-</head>
-```
-
----
-
 # Integrace RDF a HTML
 - HTML 5 – *Microdata* 
 - W3C standard – *RDFa* 
