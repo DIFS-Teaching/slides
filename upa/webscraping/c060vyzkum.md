@@ -87,7 +87,7 @@ Tzn. bez ``ruční práce'' v podobě hledání elementů, regulárních výraz�
 
 - Zero-shot prompt
 	- Pouze instrukce (cíl extrakce), žádné příklady
-- One (few)-shot prompt (~ )
+- One (few)-shot prompt
 	- Příklady hodnot atributů
 	- Příklady zdrojových dat a očekávaných výsledků
 - Specifikace cílového formátu odpovědi
