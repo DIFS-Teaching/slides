@@ -41,18 +41,11 @@ h1 {
 
 # The `inherit` value
 
-  * Each property can have a special `inherit` value
-  * The property value is then always inherited from the parent
-
-```html
-<div id="menu">
-	<h1>Menu</h1>
-	<p>First paragraph</p>
-	<p>Second paragraph</p>
-</div>
-```
+  * Any property can have a special `inherit` value
+  * The property value is then always inherited from the parent element
 
 ---
+<!-- .slide: class="normal centered fullspace" data-transition="slide-in fade-out" -->
 
 # Example
 
@@ -68,11 +61,19 @@ h1 {
 </pre>
 
 
+```html
+<div id="menu">
+	<h1>Menu</h1>
+	<p>First paragraph</p>
+	<p>Second paragraph</p>
+</div>
+```
 ```css
 #menu { border: 3px #057205ff solid; }
 ```
 
 ---
+<!-- .slide: class="normal centered fullspace" data-transition="fade-in fade-out" -->
 
 # Example (II)
 
@@ -88,11 +89,19 @@ h1 {
 </div>
 </pre>
 
+```html
+<div id="menu">
+	<h1>Menu</h1>
+	<p>First paragraph</p>
+	<p>Second paragraph</p>
+</div>
+```
 ```css
 #menu { border: 3px #057205ff solid; }
 #menu p { border: inherit; }
 ```
 ---
+<!-- .slide: class="normal centered fullspace" data-transition="fade-in slide-out" -->
 
 # Example
 
@@ -108,6 +117,13 @@ h1 {
 </div>
 </pre>
 
+```html
+<div id="menu">
+	<h1>Menu</h1>
+	<p>First paragraph</p>
+	<p>Second paragraph</p>
+</div>
+```
 ```css
 #menu { border: 3px #057205ff solid; }
 #menu p { border-style: dashed; border-color: inherit; }

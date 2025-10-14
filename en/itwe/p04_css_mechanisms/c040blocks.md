@@ -299,10 +299,10 @@ margin-left + border-left-width + padding-left \
 
 ```css
 .block {
-overflow: visible /* let overflow (default) */
-overflow: hidden  /* trims the rest */
-overflow: scroll  /* display scrollbars */
-overflow: auto    /* display scrollbars if needed */
+  overflow: visible; /* let overflow (default) */
+  overflow: hidden;  /* trims the rest */
+  overflow: scroll;  /* display scrollbars */
+  overflow: auto;    /* display scrollbars if needed */
 }
 ```
 
@@ -318,6 +318,44 @@ overflow: auto    /* display scrollbars if needed */
 
 # Overflow examples
 
+<pre class="code-render" default-style="
+body {
+  font-family: sans-serif;
+}
+
+table {
+	font-size: 0.9em;
+	width: 80%;
+	/*font-family: Times New Roman, Time, Serif;*/
+	border-collapse:collapse;
+	border-spacing: 0;
+	margin: 0;
+}
+
+table td {
+	margin: 0;
+	border: 1px dotted white;
+	text-align: center;
+	/* width: 8em; */
+	padding: 0.4em 0.2em;
+}
+
+table th {
+	margin: 0;
+	border: 1px dotted white;
+	padding: 0.4em 0.2em;
+	text-align: center;
+	width: 8em;
+	font-weight: bold;
+	background-color: #555555;
+}
+
+table.position tr td {
+    margin: 0;
+    border: none;
+    padding: 1em 0.2em;
+}
+" resizable="false" style="height: 800px; width: 90%; margin: auto">
 <table class="position">
 <tr>
 <td style="wdith: 20em; height: 8em;"><code>overflow: visible</code></td>
@@ -352,3 +390,5 @@ A box containing a looooooooooooong text.
 </td>
 </tr>
 </table>
+</pre>
+
