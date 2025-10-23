@@ -12,13 +12,13 @@
 
 ![Kartézský součin](assets/kart_souc.svg) <!-- .element: style="height:550px" -->
 
-Výsledkem je **množina dvojic** -- celkem `$4x3=12$` dvojic.
+Výsledkem je **množina dvojic** -- celkem $4 \times 3=12$ dvojic.
 
 ---
 
 # Kartézský součin
-- *Uspořádaná n-tice* `$(a_1, a_2, \dots, a_n)$`
-- *Kartézský součin množin* `$A_1 \times A_2 \times \dots \times A_n$` je množina všech uspořádaných n-tic takových, že `$a_1 \in A_1, a_2 \in A_2, \dots, a_n \in A_n$`
+- *Uspořádaná n-tice* $(a_1, a_2, \dots, a_n)$
+- *Kartézský součin množin* $A_1 \times A_2 \times \dots \times A_n$ je množina všech uspořádaných n-tic takových, že $a_1 \in A_1, a_2 \in A_2, \dots, a_n \in A_n$
 - Podstatné je, že v uspořádané n-tici je každá hodnota prvkem jediné z množin v kartézském součinu a to té, která jí indexem odpovídá
 
 ---
@@ -38,7 +38,7 @@ Výsledkem je **množina dvojic** -- celkem `$4x3=12$` dvojic.
 	- Celočíselné
 	- Reálná čísla
 	- Znaky / řetězce
-	- Datum/čas
+	- Datum / čas
 	- Výčtové typy 
 	apod.
 
