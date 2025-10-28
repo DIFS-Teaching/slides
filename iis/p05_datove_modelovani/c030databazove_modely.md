@@ -33,11 +33,13 @@
 
 ---
 
-# Modelování
-- Cíle modelování: 
-	- Zobrazit (a tím i zjednodušit = abstrakce) modelovanou realitu
-	- Vyvinout univerzální struktury pro popis modelované reality, které jsou schopné tvořit datové modely = meta<sup>2</sup>data
-	- Z nich sestavit modely pro různá použití
+# Cíle modelování
+- Zobrazit modelovanou realitu
+	- Zjednodušení reality pro potřeby návrhu IS -- abstrakce
+	- Konzultace s odborníky na cílovou doménu -- spolupráce
+- Vytvořit popis pomocí prostředků příslušného datového modelu
+	- Vytvořit **metadata** -- implementace
+	- Různé prostředky podle způsobu použití
 
 ---
 
@@ -178,6 +180,7 @@ object CLEN
       …
 end object
 ```
+<!-- .element: style="height: 12em" -->
 
 ---
 
