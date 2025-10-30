@@ -69,11 +69,6 @@ rozmístění:
 ```
 
 <pre class="code-render" default-style="
-
-* {
-  box-sizing: border-box;
-}
-
 .row {
   overflow: hidden;
   border: 4px solid blue;
@@ -86,7 +81,6 @@ rozmístění:
 
 [class*='col-'] {
   float: left;
-  border: 4px solid red;
   height: 200px;
   display: flex;
   align-items: center;
@@ -95,11 +89,11 @@ rozmístění:
 }
 
 #sidebar {
-  border-right-width: 2px;
+  background-color: lightblue;
 }
 
 #article {
-  border-left-width: 2px;
+  background-color: lightpink;
 }
 
 .col-1 { width: 25%; } /* 1/4 */
@@ -122,6 +116,15 @@ rozmístění:
 
 <span class="note">💡 otestujte různé šířky příkladu</span>
 
+=--
+
+<!-- .slide: class="editor" -->
+
+# Příklad
+
+<div data-iframe="assets/examples/responsive/floats1.html"></div>
+
+<div class="note"><a href="assets/examples/responsive/floats1.html">zdroj</a></div>
 
 ---
 
@@ -166,10 +169,6 @@ rozmístění:
 
 <pre class="code-render" default-style="
 
-* {
-  box-sizing: border-box;
-}
-
 .row {
   overflow: hidden;
   border: 4px solid blue;
@@ -183,7 +182,6 @@ rozmístění:
 [class*='col-'] {
   float: left;
   width: 100%;
-  border: 4px solid red;
   height: 200px;
   display: flex;
   flex-direction: column;
@@ -193,11 +191,11 @@ rozmístění:
 }
 
 #sidebar {
-  border-right-width: 2px;
+  background-color: lightblue;
 }
 
 #article {
-  border-left-width: 2px;
+  background-color: lightpink;
 }
 
 [class*='col-']::after {
@@ -240,6 +238,16 @@ rozmístění:
 </pre>
 
 <span class="note">💡 otestujte různé šířky příkladu</span>
+
+=--
+
+<!-- .slide: class="editor" -->
+
+# Příklad
+
+<div data-iframe="assets/examples/responsive/floats2.html"></div>
+
+<div class="note"><a href="assets/examples/responsive/floats2.html">zdroj</a></div>
 
 ---
 
@@ -346,6 +354,16 @@ input {
 **skutečná šířka boxu** = <span style="color: lightgray">`margin`</span> + <span style="color: red">`border`</span> + <span style="color: green">`padding`</span> + `width`
 
 </div>
+
+=--
+
+<!-- .slide: class="editor" -->
+
+# Příklad
+
+<div data-iframe="assets/examples/responsive/floats3.html"></div>
+
+<div class="note"><a href="assets/examples/responsive/floats3.html">zdroj</a></div>
 
 ---
 
@@ -490,6 +508,16 @@ input {
 
 </pre>
 
+=--
+
+<!-- .slide: class="editor" -->
+
+# Příklad
+
+<div data-iframe="assets/examples/responsive/floats4.html"></div>
+
+<div class="note"><a href="assets/examples/responsive/floats4.html">zdroj</a></div>
+
 ---
 
 # 5. Margin
@@ -497,10 +525,7 @@ input {
 - často bývá vhodné nastavit nějaké ***okraje*** -- nastavujeme pro řádek ***`.row`*** nebo pro kontejner, který obaluje všechny řádky
 
 ```css
-.row {
-  max-width: 1400px;
-  margin: auto;
-}
+.row { max-width: 1400px; margin: auto; }
 ```
 
 <pre class="code-render" default-style="
@@ -566,7 +591,7 @@ body
 <header id="content" class="row">
 <h2 class="col-4">
   Tworba webových stránek
-</h1>
+</h2>
 </header>
 <main id="content" class="row">
   <nav class="col-1">
@@ -587,6 +612,16 @@ body
 </pre>
 
 <span class="note">💡 otestujte různé šířky příkladu</span>
+
+=--
+
+<!-- .slide: class="editor" -->
+
+# Příklad
+
+<div data-iframe="assets/examples/responsive/floats5.html"></div>
+
+<div class="note"><a href="assets/examples/responsive/floats5.html">zdroj</a></div>
 
 ---
 
@@ -645,11 +680,14 @@ h2 {
   margin: 0;
 }
 
+article, nav {
+  background-color: bisque;
+}
+
 p {
   font-size: 20px;
   text-align: justify;
   margin: 0;
-  background-color: white;
 }
 
 ul {
@@ -707,6 +745,16 @@ body
 
 <span class="note">💡 otestujte různé šířky příkladu</span>
 
+=--
+
+<!-- .slide: class="editor" -->
+
+# Příklad
+
+<div data-iframe="assets/examples/responsive/floats6.html"></div>
+
+<div class="note"><a href="assets/examples/responsive/floats6.html">zdroj</a></div>
+
 ---
 
 # Shrnutí
@@ -719,6 +767,7 @@ body
   - nutnost nastavovat vlastnosti `overflow` a `clear`
   - výška sloupce nemusí vyplnit výšku řádku
   - obecně jsou plovoucí elementy vhodné pro obtékání textu, nikoliv pro tvorbu layoutu
+  - mezery mezi sloupci je nutné řešit pomocí `padding`
 
 <br>
 
