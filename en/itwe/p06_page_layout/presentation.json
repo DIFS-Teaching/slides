@@ -1,0 +1,20 @@
+{
+    "id": "p06_page_layout",
+    "title": "ITWe - CSS - Page Layout",
+    "author": "Radek Burget <burget@fit.vut.cz>",
+    "lang": "en",
+    "template": {
+        "name": "fit",
+        "properties": {
+            "footer": "ITW"
+        }
+    },
+    "contents": [
+        "c000title.md",
+        "c010intro.md",
+        "c020cascade.md",
+        "c030inherit.md",
+        "c040blocks.md",
+        "c999final.md"
+    ]
+}
