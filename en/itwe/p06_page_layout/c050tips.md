@@ -1,16 +1,18 @@
-# Practical CSS usage
+<!-- .slide: class="section" -->
+
+# CSS Usage Tips
 
 ---
 
 # External Style Definitions
 
   - Use external style definitions 
-    - One definition for a set of documents
-  - Multiple style sheets may be used ```html
-@HTML@
+    - Shared style sheets for a set of documents
+  - Multiple style sheets may be used
+  
+```html
 <link ="" rel="stylesheet" src="common.css" type="text/css"/>
 <link ="" rel="stylesheet" src="section.css" type="text/css"/>
-@/HTML@
 ```
 
 ---
@@ -35,12 +37,11 @@
   - Use a small set of class names 
     - Many names are hard to remember
     - Use context selectors
-```html
-@CSS@
+
+```css
 p span.first {...} /* first letter of the paragraph */ 
 p.first {...} /* first paragraph in the article */ 
 li.first {...} /* first list item */ 
-@/CSS@
 ```
 
 ---
@@ -51,17 +52,14 @@ li.first {...} /* first list item */
   - Wrong:
 
 ```html
-@HTML@
 <h2 class="articleheading">Heading</h2>
 <p class="articlepar">...</p>
  ...
 <p class="articlepar">...</p>
-@/HTML@
-``` ```html
-@CSS@
+``` 
+```css
 .articleheading { ... }
 .articlepar { ... }
-@/CSS@
 ```
 
 ---
@@ -71,19 +69,16 @@ li.first {...} /* first list item */
   - Right:
 
 ```html
-@HTML@
 <div class="article">
    <h2>Title</h2>
    <p>...</p>
    ...
    <p>...</p>
 </div>
-@/HTML@
-``` ```html
-@CSS@
+``` 
+```css
 .article h2 { ... }
 .article p { ... }
-@/CSS@
 ```
 
 ---
@@ -93,18 +88,16 @@ li.first {...} /* first list item */
   - Wrong:
 
 ```html
-@HTML@
 <ul>
 <li class="menu">...</li>
 <li class="menu">...</li>
  ...
 <li class="menu">...</li>
 </ul>
-@/HTML@
-``` ```html
-@CSS@
+```
+
+```html
 .menu { ... }
-@/CSS@
 ```
 
 ---
@@ -114,18 +107,16 @@ li.first {...} /* first list item */
   - Right:
 
 ```html
-@HTML@
 <ul class="menu">
 <li>...</li>
 <li>...</li>
  ...
 <li>...</li>
 </ul>
-@/HTML@
-``` ```html
-@CSS@
+```
+
+```css
 ul.menu li { ... }
-@/CSS@
 ```
 
 ---
@@ -134,8 +125,9 @@ ul.menu li { ... }
 
   - Use more classes for one element
     - `class="importantmessage"` vs. `class="message important"`
-  - Cascade the rules ```html
-@CSS@
+  - Cascade the rules
+  
+```html
 h1, h2 {
    font-family: "Arial CE", Arial, sans-serif;
    font-weight: bold;
@@ -146,7 +138,6 @@ h1 {
 h2 {
    font-size: 160%
 }
-@/CSS@
 ```
 
 ---

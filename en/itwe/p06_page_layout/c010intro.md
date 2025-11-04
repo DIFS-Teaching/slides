@@ -16,8 +16,7 @@
 # Table layout
 
   - Misusing tables for defining a layout
-  - [Example](data/tab_layout1.html), [reality](data/tab_layout2.html)
-  - Historicaly the only solution => widely used
+  - Historically the only solution, now not used anymore
   - Advantages 
     - Simple design
     - Compatibility
@@ -26,3 +25,21 @@
     - Page layout is defined directly in HTML
     - Long and obscure code (`<tr><td><tr><td>`)
     - The table is displayed after being read completely (slow)
+
+<span class="note">See examples below</span>
+
+=--
+
+<!-- .slide: class="editor" -->
+
+# Table Layout -- Example 1
+
+<div data-iframe="assets/examples/tab_layout1.html"></div>
+
+=--
+
+<!-- .slide: class="editor" -->
+
+# Table Layout -- Example 2
+
+<div data-iframe="assets/examples/tab_layout2.html"></div>

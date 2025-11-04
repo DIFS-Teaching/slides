@@ -12,9 +12,10 @@
     "contents": [
         "c000title.md",
         "c010intro.md",
-        "c020cascade.md",
-        "c030inherit.md",
-        "c040blocks.md",
+        "c020csslayout.md",
+        "c030flexgrid.md",
+        "c040solutions.md",
+        "c050tips.md",
         "c999final.md"
     ]
 }

@@ -4,51 +4,44 @@
     - Semantic elements `<header>`, `<footer>`, `<article>`, ...
     - The `<div>` element for remaining parts
     - The `id` and `class` attributes
-  - The positions of the elements is defined by CSS 
+  - The positions of the elements are defined by CSS 
     - Width and height
     - Margins
     - Floating blocks
     - Positioning (absolute or relative)
+    - Flex and grid layout
 
 ---
 
 # Page width
 
-  - Full width 
-    - Standard state (minimal margins)
-  - Narrowed page with a margin 
-    - The width depends on the window size
-    - Specified relatively (percentage)
-  - Fixed width 
-    - The width is specified absolutely
+  - Fixed width $\times$ flexible
+  - Design aspects
+    - Wide range of browsing devices 
+      - Desktop even 2560px, mobile phone 320px
+    - It's inconvenient to read long text lines 
+      - Use narrow lines
+      - Greater font
+      - More columns
+  - Currently, we prefer flexible width
 
 ---
 
-# Design aspects
+# Page setup
 
-  - We are limited with the actual screen width
-  - Wide range of browsing devices 
-    - Desktop even 2560px, mobile phone 320px
-  - It's inconvenient to read long text lines 
-    - Use narrow lines
-    - Greater font
-    - More columns
-
----
-
-# Narrowed centered page
+- HTML `<div>` container
 
 ```html
 <body>
-    <div id="content">
+    <div id="page">
         ... page content ....
     </div>
 </body>
 ```
 
----
+<div class="col">
 
-# Narrowed centered page
+- Flexible width
 
 ```css
 body {
@@ -56,30 +49,39 @@ body {
 }
 #content {
     width: 80%;
-    @/margin: auto;/@ 
+    margin: auto;
     padding: 1em;
 }
 ```
 
-[Example](data/page_w_rel.html)
+</div>
 
----
+<div class="col">
 
-# Fixed width
+- Fixed width
 
 ```css
 body {
     margin: 0; padding: 1em;
 }
 #content {
-    @/width: 1000px;/@ 
+    width: 1000px;
     margin: auto;
-    text-align: left;
     padding: 1em;
 }
 ```
+</div>
 
-[Example](data/page_w_abs.html)
+=--
+
+<!-- .slide: class="editor" -->
+
+# Page Width -- Example
+
+<div data-iframe="assets/examples/page_w_rel.html"></div>
+
+<span class="note"><a href="assets/examples/page_w_rel.html">source:flexible</a></span>
+<span class="note"><a href="assets/examples/page_w_abs.html">source:fixed</a></span>
 
 ---
 
@@ -90,7 +92,9 @@ body {
     - Easy to set up
   - Absolute positioning
   - Floating objects
-  - Special `display:` values
+  - Special `display:` values (e.g. inline-block)
+  - Flexbox
+  - Grid layout
 
 ---
 
@@ -98,7 +102,13 @@ body {
 
   - Left element has absolute position
   - Right element has a right margin
-  - [Example](data/pos1.html)
+
+<div class="col">
+
+```html
+<div id="left">Left</div>
+<div id="right">Right</div>
+```
 
 ```css
 #left {
@@ -111,117 +121,415 @@ body {
 }
 ```
 
+</div>
+
+<pre class="code-render" class="col" default-style="
+body {
+  padding: 0;
+  position: relative;
+}
+#left {
+    width: 5em;
+    position: absolute;
+    left: 0; top: 0;
+}
+#right {
+    margin-left: 5em;
+}
+#left {
+    width: 5em;
+    height: 5em;
+    background-color: green;
+    font-size: 2em;
+    color: white;
+    text-align: center;
+    line-height: 5em;
+}
+#right {
+    width: 5em;
+    height: 5em;
+    background-color: blue;
+    font-size: 2em;
+    color: white;
+    text-align: center;
+    line-height: 5em;
+}
+" resizable="false" style="padding: 0; height: 10em">
+
+<div id="left">Left</div>
+<div id="right">Right</div>
+
+</pre>
+
+
 ---
 
-# Absolute positioning
+# Absolute positioning -- Disadvantages
 
-- Disadvantages 
-  - How to determine the vertical position? (enclose into a DIV)
-  - Absolutely positioned element can overlap preceding a following text
+- How to determine the vertical position?
+- Absolutely positioned element may overlap with other content
 
----
+<div class="col">
 
-# Absolute positioning (II)
-
-- Absolute positioning within a parent element 
-  - The parent element must have _position: relative_
-  - [Example](data/pos1b.html)
+```html
+<p>Preceding paragraph</p>
+<div id="left">Left</div>
+<div id="right">Right</div>
+<p>Following paragraph</p>
+```
 
 ```css
-#content {
-    width: 80%; margin: auto;
-    position: relative;
-}
-#menu {
-    width: 140px;
+#left {
+    width: 5em;
     position: absolute;
-    right: -70px; top: 30px;
+    left: 0; top: 0.5em;
+}
+#right {
+    margin-left: 5em;
 }
 ```
+
+</div>
+
+<pre class="code-render" class="col" default-style="
+body {
+  padding: 0;
+  position: relative;
+}
+#left {
+    width: 5em;
+    position: absolute;
+    left: 0; top: 0.5em;
+}
+#right {
+    margin-left: 5em;
+}
+#left {
+    width: 5em;
+    height: 5em;
+    background-color: green;
+    font-size: 2em;
+    color: white;
+    text-align: center;
+    line-height: 5em;
+}
+#right {
+    width: 5em;
+    height: 5em;
+    background-color: blue;
+    font-size: 2em;
+    color: white;
+    text-align: center;
+    line-height: 5em;
+}
+" resizable="false" style="padding: 0; height: 15em">
+
+<p>Preceding paragraph</p>
+<div id="left">Left</div>
+<div id="right">Right</div>
+<p>Following paragraph</p>
+
+</pre>
+
+---
+
+# Absolute positioning -- Container
+
+- Absolute positioning within a parent element (container) with _position: relative_
+
+<div class="col">
+
+```html
+<p>Preceding paragraph</p>
+<div class="columns">
+  <div id="left">Left</div>
+  <div id="right">Right</div>
+</div>
+<p>Following paragraph</p>
+```
+
+```css
+.columns {
+    position: relative;
+}
+#left {
+    width: 5em;
+    position: absolute;
+    left: 0; top: 0em;
+}
+#right {
+    margin-left: 5em;
+}
+```
+
+</div>
+
+<pre class="code-render" class="col" default-style="
+body {
+  padding: 0;
+  position: relative;
+}
+.columns {
+    position: relative;
+}
+#left {
+    width: 5em;
+    position: absolute;
+    left: 0; top: 0em;
+}
+#right {
+    margin-left: 5em;
+}
+#left {
+    width: 5em;
+    height: 5em;
+    background-color: green;
+    font-size: 2em;
+    color: white;
+    text-align: center;
+    line-height: 5em;
+}
+#right {
+    width: 5em;
+    height: 5em;
+    background-color: blue;
+    font-size: 2em;
+    color: white;
+    text-align: center;
+    line-height: 5em;
+}
+" resizable="false" style="padding: 0; height: 15em">
+
+<p>Preceding paragraph</p>
+<div class="columns">
+  <div id="left">Left</div>
+  <div id="right">Right</div>
+</div>
+<p>Following paragraph</p>
+
+</pre>
+
+What if we need more than two columns?
 
 ---
 
 # Floating Blocks
 
-- Left element is floating
-- Right element is flowing around
-- [Example](data/pos2.html)
+- All columns have `float: left`
 
-```css
-#left {
-    width: 5em;
-    float: left;
-}
-#right {
-    width: 10em;
-}
-``` 
-- Complications when the heights are different: [example](data/pos2b.html)
+<div class="col">
 
----
-
-# Floating Blocks (II)
-
-- Solution: left margin
-- [Example](data/pos2c.html)
-
-```css
-#left {
-    width: 5em;
-    float: left;
-}
-#right {
-    width: 10em;
-    margin-left: 5em;
-}
+```html
+<p>Preceding paragraph</p>
+<div id="left" class="col">Left</div>
+<div id="right" class="col">Right</div>
+<p>Following paragraph</p>
 ```
 
----
-
-# All Blocks Floating
-
-- [Problem:](data/pos3a.html) the `clear:` property cannot be used in the contents
-- [Solution:](data/pos3b.html) both (all) blocks floating 
-  - They are placed side by side from the left
-  - [Any number of blocks (columns)](data/pos3c.html)
-
 ```css
-#levy {
+.col {
     width: 5em;
-    float: left;
-}
-#pravy {
-    width: 10em;
     float: left;
 }
 ```
 
+</div>
+
+<pre class="code-render" class="col" default-style="
+body {
+  padding: 0;
+  position: relative;
+}
+.col {
+    width: 5em;
+    float: left;
+}
+#left {
+    width: 5em;
+    height: 5em;
+    background-color: green;
+    font-size: 2em;
+    color: white;
+    text-align: center;
+    line-height: 5em;
+}
+#right {
+    width: 5em;
+    height: 5em;
+    background-color: blue;
+    font-size: 2em;
+    color: white;
+    text-align: center;
+    line-height: 5em;
+}
+" resizable="false" style="padding: 0; height: 15em">
+
+<p>Preceding paragraph</p>
+<div id="left" class="col">Left</div>
+<div id="right" class="col">Right</div>
+<p>Following paragraph</p>
+
+</pre>
+
 ---
 
-# Three-column layout
+<!-- .slide: data-transition="slide-in fade-out" -->
 
-- Traditional page layout
-- Usually the columns: menu - content - additional info
-- Typicaly solved by a table (trivial) 
-  - All the disadvantages of tables (slow)
-- A bit complicated using CSS
+# Floating Blocks -- Container
+
+- The enclosing block `.columns` remains empty
+
+<div class="col">
+
+```html
+<p>Preceding paragraph</p>
+<div class="columns">
+  <div id="left" class="col">Left</div>
+  <div id="right" class="col">Right</div>
+</div>
+<p>Following paragraph</p>
+```
+
+```css
+.col {
+    width: 5em;
+    float: left;
+}
+.columns {
+    clear: both;
+    border: 5px solid black;
+}
+```
+
+</div>
+
+<pre class="code-render" class="col" default-style="
+body {
+  padding: 0;
+  position: relative;
+}
+.col {
+    width: 5em;
+    float: left;
+}
+.columns {
+    clear: both;
+    border: 5px solid black;
+}
+#left {
+    width: 5em;
+    height: 5em;
+    background-color: green;
+    font-size: 2em;
+    color: white;
+    text-align: center;
+    line-height: 5em;
+}
+#right {
+    width: 5em;
+    height: 5em;
+    background-color: blue;
+    font-size: 2em;
+    color: white;
+    text-align: center;
+    line-height: 5em;
+}
+" resizable="false" style="padding: 0; height: 15em">
+
+<p>Preceding paragraph</p>
+<div class="columns">
+  <div id="left" class="col">Left</div>
+  <div id="right" class="col">Right</div>
+</div>
+<p>Following paragraph</p>
+
+</pre>
 
 ---
 
-# Three-column layout (II)
+<!-- .slide: data-transition="fade-in slide-out" -->
 
-- Principle: 
-  - Left column: floating left, fixed width and height
-  - Right column: similarly, floating right
-  - Content: eventual margins
-  - Footer: `clear: both`
-- Variants: 
-  - All the columns may have `float: left`
-  - An enclosing “container” block with `overflow: hidden`
-- Problems 
-  - The height of columns doesn't meet the width of content 
-    - May be solved by a color background
-    - [Example](http://www.pixy.cz/blogg/clanky/css-3col-layout/) (Petr Stanicek)
+# Floating Blocks -- Container with overflow
+
+- With `overflow: hidden`, the block `.columns` encloses all floating blocks
+
+<div class="col">
+
+```html
+<p>Preceding paragraph</p>
+<div class="columns">
+  <div id="left" class="col">Left</div>
+  <div id="right" class="col">Right</div>
+</div>
+<p>Following paragraph</p>
+```
+
+```css
+.col {
+    width: 5em;
+    float: left;
+}
+.columns {
+    clear: both;
+    border: 5px solid black;
+    overflow: hidden;
+}
+```
+
+</div>
+
+<pre class="code-render" class="col" default-style="
+body {
+  padding: 0;
+  position: relative;
+}
+.col {
+    width: 5em;
+    float: left;
+}
+.columns {
+    clear: both;
+    border: 5px solid black;
+    overflow: hidden;
+}
+#left {
+    width: 5em;
+    height: 5em;
+    background-color: green;
+    font-size: 2em;
+    color: white;
+    text-align: center;
+    line-height: 5em;
+}
+#right {
+    width: 5em;
+    height: 5em;
+    background-color: blue;
+    font-size: 2em;
+    color: white;
+    text-align: center;
+    line-height: 5em;
+}
+" resizable="false" style="padding: 0; height: 15em">
+
+<p>Preceding paragraph</p>
+<div class="columns">
+  <div id="left" class="col">Left</div>
+  <div id="right" class="col">Right</div>
+</div>
+<p>Following paragraph</p>
+
+</pre>
+
+---
+
+<!-- .slide: class="editor" -->
+
+# Multiple columns
+
+<div data-iframe="assets/examples/col_floats.html"></div>
+
+<span class="note"><a href="assets/examples/col_floats.html">source</a></span>
 
 ---
 
@@ -232,4 +540,13 @@ body {
 - Table cells `display: table-cell`
   - They create an _anonymous table_
   - Similarly `table-row`, `table`, `inline-table`
-- [Examples](data/pos4a.html)
+
+=--
+
+<!-- .slide: class="editor" -->
+
+# Special `display` Property Values -- Examples
+
+<div data-iframe="assets/examples/col_display.html"></div>
+
+<span class="note"><a href="assets/examples/col_display.html">source</a></span>
