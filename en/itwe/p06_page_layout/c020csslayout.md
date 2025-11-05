@@ -47,7 +47,7 @@
 body {
     margin: 0; padding: 1em;
 }
-#content {
+#page {
     width: 80%;
     margin: auto;
     padding: 1em;
@@ -64,7 +64,7 @@ body {
 body {
     margin: 0; padding: 1em;
 }
-#content {
+#page {
     width: 1000px;
     margin: auto;
     padding: 1em;
@@ -368,6 +368,72 @@ body {
 <div id="left" class="col">Left</div>
 <div id="right" class="col">Right</div>
 <p>Following paragraph</p>
+
+</pre>
+
+---
+
+# Floating Blocks with `clear`
+
+- Use `clear: left` or `both` for the following paragraph
+
+<div class="col">
+
+```html
+<p>Preceding paragraph</p>
+<div id="left" class="col">Left</div>
+<div id="right" class="col">Right</div>
+<p class="clear">Following paragraph</p>
+```
+
+```css
+.col {
+    width: 5em;
+    float: left;
+}
+.clear {
+    clear: both;
+}
+```
+
+</div>
+
+<pre class="code-render" class="col" default-style="
+body {
+  padding: 0;
+  position: relative;
+}
+.col {
+    width: 5em;
+    float: left;
+}
+.clear {
+    clear: both;
+}
+#left {
+    width: 5em;
+    height: 5em;
+    background-color: green;
+    font-size: 2em;
+    color: white;
+    text-align: center;
+    line-height: 5em;
+}
+#right {
+    width: 5em;
+    height: 5em;
+    background-color: blue;
+    font-size: 2em;
+    color: white;
+    text-align: center;
+    line-height: 5em;
+}
+" resizable="false" style="padding: 0; height: 15em">
+
+<p>Preceding paragraph</p>
+<div id="left" class="col">Left</div>
+<div id="right" class="col">Right</div>
+<p class="clear">Following paragraph</p>
 
 </pre>
 
