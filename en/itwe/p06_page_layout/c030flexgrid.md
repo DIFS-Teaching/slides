@@ -37,7 +37,7 @@
 # Grid layout
 
 - Parent element is the **grid container**
-  - By setiing `display: grid`
+  - By setting `display: grid`
   - We set the number of grid rows and columns 
     - Explicit (template) nebo implicit (auto)
     - The `fr` (fraction) length unit
