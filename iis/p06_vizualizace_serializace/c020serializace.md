@@ -32,7 +32,7 @@
 	- hodnota typu struktura = uspořádaná n-tice `$(a_1, a_2, \dots, a_n)$`
 	- hodnota typu kolekce = uspořádaná množina `$\{b_1, b_2, \dots, b_n\}$`
 - Na úrovni hodnoty = výskytu jsou stejné
-- Jde o závorkované zanořené věty tvaru `$a^n \dots b^n$`, formální_ jazyk tudíž musí být minimálně **bezkontextový**
+- Jde o závorkované zanořené věty tvaru `$a^n \dots b^n$`, formální jazyk tudíž musí být minimálně **bezkontextový**
 
 ---
 
@@ -257,20 +257,20 @@ Je serializací **_uspořádané kolekce – seznamu_**
 # Příklad serializovaného formuláře
 
 ```
------------------------------7d627e30307c4
-Content-Disposition: form-data; name="Jmeno"
- 
-hruška
------------------------------7d627e30307c4
-Content-Disposition: form-data; name="Chut"
- 
-Vanilkova
------------------------------7d627e30307c4
-Content-Disposition: form-data; name="thefile"; filename="a.jpg"
-Content-Type: application/octet-stream
+   -----------------------------7d627e30307c4
+   Content-Disposition: form-data; name="Jmeno"
+    
+   hruška
+   -----------------------------7d627e30307c4
+   Content-Disposition: form-data; name="Chut"
+    
+   Vanilkova
+   -----------------------------7d627e30307c4
+   Content-Disposition: form-data; name="thefile"; filename="a.jpg"
+   Content-Type: application/octet-stream
 
-…………
------------------------------7d627e30307c4--
+   …………
+   -----------------------------7d627e30307c4--
 ```
 
 ---
