@@ -86,7 +86,7 @@
 - Generátory rozhraní v cílových jazycích, např. \
 	https://github.com/OpenAPITools 
 - Generování dokumentace \
-	[Popis rozhraní](fitlayout.github.io/restapi/openapi.yaml) --
-	[HTML dokumentace](http://fitlayout.github.io/restapi/)
+	[Popis rozhraní](https://fitlayout.github.io/restapi/openapi.yaml) --
+	[HTML dokumentace](https://fitlayout.github.io/restapi/)
 - Popis rozhraní je možno generovat automatizovaně
 	- Např. z implementace API v Javě
