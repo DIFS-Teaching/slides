@@ -1,0 +1,19 @@
+{
+    "id": "p08_xhtml_xml",
+    "title": "Advanced HTML, XHTML and XML",
+    "author": "Radek Burget <burget@fit.vut.cz>",
+    "lang": "en",
+    "template": {
+        "name": "fit",
+        "properties": {
+            "footer": "ITW"
+        }
+    },
+    "contents": [
+        "c000title.md",
+        "c010intro.md",
+        "c020html.md",
+        "c030xml.md",
+        "c999final.md"
+    ]
+}
