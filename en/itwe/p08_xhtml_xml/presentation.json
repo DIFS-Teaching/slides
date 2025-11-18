@@ -13,7 +13,8 @@
         "c000title.md",
         "c010intro.md",
         "c020html.md",
-        "c030xml.md",
+        "c030head.md",
+        "c040xml.md",
         "c999final.md"
     ]
 }
