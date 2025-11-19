@@ -79,7 +79,7 @@
 
 # Inline frame
 
-<iframe width="800" height="400" src="https://gitshow.net" sandbox="allow-scripts allow-same-origin allow-popups allow-forms">
+<iframe width="800" height="400" src="assets/examples/iframedoc.html" sandbox="allow-scripts allow-same-origin allow-popups allow-forms">
 Inline frames are not supported.
 </iframe>
 
