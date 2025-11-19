@@ -79,7 +79,7 @@
 
 # Inline frame
 
-<iframe width="800" height="400" src="https://www.fit.vut.cz/study/course/ITW/public/assets/iframedoc.html" sandbox="allow-scripts allow-same-origin allow-popups allow-forms">
+<iframe width="800" height="400" src="http://burget.net/tmp/iframedoc.html" sandbox="allow-scripts allow-same-origin allow-popups allow-forms">
 Inline frames are not supported.
 </iframe>
 
