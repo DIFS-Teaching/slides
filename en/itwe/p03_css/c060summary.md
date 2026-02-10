@@ -13,6 +13,7 @@
 - external, internal, and inline style rules
 - W3C specification: https://www.w3.org/Style/CSS/
 - validation: https://jigsaw.w3.org/css-validator/
+  - it does not consider new CSS modules!
 
 <br>
 

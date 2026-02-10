@@ -376,6 +376,61 @@ h1 {
 
 - special selectors starting with *`:`*, targeting the *state* of an element, its *position*, or *logical context*:
 
+<pre class="code-render" default-style="
+:root {
+  border: 4px solid red;
+}
+
+h2:hover {
+  color: blue;
+}
+
+p:nth-of-type(1) {
+  border: 4px solid blue;
+}
+
+
+h2, p, div {
+  margin: 0.5rem 0;
+}
+" resizable="true" style="width: 50%; height: 600px; float: right; z-index: 1" tags="true">
+&lt;article&gt;
+<article>
+
+<h2>&nbsp;&nbsp;&lt;h2&gt;About&lt;/h2&gt;</h2>
+
+<p>&nbsp;&nbsp;&lt;p&gt;Hello! You shall not pass!.&lt;/p&gt;</p>
+
+&nbsp;&nbsp;&lt;div class="lectures"&gt;
+<div class="lectures">
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Web&lt;/p&gt;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;HTML&lt;/p&gt;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;CSS&lt;/p&gt;</p>
+</div>
+&nbsp;&nbsp;&lt;/div&gt;
+</article>
+&lt;/article&gt;
+
+</pre>
+
+```css
+p:nth-of-type(1) {
+  border: 4px solid blue;
+}
+
+h2:hover {
+  color: blue;
+}
+```
+
+- more in vertical slides or next lectures...
+
+=--
+
+# Pseudo-classes
+
+- **types:**
+
   - ***stateful*** (user interaction)
     - `:hover`, `:active`, `:focus`, `:target`, ...
   - ***form states***
@@ -387,7 +442,7 @@ h1 {
   - ***others*** (language, links, and other special...)
     - `:lang`, `:dir`, `:link`, `:visited`, ...
 
----
+=--
 
 # Pseudo-classes: stateful
 
@@ -462,7 +517,7 @@ body *:target {
 }
 ```
 
----
+=--
 
 # Pseudo-classes: form states
 
@@ -543,7 +598,7 @@ input[type='checkbox']:checked
 }
 ```
 
----
+=--
 
 # Pseudo-classes: structural
 
@@ -600,7 +655,7 @@ p:nth-child(1) {
 - ***type order in parent:***
   - `:first-of-type`, `:last-of-type`, `:only-of-type`,<br> `:nth-of-type(n)`, `:nth-last-of-type(n)`
 
----
+=--
 
 # Pseudo-classes: logical
 
@@ -670,7 +725,7 @@ article > :is(h2, p) {
 
 <span class="note">priority and differences between `:is` and `:where` in the next lecture</span>
 
----
+=--
 
 # Pseudo-classes: other specific...
 
@@ -690,6 +745,61 @@ article > :is(h2, p) {
 # Pseudo-elements
 
 - part of CSS selectors (not a selector itself) starting with *`::`*, allowing you to target a specific part of an element, *even if there is no separate tag for it in HTML*:
+
+<pre class="code-render" default-style="
+
+/* First line of text will be bold and blue */
+p::first-line {
+  font-weight: bold;
+  color: blue;
+}
+
+/* First letter will be huge and red */
+p::first-letter {
+  font-size: 3em;
+  color: red;
+  float: left;
+  margin-right: 5px;
+}
+
+/* Text selected by the user will have yellow background and black text */
+p::selection {
+  background: yellow;
+  color: black;
+}
+
+" resizable="true" style="width: 40%; height: 400px; float: right; z-index: 1; margin-left: 1rem;" tags="true">
+
+&lt;p&gt;<p>You shall not pass!. One ring to rule them all, one ring to find them, One ring to bring them all and in the darkness bind them.</p>&lt;/p&gt;
+
+</pre>
+
+```css
+p::first-line {
+  font-weight: bold;
+  color: blue;
+}
+
+p::first-letter {
+  font-size: 3em;
+  color: red;
+  float: left;
+  margin-right: 5px;
+}
+
+p::selection {
+  background: yellow;
+  color: black;
+}
+```
+
+- more in vertical slides or next lectures...
+
+=--
+
+# Pseudo-elements
+
+- **types:**
   - ***text*** (targeting part of text)
     - `::first-line`, `::first-letter`, `::selection`, ...
   - ***input and form*** (specific for `<input>`, `<textarea>`, and forms)
@@ -701,7 +811,7 @@ article > :is(h2, p) {
     - [`::cue`](https://developer.mozilla.org/en-US/docs/Web/CSS/::cue) -- subtitle styling in `<track>` for `<video>`
     - ...
 
----
+=--
 
 # Pseudo-elements: text
 
@@ -756,7 +866,7 @@ p::selection {
 }
 ```
 
----
+=--
 
 # Pseudo-elements: input and form
 
@@ -819,7 +929,7 @@ input[type="file"]::file-selector-button:hover {
 }
 ```
 
----
+=--
 
 # Pseudo-elements: content
 

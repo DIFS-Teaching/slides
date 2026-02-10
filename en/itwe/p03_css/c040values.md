@@ -46,7 +46,9 @@ font: italic small-caps bold 16px/1.5 Arial;
   - *relative*: `em`, `rem`, `%`, `ex`, `ch`, `vw`, `vh`, `vmin`, `vmax`
   - `margin`: `10px`, `font-size`: `1.2em`, ...
 
----
+  - examples below...
+
+=--
 
 # Value Types: em, rem
 
@@ -114,7 +116,7 @@ div > div {
 }
 ```
 
----
+=--
 
 # Value Types: vw, %
 
@@ -177,7 +179,7 @@ div > div {
 }
 ```
 
----
+=--
 
 # Value Types: vmax
 
@@ -217,22 +219,6 @@ div {
   margin: 2rem;
 }
 ```
-
----
-
-# Value Types
-
-- ***angle units***
-  - used for transforms and gradients
-  - `deg, grad, rad, turn`
-
-- ***time units***
-  - s (seconds), ms (milliseconds)
-  - animations and transitions: `transition-duration: 200ms;`
-
-- ***frequency, resolution, etc.***
-  - `Hz`, `kHz` (frequency -- rarely used)
-  - `dpi, dpcm, dppx` (resolution)
 
 ---
 
@@ -439,6 +425,22 @@ updateColors();
 </script>
 
 </pre>
+
+---
+
+# Other Value Types (less used)...
+
+- ***time units***
+  - s (seconds), ms (milliseconds)
+  - animations and transitions: `transition-duration: 200ms;`
+
+- ***angle units***
+  - used for transforms and gradients
+  - `deg, grad, rad, turn`
+
+- ***frequency, resolution, etc.***
+  - `Hz`, `kHz` (frequency -- rarely used)
+  - `dpi, dpcm, dppx` (resolution)
 
 ---
 
