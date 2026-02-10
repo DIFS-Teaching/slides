@@ -1,9 +1,3 @@
-<!-- .slide: class="section" -->
-
-# Web Design
-
----
-
 # Web Design
 
   * *Web presentation* A showcase of a company (organization, product, ...)
