@@ -94,7 +94,7 @@
   - paragraph ends with the start of another block element
 - only inline elements are allowed inside `p` and `address`
 
----
+=--
 
 # Text Blocks: `<details>`
 
@@ -284,6 +284,63 @@ Tags are still interpreted <b>normally</b>.
 
 ---
 
+# Table: Cell Merging
+
+<pre class="code-render" default-style="
+table {
+s
+  border-collapse: collapse;
+}
+
+td {
+  border: 2px solid black;
+}
+
+th {
+  border: 2px solid black;
+}
+" resizable="true" style="width: 40%; height: 500px; float: right; z-index: 1">
+<table>
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Residence</th>
+  </tr>
+  <tr>
+    <td>John</td>
+    <td>Snow</td>
+    <td class="join" rowspan="2">Winterfell</td>
+  </tr>
+  <tr>
+    <td class="join" colspan="2">Hodor</td>
+  </tr>
+</table>
+</pre>
+
+```html
+<table>
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Residence</th>
+  </tr>
+  <tr>
+    <td>John</td>
+    <td>Snow</td>
+    <td rowspan="2">Winterfell</td>
+  </tr>
+  <tr>
+    <td colspan="2">Hodor</td>
+  </tr>
+</table>
+```
+
+- ***`colspan="n"`*** -- width in columns
+- ***`rowspan="n"`*** -- height in rows
+- applies to ***`<td>`*** or ***`<th>`***, not **`<tr>`**
+
+---
+
 # Table: Style
 
 <pre class="code-render" default-style="
@@ -365,66 +422,9 @@ table:nth-of-type(2) {
 
 - by default, tables have no visible borders
 
-<span class="note">more in the CSS lecture</span>
+<span class="note">more in the CSS lecture or vertical slides...</span>
 
----
-
-# Table: Cell Merging
-
-<pre class="code-render" default-style="
-table {
-s
-  border-collapse: collapse;
-}
-
-td {
-  border: 2px solid black;
-}
-
-th {
-  border: 2px solid black;
-}
-" resizable="true" style="width: 40%; height: 500px; float: right; z-index: 1">
-<table>
-  <tr>
-    <th>First Name</th>
-    <th>Last Name</th>
-    <th>Residence</th>
-  </tr>
-  <tr>
-    <td>John</td>
-    <td>Snow</td>
-    <td class="join" rowspan="2">Winterfell</td>
-  </tr>
-  <tr>
-    <td class="join" colspan="2">Hodor</td>
-  </tr>
-</table>
-</pre>
-
-```html
-<table>
-  <tr>
-    <th>First Name</th>
-    <th>Last Name</th>
-    <th>Residence</th>
-  </tr>
-  <tr>
-    <td>John</td>
-    <td>Snow</td>
-    <td rowspan="2">Winterfell</td>
-  </tr>
-  <tr>
-    <td colspan="2">Hodor</td>
-  </tr>
-</table>
-```
-
-- ***`colspan="n"`*** -- width in columns
-- ***`rowspan="n"`*** -- height in rows
-- applies to ***`<td>`*** or ***`<th>`***, not **`<tr>`**
-
----
+=--
 
 # Table: Semantic Elements
 
@@ -447,7 +447,7 @@ th {
 - ***`<tfoot>`*** can be placed before ***`<tbody>`***, browsers will display it below
   - originally (in HTML 4) this optimized table loading
 
----
+=--
 
 # Table: Column Declaration
 
@@ -506,7 +506,7 @@ table, td, th {
 - column definitions affect only structure, not content
 - if not defined, the whole table is considered a single column group
 
----
+=--
 
 # Table: Table Caption
 
