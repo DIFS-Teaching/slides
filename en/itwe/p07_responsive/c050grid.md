@@ -73,11 +73,11 @@
   color: blue;
 }
 
-.aside {
+.sidebar {
   color: green;
 }
 
-.article {
+.content {
   color: red;
 }
 
@@ -88,10 +88,10 @@
   <div class="header">header</div>
   <div class="header">header</div>
   <div class="header">header</div>
-  <div class="aside">aside</div>
-  <div class="article">article</div>
-  <div class="article">article</div>
-  <div class="article">article</div>
+  <div class="sidebar">sidebar</div>
+  <div class="content">content</div>
+  <div class="content">content</div>
+  <div class="content">content</div>
 </div>
 
 </pre>
@@ -204,10 +204,10 @@ article {
   <div class="header">header</div>
   <div class="header">header</div>
   <div class="header">header</div>
-  <div class="aside">aside</div>
-  <div class="article">article</div>
-  <div class="article">article</div>
-  <div class="article">article</div>
+  <div class="sidebar">sidebar</div>
+  <div class="content">content</div>
+  <div class="content">content</div>
+  <div class="content">content</div>
 
   <header>header</header>
   <nav>nav</nav>
