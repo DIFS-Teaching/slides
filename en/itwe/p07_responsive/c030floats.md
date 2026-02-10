@@ -620,7 +620,7 @@ body
 
 <div data-iframe="assets/examples/responsive/floats5.html"></div>
 
-<div class="note"><a href="assets/examples/responsive/floats5.html">zdroj</a></div>
+<div class="note"><a href="assets/examples/responsive/floats5.html">source</a></div>
 
 ---
 
@@ -751,7 +751,7 @@ ul {
 
 <div data-iframe="assets/examples/responsive/floats6.html"></div>
 
-<div class="note"><a href="assets/examples/responsive/floats6.html">zdroj</a></div>
+<div class="note"><a href="assets/examples/responsive/floats6.html">source</a></div>
 
 ---
 
