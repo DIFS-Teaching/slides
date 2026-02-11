@@ -1,0 +1,17 @@
+{
+    "id": "p09_js",
+    "title": "JavaScript -- Basic Concepts of Dynamic Pages",
+    "author": "Jiri Hynek <hynek@vut.cz>",
+    "lang": "en",
+    "template": {
+        "name": "fit",
+        "properties": {
+            "footer": "ITWe"
+        }
+    },
+    "contents": [
+        "c000title.md",
+        "c010intro.md",
+        "c999final.md"
+    ]
+}
