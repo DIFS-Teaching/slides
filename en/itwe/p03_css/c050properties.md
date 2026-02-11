@@ -18,12 +18,6 @@ color: blue;
 font-size: 12pt;
 ```
 
-- properties have different units and value formats, sometimes experimental variants with prefixes
-  - `-webkit-` Chrome, Safari (WebKit)
-  - `-moz-` Firefox (Mozilla)
-  - `-ms-` Internet Explorer, Edge (Trident/EdgeHTML)
-  - `-o-` Opera (old Presto engine)
-
 ---
 
 # Types of Properties
@@ -364,6 +358,39 @@ p {
   overflow-wrap: break-word; /* break long words */
   word-break: break-word; /* break when needed */
   hyphens: auto;          /* hyphenation */
+}
+```
+
+---
+
+# Text Columns
+
+<pre class="code-render" default-style="
+p {
+  column-count: 2;
+  column-width: auto;
+  column-gap: 2rem;
+  column-rule: 2px solid #ccc;
+}" resizable="true" style="height: 700px; width: 50%; float: right; z-index: 1; margin-left: 1rem">
+
+<p>
+  Multi-column layout in CSS allows long pieces of text to be automatically distributed
+  into multiple vertical columns, similar to traditional newspapers or magazines.
+  This technique improves readability by shortening line length and making large blocks
+  of content easier to scan. The browser handles the column flow automatically, balancing
+  the content across columns and adapting to different screen sizes. Developers can control
+  the number of columns, the spacing between them, and visual separators, making this feature
+  especially useful for articles, blog posts, and documentation pages.
+</p>
+
+</pre>
+
+```css
+p {
+  column-count: 2;
+  column-width: auto;
+  column-gap: 2rem;
+  column-rule: 2px solid #ccc;
 }
 ```
 
