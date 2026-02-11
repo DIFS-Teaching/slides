@@ -2,7 +2,7 @@
 
 <header>
   <h1>CSS</h1>
-  <p class="subtitle">Media Queries, Frameworks, Preprocessors, Advanced Features</p>
+  <p class="subtitle">Media Queries, Frameworks, Preprocessors, Advanced Concepts</p>
   <p class="subsubtitle">paged media, component-based and utility-based frameworks, CSS preprocessors, Animations</p>
 </header>
 <div class="logo"></div>

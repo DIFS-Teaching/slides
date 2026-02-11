@@ -100,7 +100,7 @@ body {
 ```
 
 - Sass nesting is compiled and more permissive, while CSS nesting is native but has stricter syntax rules.
-  - **[CSS Nesting Level 1](https://drafts.csswg.org/css-nesting-1/)** (Editor’s Draft)
+  - **[CSS Nesting Level 1](https://drafts.csswg.org/css-nesting-1/)** (Editor’s Draft) -- [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Nesting)
 
 ---
 
