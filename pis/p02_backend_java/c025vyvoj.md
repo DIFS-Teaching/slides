@@ -26,7 +26,7 @@
 	- TomEE, WildFly, ...
 - Vývojové prostředí
 	- **Eclipse** for Enterprise Java Developers
-	- NetBeans, IntelliJ IDEA, VS Code ...
+	- IntelliJ IDEA, VS Code ...
 - Databázový server
 	- Jakýkoliv relační ([H2](https://www.h2database.com), [Derby](https://db.apache.org/derby/), MySQL, ...)
 - Databázový konektor (JDBC ovladač)
@@ -69,8 +69,7 @@
 
 # Vytvoření projektu v Eclipse
 - Import existujícího Maven projektu [Starter project](https://github.com/DIFS-Teaching/jakartaee-starter)
-- Vytvoření nového (New -> Maven project)
-	- Vybrat archetype, např. ``airhacks''
+	- Např. přepnout do perspektivy Git
 - Update Maven projektu (Alt-F5) 
 - Konfigurace později
 	- Project -> Properties

@@ -20,7 +20,7 @@
 ---
 
 # Jakarta EE
-- V současnosti [Jakarta EE 10](https://jakarta.ee/specifications/), více dostupných implementací
+- V současnosti [Jakarta EE 11](https://jakarta.ee/specifications/), více dostupných implementací
 	- Aka Enterprise Java (dříve Java EE)
 - Platforma pro vývoj podnikových aplikací a IS v Javě
 - Množina standardních technologií a API
