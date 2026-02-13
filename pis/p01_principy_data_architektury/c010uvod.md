@@ -2,7 +2,7 @@
 
 - Návrh informačního systému – rozšíření znalostí z IIS
 	- Analýza domény a procesů (datové modelování, workflow)
-	- Pokročilé architektury systému
+	- Pokročilé architektury systémů
 	- Systémy pro podporu rozhodování
 - Zvládnutí pokročilých technologií
 	- Databázová vrstva – objektový datový model, alternativy
@@ -21,15 +21,15 @@
 - Praktické ukázky (a projekt) budou využívat zejména
 	- Eclipse Microprofile (aplikační logika, REST rozhraní, provoz, monitorování)
 	- Objektově-relační mapování (JPA)
-	- Případně webový framework (JSF a další)
+	- Pokročilé API architektury (GraphQL, SOAP, ...)
 
 ---
 
 # Hodnocení
 
-- Půlsemestrální zkouška: 19 bodů
-- Semestrální zkouška: 51 bodů
-- Projekt: 30 bodů (8 + 22)
+- **Půlsemestrální zkouška:** 19 bodů
+- **Semestrální zkouška:** 51 bodů
+- **Projekt:** 30 bodů (8 + 22)
 	- Realizace IS na dané téma v týmu (zadání z AIS)
 	- ORM datová vrstva
 	- Pokročilý aplikační framework umožňující oddělení datové, aplikační a prezentační vrstvy
@@ -39,11 +39,11 @@
 ---
 
 # Kontakty
-- **Doc. Ing. Radek Burget, Ph.D.** \
+- **doc. Ing. Radek Burget, Ph.D.** \
 burgetr@fit.vut.cz
-	- **Přednášky**, zkoušky, všechno ostatní
+	- **Přednášky**, zkoušky, projekty, všechno ostatní
 
 - **Ing. Jiří Hynek, Ph.D.** \
-jiri.hynek@vut.cz
+hynek@vut.cz
 	- Vybrané přednášky
 
