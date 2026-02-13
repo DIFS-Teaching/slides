@@ -3,7 +3,7 @@
 <header>
   <h1>JavaScript</h1>
   <p class="subtitle">Basic Concepts of Dynamic Pages</p>
-  <p class="subsubtitle">todo</p>
+  <p class="subsubtitle">language characteristics, BOM, DOM, Events, Fetch, Frameworks</p>
 </header>
 <div class="logo"></div>
 <div class="authors">
