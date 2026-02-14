@@ -255,7 +255,7 @@ function Counter({ initialCount = 0 }) {
 - language, superset of JavaScript that adds *static typing* and other features
 - helps catch errors at compile time and improves code maintainability
 
-<img src="assets/ts.png" alt="TypeScript" class="img-right box" style="width: 40%;">
+<img src="assets/add.jpg" alt="TypeScript" class="img-right box" style="width: 28%;">
 
 ```ts
 function add(a: number, b: number): number {
@@ -271,4 +271,14 @@ let result2: number = add("5", "3");
 
 - transpiled to JavaScript
   - [tsc](https://www.typescriptlang.org/docs/handbook/compiler-options.html)
-  - tools like [Webpack](https://webpack.js.org/), [Babel](https://babeljs.io/), [Vite](https://vitejs.dev/) etc. for bundling and transpiling large projects
+  - tools like [Webpack](https://webpack.js.org/), [Babel](https://babeljs.io/), [Vite](https://vitejs.dev/) etc. for bundling large projects
+
+---
+
+# Compile-Time vs Run-Time Error
+
+<div style="text-align: center;">
+  <img src="assets/ts.png" alt="TypeScript" class="box" style="width: 55%;">
+</div>
+
+<span class="note">See the <a href="https://www.fit.vut.cz/study/course/PIS/.en">[Angular Lecture](https://video1.fit.vutbr.cz/av/records.php?id=75716&categ_id=2218)</a></span>

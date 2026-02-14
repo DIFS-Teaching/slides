@@ -70,17 +70,17 @@ MDN: [Document](https://developer.mozilla.org/en-US/docs/Web/API/Document), [Ele
 # Node, Element, HTMLElement
 
 - **[Node](https://developer.mozilla.org/en-US/docs/Web/API/Node)** -- basic unit of the DOM tree, can be an element, text, comment, etc.
-  - parentNode, childNodes, nextSibling, previousSibling, etc.
+  - `parentNode`, `childNodes`, `nextSibling`, `previousSibling`, etc.
 
 <br>
 
 - **[Element](https://developer.mozilla.org/en-US/docs/Web/API/Element)** -- represents an HTML or XML element, inherits from *Node*
-  - tagName, id, className, attributes, etc.
+  - `tagName`, `id`, `className`, `attributes`, etc.
 
 <br>
 
 - **[HTMLElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement)** -- specific to HTML elements, inherits from *Element*
-  - innerHTML, innerText, style, etc.
+  - `innerHTML`, `innerText`, `style`, etc.
 
 <br>
 
