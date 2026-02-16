@@ -116,7 +116,7 @@
   <p>Drinks wine like it’s water, talks like every word costs gold, and somehow survives when everyone else doesn’t.</p>
 </details>
 
-<details>
+<details open>
   <summary>Hodor</summary>
   <p>Can carry a child, a sled, and the emotional weight of his own backstory — all while saying just one word: "Hodor".</p>
 </details>
@@ -598,15 +598,15 @@ caption {
 <pre class="code-render" default-style="" resizable="true" style="width: 40%; height: 300px; float: right; z-index: 1; margin: 2rem">
 <form>
   <fieldset>
-  <legend>Contact Information</legend>
+    <legend>Contact Information</legend>
 
-  <label for="name">Name:</label>
-  <input type="text" id="name" name="name">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name">
 
-  <label for="email">Email:</label>
-  <input type="email" id="email" name="email">
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email">
 
-  <input type="submit" value="Send">
+    <input type="submit" value="Send">
   </fieldset>
 </form>
 </pre>
@@ -614,15 +614,15 @@ caption {
 ```html
 <form>
   <fieldset>
-  <legend>Contact Information</legend>
+    <legend>Contact Information</legend>
 
-  <label for="name">Name:</label>
-  <input type="text" id="name" name="name">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name">
 
-  <label for="email">Email:</label>
-  <input type="email" id="email" name="email">
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email">
 
-  <input type="submit" value="Send">
+    <input type="submit" value="Send">
   </fieldset>
 </form>
 ```
@@ -632,7 +632,7 @@ caption {
 * ***`fieldset`*** -- groups elements in a form, visually frames them
 * ***`legend`*** -- title for the group, displayed as part of the frame.
 
-<span class="note">Principles of sending content to the server in the IIS course -- Information Systems</span>
+<span class="note">Principles of sending content to the server in the [IIS](https://www.fit.vut.cz/study/course/IIS/.en) course -- Information Systems</span>
 
 ---
 

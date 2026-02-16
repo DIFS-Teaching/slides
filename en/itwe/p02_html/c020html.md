@@ -54,13 +54,13 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-  <meta charset="UTF-8">
-  <title>Document</title>
+    <meta charset="UTF-8">
+    <title>Document</title>
   </head>
   <body>
-  <!-- Let's greet the new students -->
-  <p>Hello! You shall not pass! &#x1F9D9;</p>
-  <a href="https://www.fit.vut.cz/study/course/ITW/">ITW</a>
+    <!-- Let's greet the new students -->
+    <p>Hello! You shall not pass! &#x1F9D9;</p>
+    <a href="https://www.fit.vut.cz/study/course/ITW/">ITW</a>
   </body>
 </html>
 ```
@@ -68,9 +68,9 @@
 - result:
 
 <pre class="code-render">
-<!-- Let's greet the new students -->
-<p>Hello! You shall not pass! &#x1F9D9;</p>
-<a href="https://www.fit.vut.cz/study/course/ITW/">ITW</a>
+  <!-- Let's greet the new students -->
+  <p>Hello! You shall not pass! &#x1F9D9;</p>
+  <a href="https://www.fit.vut.cz/study/course/ITW/">ITW</a>
 </pre>
 
 <span class="note"><a href="http://www.quickmeme.com/meme/3657cw">.</a><span>
@@ -128,7 +128,7 @@
 <p>Element content</p>
 
 <div class="menu" id="mainmenu">
-Element content<br> More element content.
+  Element content<br> More element content.
 </div>
 
 <div>Some <em>emphasized</em> text.</div> 
@@ -198,8 +198,8 @@ Element content<br> More element content.
   - ***remain in the source code!***
 
 ```html
-  <!-- this is my plagiarized project -->
-  <html>
+<!-- this is my plagiarized project -->
+<html>
 ```
 
 - **(server side includes)**
@@ -208,8 +208,7 @@ Element content<br> More element content.
   - must be supported on the server (e.g. Apache, nginx)
 
 ```html
-  <!--#include file="header.html" -->
-  Date: <!--#echo var="DATE_LOCAL" -->
+<!--#include file="header.html" -->
 ```
 
 <span class="note"><a href="https://httpd.apache.org/docs/current/mod/mod_include.html">Apache</a>,</span>
@@ -223,12 +222,12 @@ Element content<br> More element content.
 
 ```html
 <body>
-   Hello!
-   You shall not pass!
+  Hello!
+  You shall not pass!
    
-   &#x1F9D9;
+  &#x1F9D9;
 
-   One Ring to rule them all, One Ring to find them, One Ring to bring them all and in the darkness bind them.
+  One Ring to rule them all, One Ring to find them, One Ring to bring them all and in the darkness bind them.
 </body>
 ```
 
@@ -298,7 +297,7 @@ Hello!
   - browser provides *default appearance* for known HTML elements (`<h2>`, `<b>`, `<p>`, ...)
   - can be overridden *with custom style rules* (e.g. `<span style="color: red">`, ***...***)
 
-<span class="note">More in the next CSS lecture...</span>
+<span class="note">More in the next lecture: [CSS -- Introduction to Cascading Style Sheets](https://gitshow.net/gh/DIFS-Teaching/slides@main/en/itwe/p03_css)</span>
 
 ---
 
