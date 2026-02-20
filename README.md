@@ -2,7 +2,7 @@
 
 # Online prezentace k přednáškám do předmětů FIT VUT v Brně
 
-Radek Burget burgetr@fit.vut.cz
+Radek Burget burgetr@fit.vut.cz<br>
 Jiří Hynek hynek@vut.cz
 
 - [Informační systémy](https://github.com/DIFS-Teaching/slides/tree/main/iis) (IIS)
