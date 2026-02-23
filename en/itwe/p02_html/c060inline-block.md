@@ -324,7 +324,7 @@
 - *`name`* -- field name, key for data submission, *`value`* -- default field value, *`placeholder`* -- helper text inside field, *`readonly`* -- read-only, *`autocomplete`* -- enable/disable autofill
 - **[validation](https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Forms/Form_validation)**: `required`, `disabled`, `min`, `max`, `step`, `checked`, `maxlength`, `pattern`
 
-<span class="note">More in the course IIS -- Information Systems</span>
+<span class="note">More in the [IIS](https://www.fit.vut.cz/study/course/IIS/.en) course -- Information Systems</span>
 
 ---
 
@@ -363,7 +363,7 @@
 - ***`textarea`*** -- *`rows`* -- number of visible text lines, *`cols`* -- number of visible characters per line
 - ***`button`*** -- *`type`*: `submit` -- default, submits form; `reset` -- clears form; `button` – no action, programmable
 
-<span class="note">More in the course IIS -- Information Systems</span>
+<span class="note">More in the [IIS](https://www.fit.vut.cz/study/course/IIS/.en) course -- Information Systems</span>
 
 =--
 
