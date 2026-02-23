@@ -2,9 +2,13 @@
 
 <header>
     <h1>Web Design</h1>
-    <p class="subtitle">Introduction and the WWW Technology</p>
+    <p class="subtitle">Course Introduction</p>
 </header>
-<div class="logo"></div>
+<div class="logo">
+  <div class="left"></div>
+  <div class="center"></div>
+  <div class="right"></div>
+</div>
 <div class="authors">
   <dl>
     <dt>doc. Ing. Radek Burget, Ph.D.</dt><dd><a href="mailto:burgetr@fit.vut.cz">burgetr@fit.vut.cz</a><dd>

@@ -393,11 +393,37 @@ html.print-pdf .reveal .slides section .fragment { /* show fragments when printi
 }
 
 .reveal .slides section.title .logo {
-  background: var(--colorFg) url('fit-logo-inv.svg') no-repeat;
-  background-size: 100% 100%;
-  height: 10vh;
-  aspect-ratio: calc(1/0.4);
-  margin: auto; /* center the logo */
+  display: grid;
+  grid-template-columns: 1fr 200px 1fr;
+  gap: 4rem;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  margin-bottom: 2rem;
+}
+
+.reveal .slides section.title .logo .left {
+  background: url('eu.png') no-repeat;
+  background-size: contain;
+  background-position: right;
+  width: 100%;
+  height: 100%;
+}
+
+.reveal .slides section.title .logo .center {
+  background: url('msmt.png') no-repeat;
+  background-size: contain;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+}
+
+.reveal .slides section.title .logo .right {
+  background: url('fit-logo-full.svg') no-repeat;
+  background-size: contain;
+  background-position: left;
+  width: 100%;
+  height: 100%;
 }
 
 .reveal .slides section.title .authors {

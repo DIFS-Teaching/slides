@@ -5,7 +5,11 @@
   <p class="subtitle">Page Layout</p>
   <p class="subsubtitle">practical use of CSS</p>
 </header>
-<div class="logo"></div>
+<div class="logo">
+  <div class="left"></div>
+  <div class="center"></div>
+  <div class="right"></div>
+</div>
 <div class="authors">
   <dl>
   <dt>doc. Ing. Radek Burget, Ph.D.</dt><dd><a href="mailto:burgetr@vut.cz">burgetr@vut.cz</a></dd>
