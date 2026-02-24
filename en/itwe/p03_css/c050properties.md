@@ -52,7 +52,7 @@ font-size: 12pt;
 
 # Font Properties
 
-- **font style -- *`font-style`***
+- ***`font-style`***
 
 <pre class="code-render" default-style="" resizable="true" style="height: 100px;">
 
@@ -62,7 +62,7 @@ font-size: 12pt;
 
 </pre>
 
-- **font weight -- *`font-weight`***
+- ***`font-weight`***
 
 <pre class="code-render" default-style="" resizable="true" style="height: 100px;">
 
@@ -75,7 +75,7 @@ font-size: 12pt;
 
 </pre>
 
-- **font variant -- *`font-variant`***
+- ***`font-variant`***
 
 <pre class="code-render" default-style="" resizable="true" style="height: 100px;">
 
@@ -257,7 +257,7 @@ h1 {
 
 # Text Properties
 
-- **text decoration -- *`text-decoration`*** (`-style`, `-color`, `-thickness`)
+- ***`text-decoration`*** (`-style`, `-color`, `-thickness`)
 
 <pre class="code-render" default-style="" resizable="true" style="height: 100px;">
 
@@ -269,7 +269,7 @@ h1 {
 
 </pre>
 
-- **text transformation -- *`text-transform`***
+- ***`text-transform`***
 
 <pre class="code-render" default-style="" resizable="true" style="height: 100px;">
 
@@ -280,7 +280,7 @@ h1 {
 
 </pre>
 
-- **letter spacing -- *`letter-spacing`***
+- ***`letter-spacing`***
 
 <pre class="code-render" default-style="" resizable="true" style="height: 100px;">
 
@@ -289,7 +289,7 @@ h1 {
 
 </pre>
 
-- **word spacing -- *`word-spacing`***
+- ***`word-spacing`***
 
 <pre class="code-render" default-style="" resizable="true" style="height: 100px;">
 
@@ -302,7 +302,7 @@ h1 {
 
 # Text Alignment
 
-- **horizontal alignment -- *`text-align`***
+- **horizontal -- *`text-align`***
   - applies to block elements containing text (e.g. `<p>`)
 
 <pre class="code-render" default-style="" resizable="true" style="height: 250px;">
@@ -314,7 +314,7 @@ h1 {
 
 </pre>
 
-- **vertical alignment -- *`vertical-align`***
+- **vertical -- *`vertical-align`***
 
 <pre class="code-render" default-style="" resizable="true" style="height: 120px;">
 

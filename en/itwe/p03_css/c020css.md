@@ -59,10 +59,10 @@
   
   <!-- internal style sheet -->
   <style>
-  /* CSS language inside HTML document */
-  p {
-    color: gray;
-  }
+    /* CSS language inside HTML document */
+    p {
+      color: gray;
+    }
   </style>
 </head>
 
