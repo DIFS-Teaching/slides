@@ -65,13 +65,15 @@ public class Person
 
 ---
 
-# Konfigurace presistence
-- Soubor `persistence.xml`
-- Jméno jednotky persistence
-- Odkaz na konfigurovaný *data source*
-	- JNDI name (např. `jdbc/demo`)
-	- Případně další parametry pro mapování
-		- Např. řízení automatického generování schématu
+# Konfigurace databáze
+
+- V režii aplikačního serveru
+	- Server poskytuje aplikaci připojení k databázi
+	- To umožňuje různé konfigurace (produkční/vývojové prostředí) bez zásahů do aplikace
+- Vrstvy implementace
+	1. Relační DB server + JDBC ovladač
+	2. JDBC zdroj: Nakonfigurované připojení ke konkrétní databázi (vč. přístupových údajů)
+	3. Abstraktní vrstva - např. O/R mapování využívající JDBC zdroj
 
 ---
 
@@ -105,3 +107,15 @@ Viz [Relational database connections with JDBC](https://openliberty.io/docs/late
 - Pro aplikaci
 	- Soubor `WEB-INF/glassfish-resources.xml` 
 	- Příklad: [knihovny](https://github.com/cicekhayri/payara-micro-javaee-crud-rest-starter-project/blob/master/pom.xml), [konfigurace zdroje](https://github.com/cicekhayri/payara-micro-javaee-crud-rest-starter-project/blob/master/src/main/webapp/WEB-INF/glassfish-resources.xml)
+
+---
+
+# Konfigurace v aplikaci
+
+- Soubor [persistence.xml](https://github.com/DIFS-Teaching/jakartaee-basic/blob/main/rest-api/src/main/resources/META-INF/persistence.xml)
+- Jméno jednotky persistence
+- Odkaz na konfigurovaný *data source*
+	- JNDI name (např. `jdbc/demo`)
+	- Případně další parametry pro mapování
+		- Např. řízení automatického generování schématu
+
