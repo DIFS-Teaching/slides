@@ -32,15 +32,15 @@
 # Relative positioning - example
 
 ```html
-@HTML@
-<style>@@
-    .word {@@
-        font-weight: bold;@@
-    }@@
-</style>@@
-...@@
+
+<style>
+    .word {
+        font-weight: bold;
+    }
+</style>
+...
 This is <span class="word">bold</span> text.
-@/HTML@
+
 ``` 
 
 This is bold text.
@@ -50,18 +50,18 @@ This is bold text.
 # Relative positioning - example
 
 ```html
-@HTML@
-<style>@@
-    .word {@@
-        font-weight: bold;@@
-        @/position: relative;/@ @@
-        @/top: -0.5em;/@ @@
-        @/left: 5px;/@ @@
-    }@@
-</style>@@
-...@@
+
+<style>
+    .word {
+        font-weight: bold;
+        position: relative; 
+        top: -0.5em; 
+        left: 5px; 
+    }
+</style>
+...
 This is <span class="word">bold</span> text.
-@/HTML@
+
 ``` 
 
 This is bold text.
@@ -108,16 +108,16 @@ This is bold text.
 # Coordinate System (II)
 
   - Child blocks are positioned within **Viewport** (default): ```html
-@HTML@
-<div id="parent">@@
-    <div id="child1" style="position: absolute">@@
-    ...@@
-    </div>@@
-    <div id="child2" style="position: absolute">@@
-    ...@@
-    </div>@@
+
+<div id="parent">
+    <div id="child1" style="position: absolute">
+    ...
+    </div>
+    <div id="child2" style="position: absolute">
+    ...
+    </div>
 </div>
-@/HTML@
+
 ```
 
 ---
@@ -125,16 +125,16 @@ This is bold text.
 # Coordinate System (III)
 
   - Child blocks are positioned within **parent block** : ```html
-@HTML@
-<div @="" id="parent" style="position: relative">@@
-    <div id="child1" style="position: absolute">@@
-    ...@@
-    </div>@@
-    <div id="child2" style="position: absolute">@@
-    ...@@
-    </div>@@
+
+<div id="parent" style="position: relative">
+    <div id="child1" style="position: absolute">
+    ...
+    </div>
+    <div id="child2" style="position: absolute">
+    ...
+    </div>
 </div>
-@/HTML@
+
 ```
 
 ---
@@ -142,18 +142,18 @@ This is bold text.
 # Absolute positioning - example
 
 ```html
-@HTML@
-<style>@@
-    .word {@@
-        font-weight: bold;@@
-        @/position: absolute;/@ @@
-        @/top: 150px;/@ @@
-        @/left: 500px;/@ @@
-    }@@
-</style>@@
-...@@
+
+<style>
+    .word {
+        font-weight: bold;
+        position: absolute; 
+        top: 150px; 
+        left: 500px; 
+    }
+</style>
+...
 This is <span class="word">bold</span> text.
-@/HTML@
+
 ``` 
 
 This is bold text.
@@ -163,18 +163,18 @@ This is bold text.
 # Fixed positioning
 
 ```html
-@HTML@
-<style>@@
-    .word {@@
-        font-weight: bold;@@
-        @/position: fixed;/@ @@
-        @/top: 150px;/@ @@
-        @/left: 500px;/@ @@
-    }@@
-</style>@@
-...@@
+
+<style>
+    .word {
+        font-weight: bold;
+        position: fixed; 
+        top: 150px; 
+        left: 500px; 
+    }
+</style>
+...
 This is <span class="word">bold</span> text.
-@/HTML@
+
 ``` 
 
 This is bold text.
@@ -207,14 +207,14 @@ This is bold text.
 # Overlaping: example
 
 ```html
-@HTML@
+
 <div style="height: 4em; position: relative">
-<div @@="" class="box" style="position: absolute;@@     top: 30px; left: 180px">@@
-       First box</div>@@
-  <div @@="" class="box" style="position: absolute; top: 60px; left: 200px">@@
-       Second box</div>@@
+<div ="" class="box" style="position: absolute;     top: 30px; left: 180px">
+       First box</div>
+  <div ="" class="box" style="position: absolute; top: 60px; left: 200px">
+       Second box</div>
 </div>
-@/HTML@
+
 ``` 
 
 First box 
@@ -226,14 +226,14 @@ Second box
 # Overlaping: example
 
 ```html
-@HTML@
+
 <div style="height: 4em; position: relative">
-<div @@="" class="box" style="position: absolute;@@     top: 30px; left: 180px; @/z-index: 1/@">@@
-       First box</div>@@
-  <div @@="" class="box" style="position: absolute; top: 60px; left: 200px">@@
-       Second box</div>@@
+<div ="" class="box" style="position: absolute;     top: 30px; left: 180px; z-index: 1">
+       First box</div>
+  <div ="" class="box" style="position: absolute; top: 60px; left: 200px">
+       Second box</div>
 </div>
-@/HTML@
+
 ``` 
 
 First box 
@@ -255,9 +255,9 @@ Second box
 # Visibility - example
 
 ```html
-@HTML@
+
 This is <span style="...">invisible</span> text.
-@/HTML@
+
 ``` 
 
   1. `display: none`
