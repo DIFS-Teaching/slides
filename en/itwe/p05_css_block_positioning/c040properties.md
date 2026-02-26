@@ -89,7 +89,7 @@ Albert | Einstein
 
 # Examples  
   
-` @CSS@ table { border: 1px solid }@@ table th { border: 1px solid }@@ table td { border: none;@@ border-left: 1px solid; } @/CSS@ ` Name | Surname  
+` @CSS@ table { border: 1px solid } table th { border: 1px solid } table td { border: none; border-left: 1px solid; } @/CSS@ ` Name | Surname  
 ---|---  
 John | Wayne  
 Albert | Einstein
@@ -123,11 +123,12 @@ Albert | Einstein
 # Bullet type
 
   - The `list-style-type` property
-  - Applied to the `<li>` element ```html
-@CSS@
+  - Applied to the `<li>` element 
+
+```css
 ul li { list-style-type: square; }
-@/CSS@
-``` 
+```
+
   - Unordered lists: 
     - `list-style-type: disc`
     - `list-style-type: circle`
@@ -153,12 +154,12 @@ ul li { list-style-type: square; }
   - The `list-style-image` property
 
 ```html
-@HTML@
-<ul>@@
-<li style="list-style-image: url('ok.gif')">@@
-List item</li>@@
-</ul>@@
-@/HTML@
+
+<ul>
+<li style="list-style-image: url('ok.gif')">
+List item</li>
+</ul>
+
 ``` 
 
   - List item
@@ -193,11 +194,11 @@ List item</li>@@
   - The `cursor` property allows to change the mouse cursor look when placed over the particular element on the page.
 
 ```html
-@HTML@
-The cursor over this@@
-<span style="cursor: crosshair">word</span>@@
-has a different shape.@@
-@/HTML@
+
+The cursor over this
+<span style="cursor: crosshair">word</span>
+has a different shape.
+
 ``` 
 
 The cursor over this word has a different shape.
@@ -257,14 +258,12 @@ sw-resize| s-resize| se-resize
   - Highlighted by color, underlines on moving mouse over
   - It gets highlighed when activated, gets darker when visited
 
-```html
-@CSS@
-a { color: #aaf; text-decoration: none; }@@
-a:link { }@@
-a:visited { color: #339; }@@
-a:hover { text-decoration: underline; }@@
-a:active { text-decoration: underline; color: red; }@@
-@/CSS@
+```css
+a { color: #aaf; text-decoration: none; }
+a:link { }
+a:visited { color: #339; }
+a:hover { text-decoration: underline; }
+a:active { text-decoration: underline; color: red; }
 ``` 
 
 Example: Sample link.
@@ -286,19 +285,16 @@ Example: Sample link.
   - The first child element of its parent element
 
 ```html
-@HTML@
-<ul class="menu">@@
-<li>Blue item</li>@@
-<li>Green item</li>@@
-<li>Green item</li>@@
+<ul class="menu">
+<li>Blue item</li>
+<li>Green item</li>
+<li>Green item</li>
 </ul>
-``` @/HTML@ 
+```  
 
-```html
-@CSS@
-.menu li { color: green; }@@
+```css
+.menu li { color: green; }
 .menu li:first-child { color: blue; }
-@/CSS@
 ``` 
 
   - Similarly `last-child`, much more in CSS3
@@ -319,17 +315,16 @@ Example: Sample link.
 
 # Example 1
 
+```css
+p { text-transform: none; }
+p:first-line { text-transform: uppercase; }
+```
+
 ```html
-@CSS@
-p { text-transform: none; }@@
-p:first-line { text-transform: uppercase; }@@
-@/CSS@
-@HTML@
-@@
-<p>First line of this line will@@
+<p>First line of this line will
 be in capital letters. Any text follows. Any text follows.
 Any text follows.</p>
-@/HTML@
+
 ``` 
 
 First line of this line will be in capital letters. Any text follows. Any text follows. Any text follows.
@@ -338,20 +333,19 @@ First line of this line will be in capital letters. Any text follows. Any text f
 
 # Example 2
 
+```css
+p:first-letter {
+    font-size: 200%;
+    font-weight: bold;
+    float: left;
+}
+```
+
 ```html
-@CSS@
-p:first-letter {@@
-    font-size: 200%;@@
-    font-weight: bold;@@
-    float: left;@@
-}@@
-@/CSS@
-@HTML@
-@@
-<p>First letter will be large and floated@@
-by the remaining text. Other text as normal. Other text as normal.@@
+<p>First letter will be large and floated
+by the remaining text. Other text as normal. Other text as normal.
 Other text as normal.</p>
-@/HTML@
+
 ``` 
 
 First letter will be large and floated by the remaining text. Other text as normal. Other text as normal. Other text as normal.
@@ -372,17 +366,15 @@ First letter will be large and floated by the remaining text. Other text as norm
 
 # Example
 
+```css
+div.remark:before {
+    content: "Remark: ";
+    font-weight: bold;
+}
+```
+
 ```html
-@CSS@
-div.remark:before {@@
-    content: "Remark: ";@@
-    font-weight: bold;@@
-}@@
-@/CSS@
-@HTML@
-@@
 <div class="pozn">This rule doesn't always apply.</div>
-@/HTML@
 ``` 
 
 This rule doesn't always apply.

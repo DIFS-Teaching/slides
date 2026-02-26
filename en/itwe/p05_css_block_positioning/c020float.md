@@ -1,4 +1,4 @@
-# Floating objects
+# Floating blocks
 
   - Object that are flowed by the surrounding text
   - Creating a floating object: 
@@ -19,20 +19,19 @@
   - [Normal flow (default)](data/float0.html)
 
 ```html
-@HTML@
-...@@
-<div @="" class="floating" id="menu">@@
-    <h1>Menu</h1>@@
-    <ul>@@
-        <li>Red</li>@@
-        <li>Green</li>@@
-        <li>Magenta</li>@@
-        <li>Yellow</li>@@
-        <li>Dark blue</li>@@
-    </ul>@@
-</div>@@
 ...
-@/HTML@
+<div class="floating" id="menu">
+    <h1>Menu</h1>
+    <ul>
+        <li>Red</li>
+        <li>Green</li>
+        <li>Magenta</li>
+        <li>Yellow</li>
+        <li>Dark blue</li>
+    </ul>
+</div>
+...
+
 ```
 
 ---
@@ -40,14 +39,14 @@
 # Creating a floating object
 
 ```html
-@HTML@
-<style type="text/css">@@
-    #menu { background-color: #eef;@@
-            border: 1px solid #aaf;@@
-            width: 12em; }@@
-    .floating { float: left; }@@
+
+<style type="text/css">
+    #menu { background-color: #eef;
+            border: 1px solid #aaf;
+            width: 12em; }
+    .floating { float: left; }
 </style>
-@/HTML@
+
 ``` [Sample](data/float1.html)
 
 ---
@@ -55,16 +54,15 @@
 # Margins
 
 ```html
-@HTML@
-<style type="text/css">@@
-    #menu { background-color: #eef;@@
-            border: 1px solid #aaf;@@
-            width: 12em;@@
-            @/padding: 0;/@ @@
-            @/margin-right: 1em;/@ }@@
-    .floating { float: left; }@@
+<style type="text/css">
+    #menu { background-color: #eef;
+            border: 1px solid #aaf;
+            width: 12em;
+            padding: 0; 
+            margin-right: 1em; }
+    .floating { float: left; }
 </style>
-@/HTML@
+
 ```
 
 ---
@@ -72,38 +70,34 @@
 # Heading
 
 ```html
-@HTML@
-<style type="text/css">@@
-    #menu { ... }@@
-    @/#menu h1 { font-weight: bold;@@
-               font-size: 100%;@@
-               color: #fff;@@
-               background-color: #55f;@@
-               margin: 0;@@
-               padding: 0.5em; } /@ @@
-    .floating { float: left; }@@
+<style type="text/css">
+    #menu { ... }
+    #menu h1 { font-weight: bold;
+               font-size: 100%;
+               color: #fff;
+               background-color: #55f;
+               margin: 0;
+               padding: 0.5em; }  
+    .floating { float: left; }
 </style>
-@/HTML@
-``` [Sample](data/float2.html)
 
+``` [Sample](data/float2.html)
 ---
 
 # Paragraph block size
 
 ```html
-@HTML@
-<style type="text/css">@@
-    #menu { ... }@@
-    #menu h1 { font-weight: bold;@@
-               font-size: 100%;@@
-               color: #fff;@@
-               background-color: #55f;@@
-               margin: 0;@@
-               padding: 0.5em; }@@
-    .plovouci { float: left; }@@
-    @/p { border: 5px solid red; }/@ @@
+<style type="text/css">
+    #menu { ... }
+    #menu h1 { font-weight: bold;
+               font-size: 100%;
+               color: #fff;
+               background-color: #55f;
+               margin: 0;
+               padding: 0.5em; }
+    .plovouci { float: left; }
+    p { border: 5px solid red; } 
 </style>
-@/HTML@
 ``` [Sample](data/float3.html)
 
 ---
@@ -136,35 +130,32 @@
 # Block Height: Example
 
 ```html
-@HTML@
-<div class="contents">@@
-	<div class="col">Column 1</div>@@
-	<div class="col">Column 2</div>@@
-</div>@@
+<div class="contents">
+	<div class="col">Column 1</div>
+	<div class="col">Column 2</div>
+</div>
 <p>Next contents</p>
-@/HTML@
-``` ```html
-@CSS@
-.contents {@@
-	border: 5px solid blue;@@
-}@@
-.col {@@
-	float: left;@@
-	background: gray;@@
-}@@
-@/CSS@
+
+``` 
+
+```css
+.contents {
+	border: 5px solid blue;
+}
+.col {
+	float: left;
+	background: gray;
+}
 ```
 
 ---
 
 # Block Height: Example (II)
 
-```html
-@CSS@
-.contents {@@
-	overflow: visible;@@
+```css
+.contents {
+	overflow: visible;
 }
-@/CSS@
 ``` 
 
 Column 1
@@ -177,12 +168,10 @@ Next contents
 
 # Výška bloku: příklad (III)
 
-```html
-@CSS@
-.contents {@@
-	overflow: hidden;@@
+```css
+.contents {
+	overflow: hidden;
 }
-@/CSS@
 ``` 
 
 Column 1
