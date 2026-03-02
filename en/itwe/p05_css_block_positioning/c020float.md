@@ -14,99 +14,35 @@
 
 ---
 
+<!-- .slide: class="editor" -->
+
 # Creating a Floating Object
 
-<pre class="code-render" default-style="
-#menu {
-    background-color: #eef;
-    border: 1px solid #aaf;
-    width: 12em;
-    padding: 0;
-    margin-right: 1em;
-}
-#menu h1 {
-    font-weight: bold;
-    font-size: 100%;
-    color: #fff;
-    background-color: #55f;
-    margin: 0;
-    padding: 0.5em;
-}
-.floating { float: left; }
-" resizable="true" style="width: 45%; height: 300px; float: right; z-index: 1">
-<div class="floating" id="menu">
-    <h1>Menu</h1>
-    <ul>
-        <li>Red</li>
-        <li>Green</li>
-        <li>Magenta</li>
-        <li>Yellow</li>
-        <li>Dark blue</li>
-    </ul>
-</div>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.</p>
-<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
-</pre>
+<div data-iframe="assets/examples/float0.html"></div>
 
-```css
-#menu {
-    background-color: #eef;
-    border: 1px solid #aaf;
-    width: 12em;
-    padding: 0;
-    margin-right: 1em;
-}
-#menu h1 {
-    font-weight: bold;
-    font-size: 100%;
-    color: #fff;
-    background-color: #55f;
-    margin: 0;
-    padding: 0.5em;
-}
-.floating { float: left; }
-```
+=--
 
-```html
-<div class="floating" id="menu">
-    <h1>Menu</h1>
-    <ul>...</ul>
-</div>
-<p>text...</p>
-```
+<!-- .slide: class="editor" -->
+
+# Creating a Floating Object -- Width
+
+<div data-iframe="assets/examples/float1.html"></div>
+
+=--
+
+<!-- .slide: class="editor" -->
+
+# Creating a Floating Object -- Width
+
+<div data-iframe="assets/examples/float2.html"></div>
 
 ---
 
+<!-- .slide: class="editor" -->
+
 # Float and In-Flow Block Size
 
-<pre class="code-render" default-style="
-#menu {
-    background-color: #eef;
-    border: 1px solid #aaf;
-    width: 12em;
-    padding: 0;
-    margin-right: 1em;
-}
-.floating { float: left; }
-p { border: 5px solid red; }
-" resizable="true" style="width: 45%; height: 260px; float: right; z-index: 1">
-<div class="floating" id="menu">
-    <ul>
-        <li>Red</li>
-        <li>Green</li>
-        <li>Magenta</li>
-    </ul>
-</div>
-<p>The paragraph block box extends behind the floating element — the red border reveals its full width.</p>
-</pre>
-
-  - A `<p>` element is a **block** — its box covers the full width, even behind the float
-  - The text *wraps around* the float, but the **block box** doesn't shrink
-
-```css
-.floating { float: left; }
-p { border: 5px solid red; }
-```
+<div data-iframe="assets/examples/float3.html"></div>
 
 ---
 
