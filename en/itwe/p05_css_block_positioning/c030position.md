@@ -1,15 +1,16 @@
 # Positioning
 
   - Manual specification of the object's position on the page
-  - Absolute
-    - Placing an object to a particular place independently on the remaining text
   - Relative
     - Moving the object relatively to its normal position
+  - Absolute
+    - Placing an object to a particular place independently on the remaining text
   - The `position` property
     - `position: static` \-- normal flow
-    - `position: absolute` \-- absolute positioning
     - `position: relative` \-- relative positioning
+    - `position: absolute` \-- absolute positioning
     - `position: fixed` \-- fixed positioning
+  - Affects both the **element iself** and its **child elements**!
 
 ---
 
@@ -33,7 +34,7 @@
 
 <pre class="code-render" default-style="
 .word { font-weight: bold; }
-" resizable="true" style="width: 40%; height: 120px; float: right; z-index: 1">
+" resizable="true">
 This is <span class="word">bold</span> text.
 </pre>
 
@@ -55,10 +56,10 @@ This is <span class="word">bold</span> text.
 .word {
     font-weight: bold;
     position: relative;
-    top: -0.5em;
-    left: 5px;
+    top: 0.5em;
+    left: 20px;
 }
-" resizable="true" style="width: 40%; height: 120px; float: right; z-index: 1">
+" resizable="true">
 This is <span class="word">bold</span> text.
 </pre>
 
@@ -67,8 +68,8 @@ This is <span class="word">bold</span> text.
     .word {
         font-weight: bold;
         position: relative;
-        top: -0.5em;
-        left: 5px;
+        top: 0.5em;
+        left: 20px;
     }
 </style>
 ...
@@ -81,16 +82,44 @@ This is <span class="word">bold</span> text.
 
   - `position: absolute`
   - The object is **removed** from the normal flow
-    - Doesn't influence the text in the normal place
-  - It is placed to a particular place on the page
-    - It can overlap the objects being already on that place
-    - It is necessary to „make space"
+    - Doesn't influence the text in the original position
+  - It is placed to a particular poisition on the page
+    - It can overlap the content being already on that place
+    - It might be necessary to „make space"
   - The distance from the top left corner of the **containing block**
     - `top: length`
     - `left: length`
   - The distance from the bottom left corner
     - `bottom: length`
     - `right: length`
+
+=--
+
+# Absolute positioning - example
+
+<pre class="code-render" default-style="
+.word {
+    font-weight: bold;
+    position: absolute;
+    bottom: 0em;
+    left: 20px;
+}
+" resizable="true">
+This is <span class="word">bold</span> text.
+</pre>
+
+```html
+<style>
+    .word {
+        font-weight: bold;
+        position: absolute;
+        bottom: 0em;
+        left: 20px;
+    }
+</style>
+...
+This is <span class="word">bold</span> text.
+```
 
 ---
 
@@ -109,7 +138,7 @@ This is <span class="word">bold</span> text.
 # Coordinate System
 
   - Normally, the coordinate system is formed by the **Viewport**
-  - Objects that have `position: absolute` or `relative` or `fixed`, create a **local coordinate system** for absolute positioning
+  - Elements that have `position: absolute`, `relative` or `fixed`, create a **local coordinate system** for absolute positioning
     - Nested object with `position: absolute` are positioned from within the parent
 
 =--
@@ -118,20 +147,19 @@ This is <span class="word">bold</span> text.
 
   - Child blocks are positioned within **Viewport** (parent is `static`):
 
-<pre class="code-render" default-style="
-#parent { background: #eef; border: 2px solid #aaf; height: 130px; }
-#child1 { position: absolute; top: 10px; left: 10px; background: #fbb; border: 1px solid red; padding: 4px; }
-#child2 { position: absolute; top: 45px; left: 80px; background: #bfb; border: 1px solid green; padding: 4px; }
-" resizable="true" style="height: 180px; width: 90%; margin: auto">
-<div id="parent">
+<div class="render-example">
+
+<div style="background: #eef; border: 2px solid #aaf; height: 130px;">
     Parent (position: static)
-    <div id="child1">child1 (absolute)</div>
-    <div id="child2">child2 (absolute)</div>
+    <div style="position: absolute; top: 0; right: 0px; background: #fbb; border: 1px solid red; padding: 4px;">child1 (absolute)</div>
+    <div style="position: absolute; bottom: 0; left: 0px; background: #bfb; border: 1px solid green; padding: 4px; z-index: 1000">child2 (absolute)</div>
 </div>
-</pre>
+
+</div>
 
 ```html
 <div id="parent">
+    Parent (position: static)
     <div id="child1" style="position: absolute">...</div>
     <div id="child2" style="position: absolute">...</div>
 </div>
@@ -143,57 +171,22 @@ This is <span class="word">bold</span> text.
 
   - Child blocks are positioned within **parent block** (parent is `relative`):
 
-<pre class="code-render" default-style="
-#parent { background: #eef; border: 2px solid #aaf; height: 130px; position: relative; margin: 10px; }
-#child1 { position: absolute; top: 10px; left: 10px; background: #fbb; border: 1px solid red; padding: 4px; }
-#child2 { position: absolute; top: 45px; left: 80px; background: #bfb; border: 1px solid green; padding: 4px; }
-" resizable="true" style="height: 180px; width: 90%; margin: auto">
-<div id="parent">
+<div class="render-example">
+
+<div style="background: #eef; border: 2px solid #aaf; height: 130px; position: relative;">
     Parent (position: relative)
-    <div id="child1">child1 (absolute)</div>
-    <div id="child2">child2 (absolute)</div>
+    <div style="position: absolute; top: 0; right: 0px; background: #fbb; border: 1px solid red; padding: 4px;">child1 (absolute)</div>
+    <div style="position: absolute; bottom: 0; left: 0px; background: #bfb; border: 1px solid green; padding: 4px; z-index: 1000">child2 (absolute)</div>
 </div>
-</pre>
+
+</div>
 
 ```html
 <div id="parent" style="position: relative">
+    Parent (position: relative)
     <div id="child1" style="position: absolute">...</div>
     <div id="child2" style="position: absolute">...</div>
 </div>
-```
-
----
-
-# Absolute positioning - example
-
-<pre class="code-render" default-style="
-.container { position: relative; height: 180px; background: #f5f5f5; border: 1px solid #ccc; }
-.word {
-    font-weight: bold;
-    position: absolute;
-    top: 60px;
-    left: 120px;
-    background: yellow;
-    padding: 2px 6px;
-}
-" resizable="true" style="width: 45%; height: 220px; float: right; z-index: 1">
-<div class="container">
-    <p>Normal text in container.</p>
-    <span class="word">bold</span>
-</div>
-</pre>
-
-```html
-<style>
-    .word {
-        font-weight: bold;
-        position: absolute;
-        top: 150px;
-        left: 500px;
-    }
-</style>
-...
-This is <span class="word">bold</span> text.
 ```
 
 ---
@@ -242,7 +235,7 @@ This is <span class="word">bold</span> text.
 
 ---
 
-# Object overlaping
+# Element overlaping
 
   - Two elements may overlap (relative or absolute positioning)
   - Normally, the later specified object overlaps the earlier object
@@ -257,7 +250,7 @@ This is <span class="word">bold</span> text.
 
 <pre class="code-render" default-style="
 .box { padding: 1em; border: 2px solid; }
-" resizable="true" style="width: 45%; height: 180px; float: right; z-index: 1">
+" resizable="false" style="height: 10em">
 <div style="height: 120px; position: relative; background: #f5f5f5;">
     <div class="box" style="position: absolute; top: 15px; left: 20px; background: #bbf; border-color: blue;">First box</div>
     <div class="box" style="position: absolute; top: 50px; left: 60px; background: #fbb; border-color: red;">Second box</div>
@@ -281,9 +274,9 @@ This is <span class="word">bold</span> text.
 
 <pre class="code-render" default-style="
 .box { padding: 1em; border: 2px solid; }
-" resizable="true" style="width: 45%; height: 180px; float: right; z-index: 1">
+" resizable="false" style="height: 10em">
 <div style="height: 120px; position: relative; background: #f5f5f5;">
-    <div class="box" style="position: absolute; top: 15px; left: 20px; background: #bbf; border-color: blue; z-index: 1;">First box (z-index: 1)</div>
+    <div class="box" style="position: absolute; top: 15px; left: 20px; background: #bbf; border-color: blue; z-index: 1;">First box</div>
     <div class="box" style="position: absolute; top: 50px; left: 60px; background: #fbb; border-color: red;">Second box</div>
 </div>
 </pre>
@@ -311,14 +304,7 @@ This is <span class="word">bold</span> text.
 
 ---
 
-# Visibility - example
-
-<pre class="code-render" default-style="" resizable="true" style="width: 45%; height: 160px; float: right; z-index: 1">
-<p>1. <code>display: none</code>:<br>
-This is <span style="display: none">invisible</span> text. (gap removed)</p>
-<p>2. <code>visibility: hidden</code>:<br>
-This is <span style="visibility: hidden">invisible</span> text. (space preserved)</p>
-</pre>
+# Visibility -- example
 
 ```html
 This is <span style="...">invisible</span> text.

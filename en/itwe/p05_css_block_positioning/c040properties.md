@@ -10,35 +10,7 @@
 
 ---
 
-# Selectors
-
-  - Usually context selectors
-    - `table { ... }`
-    - `table td { ... }`
-    - `table.results td { ... }`
-    - `table th.main { ... }`
-    - `table tr#row1 { ... }`
-  - Using cascade:
-    - `tr { ... }`
-    - `table.results tr { ... }`
-
----
-
-# Table captions - `<caption>`
-
-  - Caption position
-    - `caption-side: top`
-    - `caption-side: bottom`
-    - `caption-side: left`
-    - `caption-side: right`
-  - Other properties
-    - `text-align`
-    - `vertical-align`
-    - `width`
-
----
-
-# Table caption -- example
+# Table caption
 
 <pre class="code-render" default-style="
 table {
@@ -50,7 +22,7 @@ td, th { padding: 0.2em 0.8em; border: 1px solid #ccc; }
 caption { font-weight: bold; font-style: italic; }
 .top caption { caption-side: top; }
 .bottom caption { caption-side: bottom; }
-" resizable="true" style="height: 300px; width: 90%; margin: auto">
+" resizable="false" style="height:15em" >
 <table class="top">
     <caption>Tab 1. Caption on the top</caption>
     <tr><th>Name</th><th>Surname</th></tr>
@@ -58,7 +30,7 @@ caption { font-weight: bold; font-style: italic; }
     <tr><td>Albert</td><td>Einstein</td></tr>
 </table>
 <table class="bottom">
-    <caption>Tab 2. Caption at the bottom</caption>
+    <caption>Tab 2. Caption in the bottom</caption>
     <tr><th>Name</th><th>Surname</th></tr>
     <tr><td>John</td><td>Wayne</td></tr>
     <tr><td>Albert</td><td>Einstein</td></tr>
@@ -85,6 +57,7 @@ caption { font-weight: bold; font-style: italic; }
 # Border Examples
 
 <pre class="code-render" default-style="
+* { font-family: sans-serif }
 table { margin-bottom: 0.8em; font-size: 0.85em; }
 td, th { padding: 0.15em 0.5em; }
 .t1 { border-collapse: separate; border: 1px solid #999; }
@@ -138,31 +111,7 @@ table td { border: none; border-left: 1px solid; }
 
 ---
 
-# Table and cell background
-
-  - Each layer is either transparant (`border-color: transparent`) or it has a colour or an image assigned
-  - The layers go in following order (bottom to top)
-    1. Table `<table>`
-    2. Column groups `<colgroup>`
-    3. Columns `<col>`
-    4. Row groups `<thead>`, `<tbody>`, `<tfoot>`
-    5. Rows `<tr>`
-    6. Cells `<td>`, `<th>`
-
----
-
-# List styling
-
-  - The list items can be style (ordered or unordered)
-  - We can define
-    - **Bullet type** (unordered)
-    - **Numbering type** (ordered)
-    - **An image instead of the bullet**
-    - **Bullet position** (inside or outside)
-
----
-
-# Bullet and Numbering Types
+# Lists: Bullet and Numbering Types
 
 <pre class="code-render" default-style="
 .col { display: inline-block; vertical-align: top; width: 45%; margin-right: 4%; }
@@ -196,31 +145,6 @@ ol li { list-style-type: lower-roman; }
 
 ---
 
-# Images instead of the bullets
-
-  - The `list-style-image` property
-
-<pre class="code-render" default-style="
-ul li {
-    list-style-image: url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2210%22 height=%2210%22%3E%3Ccircle cx=%225%22 cy=%225%22 r=%224%22 fill=%22%23e44%22/%3E%3C/svg%3E');
-}
-" resizable="true" style="width: 45%; height: 130px; float: right; z-index: 1">
-<ul>
-    <li>List item one</li>
-    <li>List item two</li>
-    <li>List item three</li>
-</ul>
-</pre>
-
-```html
-<ul>
-    <li style="list-style-image: url('ok.gif')">
-        List item</li>
-</ul>
-```
-
----
-
 # Bullet position
 
   - The `list-style-position` property
@@ -229,7 +153,7 @@ ul li {
 .outside { list-style-position: outside; background: #eef; }
 .inside { list-style-position: inside; background: #efe; }
 ul { width: 18em; margin: 0.3em auto; padding-left: 2em; }
-" resizable="true" style="height: 220px; width: 90%; margin: auto">
+" resizable="false" style="height: 15em">
 <p><code>list-style-position: outside</code> (default):</p>
 <ul class="outside">
     <li>First item in longer text in longer text in longer text in longer text...</li>
@@ -242,22 +166,11 @@ ul { width: 18em; margin: 0.3em auto; padding-left: 2em; }
 
 ---
 
-# The `list-style` property
-
-  - Sumarizes the `list-style-*` properties
-  - Format:
-    - `list-style: type position image`
-  - Examples:
-    - `list-style: square inside none`
-    - `list-style: lower-alpha outside url("obr.gif")`
-
----
-
 # Mouse cursor
 
   - The `cursor` property allows to change the mouse cursor look when placed over the particular element on the page.
 
-<pre class="code-render" default-style="" resizable="true" style="width: 45%; height: 100px; float: right; z-index: 1">
+<pre class="code-render" default-style="" resizable="true" >
 The cursor over this
 <span style="cursor: crosshair">word</span>
 has a different shape.
@@ -273,17 +186,16 @@ has a different shape.
 
 # Cursor types
 
-auto| crosshair| default
----|---|---
-hand| pointer| move
-text| wait| help
-nw-resize| n-resize| ne-resize
----|---|---
-w-resize| | e-resize
-sw-resize| s-resize| se-resize
-
-  - Pointer cursor for all the browsers:
-    - `cursor: pointer; cursor: hand`
+<table style="width: 20em">
+<tr><td style="cursor: auto">auto</td><td style="cursor: crosshair">crosshair</td><td style="cursor: default">default</td></tr>
+<tr><td style="cursor: hand">hand</td><td style="cursor: pointer">pointer</td><td style="cursor: move">move</td></tr>
+<tr><td style="cursor: text">text</td><td style="cursor: wait">wait</td><td style="cursor: help">help</td></tr>
+</table>
+<table style="width: 20em">
+<tr><td style="cursor: nw-resize">nw-resize</td><td style="cursor: n-resize">n-resize</td><td style="cursor: ne-resize">ne-resize</td></tr>
+<tr><td style="cursor: w-resize">w-resize</td><td></td><td style="cursor: e-resize">e-resize</td></tr>
+<tr><td style="cursor: sw-resize">sw-resize</td><td style="cursor: s-resize">s-resize</td><td style="cursor: se-resize">se-resize</td></tr>
+</table>
 
 ---
 
@@ -294,17 +206,18 @@ sw-resize| s-resize| se-resize
     - **Pseudo classes** : in different states
       - E.g. links visited, not visited, focused, etc.
       - Specificity as for classes
+      - Denoted by „:"
     - **Pseudo elements** : different parts of elements
       - First element, first letter, before, after, ...
       - Specificity as for elements
-  - Denoted by „:"
-    - `p:first-letter { font-size: 20px; }`
+      - Denoted by „::"
+    - `p::first-letter { font-size: 20px; }`
 
 ---
 
 # Pseudo Classes: Link Style
 
-  - Static (relatively)
+  - Static
     - Not visited link:
 `a:link { color: green; }`
     - Visited link:
@@ -330,7 +243,7 @@ a:link { }
 a:visited { color: #339; }
 a:hover { text-decoration: underline; }
 a:active { text-decoration: underline; color: red; }
-" resizable="true" style="width: 45%; height: 100px; float: right; z-index: 1">
+" resizable="true">
 Example: <a href="#">Sample link</a>.
 </pre>
 
@@ -344,16 +257,6 @@ a:active { text-decoration: underline; color: red; }
 
 ---
 
-# Some tricks about links
-
-  - Element `<a>` always belongs to some pseudoclass
-    - It's changing according to circumstances
-  - Rule `a { ... }` has lower priority than the rules with a pseudoclass
-    - Pseudoclass has the same specificity as a class
-  - The `a` rule cannot redefine the properties already defined for pseudoclasses
-
----
-
 # Pseudo Class :first-child
 
   - The first child element of its parent element
@@ -361,7 +264,7 @@ a:active { text-decoration: underline; color: red; }
 <pre class="code-render" default-style="
 .menu li { color: green; }
 .menu li:first-child { color: blue; }
-" resizable="true" style="width: 40%; height: 150px; float: right; z-index: 1">
+" resizable="true">
 <ul class="menu">
     <li>Blue item</li>
     <li>Green item</li>
@@ -382,19 +285,19 @@ a:active { text-decoration: underline; color: red; }
 .menu li:first-child { color: blue; }
 ```
 
-  - Similarly `last-child`, much more in CSS3
+  - Similarly `last-child`, and much more...
 
 ---
 
 # Pseudo Elements: Firtst Letters and Lines
 
-  - Element `:first-line`
+  - Element `::first-line`
     - Denotes the first line of an arbitrary element
-    - E.g. `p:first-line` \- first line of a paragraph
+    - E.g. `p::first-line` \- first line of a paragraph
     - Depends on the window width, font size, ...
-  - Element `:first-letter`
+  - Element `::first-letter`
     - Denotes first letter of an element
-    - E.g. `p:first-letter` \- first letter of a paragraph
+    - E.g. `p::first-letter` \- first letter of a paragraph
 
 ---
 
@@ -402,14 +305,14 @@ a:active { text-decoration: underline; color: red; }
 
 <pre class="code-render" default-style="
 p { text-transform: none; }
-p:first-line { text-transform: uppercase; }
-" resizable="true" style="width: 45%; height: 150px; float: right; z-index: 1">
+p::first-line { text-transform: uppercase; }
+" resizable="true" style="width: 50%">
 <p>First line of this paragraph will be in capital letters. Any text follows. Any text follows. Any text follows.</p>
 </pre>
 
 ```css
 p { text-transform: none; }
-p:first-line { text-transform: uppercase; }
+p::first-line { text-transform: uppercase; }
 ```
 
 ```html
@@ -423,17 +326,17 @@ Any text follows.</p>
 # Example 2
 
 <pre class="code-render" default-style="
-p:first-letter {
+p::first-letter {
     font-size: 200%;
     font-weight: bold;
     float: left;
 }
-" resizable="true" style="width: 45%; height: 160px; float: right; z-index: 1">
+" resizable="true" style="width: 50%">
 <p>First letter will be large and floated by the remaining text. Other text as normal. Other text as normal. Other text as normal.</p>
 </pre>
 
 ```css
-p:first-letter {
+p::first-letter {
     font-size: 200%;
     font-weight: bold;
     float: left;
@@ -450,34 +353,26 @@ Other text as normal.</p>
 
 # Generated content
 
-  - Low support in browsers (missing in MSIE)
   - Allows to generate a text that is not present in the document
-  - Pseudo-elements `:before` a `:after`
-    - `:before` \- add a text before the element contents
-    - `:after` \- after the text contents
+  - Pseudo-elements `::before` a `::after`
   - The `content:` property
-    - The text string to be inserted
-
----
-
-# Example
 
 <pre class="code-render" default-style="
 div.remark:before {
     content: 'Remark: ';
     font-weight: bold;
 }
-" resizable="true" style="width: 45%; height: 100px; float: right; z-index: 1">
+" resizable="true">
 <div class="remark">This rule doesn't always apply.</div>
 </pre>
 
 ```css
-div.remark:before {
+div.remark::before {
     content: "Remark: ";
     font-weight: bold;
 }
 ```
 
 ```html
-<div class="pozn">This rule doesn't always apply.</div>
+<div class="remark">This rule doesn't always apply.</div>
 ```

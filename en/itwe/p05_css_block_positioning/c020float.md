@@ -57,6 +57,9 @@
   - First, previous floating object are placed, then the text is placed below
 
 <pre class="code-render" default-style="
+* {
+  font-family: sans-serif;
+}
 .box {
     float: left;
     width: 8em;
@@ -66,12 +69,28 @@
     padding: 0.5em;
 }
 .cleared { clear: both; border-top: 2px solid red; padding-top: 0.3em; }
-" resizable="true" style="height: 200px; width: 90%; margin: auto">
+" resizable="true" style="height: 8em; width: 90%; margin: auto">
 <div class="box">Float 1</div>
 <div class="box">Float 2</div>
-<p class="cleared">This paragraph has <code>clear: both</code> — starts below both floats.</p>
 <p>This paragraph has no clear — wraps around the floats.</p>
+<p class="cleared">This paragraph has <code>clear: both</code> — starts below both floats.</p>
 </pre>
+
+=--
+
+<!-- .slide: class="editor" -->
+
+# Clear property
+
+<div data-iframe="assets/examples/clear1.html"></div>
+
+=--
+
+<!-- .slide: class="editor" -->
+
+# Clear property
+
+<div data-iframe="assets/examples/clear2.html"></div>
 
 ---
 
@@ -80,11 +99,14 @@
   - When a block has `height:auto`, its height depends on its contents
   - For `overflow: visible`
     - Only in-flow content is considered
-    - If the block contains floating blocks only, it has a **zero height** in the result
+    - If the block contains floating blocks only, it has **zero height** in the result
   - Otherwise (e.g. `overflow: hidden`)
     - Floating content is considered too
 
-<pre class="code-render" default-style="
+<pre class="code-render" style="height: 12em" default-style="
+* {
+  font-family: sans-serif;
+}
 .contents {
     border: 5px solid blue;
     margin-bottom: 1em;
