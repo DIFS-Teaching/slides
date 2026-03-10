@@ -6,10 +6,11 @@
   - Absolute
     - Placing an object to a particular place independently on the remaining text
   - The `position` property
-    - `position: static` \-- normal flow
+    - `position: static` \-- normal position (normal flow)
     - `position: relative` \-- relative positioning
     - `position: absolute` \-- absolute positioning
     - `position: fixed` \-- fixed positioning
+    - `position: sticky` \-- sticky positioning
   - Affects both the **element iself** and its **child elements**!
 
 ---
@@ -191,47 +192,39 @@ This is <span class="word">bold</span> text.
 
 ---
 
+<!-- .slide: class="editor" -->
+
 # Fixed positioning
 
-<pre class="code-render" default-style="
-.word {
-    font-weight: bold;
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: yellow;
-    padding: 4px 8px;
-    border: 1px solid #999;
-}
-" resizable="true" style="width: 45%; height: 200px; float: right; z-index: 1">
-<p>Normal text content here. The bold word is fixed to the top-right corner of the viewport.</p>
-<span class="word">bold (fixed)</span>
-</pre>
+<div data-iframe="assets/examples/fixed.html"></div>
 
-```html
-<style>
-    .word {
-        font-weight: bold;
-        position: fixed;
-        top: 150px;
-        left: 500px;
-    }
-</style>
-...
-This is <span class="word">bold</span> text.
-```
+---
+
+<!-- .slide: class="editor" -->
+
+# Sticky positioning
+
+<div data-iframe="assets/examples/sticky.html"></div>
 
 ---
 
 # Positioned Element Width and Height
 
   - The equation for width:
-**left** \+ margin-left + border-left-width +
-\+ padding-left + width + padding-right +
-\+ border-right-width + margin-right + **right** = _containing_block_width_
+
+
+<div class="textbox">
+
+**left** + margin-left + border-left-width + padding-left \
+\+ width \
+\+ padding-right + border-right-width + margin-right + **right** \
+\= _containing_block_width_
+
+</div>
+
   - The `auto` values for `left` and `top` are derived from _static position_
   - Computation of multiple `auto` values is defined in the [specification](http://www.w3.org/TR/CSS21/visudet.html#abs-non-replaced-width)
-  - The **height** is computed analogously
+  - The **height** is computed **analogously**
 
 ---
 
