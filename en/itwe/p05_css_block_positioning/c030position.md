@@ -194,6 +194,14 @@ This is <span class="word">bold</span> text.
 
 <!-- .slide: class="editor" -->
 
+# Absolute positioning -- containing blocks
+
+<div data-iframe="assets/examples/absolute.html"></div>
+
+---
+
+<!-- .slide: class="editor" -->
+
 # Fixed positioning
 
 <div data-iframe="assets/examples/fixed.html"></div>
@@ -287,29 +295,23 @@ This is <span class="word">bold</span> text.
 
 ---
 
-# Object hiding
-
-  - Two possibilities
-    1. `display: none`
-       - The element is totally ignored during rendering
-    2. `visibility: hidden`
-       - The object occupies the place on the page but it is not displayed
-
----
-
-# Visibility -- example
+# Content hiding
 
 ```html
 This is <span style="...">invisible</span> text.
 ```
 
-  1. `display: none`
+  1. `display: none` -- the element is totally ignored during layout and rendering
 
-This is invisible text. (gap removed)
+<div class="textbox">
+This is <span style="display: none">invisible</span> text.
+</div>
 
-  2. `visibility: hidden`
+  2. `visibility: hidden` -- the element is considered during layout but not displayed
 
-This is &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; text. (space preserved)
+<div class="textbox">
+This is <span style="visibility: hidden">invisible</span> text.
+</div>
 
 ---
 

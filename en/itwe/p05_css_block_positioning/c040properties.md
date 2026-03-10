@@ -113,28 +113,26 @@ table td { border: none; border-left: 1px solid; }
 
 # Lists: Bullet and Numbering Types
 
-<pre class="code-render" default-style="
-.col { display: inline-block; vertical-align: top; width: 45%; margin-right: 4%; }
-ul, ol { margin: 0.2em 0 0.2em 2em; }
-li { margin-bottom: 0.2em; }
-" resizable="true" style="height: 360px; width: 90%; margin: auto">
-<div class="col">
+<div class="col textbox">
     <strong>Unordered (<code>ul</code>)</strong>
-    <ul style="list-style-type: disc"><li>disc (default)</li></ul>
-    <ul style="list-style-type: circle"><li>circle</li></ul>
-    <ul style="list-style-type: square"><li>square</li></ul>
-    <ul style="list-style-type: none"><li>none</li></ul>
+    <ul>
+        <li style="list-style-type: disc">disc (default)</li>
+        <li style="list-style-type: circle">circle</li>
+        <li style="list-style-type: square">square</li>
+        <li style="list-style-type: none">none</li>
+    </ul>
 </div>
-<div class="col">
+<div class="col textbox">
     <strong>Ordered (<code>ol</code>)</strong>
-    <ol style="list-style-type: decimal"><li>decimal</li></ol>
-    <ol style="list-style-type: lower-roman"><li>lower-roman</li></ol>
-    <ol style="list-style-type: upper-roman"><li>upper-roman</li></ol>
-    <ol style="list-style-type: lower-alpha"><li>lower-alpha</li></ol>
-    <ol style="list-style-type: upper-alpha"><li>upper-alpha</li></ol>
-    <ol style="list-style-type: none"><li>none</li></ol>
+    <ol>
+        <li style="list-style-type: decimal">decimal</li>
+        <li style="list-style-type: lower-roman">lower-roman</li>
+        <li style="list-style-type: upper-roman">upper-roman</li>
+        <li style="list-style-type: lower-alpha">lower-alpha</li>
+        <li style="list-style-type: upper-alpha">upper-alpha</li>
+        <li style="list-style-type: none">none</li>
+    </ol>
 </div>
-</pre>
 
   - The `list-style-type` property — applied to the `<li>` element
 
@@ -354,7 +352,7 @@ Other text as normal.</p>
 # Generated content
 
   - Allows to generate a text that is not present in the document
-  - Pseudo-elements `::before` a `::after`
+  - Pseudo-elements `::before` and `::after`
   - The `content:` property
 
 <pre class="code-render" default-style="
