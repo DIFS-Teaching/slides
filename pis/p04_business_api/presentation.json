@@ -15,6 +15,7 @@
         "c010business.md",
         "c020rest.md",
         "c030graphql.md",
+        "c040identity.md",
         "c999final.md"
     ]
 }
