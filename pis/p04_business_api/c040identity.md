@@ -65,20 +65,21 @@
 
 # OAuth 2.0 – Authorization Code Flow
 
-```
+<pre style="font-size: 80%; line-height: 1.5">
 Uživatel            Klient              Auth Server        Resource Server
    |                   |                    |                    |
-   |-- přihlásit se -->|                    |                    |
-   |                   |-- redirect ------->|                    |
-   |<------- login page ------------------- |                    |
-   |------- přihlásí se + souhlas -------->|                    |
-   |<------- redirect + auth_code ---------|                    |
-   |                   |<-- auth_code ------|                    |
-   |                   |-- code + secret -->|                    |
-   |                   |<-- access_token ---|                    |
-   |                   |-- access_token --------------------------->|
-   |                   |<-- data --------------------------------------|
-```
+   |–– přihlásit se ––>|                    |                    |
+   |                   |–– redirect –––––––>|                    |
+   |<––––––– login page ––––––––––––––––––– |                    |
+   |–––––––– přihlásí se + souhlas ––––––––>|                    |
+   |<––––––– redirect + auth_code ––––––––––|                    |
+   |                   |<–– auth_code ––––––|                    |
+   |                   |–– code + secret ––>|                    |
+   |                   |<–– access_token –––|                    |
+   |                   |–– access_token ––––––––––––––––––––––––>|
+   |                   |<–– data ––––––––––––––––––––––––––––––––|
+</pre>
+
 <!-- .element: class="small" -->
 
 ---
@@ -109,6 +110,7 @@ Uživatel            Klient              Auth Server        Resource Server
 - **Tenká autentizační vrstva nad OAuth 2.0**
 	- OAuth 2.0 řeší autorizaci, OIDC přidává **autentizaci**
 	- Klient se dozví *kdo* je uživatel, ne jen že má přístup
+        - Např. jméno, e-mail, fotka
 - Přidává:
 	- **ID Token** – JWT s informacemi o uživateli (identity claims)
 	- **UserInfo Endpoint** – dotaz na další claims
@@ -124,7 +126,6 @@ Uživatel            Klient              Auth Server        Resource Server
 	- `sub` – unikátní identifikátor uživatele u IdP
 	- `aud` – příjemce (Client ID aplikace)
 	- `exp`, `iat` – expirace a čas vydání
-	- `nonce` – ochrana proti replay útokům
 
 ```json
 {
@@ -152,6 +153,19 @@ Uživatel            Klient              Auth Server        Resource Server
 
 ---
 
+# PKCE – Proof Key for Code Exchange
+- Rozšíření Authorization Code Flow pro **veřejné klienty**
+	- Mobilní aplikace, SPA (nemohou bezpečně uchovat client_secret)
+- Princip:
+	1. Klient vygeneruje náhodný `code_verifier`
+	2. Odešle hash `code_challenge = SHA256(code_verifier)` s požadavkem
+	3. Auth Server si uloží `code_challenge`
+	4. Při výměně kódu klient pošle `code_verifier`
+	5. Server ověří: `SHA256(code_verifier) == code_challenge`
+- Chrání před zachycením `authorization_code`
+
+---
+
 # SAML 2.0
 - https://www.oasis-open.org/committees/security/
 - **Security Assertion Markup Language**
@@ -161,28 +175,6 @@ Uživatel            Klient              Auth Server        Resource Server
 - Role:
 	- **Identity Provider (IdP)** – spravuje uživatele, vydává assertions
 	- **Service Provider (SP)** – aplikace, přijímá assertions
-
----
-
-# SAML 2.0 – Assertion
-
-```xml
-<saml:Assertion xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion"
-    Version="2.0" IssueInstant="2024-01-15T10:00:00Z">
-  <saml:Issuer>https://idp.firma.cz</saml:Issuer>
-  <saml:Subject>
-    <saml:NameID Format="urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress">
-      jan.novak@firma.cz
-    </saml:NameID>
-  </saml:Subject>
-  <saml:AttributeStatement>
-    <saml:Attribute Name="role">
-      <saml:AttributeValue>admin</saml:AttributeValue>
-    </saml:Attribute>
-  </saml:AttributeStatement>
-</saml:Assertion>
-```
-<!-- .element: class="small" -->
 
 ---
 
@@ -199,31 +191,6 @@ Uživatel            Klient              Auth Server        Resource Server
 
 ---
 
-# OAuth 2.0 vs. SAML vs. OIDC
-
-| | OAuth 2.0 | SAML 2.0 | OIDC |
-|---|---|---|---|
-| **Formát** | JSON/JWT | XML | JSON/JWT |
-| **Protokol** | HTTP | HTTP/SOAP | HTTP |
-| **Účel** | Autorizace | Autentizace+SSO | Autentizace |
-| **Typické použití** | API přístup | Podnikový SSO | Moderní SSO |
-| **Složitost** | střední | vysoká | nízká–střední |
-
----
-
-# PKCE – Proof Key for Code Exchange
-- Rozšíření Authorization Code Flow pro **veřejné klienty**
-	- Mobilní aplikace, SPA (nemohou bezpečně uchovat client_secret)
-- Princip:
-	1. Klient vygeneruje náhodný `code_verifier`
-	2. Odešle hash `code_challenge = SHA256(code_verifier)` s požadavkem
-	3. Auth Server si uloží `code_challenge`
-	4. Při výměně kódu klient pošle `code_verifier`
-	5. Server ověří: `SHA256(code_verifier) == code_challenge`
-- Chrání před zachycením `authorization_code`
-
----
-
 # Keycloak
 - https://www.keycloak.org/
 - Open-source **Identity and Access Management** server
@@ -233,18 +200,6 @@ Uživatel            Klient              Auth Server        Resource Server
 - Sociální přihlášení (Google, GitHub, ...)
 - Administrátorská konzole, REST API pro správu
 - Alternativy: Auth0, Microsoft Entra ID, Okta, AWS Cognito
-
----
-
-# Keycloak – konfigurace
-
-- **Realm** – izolovaný prostor pro uživatele a aplikace (tenant)
-- **Client** – registrovaná aplikace, která používá IdP
-	- Nastavení `redirect_uri`, scopes, typ klienta
-- **User** – uživatel s heslem, rolemi a atributy
-- **Role** – oprávnění přiřazená uživatelům nebo skupinám
-- Discovery endpoint (OIDC): \
-`http://localhost:8080/realms/{realm}/.well-known/openid-configuration`
 
 ---
 
@@ -286,7 +241,6 @@ public class AppConfig { }
 
 # Správa identit v Open Liberty
 - Open Liberty podporuje všechny hlavní standardy přes **features**
-- Přehled features:
 
 | Feature | Účel |
 |---------|------|
@@ -390,22 +344,6 @@ public class AppConfig { }
 </featureManager>
 ```
 
-```java
-@OpenIdAuthenticationMechanismDefinition(
-    providerURI = "http://keycloak:8080/realms/myrealm",
-    clientId = "my-app",
-    clientSecret = "${oidcConfig.secret}",
-    redirectURI = "${baseURL}/callback",
-    claimsDefinition = @ClaimsDefinition(
-        callerNameClaim = "preferred_username",
-        callerGroupsClaim = "groups"
-    )
-)
-@ApplicationScoped
-public class AppConfig { }
-```
-<!-- .element: class="small" -->
-
 - Guide + Keycloak: https://openliberty.io/blog/2024/07/31/keycloak-with-openliberty.html
 
 ---
@@ -413,17 +351,6 @@ public class AppConfig { }
 # Open Liberty – MicroProfile JWT
 - Feature `mpJwt-2.1` – ověření JWT Bearer tokenů na Resource Serveru
 - Konfigurace v `server.xml` nebo `microprofile-config.properties`
-
-```xml
-<featureManager>
-    <feature>mpJwt-2.1</feature>
-</featureManager>
-
-<mpJwt id="myJwt"
-    issuer="http://keycloak:8080/realms/myrealm"
-    jwksUri="http://keycloak:8080/realms/myrealm/protocol/openid-connect/certs"
-    audiences="my-app" />
-```
 
 - Přístup k tokenu v kódu:
 
@@ -455,6 +382,42 @@ public String getProfile() {
     return "Přihlášen: " + email.orElse(subject);
 }
 ```
+
+---
+
+# Refresh Token – princip
+- **Access Token** je záměrně krátkodobý (minuty) – omezuje škody při úniku
+- **Refresh Token** je dlouhodobý (hodiny–dny) a slouží k obnovení Access Tokenu **bez opětovného přihlášení uživatele**
+- Refresh Token je uložen bezpečně u klienta, **nikdy se neposílá na Resource Server**
+
+---
+
+# Refresh Token – flow
+
+<pre style="font-size: 80%; line-height: 1.5">
+Klient              Auth Server        Resource Server
+  |                    |                    |
+  |–– access_token ––––––––––––––––––––––––>|
+  |<–– 401 Unauthorized ––––––––––––––––––– |   (token expiroval)
+  |                    |                    |
+  |–– refresh_token ––>|                    |
+  |<–– nový access_token + (nový refresh_token)
+  |                    |                    |
+  |–– nový access_token –––––––––––––––––––>|
+  |<–– data ––––––––––––––––––––––––––––––– |
+</pre>
+
+<!-- .element: class="small" -->
+
+---
+
+# Refresh Token – bezpečnost
+- **Refresh Token Rotation** – každým použitím se refresh token vyměňuje za nový
+	- Starý token je okamžitě invalidován
+	- Detekce opětovného použití (_reuse detection_): pokud někdo použije starý token, celá rodina tokenů se revokuje
+- **Revokace** – refresh token lze explicitně zneplatnit (odhlášení, změna hesla)
+	- RFC 7009: Token Revocation Endpoint
+- Refresh Token **neobsahuje** data uživatele – je to neprůhledný (opaque) identifikátor nebo JWT s minimálními claims
 
 ---
 
