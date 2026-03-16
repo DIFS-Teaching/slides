@@ -109,8 +109,8 @@ ul.vertlist li { display: inline; }
 - More images in one larger image
 - The individual images are extracted using the background positioning
 - More efficient and smooth user experience
-- [Image sprite 1](assets/examples/imageSprite.png)
-- [Image sprite 2](assets/examples/imageSprite2.png)
+- [Image sprite 1](https://difs-teaching.github.io/slides/en/itwe/p06_page_layout/assets/examples/imageSprite.png)
+- [Image sprite 2](https://difs-teaching.github.io/slides/en/itwe/p06_page_layout/assets/examples/imageSprite2.png)
 
 ---
 
