@@ -116,7 +116,7 @@ ul.vertlist li { display: inline; }
 
 # Image sprites (II)
 
-- [Example 1](assets/examples/sprite1.html)
+- [Example 1](https://difs-teaching.github.io/slides/en/itwe/p06_page_layout/assets/examples/sprite1.html)
 
 ```css
 a.smile { background: url("imageSprite.png") -315px -28px; }
@@ -126,5 +126,5 @@ a.del { background: url("imageSprite.png") -269px -52px; }
 a.del:hover { background: url("imageSprite.png") -269px -68px; }
 ``` 
 
-- [Example 2](assets/examples/sprite2.html)
+- [Example 2](https://difs-teaching.github.io/slides/en/itwe/p06_page_layout/assets/examples/sprite2.html)
 
