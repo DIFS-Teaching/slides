@@ -20,7 +20,7 @@
 
 # Item Properties
 
-- [flex:](assets/examples/flex5.html) `<flex-grow>` `<flex-shrink>` `<flex-basis>`
+- [flex:](https://difs-teaching.github.io/slides/en/itwe/p06_page_layout/assets/examples/flex5.html) `<flex-grow>` `<flex-shrink>` `<flex-basis>`
 - `flex-grow` \-- how the item grows when there is more space available 
   - `flex-grow: 0` \-- does not grow at all
   - `flex-grow: 2` \-- weight 2, relative to the remaining weights
