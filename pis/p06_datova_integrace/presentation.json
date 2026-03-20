@@ -1,0 +1,22 @@
+{
+    "id": "p06_datova_integrace",
+    "title": "PIS - Datová integrace",
+    "author": "Radek Burget <burgetr@fit.vut.cz>",
+    "lang": "cs",
+    "template": {
+        "name": "fit",
+        "properties": {
+            "footer": "PIS &ndash; Datová integrace",
+            "highlight": "googlecode"
+        }
+    },
+    "contents": [
+        "c000title.md",
+        "c010uvod.md",
+        "c020technologie.md",
+        "c030semantika.md",
+        "c040rdf_integrace.md",
+        "c050sparql.md",
+        "c999final.md"
+    ]
+}
