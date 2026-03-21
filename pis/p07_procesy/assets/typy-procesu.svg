@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 720 320" width="720" height="320"
+     font-family="sans-serif" font-size="13" fill="#1f2937"
+     xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#4b5563"/>
+    </marker>
+  </defs>
+
+  <!-- Sekvenční -->
+  <text x="120" y="20" text-anchor="middle" font-weight="bold" font-size="14">Sekvenční</text>
+  <text x="120" y="38" text-anchor="middle" font-size="11" fill="#6b7280">regulární gramatika</text>
+  <circle cx="30" cy="75" r="10" fill="#1f2937"/>
+  <rect x="60" y="60" width="80" height="35" rx="6" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="100" y="82" text-anchor="middle" font-size="12">stavA</text>
+  <line x1="140" y1="77" x2="170" y2="77" stroke="#4b5563" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="155" y="70" text-anchor="middle" font-size="10" fill="#6b7280">[b]</text>
+  <rect x="175" y="60" width="80" height="35" rx="6" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="215" y="82" text-anchor="middle" font-size="12">stavB</text>
+  <line x1="255" y1="77" x2="275" y2="77" stroke="#4b5563" stroke-width="1.5" marker-end="url(#arr)"/>
+  <circle cx="285" cy="77" r="10" fill="none" stroke="#1f2937" stroke-width="2.5"/>
+  <circle cx="285" cy="77" r="6" fill="#1f2937"/>
+  <line x1="40" y1="75" x2="58" y2="75" stroke="#4b5563" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- Hierarchický -->
+  <text x="490" y="20" text-anchor="middle" font-weight="bold" font-size="14">Hierarchický</text>
+  <text x="490" y="38" text-anchor="middle" font-size="11" fill="#6b7280">bezkontextová gramatika</text>
+  <circle cx="350" cy="75" r="10" fill="#1f2937"/>
+  <rect x="370" y="55" width="80" height="55" rx="6" fill="#dbeafe" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="410" y="78" text-anchor="middle" font-size="12">stavA</text>
+  <line x1="420" y1="84" x2="420" y2="96" stroke="#9ca3af" stroke-width="1"/>
+  <text x="390" y="101" font-size="10" fill="#6b7280">entry/do/exit</text>
+  <line x1="455" y1="77" x2="480" y2="77" stroke="#4b5563" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="467" y="70" text-anchor="middle" font-size="10" fill="#6b7280">[b]</text>
+  <!-- sub-state box -->
+  <rect x="485" y="50" width="130" height="80" rx="6" fill="#f3f4f6" stroke="#6b7280" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <text x="550" y="68" text-anchor="middle" font-size="11" fill="#6b7280">stavB</text>
+  <rect x="498" y="73" width="50" height="25" rx="4" fill="#dcfce7" stroke="#16a34a" stroke-width="1"/>
+  <text x="523" y="90" text-anchor="middle" font-size="10">B1</text>
+  <rect x="555" y="73" width="50" height="25" rx="4" fill="#dcfce7" stroke="#16a34a" stroke-width="1"/>
+  <text x="580" y="90" text-anchor="middle" font-size="10">B2</text>
+  <line x1="548" y1="85" x2="553" y2="85" stroke="#4b5563" stroke-width="1" marker-end="url(#arr)"/>
+  <text x="550" y="120" text-anchor="middle" font-size="10" fill="#6b7280">H (history)</text>
+  <text x="360" y="155" font-size="11" fill="#6b7280">→ po ukončení B pokračuje A</text>
+  <line x1="360" y1="75" x2="368" y2="75" stroke="#4b5563" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- Obecný -->
+  <text x="360" y="210" font-weight="bold" font-size="14">Obecný proces</text>
+  <text x="360" y="230" font-size="12" fill="#6b7280">– neomezená gramatika, Turingův stroj</text>
+  <text x="360" y="252" font-size="12" fill="#6b7280">– bez diagramu, popsán programem</text>
+  <text x="360" y="272" font-size="12" fill="#6b7280">– pracuje s databází (paměť IS)</text>
+  <text x="360" y="294" font-size="13" fill="#dc2626" font-weight="bold">→ většinou implementován jako transakce</text>
+</svg>
