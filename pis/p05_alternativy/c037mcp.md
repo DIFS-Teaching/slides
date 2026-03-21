@@ -27,18 +27,7 @@
 
 # Architektura
 
-```
-┌─────────────────────────────────┐
-│           MCP Host              │  (Claude Desktop, IDE, ...)
-│  ┌────────────┐  ┌────────────┐ │
-│  │ MCP Client │  │ MCP Client │ │  1 klient = 1 spojení se serverem
-│  └─────┬──────┘  └─────┬──────┘ │
-└────────┼───────────────┼────────┘
-         │ MCP protokol  │
-  ┌──────┴──────┐  ┌─────┴───────┐
-  │  MCP Server │  │  MCP Server │   (filesystem, GitHub, DB, ...)
-  └─────────────┘  └─────────────┘
-```
+![MCP architektura](assets/mcp-architektura.svg) <!-- .element: style="height:700px;margin:0.5em auto;display:block" -->
 
 ---
 
