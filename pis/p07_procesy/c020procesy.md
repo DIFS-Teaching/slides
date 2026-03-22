@@ -15,7 +15,7 @@
 
 # Sekvenční procesy
 - Model = **regulární gramatiky**, **konečné automaty**
-	- Pravidlo tvaru `A → b B` nebo `A → b`
+	- Pravidlo tvaru `A → b B` nebo `A → b` *(A, B jsou stavy; b je vstup – událost nebo podmínka)*
 - Stavový diagram popisuje přechody mezi stavy na základě vstupů
 - Vstup může být i prázdný
 
@@ -23,18 +23,6 @@
 stavA → [vstup b] stavB
 stavA → [vstup b] (a konec)
 ```
-
----
-
-# Sekvenční procesy – příklad
-
-| Stav | Přechod | Cílový stav |
-|------|---------|-------------|
-| Zobrazení košíku | [tlačítko Odhlásit] | Odhlášení |
-| Zobrazení košíku | [tlačítko Přepočítat] | Úprava množství |
-
-- *Vizualizace + komunikace* → stav čeká na uživatele
-- *Dávka* → server provádí zpracování (zde může jít o transakci)
 
 ---
 

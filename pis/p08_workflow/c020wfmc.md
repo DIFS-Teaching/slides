@@ -7,28 +7,19 @@
 
 ---
 
-# Standardizace
+# Standardizace – WfMC
 - Velké množství SW nástrojů realizujících workflow → nutnost integrace
-- **Workflow Management Coalition (WfMC)**
-	- Založena 1993, nevýdělečná mezinárodní organizace
-	- Prodejci, uživatelé, analytici, univerzity (cca 130 členů)
+- **Workflow Management Coalition (WfMC)** – nevýdělečná mezinárodní organizace (1993)
 - Oblasti standardizace:
-	- Terminologie
+	- Terminologie a referenční model
 	- Spolupráce a propojení WF systémů
-	- Formáty výměny definic procesů
+	- Formáty výměny definic procesů (XPDL → BPMN 2.0 XML)
 
 ---
 
 # Referenční model WfMC
 
 ![Referenční model WfMC](assets/wfmc-model.svg) <!-- .element: style="height:600px;margin:0.5em auto;display:block" -->
-
----
-
-# Základní pojmy WfMC
-
-<!-- .slide: class="normal centered fullspace" -->
-![Základní pojmy WfMC](assets/image6.png) <!-- .element: style="height:650px" -->
 
 ---
 
@@ -44,40 +35,15 @@
 
 ---
 
-# Prvky WF systému – klientské aplikace
-- **Klientské aplikace workflow**
-	- Provádějí jednotlivé úkoly
-	- Interakce uživatelů s workflow
-- **Vyvolané aplikace**
-	- Spouštěné v souvislosti se započetím úkolu
+# Prvky WF systému
 
----
-
-# Nástroje pro definici procesů
-- Umožňují definici a rozplánování procesů na počítači
-- Obvykle grafické nástroje
-- Prvky modelu:
-	- **Zprávy** zaslané účastníkům procesu
-	- **Události**, které mohou nastat
-	- **Rozhodnutí**, která je třeba učinit
-
----
-
-# Nástroje pro analýzu a verifikaci
-- **Simulace procesů**
-	- „Co se stane, když …?" – ověření modelu, predikce
-- **Verifikace procesů**
-	- Bude každá objednávka vyřízena?
-	- Bude každá reklamace vyřízena do 14 dnů?
-	- Matematické metody – **Petriho sítě**
-- **Nástroje pro administraci** a monitorování
-
----
-
-# 3D pohled na workflow
-
-<!-- .slide: class="normal centered fullspace" -->
-![3D pohled na workflow](assets/image7.png) <!-- .element: style="height:550px" -->
+- **Klientské aplikace workflow** – provádějí jednotlivé úkoly, interakce uživatelů
+- **Vyvolané aplikace** – spouštěné automaticky při zahájení úkolu
+- **Nástroje pro definici procesů** – grafické editory (BPMN); prvky: zprávy, události, rozhodnutí
+- **Nástroje pro analýzu a verifikaci**
+	- Simulace: „co se stane, když…?" – ověření modelu, predikce
+	- Verifikace: bude každá objednávka vyřízena? – matematické metody (**Petriho sítě**)
+- **Administrace a monitorování** – sledování stavu instancí, SLA, výkonnost
 
 ---
 
@@ -104,13 +70,6 @@
 
 ---
 
-# Struktura automatizované činnosti
-
-<!-- .slide: class="normal centered fullspace" -->
-![Struktura automatizované činnosti](assets/image8.png) <!-- .element: style="height:620px" -->
-
----
-
 # Data ve workflow
 
 | Typ dat | Popis |
@@ -126,7 +85,10 @@
 
 ---
 
-# Fáze vývoje workflow
+# Životní cyklus workflow
 
-<!-- .slide: class="normal centered fullspace" -->
-![Fáze vývoje workflow](assets/image9.png) <!-- .element: style="height:620px" -->
+1. **Definice procesu** – modelování v grafickém editoru (BPMN)
+2. **Nasazení** – deployment definice do WF enginu
+3. **Spuštění instancí** – vytváření a řízení běžících případů
+4. **Monitorování** – sledování stavu, SLA, využití zdrojů
+5. **Analýza a optimalizace** – identifikace úzkých míst, úprava modelu

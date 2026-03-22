@@ -79,18 +79,3 @@ commit();
 - Strategie **backtracking** (zásobník bodů návratu):
 	- A→B (sp1), B→C (sp2), C→E obsazeno → rollback(sp2), B→D (sp3), D→E volné → commit
 
----
-
-# Dvouúrovňové schéma
-- Standardní dekompozice procesů na **řízení** a **činnost stavů**
-
-```
-Vrstva řízení:   stavový diagram IS (sekvence, hierarchie)
-                         │
-                   dekompozice stavů
-                         │
-Vrstva stavů:    obecné procesy / transakce (v každém stavu)
-```
-
-- Pro modelování IS na nejvyšší úrovni stačí sekvenční a hierarchické procesy
-- Obecné procesy ve stavech jsou implementovány **transakcemi** různých modelů

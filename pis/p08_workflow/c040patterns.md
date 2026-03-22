@@ -100,4 +100,4 @@ A → B → C
 	- *Migrace na ad-hoc schéma*
 - **Verifikace výsledku** – bude WF stále dělat to, co má?
 	- Analýza cest, dosažitelnost stavů
-	- **Petriho sítě**
+	- **Petriho sítě** (viz také SAGA verifikace v p07_procesy)

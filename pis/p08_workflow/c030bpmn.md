@@ -15,16 +15,12 @@
 ---
 
 # Standardy pro modelování
-- **BPMN** (Business Process Model and Notation)
-	- Grafická notace pro specifikaci procesů
-	- Diagramy BPD (Business Process Diagram)
-- Jazyky pro popis procesu:
-	- **BPEL** (BPEL4WS, WS-BPEL) – procedurální, orientovaný na webové služby
-	- **XPDL** – deskriptivní, původní formát WfMC
-	- **BPMN XML** – serializace od BPMN 2.0
-- Definovaná mapování:
-	- Ukládání BPMN grafů v XPDL
-	- Transformace BPMN → BPEL
+- **BPMN 2.0** (Business Process Model and Notation) – aktuální primární standard
+	- Grafická notace + nativní XML serializace (BPMN XML)
+	- Přímo spustitelné BPMN 2.0 enginy (Camunda, Flowable, …)
+- Historické formáty (dnes legacy):
+	- **XPDL** – původní deskriptivní formát WfMC, nahrazen BPMN XML
+	- **BPEL** (WS-BPEL) – procedurální jazyk orientovaný na webové služby; nahrazen BPMN 2.0 enginy
 
 ---
 
@@ -42,6 +38,41 @@
 	- Práce, která se má vykonat – atomická úloha nebo podproces
 - **Brána (Gateway)**
 	- Řídí větvení a slučování toku – XOR, AND, OR
+
+---
+
+# BPMN 2.0 – typy událostí
+
+![Typy událostí BPMN 2.0](assets/bpmn-udalosti.svg) <!-- .element: style="height:600px;margin:0.3em auto;display:block" -->
+
+---
+
+# BPMN 2.0 – typy událostí (popis)
+
+| Typ | Symbol | Podtypy |
+|-----|--------|---------|
+| **Start** | tenký okraj | None, Timer, Message, Signal |
+| **Intermediate** | dvojitý okraj | Timer, Message, Error, Escalation |
+| **End** | silný okraj | None, Message, Error, Terminate |
+| **Boundary** | přichycená k aktivitě | Timer, Error, Message (přerušující / nepřerušující) |
+
+- **Přerušující** boundary event – zastaví aktivitu a přejde jinam
+- **Nepřerušující** – aktivita pokračuje, spustí se paralelní tok
+
+---
+
+# Kompenzace v BPMN
+
+- BPMN 2.0 má vestavěnou podporu pro **kompenzaci** (compensation)
+- **Kompenzační úloha** – aktivita, která logicky „vrátí" efekt jiné aktivity
+	- Analogie s SAGA kompenzujícími transakcemi z p07_procesy
+- **Compensation event** – spouští kompenzační tok při chybě nebo explicitním požadavku
+- Příklad: objednávka zaplacena → shipment selhal → kompenzace = vrácení platby
+
+```
+[Platba] --kompenzace--> [Vrácení platby]
+[Odesílání] --chyba--> Compensation End → spustí kompenzace
+```
 
 ---
 
@@ -71,5 +102,4 @@
 
 # Vrstvy modelování procesů
 
-<!-- .slide: class="normal centered fullspace" -->
-![Vrstvy modelování – BPMN, BPEL, Engine](assets/image19.jpeg) <!-- .element: style="height:620px" -->
+![Vrstvy modelování – BPMN, XML, Engine](assets/bpmn-layers-updated.svg) <!-- .element: style="height:580px;margin:0.3em auto;display:block" -->

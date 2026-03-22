@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 760 360" width="760" height="360"
+     font-family="sans-serif" font-size="13" fill="#1f2937"
+     xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#4b5563"/>
+    </marker>
+    <marker id="arr-g" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#16a34a"/>
+    </marker>
+    <marker id="arr-r" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#dc2626"/>
+    </marker>
+  </defs>
+
+  <!-- === Scénář A: úspěch === -->
+  <text x="185" y="22" text-anchor="middle" font-weight="bold" font-size="14" fill="#16a34a">A) Úspěšné provedení</text>
+
+  <!-- T1 -->
+  <rect x="20" y="35" width="120" height="45" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="80" y="57" text-anchor="middle" font-weight="bold">T₁</text>
+  <text x="80" y="73" text-anchor="middle" font-size="11">commit</text>
+  <!-- T2 -->
+  <rect x="165" y="35" width="120" height="45" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="225" y="57" text-anchor="middle" font-weight="bold">T₂</text>
+  <text x="225" y="73" text-anchor="middle" font-size="11">commit</text>
+  <!-- T3 -->
+  <rect x="310" y="35" width="120" height="45" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="370" y="57" text-anchor="middle" font-weight="bold">T₃</text>
+  <text x="370" y="73" text-anchor="middle" font-size="11">commit</text>
+
+  <!-- arrows success -->
+  <line x1="140" y1="57" x2="163" y2="57" stroke="#16a34a" stroke-width="2" marker-end="url(#arr-g)"/>
+  <line x1="285" y1="57" x2="308" y2="57" stroke="#16a64a" stroke-width="2" marker-end="url(#arr-g)"/>
+  <line x1="430" y1="57" x2="455" y2="57" stroke="#16a34a" stroke-width="2" marker-end="url(#arr-g)"/>
+  <circle cx="465" cy="57" r="10" fill="white" stroke="#16a34a" stroke-width="3"/>
+  <text x="465" y="61" text-anchor="middle" font-size="10" fill="#16a34a">✓</text>
+  <text x="385" y="100" text-anchor="middle" font-size="11" fill="#16a34a">→ celá SAGA úspěšně dokončena</text>
+
+  <!-- === Scénář B: selhání === -->
+  <text x="185" y="140" text-anchor="middle" font-weight="bold" font-size="14" fill="#dc2626">B) Selhání T₃ → kompenzace</text>
+
+  <!-- T1 OK -->
+  <rect x="20" y="155" width="120" height="45" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="80" y="177" text-anchor="middle" font-weight="bold">T₁</text>
+  <text x="80" y="193" text-anchor="middle" font-size="11">commit ✓</text>
+  <!-- T2 OK -->
+  <rect x="165" y="155" width="120" height="45" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+  <text x="225" y="177" text-anchor="middle" font-weight="bold">T₂</text>
+  <text x="225" y="193" text-anchor="middle" font-size="11">commit ✓</text>
+  <!-- T3 FAIL -->
+  <rect x="310" y="155" width="120" height="45" rx="8" fill="#fee2e2" stroke="#dc2626" stroke-width="2"/>
+  <text x="370" y="177" text-anchor="middle" font-weight="bold">T₃</text>
+  <text x="370" y="193" text-anchor="middle" font-size="11">selhání ✗</text>
+
+  <!-- arrows to T3 -->
+  <line x1="140" y1="177" x2="163" y2="177" stroke="#16a34a" stroke-width="2" marker-end="url(#arr-g)"/>
+  <line x1="285" y1="177" x2="308" y2="177" stroke="#16a34a" stroke-width="2" marker-end="url(#arr-g)"/>
+
+  <!-- kompenzace C2, C1 (dole) -->
+  <text x="185" y="224" text-anchor="middle" font-size="12" fill="#dc2626" font-weight="bold">→ spustí se kompenzace v opačném pořadí:</text>
+
+  <!-- C2 -->
+  <rect x="165" y="238" width="120" height="45" rx="8" fill="#fef9c3" stroke="#ca8a04" stroke-width="2" stroke-dasharray="6,3"/>
+  <text x="225" y="260" text-anchor="middle" font-weight="bold">C₂</text>
+  <text x="225" y="276" text-anchor="middle" font-size="11">kompenzuje T₂</text>
+  <!-- C1 -->
+  <rect x="20" y="238" width="120" height="45" rx="8" fill="#fef9c3" stroke="#ca8a04" stroke-width="2" stroke-dasharray="6,3"/>
+  <text x="80" y="260" text-anchor="middle" font-weight="bold">C₁</text>
+  <text x="80" y="276" text-anchor="middle" font-size="11">kompenzuje T₁</text>
+
+  <!-- Compensation arrows (right to left) -->
+  <line x1="308" y1="190" x2="288" y2="240" stroke="#dc2626" stroke-width="2" marker-end="url(#arr-r)"/>
+  <line x1="163" y1="260" x2="142" y2="260" stroke="#dc2626" stroke-width="2" marker-end="url(#arr-r)"/>
+  <text x="241" y="257" text-anchor="middle" font-size="11" fill="#dc2626">←</text>
+
+  <!-- Legenda orchestrace -->
+  <rect x="460" y="35" width="290" height="248" rx="8" fill="#f9fafb" stroke="#e5e7eb" stroke-width="1.5"/>
+  <text x="605" y="58" text-anchor="middle" font-weight="bold" font-size="13">Typy orchestrace</text>
+
+  <text x="475" y="82" font-weight="bold" font-size="12">Choreografie (události)</text>
+  <text x="475" y="100" font-size="11" fill="#6b7280">Každá služba naslouchá událostem</text>
+  <text x="475" y="116" font-size="11" fill="#6b7280">a samostatně rozhoduje o své akci.</text>
+  <text x="475" y="132" font-size="11" fill="#6b7280">Žádný centrální koordinátor.</text>
+  <!-- Choreography mini-diagram -->
+  <rect x="475" y="140" width="55" height="22" rx="4" fill="#dbeafe" stroke="#3b82f6" stroke-width="1"/>
+  <text x="503" y="155" text-anchor="middle" font-size="10">Služba A</text>
+  <line x1="530" y1="151" x2="548" y2="151" stroke="#4b5563" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="545" y="145" text-anchor="middle" font-size="9" fill="#6b7280">event</text>
+  <rect x="550" y="140" width="55" height="22" rx="4" fill="#dbeafe" stroke="#3b82f6" stroke-width="1"/>
+  <text x="578" y="155" text-anchor="middle" font-size="10">Služba B</text>
+  <line x1="605" y1="151" x2="623" y2="151" stroke="#4b5563" stroke-width="1.5" marker-end="url(#arr)"/>
+  <rect x="625" y="140" width="55" height="22" rx="4" fill="#dbeafe" stroke="#3b82f6" stroke-width="1"/>
+  <text x="653" y="155" text-anchor="middle" font-size="10">Služba C</text>
+
+  <line x1="605" y1="170" x2="605" y2="180" stroke="#e5e7eb" stroke-width="1"/>
+
+  <text x="475" y="197" font-weight="bold" font-size="12">Orchestrátor</text>
+  <text x="475" y="215" font-size="11" fill="#6b7280">Centrální orchestrátor vydává</text>
+  <text x="475" y="231" font-size="11" fill="#6b7280">příkazy a sleduje výsledky.</text>
+  <!-- Orchestrator mini-diagram -->
+  <rect x="580" y="238" width="60" height="22" rx="4" fill="#f3e8ff" stroke="#9333ea" stroke-width="1.5"/>
+  <text x="610" y="253" text-anchor="middle" font-size="10" font-weight="bold">Orchestrátor</text>
+  <line x1="580" y1="249" x2="548" y2="249" stroke="#9333ea" stroke-width="1.5" marker-end="url(#arr)"/>
+  <rect x="475" y="238" width="70" height="22" rx="4" fill="#dbeafe" stroke="#3b82f6" stroke-width="1"/>
+  <text x="510" y="253" text-anchor="middle" font-size="10">Mikroslužba</text>
+  <line x1="548" y1="261" x2="580" y2="261" stroke="#9333ea" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- Trade-off -->
+  <rect x="0" y="300" width="760" height="52" rx="6" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+  <text x="380" y="320" text-anchor="middle" font-weight="bold" font-size="13">Trade-off: SAGA vs. 2PC</text>
+  <text x="380" y="342" text-anchor="middle" font-size="12" fill="#374151">SAGA = škálovatelnost + eventual consistency | 2PC = silná konzistence + blokování + horší škálovatelnost</text>
+</svg>

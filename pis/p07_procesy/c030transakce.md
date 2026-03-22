@@ -1,61 +1,31 @@
 <!-- .slide: class="section" -->
 
 <header>
-	<h1>Databázové transakce</h1>
-	<p>Pojem transakce, ACID vlastnosti</p>
+	<h1>Transakční zpracování</h1>
+	<p>Opakování a rozšíření — ACID, modely transakcí</p>
 </header>
 
 ---
 
-# Motivace
-- Co se stane při poruše během práce s důležitými daty?
-- Které operace byly před poruchou skutečně provedeny?
-- Co se stane, když více uživatelů současně modifikuje tentýž údaj?
-- Budou údaje v databázi stále smysluplné?
+# ACID — přehled
 
-→ Odpovědí jsou **transakční modely** a **transakční zpracování**
-
----
-
-# Pojem transakce
-- **Transakce** = skupina operací prováděných jako celek (*buď celá dávka, nebo nic*)
-- Modeluje stav popisovaného výseku reálného světa
-- Dva základní účely:
-	- Poskytnout **bezpečnou jednotku práce** – správné zotavení z poruch
-	- Poskytnout **izolaci** programům přistupujícím k databázi současně
-
----
-
-# Systém pro zpracování transakcí (TPS)
-- Systém (platforma, databázový systém) **podporující provádění transakcí**
-- Zajišťuje speciální **vlastnosti transakcí** (atomičnost, nezávislost, trvanlivost)
-- Angl. **Transactional Processing System** (zkratka **TPS**)
-
----
-
-# Vlastnosti transakce – ACID
-
-| Zkratka | Vlastnost | Popis |
-|---------|-----------|-------|
-| **A** | **Atomičnost** (Atomicity) | Celá transakce, nebo nic |
-| **C** | **Konzistence** (Consistency) | DB zůstane v konzistentním stavu |
-| **I** | **Izolovanost** (Isolation) | Souběžné = sekvenční výsledek |
-| **D** | **Trvanlivost** (Durability) | Potvrzené změny přežijí havárii |
+| Vlastnost | Význam | Kdo zajišťuje |
+|-----------|--------|---------------|
+| **A** – Atomičnost | Celá transakce, nebo nic; commit / rollback | TPS |
+| **C** – Konzistence | DB splňuje IO před i po transakci | **Programátor** |
+| **I** – Izolovanost | Souběžné provádění = sekvenční výsledek; úrovně: serializable → repeatable read → read committed → read uncommitted | TPS |
+| **D** – Trvanlivost | Potvrzené změny přežijí havárii; žurnál, zrcadlení | TPS |
 
 ---
 
 # Kdo co zajišťuje
-- **Programátor** zodpovídá za konzistenci transakce
-- **TPS** zajišťuje:
+- **Programátor** zodpovídá za konzistenci transakce — správně sestavit operace tak, aby DB přešla z jednoho konzistentního stavu do druhého
+- **TPS** zajišťuje automaticky:
 	- **Atomičnost** – mechanismus commit/rollback
-	- **Izolovanost** – zamykání záznamů
-	- **Trvanlivost** – žurnál, zrcadlení
+	- **Izolovanost** – zamykání záznamů, uspořadatelné plány
+	- **Trvanlivost** – žurnál (write-ahead log), zrcadlení
 
----
-
-# Atomičnost
-
-![Atomičnost transakce](assets/atomicnost.svg) <!-- .element: style="height:500px;margin:0.5em auto;display:block" -->
+*Celý zbytek přednášky se zabývá modely, kde se záměrně od ACID odchylujeme — vždy je důležité vědět, která vlastnost se porušuje a proč.*
 
 ---
 
@@ -69,53 +39,5 @@
 - porušení izolovanosti souběžných transakcí
 - detekované uváznutí (deadlock)
 
-**V režii transakce/programátora:**
+**V režii transakce / programátora:**
 - na požadavek samotné transakce (`rollback`)
-
----
-
-# Příklad: bankomat
-- Transakce výběru hotovosti se skládá ze dvou akcí:
-	1. snížení stavu účtu o vybranou částku
-	2. vydání příslušného obnosu hotovosti
-- Atomické provedení: buď **obě** akce, nebo **žádná**
-- Pokud systém havaruje po výdeji hotovosti, ale před commitem → rollback musí vrátit i databázi
-
----
-
-# Konzistence datového modelu
-- DB musí splňovat všechna integritní omezení (IO)
-- **Transakce nesmí po svém dokončení porušovat žádné IO!**
-- U nekonzistentní DB je chování transakcí nedefinováno
-- Díky **atomičnosti** nevadí dočasná nekonzistence *během* provádění
-
----
-
-# Izolovanost
-- **Sekvenční zpracování** = v jeden okamžik nejvýše 1 transakce
-	- zachování konzistence, ale špatná propustnost
-- **Souběžné zpracování** – využití paralelismu
-- **Plán** = sloučení plánů souběžných transakcí (operace se mohou promíchat)
-- **Uspořadatelný plán** = výsledek souběžného zpracování = výsledek sekvenčního
-
----
-
-# Úrovně izolovanosti
-
-| Úroveň | Popis |
-|--------|-------|
-| **Serializable** | Plná izolovanost, nejbezpečnější |
-| **Repeatable read** | Čtení stejného záznamu dá stejný výsledek |
-| **Read committed** | Vidí pouze potvrzené změny |
-| **Read uncommitted** | Může vidět i nepotvrzené změny (dirty read) |
-
-- Volba optima mezi **správností** a **výkonem**
-
----
-
-# Trvanlivost
-- **Trvanlivost** = stálost změn potvrzených transakcí
-- **Dostupnost** = rychlost uvedení systému do funkčního stavu po havárii
-	- Nonstop dostupnost (zrcadlení disků)
-	- Pomalejší dostupnost (obnova z zálohy)
-- Různé úrovně – odolnost vůči selhání CPU, disků, živelní pohromě, útoku

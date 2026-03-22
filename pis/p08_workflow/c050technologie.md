@@ -2,23 +2,12 @@
 
 <header>
 	<h1>Technologie a nástroje</h1>
-	<p>XPDL, BPEL, jBPM, open-source nástroje</p>
+	<p>BPMN 2.0 enginy, moderní přístupy, process mining</p>
 </header>
 
 ---
 
-# Jazyk XPDL
-- **XML Process Description Language**
-- Jazyk popisující BPMN graf – aplikace XML
-- Hlavní prvky dokumentu:
-	- `Package`, `Application`
-	- `WorkflowProcess`
-	- `Activity`, `Transition`
-	- `Participant`, `DataField`, `DataType`
-
----
-
-# XML serializace BPMN 2.0
+# BPMN 2.0 – strojová reprezentace
 
 ```xml
 <process processType="Private" isExecutable="true"
@@ -42,96 +31,72 @@
 
 ---
 
-# Jazyk BPEL
-- **Business Process Execution Language** – de-facto průmyslový standard
-- Procedurální jazyk, formát XML
-- Předpokládá implementaci úkolů pomocí **webových služeb**
-	- Orchestrace volání webových služeb
-- BPMN 2.0 obsahuje podmnožinu ekvivalentní BPEL
-	- Lze použít BPMN 2.0 engine místo BPEL engine
+# Moderní BPMN enginy
+
+| Engine | Typ | Poznámka |
+|--------|-----|----------|
+| **Camunda 7** | open-source, Java | Nejrozšířenější BPMN engine; REST API, embedded i standalone |
+| **Camunda 8 / Zeebe** | cloud-native | Distribuovaný engine; SaaS i self-hosted; škálovatelný |
+| **Flowable** | open-source, Java | Odvozen z Activiti; lehčí, Spring Boot integrace |
+| **Activiti** | open-source, Java | Základ ekosystému; spravován Alfresco |
+| **Kogito** (Red Hat) | cloud-native | Nástupce jBPM; Quarkus/Kubernetes; BPMN + DMN |
+| **Bonitasoft** | open-source low-code | Grafické studio, citizen developer přístup |
 
 ---
 
-# Webové služby a BPEL
-- Standard komunikace v distribuované aplikaci
-	- Vzdálené volání funkcí, výměna dokumentů
-- Standardní jazyky:
-	- **WSDL** – popis rozhraní služby
-	- **SOAP** – výměna zpráv (obvykle přes HTTP)
-- BPEL orchestruje volání webových služeb do business procesu
+# Orchestrace vs. choreografie
+
+![Orchestrace vs. choreografie](assets/orchestrace-vs-choreografie.svg) <!-- .element: style="height:580px;margin:0.3em auto;display:block" -->
 
 ---
 
-# BPEL & BPMN enginy
-- Apache ODE
-- MS BizTalk Server
-- Oracle BPEL Process Manager
-- IBM WebSphere Process Server
-- **jBoss jBPM**
-- …
+# Orchestrace vs. choreografie – srovnání
+
+| | Orchestrace | Choreografie |
+|-|-------------|--------------|
+| **Koordinátor** | Centrální BPMN engine | Žádný; každá služba reaguje na události |
+| **Viditelnost procesu** | Engine zná celý stav | Distribuovaný stav, těžší sledování |
+| **SAGA implementace** | Engine orchestruje T₁…Tₙ a kompenzace | Každá služba naslouchá a vydává události |
+| **Škálovatelnost** | Engine = možný bottleneck | Přirozeně škálovatelná |
+| **Ladění** | Snadné (centrální log) | Složitější (distribuované sledování) |
+| **Příklad** | Camunda + REST volání | Apache Kafka + event-driven služby |
 
 ---
 
-# jBoss jBPM
-- Framework implementující workflow, BPM a orchestraci procesů
-- Běží na jBoss nebo jiném JEE serveru
-- Snadná integrace s Java EE:
-	- Web Services, Java Messaging (JMS), JDBC, EJB
-- Zajišťuje správu stavů a úloh
-- Měří časy provádění kroků, logování
-- Unifikuje správu workflow procesů
+# Moderní distribuované workflow
+
+- **Temporal** (temporal.io) – workflow jako kód (Java, Python, Go, TypeScript)
+	- Automatický retry, timeouty, zotavení bez ztráty stavu
+	- Navazuje na zotavitelné fronty z p07: garantuje provedení každého kroku
+	- Vhodné pro: orchestraci mikroslužeb, dlouhotrvající procesy
+	- Alternativy: Netflix Conductor, Cadence (předchůdce Temporal)
+- **Cloudové managed služby:**
+	- **AWS Step Functions** – vizuální stavový stroj, serverless, integrace Lambda/SQS
+	- **Azure Logic Apps** – low-code, rozsáhlý konektor ekosystém
+	- **Google Cloud Workflows** – YAML/JSON definice, integrace GCP služeb
+	- Společné: serverless model, platba za přechody; nevýhoda: vendor lock-in
 
 ---
 
-# jBPM – grafický editor
+# Process mining
 
-<!-- .slide: class="normal centered fullspace" -->
-![jBPM Eclipse Plugin](assets/image20.png) <!-- .element: style="height:600px" -->
-
----
-
-# Jazyky v jBPM
-- **Grafický editor BPMN** v Eclipse
-- **BPMN 2.0 serializace**
-	- Workflow management
-	- Správa úkolů prováděných lidmi
-- ~~BPEL~~
-	- Opuštěno v novějších verzích jBPM
-	- Nahrazeno BPMN 2.0
-
----
-
-# AgilPro
-- Open source nástroje pro modelování procesů
-- **AgilPro LiMo** – grafický editor procesů
-- **AgilPro Simulator** – simulátor procesů
-- Platformy: Eclipse + JWT (Java Workflow Tooling)
-	- Vlastní formát JWT
-	- Export/import: XPDL, BPMN, …
-
----
-
-# Bonita BPM
-
-<!-- .slide: class="normal centered fullspace" -->
-![Bonita – editor](assets/image21.png) <!-- .element: style="height:620px" -->
-
----
-
-# Bonita BPM
-- Open source projekt
-	- Java EE a XPDL
-	- API pro vytváření i provoz workflow
-- Workflow prováděný vlastním virtuálním strojem
-
-<!-- .slide: class="normal centered fullspace" -->
-![Bonita – prostředí](assets/image22.png) <!-- .element: style="height:480px" -->
+- **Process mining** – automatické *objevování procesů* z event logů
+	- Event log = záznamy z IS nebo workflow enginu: `[caseID, aktivita, čas]`
+- Klíčové úlohy:
+	- **Discovery** – rekonstrukce modelu procesu z logů (algoritmy: Alpha, Heuristics Miner)
+	- **Conformance checking** – porovnání skutečného průběhu s normativním BPMN modelem
+	- **Enhancement** – doplnění modelu o výkonnostní metriky (průměrné doby, četnosti)
+- Nástroje:
+	- **ProM** – akademická platforma (TU/e, van der Aalst)
+	- **Celonis** – komerční lídr trhu
+	- **Disco** / **Bupar** (Python) – lehčí nástroje
+- Uzavírá kruh: workflow engine generuje logy → process mining je analyzuje a vrací zpětnou vazbu
 
 ---
 
 # Literatura
 - M. Beneš: *Úvod do technologie workflow systémů* (slidy)
-- T. Novotný: *Workflow – BPM Systémy*
-- P. Opletal: *Procesy a workflow* (slidy)
-- V. Mates, T. Hruška: *Workflow*, studijní opora
+- W.M.P. van der Aalst: *Process Mining: Data Science in Action* (2. vyd., Springer, 2016)
+- Camunda: [docs.camunda.org](https://docs.camunda.org) – referenční BPMN engine dokumentace
+- Temporal: [docs.temporal.io](https://docs.temporal.io) – distribuované workflow jako kód
 - [workflowpatterns.com](http://www.workflowpatterns.com/) – katalog workflow patterns (van der Aalst et al.)
