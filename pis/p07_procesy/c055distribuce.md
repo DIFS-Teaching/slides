@@ -22,6 +22,8 @@
 
 ![Dvoufázový commit](assets/2pc-protocol.svg) <!-- .element: style="height:600px;margin:0.3em auto;display:block" -->
 
+- Před hlasováním každý účastní provede svoji část až po event. `commit()`
+
 ---
 
 # Dvoufázový commit — vlastnosti
@@ -35,9 +37,24 @@
 
 ---
 
+# XA protokol
+- Standard API koordinaci distribuované transakce (The Open Group)
+- Každý **resource manager** (DB, message broker) musí implementovat tři operace:
+
+| Operace | Fáze 2PC | Význam |
+|---|---|---|
+| `xa_prepare()` | Prepare | Připrav se, zapiš do logu, vrať YES/NO |
+| `xa_commit()` | Commit | Potvrď transakci |
+| `xa_rollback()` | Rollback | Odvolej transakci |
+
+- **Koordinátor** (v Javě JTA) volá tyto operace na všech účastnících
+- Databáze i JMS broker v jedné transakci → atomické „ulož do DB + vlož do fronty"
+
+---
+
 # SAGA pattern
 
-![SAGA — kompenzující transakce](assets/saga-kompenzace.svg) <!-- .element: style="height:600px;margin:0.3em auto;display:block" -->
+![SAGA — kompenzující transakce](assets/saga-kompenzace.svg) <!-- .element: style="height:750px;margin:0.3em auto;display:block" -->
 
 ---
 
@@ -45,9 +62,11 @@
 - **SAGA** = sekvence lokálních transakcí T₁, T₂, …, Tₙ
 	- Každá Tᵢ má svou **kompenzační transakci** Cᵢ (logická obnova efektu)
 	- Selhání Tₖ spustí kompenzace Cₖ₋₁, …, C₁ v opačném pořadí
-- Přímá vazba na **kompenzující transakce** (viz předchozí sekce) — SAGA je jejich formalizace pro distribuované systémy
-- Standardní pattern pro distribuované business transakce v **mikroslužbách** (viz p05_alternativy)
-- **Trade-off:**
-	- ✅ Žádné distribuované zámky → škálovatelnost
-	- ⚠️ Pouze **eventual consistency** — systém je dočasně nekonzistentní mezi Tᵢ a Tᵢ₊₁
-	- ⚠️ Kompenzace musí být pečlivě navrženy (ne vždy jde o prostý rollback)
+- Přímá vazba na **kompenzující transakce** (viz předchozí sekce)
+	- SAGA je jejich formalizace pro distribuované systémy
+- Standardní pattern pro distribuované business transakce v **mikroslužbách**
+- Vlastnosti
+	- Žádné distribuované zámky (škálovatelnost)
+	- Pouze **eventual consistency**
+		- Systém je dočasně nekonzistentní mezi Tᵢ a Tᵢ₊₁
+	- Kompenzace musí být pečlivě navrženy (ne vždy jde o prostý rollback)

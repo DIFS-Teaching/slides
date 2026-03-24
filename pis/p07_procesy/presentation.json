@@ -16,9 +16,11 @@
         "c020procesy.md",
         "c030transakce.md",
         "c040modely.md",
+        "c045jakarta_transakce.md",
         "c050zretezene.md",
         "c055distribuce.md",
         "c060fronty.md",
+        "c065jms.md",
         "c999final.md"
     ]
 }

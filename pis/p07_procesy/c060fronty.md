@@ -28,15 +28,15 @@
 # Vlastnosti zotavitelné fronty
 - Fronta **musí být trvanlivá** – přežít havárii systému
 - Koordinace s transakcemi:
-	- Vložení + rollback → záznam odstraněn z fronty
-	- Výběr + rollback → záznam vrácen do fronty
-	- Záznamy od nepotvrzené transakce nesmí vybírat jiné transakce
+	- Vloží-li transakce do fronty záznam a později je zrušena (rollback), tak musí být tento záznam z fronty odstraněn.
+	- Vybere-li transakce z fronty záznam a později je zrušena (rollback), tak musí být tento záznam do fronty navrácen.
+	- Záznamy od nepotvrzené transakce nesmí vybírat jiné transakce.
 
 ---
 
 # Organizace zotavitelné fronty
 
-![Zotavitelná fronta](assets/zotavitelna-fronta.svg) <!-- .element: style="height:520px;margin:0.5em auto;display:block" -->
+![Zotavitelná fronta](assets/zotavitelna-fronta.svg) <!-- .element: style="height:800px;margin-top:-1em;display:block" -->
 
 ---
 
@@ -45,6 +45,8 @@
 - Expediční a fakturační transakce mohou proběhnout **paralelně**
 	- Zákazník může dostat fakturu dříve než zboží (obchodně v pořádku)
 - Fronta odděluje producenta od konzumenta v čase i prostoru
+	- Nemusí běžet současně
+	- Komunikují pouze přes frontu (jinak o sobě vzájemně nevědí)
 
 ---
 
@@ -64,11 +66,11 @@
 
 ---
 
-# Řešení s fronty: reálná událost
+# Řešení s frontami: reálná událost
 - Transakce *T* **vloží požadavek** na fyzickou akci do fronty *Q*
 - Pokud *T* je zrušena → požadavek odstraněn z *Q*
 - Pokud *T* je potvrzena → požadavek zůstane v *Q*, fyzická akce se **jistě provede**
-- Havárie po commitu: frontu přežije, akce bude provedena po restartu
+- Havárie po commitu: fronta přežije, akce bude provedena po restartu
 
 ---
 

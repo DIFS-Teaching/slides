@@ -24,12 +24,15 @@ přijetí objednávky → [bez podmínky] → doprava → [bez podmínky] → fa
 
 - Sekvence stavů s přechody bez podmínek → jedna modelovaná struktura
 - Dochází ke slučování vrstev dvouúrovňového modelu
+	- **Vrstva řízení** (stavový diagram) nerozhoduje nic — jen sekvencuje kroky
+	- **Vrstva stavů** (transakce) vykonává obsah každého kroku
+- Pokud přechody nemají podmínky, obě vrstvy lze vyjádřit jednou strukturou: **zřetězenou transakcí**
 
 ---
 
 # Zřetězená transakce
 
-![Zřetězená transakce](assets/zretezena-transakce.svg) <!-- .element: style="height:700px;margin:0.5em auto;display:block" -->
+![Zřetězená transakce](assets/zretezena-transakce.svg) <!-- .element: style="height:900px;margin:0 auto;display:block" -->
 
 ---
 
@@ -46,6 +49,7 @@ commit();       // ST2 potvrzena, trvanlivá
 commit();       // STn potvrzena
 ```
 
+- $S_i$ je tělo i-té transakce, kterou budeme dále označovat jako podtransakci $ST_i$.
 - Každý `commit()` zajišťuje **trvanlivost předchozí podtransakce**
 - Při havárii v $ST_i$ zůstanou $ST_1$, …, $ST_{i-1}$ zachovány
 
