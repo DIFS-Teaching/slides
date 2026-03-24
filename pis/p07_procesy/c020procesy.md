@@ -9,7 +9,7 @@
 
 # UML stavový diagram
 
-![UML stavový diagram – symboly](assets/uml-stavovy-diagram.svg) <!-- .element: style="height:500px;margin:0.5em auto;display:block" -->
+![UML stavový diagram – symboly](assets/uml-stavovy-diagram.svg) <!-- .element: style="height:700px;margin:0.5em auto;display:block" -->
 
 ---
 
@@ -19,10 +19,7 @@
 - Stavový diagram popisuje přechody mezi stavy na základě vstupů
 - Vstup může být i prázdný
 
-```
-stavA → [vstup b] stavB
-stavA → [vstup b] (a konec)
-```
+![Sekvenční procesy – UML stavový diagram](assets/sekvencni-procesy.svg) <!-- .element: style="height:360px;margin:0.5em auto;display:block" -->
 
 ---
 
@@ -46,7 +43,7 @@ stavA → [vstup b] (a konec)
 
 # Typy procesů – přehled
 
-![Typy procesů](assets/typy-procesu.svg) <!-- .element: style="height:500px;margin:0.5em auto;display:block" -->
+![Typy procesů](assets/typy-procesu.svg) <!-- .element: style="height:800px;margin:0.5em auto;display:block" -->
 
 ---
 
@@ -64,26 +61,10 @@ Vrstva stavů:    obecné procesy / transakce (v každém stavu)
 
 ---
 
-# Diagram stavů internetového obchodu
+# Dekompozice - dvouúrovňové schéma
 
-| Stav | Typ | Transakce? |
-|------|-----|-----------|
-| Domovská stránka | vizualizace | – |
-| Vyhledávání v nabídce | vizualizace + komunikace | – |
-| Přidání do košíku | dávka | **T** |
-| Zobrazení košíku | vizualizace + komunikace | – |
-| Úprava množství | dávka | – |
-| Nákup – vyskladnění | dávka | **T** |
-| Přihlášení / Odhlášení | dávka | – |
+![Dekompozice](assets/dekompozice2.png) <!-- .element: style="height:400px;margin:0.5em auto;float:right" -->
 
-- Větvení v komunikačních stavech – tlačítka (vstup od uživatele)
-- Větvení v dávkových stavech – porušení konzistence (chyby na serveru)
-
----
-
-# Poznámky k diagramu stavů
-- Větvení:
-	- v *komunikačních stavech* – událost způsobená uživatelem (tlačítko)
-	- v *dávkových stavech* – porušení konzistence (kontrola na serveru)
-- Zabránit vzniku cyklů z hran bez označení
-- Transakce **T** pouze v dávkových stavech (ne ve všech)
+- Standardně jsou procesy dekomponovány na řízení a činnost stavů -- transakce
+- Na nejvyšší úrovni vystačíme se sekvenčními a hierarchickými procesy
+- Obecné procesy ve stavech (pracující s databází) -- modelujeme v obecném programovacím jazyce (transakce).

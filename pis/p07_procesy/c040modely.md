@@ -34,6 +34,9 @@ commit();
 ---
 
 # Problém ploché transakce
+
+![Rezervace](assets/lety.png) <!-- .element: style="height:500px;margin:0em auto;float:right" -->
+
 - Příklad: rezervace letu A → B → C → E
 	- transakce rezervuje A→B, poté B→C
 	- zjistí, že C→E není volné
@@ -74,6 +77,9 @@ commit();
 ---
 
 # Příklad: rezervace s body návratu
+
+![Rezervace](assets/lety.png) <!-- .element: style="height:500px;margin:0em auto;float:right" -->
+
 - Na začátku a v každém větvení se vytvoří savepoint
 - Při neúspěchu `rollback` na předchozí savepoint → zkouší jinou variantu
 - Strategie **backtracking** (zásobník bodů návratu):

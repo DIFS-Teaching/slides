@@ -29,7 +29,7 @@ přijetí objednávky → [bez podmínky] → doprava → [bez podmínky] → fa
 
 # Zřetězená transakce
 
-![Zřetězená transakce](assets/zretezena-transakce.svg) <!-- .element: style="height:480px;margin:0.5em auto;display:block" -->
+![Zřetězená transakce](assets/zretezena-transakce.svg) <!-- .element: style="height:700px;margin:0.5em auto;display:block" -->
 
 ---
 
@@ -47,7 +47,7 @@ commit();       // STn potvrzena
 ```
 
 - Každý `commit()` zajišťuje **trvanlivost předchozí podtransakce**
-- Při havárii v ST_i zůstanou ST₁, …, ST_{i-1} zachovány
+- Při havárii v $ST_i$ zůstanou $ST_1$, …, $ST_{i-1}$ zachovány
 
 ---
 
@@ -63,9 +63,9 @@ commit();       // STn potvrzena
 ---
 
 # Databázový kontext mezi podtransakcemi
-- Po commitu ST_i se uvolní všechny zámky a kurzory
+- Po commitu $ST_i$ se uvolní všechny zámky a kurzory
 - Souběžné transakce mají přístup k dříve zamknutým záznamům
-- ST_{i+1} může pracovat s jinými hodnotami (změněnými souběžnou transakcí)
+- $ST_{i+1}$ může pracovat s jinými hodnotami (změněnými souběžnou transakcí)
 - **Každá podtransakce je izolovaná, ale celek není**
 - Výhoda: kratší doba zamykání → vyšší propustnost
 
@@ -74,7 +74,7 @@ commit();       // STn potvrzena
 # Komunikace mezi podtransakcemi
 - **Lokální proměnné** nepřežijí havárii (ztratí se)
 - Alternativa: komunikace přes **databázové proměnné**
-	- Před commitem ST_i se uloží do DB → přežijí pád systému
+	- Před commitem $ST_i$ se uloží do DB → přežijí pád systému
 	- Nevýhoda: viditelné ostatním souběžným transakcím → nutnost **zámků**
 
 ---
@@ -89,7 +89,7 @@ commit();       // STn potvrzena
 
 ---
 
-# Alternativní sémantika – `chain()`
+# Alternativní sémantika – chain()
 
 ```
 begin_transaction();
@@ -110,7 +110,7 @@ commit();
 
 # Dopředný návrat (roll forward)
 - Zotavení z havárie při alternativní sémantice:
-	- Klasický rollback nelze – nekonzistentní stav po ST_i
+	- Klasický rollback nelze – nekonzistentní stav po $ST_i$
 	- Řešení: **dopředný návrat** (roll forward)
 - Po restartu TPS se obnoví DB kontext a **dokončí se** nedokončené podtransakce
 - Výsledek: zachována izolovanost i atomičnost celé zřetězené transakce
