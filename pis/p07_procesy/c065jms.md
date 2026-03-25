@@ -9,7 +9,8 @@
 
 # Jakarta Messaging (JMS)
 - Standardní Jakarta EE API pro práci s **message brokery** (balíček `jakarta.jms`)
-- Jednotné rozhraní pro různé brokery: ActiveMQ, IBM MQ, RabbitMQ, …
+- Jednotné rozhraní pro různé brokery: ActiveMQ Artemis, IBM MQ, Oracle AQ, …
+    - Adaptér pro RabbitMQ
 - Dva komunikační modely:
 	- **Point-to-Point (Queue)** — zpráva jde jednomu konzumentovi
 		- = zotavitelná fronta
@@ -88,7 +89,7 @@ public class ExpediceConsumer {
 
 ---
 
-# Od JMS k MicroProfile Reactive Messaging
+# JMS vs. MicroProfile Reactive Messaging
 
 | Aspekt | Jakarta Messaging (JMS) | MP Reactive Messaging |
 |---|---|---|
