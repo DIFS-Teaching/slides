@@ -26,7 +26,7 @@
 
 # Elementy BPMN
 
-![BPMN elementy](assets/bpmn-elementy.svg) <!-- .element: style="height:650px;margin:0.3em auto;display:block" -->
+![BPMN elementy](assets/bpmn-elementy.svg) <!-- .element: style="height:750px;margin:0.3em auto;display:block" -->
 
 ---
 
@@ -38,12 +38,13 @@
 	- Práce, která se má vykonat – atomická úloha nebo podproces
 - **Brána (Gateway)**
 	- Řídí větvení a slučování toku – XOR, AND, OR
+- https://camunda.com/bpmn/reference/
 
 ---
 
 # BPMN 2.0 – typy událostí
 
-![Typy událostí BPMN 2.0](assets/bpmn-udalosti.svg) <!-- .element: style="height:600px;margin:0.3em auto;display:block" -->
+![Typy událostí BPMN 2.0](assets/bpmn-udalosti.svg) <!-- .element: style="height:750px;margin:0.3em auto;display:block" -->
 
 ---
 
@@ -65,14 +66,11 @@
 
 - BPMN 2.0 má vestavěnou podporu pro **kompenzaci** (compensation)
 - **Kompenzační úloha** – aktivita, která logicky „vrátí" efekt jiné aktivity
-	- Analogie s SAGA kompenzujícími transakcemi z p07_procesy
+	- Analogie s SAGA kompenzujícími transakcemi
 - **Compensation event** – spouští kompenzační tok při chybě nebo explicitním požadavku
-- Příklad: objednávka zaplacena → shipment selhal → kompenzace = vrácení platby
+- Příklad: objednávka zaplacena → odeslání selhalo → kompenzace = vrácení platby
 
-```
-[Platba] --kompenzace--> [Vrácení platby]
-[Odesílání] --chyba--> Compensation End → spustí kompenzace
-```
+![Kompenzace v BPMN](assets/bpmn-kompenzace.svg) <!-- .element: style="height:420px;margin:-2em auto;display:block" -->
 
 ---
 

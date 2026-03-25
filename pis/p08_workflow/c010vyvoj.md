@@ -63,10 +63,11 @@
 
 # Od front k workflow
 
-- V p07 jsme zavedli **zotavitelné fronty** jako základ pro sekvenování a paralelismus transakcí
+- Zavedli jsme **zotavitelné fronty** jako základ pro sekvenování a paralelismus transakcí
 	- Fronta zaručuje: *„po dokončení akce A se někdy provede akce B"*
 - **Workflow** přidává nad tento základ:
 	- **Jazyk pro popis procesů** – formální definice aktivit, podmínek, větvení
 	- **Role a swimlanes** – přiřazení aktivit konkrétním účastníkům
 	- **Směrování** – XOR/AND/OR brány místo ručně programované logiky
 	- **Monitorování a analýza** – sledování stavu instancí, výkonnostní metriky
+- Popis procesu je **oddělen od implementace IS**.

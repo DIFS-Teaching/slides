@@ -41,12 +41,13 @@
 | **Activiti** | open-source, Java | Základ ekosystému; spravován Alfresco |
 | **Kogito** (Red Hat) | cloud-native | Nástupce jBPM; Quarkus/Kubernetes; BPMN + DMN |
 | **Bonitasoft** | open-source low-code | Grafické studio, citizen developer přístup |
+<!-- .element: style="font-size: 80%" -->
 
 ---
 
 # Orchestrace vs. choreografie
 
-![Orchestrace vs. choreografie](assets/orchestrace-vs-choreografie.svg) <!-- .element: style="height:580px;margin:0.3em auto;display:block" -->
+![Orchestrace vs. choreografie](assets/orchestrace-vs-choreografie.svg) <!-- .element: style="height:700px;margin:0.3em auto;display:block" -->
 
 ---
 
@@ -60,16 +61,17 @@
 | **Škálovatelnost** | Engine = možný bottleneck | Přirozeně škálovatelná |
 | **Ladění** | Snadné (centrální log) | Složitější (distribuované sledování) |
 | **Příklad** | Camunda + REST volání | Apache Kafka + event-driven služby |
+<!-- .element: style="font-size: 80%" -->
 
 ---
 
 # Moderní distribuované workflow
 
 - **Temporal** (temporal.io) – workflow jako kód (Java, Python, Go, TypeScript)
+	- Centrální engine (v Go)
+	- Proces popsaný kódem (Python, Java, ...)
 	- Automatický retry, timeouty, zotavení bez ztráty stavu
-	- Navazuje na zotavitelné fronty z p07: garantuje provedení každého kroku
 	- Vhodné pro: orchestraci mikroslužeb, dlouhotrvající procesy
-	- Alternativy: Netflix Conductor, Cadence (předchůdce Temporal)
 - **Cloudové managed služby:**
 	- **AWS Step Functions** – vizuální stavový stroj, serverless, integrace Lambda/SQS
 	- **Azure Logic Apps** – low-code, rozsáhlý konektor ekosystém
@@ -81,21 +83,20 @@
 # Process mining
 
 - **Process mining** – automatické *objevování procesů* z event logů
-	- Event log = záznamy z IS nebo workflow enginu: `[caseID, aktivita, čas]`
+	- Event log = záznamy z IS nebo workflow enginu: \
+	`[caseID, aktivita, čas]`
 - Klíčové úlohy:
-	- **Discovery** – rekonstrukce modelu procesu z logů (algoritmy: Alpha, Heuristics Miner)
-	- **Conformance checking** – porovnání skutečného průběhu s normativním BPMN modelem
-	- **Enhancement** – doplnění modelu o výkonnostní metriky (průměrné doby, četnosti)
+	- **Discovery** – rekonstrukce modelu procesu z logů
+	- **Conformance checking** – porovnání skutečného průběhu s BPMN
+	- **Enhancement** – doplnění modelu o výkonnostní metriky
 - Nástroje:
 	- **ProM** – akademická platforma (TU/e, van der Aalst)
-	- **Celonis** – komerční lídr trhu
+	- **Celonis** – komerční
 	- **Disco** / **Bupar** (Python) – lehčí nástroje
-- Uzavírá kruh: workflow engine generuje logy → process mining je analyzuje a vrací zpětnou vazbu
 
 ---
 
 # Literatura
-- M. Beneš: *Úvod do technologie workflow systémů* (slidy)
 - W.M.P. van der Aalst: *Process Mining: Data Science in Action* (2. vyd., Springer, 2016)
 - Camunda: [docs.camunda.org](https://docs.camunda.org) – referenční BPMN engine dokumentace
 - Temporal: [docs.temporal.io](https://docs.temporal.io) – distribuované workflow jako kód

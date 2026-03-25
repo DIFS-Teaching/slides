@@ -19,7 +19,7 @@
 
 # Referenční model WfMC
 
-![Referenční model WfMC](assets/wfmc-model.svg) <!-- .element: style="height:600px;margin:0.5em auto;display:block" -->
+![Referenční model WfMC](assets/wfmc-model.svg) <!-- .element: style="height:750px;margin:0.5em auto;display:block" -->
 
 ---
 
@@ -62,7 +62,7 @@
 
 ---
 
-# Role v workflow
+# Role ve workflow
 - Práci vykonávají **kategorie pracovníků** (role)
 - Jedna osoba může mít více rolí, mnoho osob má stejnou roli
 - Role jsou autorizovány provádět požadavky z front spojených s činnostmi
