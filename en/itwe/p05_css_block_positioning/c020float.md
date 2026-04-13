@@ -1,192 +1,135 @@
-# Floating objects
+# Floating blocks
 
   - Object that are flowed by the surrounding text
-  - Creating a floating object: 
+  - Creating a floating object:
     - `float: left` or
     - `float: right`
   - Floating elements become automaticaly **block** elements
-  - The floating object is 
+  - The floating object is
     - Removed from the normal text flow (doesn't influence the text on the original place)
     - Shifted to the border of the parent element
-  - Different way of width computation 
+  - Different way of width computation
     - It is better to set an explicit width
     - If not set, it is automaticaly computed (shring-to-fit algorithm)
 
 ---
 
-# Floating demonstration
+<!-- .slide: class="editor" -->
 
-  - [Normal flow (default)](data/float0.html)
+# Creating a Floating Object
 
-```html
-@HTML@
-...@@
-<div @="" class="floating" id="menu">@@
-    <h1>Menu</h1>@@
-    <ul>@@
-        <li>Red</li>@@
-        <li>Green</li>@@
-        <li>Magenta</li>@@
-        <li>Yellow</li>@@
-        <li>Dark blue</li>@@
-    </ul>@@
-</div>@@
-...
-@/HTML@
-```
+<div data-iframe="assets/examples/float0.html"></div>
 
----
+=--
 
-# Creating a floating object
+<!-- .slide: class="editor" -->
 
-```html
-@HTML@
-<style type="text/css">@@
-    #menu { background-color: #eef;@@
-            border: 1px solid #aaf;@@
-            width: 12em; }@@
-    .floating { float: left; }@@
-</style>
-@/HTML@
-``` [Sample](data/float1.html)
+# Creating a Floating Object -- Width
+
+<div data-iframe="assets/examples/float1.html"></div>
+
+=--
+
+<!-- .slide: class="editor" -->
+
+# Creating a Floating Object -- Width
+
+<div data-iframe="assets/examples/float2.html"></div>
 
 ---
 
-# Margins
+<!-- .slide: class="editor" -->
 
-```html
-@HTML@
-<style type="text/css">@@
-    #menu { background-color: #eef;@@
-            border: 1px solid #aaf;@@
-            width: 12em;@@
-            @/padding: 0;/@ @@
-            @/margin-right: 1em;/@ }@@
-    .floating { float: left; }@@
-</style>
-@/HTML@
-```
+# Float and In-Flow Block Size
 
----
-
-# Heading
-
-```html
-@HTML@
-<style type="text/css">@@
-    #menu { ... }@@
-    @/#menu h1 { font-weight: bold;@@
-               font-size: 100%;@@
-               color: #fff;@@
-               background-color: #55f;@@
-               margin: 0;@@
-               padding: 0.5em; } /@ @@
-    .floating { float: left; }@@
-</style>
-@/HTML@
-``` [Sample](data/float2.html)
-
----
-
-# Paragraph block size
-
-```html
-@HTML@
-<style type="text/css">@@
-    #menu { ... }@@
-    #menu h1 { font-weight: bold;@@
-               font-size: 100%;@@
-               color: #fff;@@
-               background-color: #55f;@@
-               margin: 0;@@
-               padding: 0.5em; }@@
-    .plovouci { float: left; }@@
-    @/p { border: 5px solid red; }/@ @@
-</style>
-@/HTML@
-``` [Sample](data/float3.html)
+<div data-iframe="assets/examples/float3.html"></div>
 
 ---
 
 # Clear
 
-  - The floating objects are placed by the browser 
+  - The floating objects are placed by the browser
     - Side by side to the appropriate margin
     - When there is no space then below each other
-    - => The floating object can horizontaly overflow the flowing text
-  - When some text shouldn't flow along the floating objects: 
+    - => The floating object can horizontally overflow the flowing text
+  - When some text shouldn't flow along the floating objects:
     - `clear: left | right | both`
   - First, previous floating object are placed, then the text is placed below
-  - [Example](data/clear1.html)
+
+<pre class="code-render" default-style="
+* {
+  font-family: sans-serif;
+}
+.box {
+    float: left;
+    width: 8em;
+    background: #ddf;
+    border: 1px solid #aaf;
+    margin-right: 1em;
+    padding: 0.5em;
+}
+.cleared { clear: both; border-top: 2px solid red; padding-top: 0.3em; }
+" resizable="true" style="height: 8em; width: 90%; margin: auto">
+<div class="box">Float 1</div>
+<div class="box">Float 2</div>
+<p>This paragraph has no clear — wraps around the floats.</p>
+<p class="cleared">This paragraph has <code>clear: both</code> — starts below both floats.</p>
+</pre>
+
+=--
+
+<!-- .slide: class="editor" -->
+
+# Clear property
+
+<div data-iframe="assets/examples/clear1.html"></div>
+
+=--
+
+<!-- .slide: class="editor" -->
+
+# Clear property
+
+<div data-iframe="assets/examples/clear2.html"></div>
 
 ---
 
-# Containing block height (again)
+# Containing Block Height
 
   - When a block has `height:auto`, its height depends on its contents
   - For `overflow: visible`
     - Only in-flow content is considered
-    - If the block contains floating blocks only, it has a **zero height** in the result
-  - Otherwise (e.g. `overflow: hidden`) 
+    - If the block contains floating blocks only, it has **zero height** in the result
+  - Otherwise (e.g. `overflow: hidden`)
     - Floating content is considered too
-  - [Example](data/overflow1.html)
 
----
-
-# Block Height: Example
-
-```html
-@HTML@
-<div class="contents">@@
-	<div class="col">Column 1</div>@@
-	<div class="col">Column 2</div>@@
-</div>@@
-<p>Next contents</p>
-@/HTML@
-``` ```html
-@CSS@
-.contents {@@
-	border: 5px solid blue;@@
-}@@
-.col {@@
-	float: left;@@
-	background: gray;@@
-}@@
-@/CSS@
-```
-
----
-
-# Block Height: Example (II)
-
-```html
-@CSS@
-.contents {@@
-	overflow: visible;@@
+<pre class="code-render" style="height: 12em" default-style="
+* {
+  font-family: sans-serif;
 }
-@/CSS@
-``` 
-
-Column 1
-
-Column 2
-
-Next contents
-
----
-
-# Výška bloku: příklad (III)
-
-```html
-@CSS@
-.contents {@@
-	overflow: hidden;@@
+.contents {
+    border: 5px solid blue;
+    margin-bottom: 1em;
 }
-@/CSS@
-``` 
-
-Column 1
-
-Column 2
-
-Next contents
+.col {
+    float: left;
+    background: gray;
+    color: white;
+    padding: 0.5em;
+    margin-right: 0.3em;
+}
+.visible { overflow: visible; }
+.hidden { overflow: hidden; }
+" resizable="true" style="height: 270px; width: 90%; margin: auto">
+<p><strong>overflow: visible</strong> — blue border collapses to zero height:</p>
+<div class="contents visible">
+    <div class="col">Column 1</div>
+    <div class="col">Column 2</div>
+</div>
+<p style="clear:both"><strong>overflow: hidden</strong> — blue border wraps the floats:</p>
+<div class="contents hidden">
+    <div class="col">Column 1</div>
+    <div class="col">Column 2</div>
+</div>
+<p style="clear:both">Next contents</p>
+</pre>

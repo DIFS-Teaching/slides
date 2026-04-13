@@ -28,7 +28,7 @@
 	- **Eclipse** for Enterprise Java Developers
 	- IntelliJ IDEA, VS Code ...
 - Databázový server
-	- Jakýkoliv relační ([H2](https://www.h2database.com), [Derby](https://db.apache.org/derby/), MySQL, ...)
+	- Jakýkoliv relační ([H2](https://www.h2database.com), MySQL, ...)
 - Databázový konektor (JDBC ovladač)
 
 ---

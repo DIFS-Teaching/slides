@@ -129,7 +129,7 @@ public class UserResource {
 	- Navigace
 	- Přechody mezi stránkami
 	- Výpisy chyb, apod.
-- Viz např. [jednoduchý klient v jQuery](https://github.com/DIFS-Teaching/jakartaee-basic/blob/main/rest-api/src/main/webapp/client.html)
+- Viz např. [jednoduchý JS klient](https://github.com/DIFS-Teaching/jakartaee-basic/blob/main/rest-api/src/main/webapp/client.html)
 
 ---
 

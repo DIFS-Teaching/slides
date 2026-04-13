@@ -53,7 +53,8 @@
 
 <div class="col">
 
-* Width 
+* Width
+
 ```css
 .block {
   width: auto; /* default */
@@ -69,6 +70,7 @@
 <div class="col">
 
 * Height 
+
 ```css
 .block {
   height: auto; /* default */
