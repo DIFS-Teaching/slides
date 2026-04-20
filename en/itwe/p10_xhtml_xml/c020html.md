@@ -97,6 +97,49 @@ Inline frames are not supported.
 
 ---
 
+# ARIA
+
+  - **Accessible Rich Internet Applications** — W3C standard
+  - Adds accessibility semantics for assistive technologies (screen readers, etc.)
+  - Does not change visual appearance — purely for programmatic exposure
+
+  - **`role`** — declares the element's purpose
+```html
+<div role="navigation">...</div>
+<div role="dialog" aria-modal="true">...</div>
+```
+  - **`aria-*` state and property attributes**
+```html
+<button aria-expanded="false" aria-controls="menu">Menu</button>
+<input aria-required="true" aria-describedby="hint">
+<span id="hint">Must be a valid email</span>
+```
+
+<span class="note"><a href="https://www.w3.org/TR/wai-aria/">WAI-ARIA specification</a>,</span>
+<span class="note"><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA">MDN ARIA</a></span>
+
+---
+
+# ARIA: Landmark Roles
+
+  - Landmarks divide the page into navigable regions — screen readers let users jump between them
+
+| Role | Equivalent element | Purpose |
+|---|---|---|
+| `banner` | `<header>` | Site-wide header |
+| `navigation` | `<nav>` | Navigation links |
+| `main` | `<main>` | Primary content |
+| `complementary` | `<aside>` | Supporting content |
+| `contentinfo` | `<footer>` | Site-wide footer |
+| `search` | `<search>` | Search widget |
+| `form` | `<form>` | Form region |
+
+  - Prefer **semantic HTML elements** — they carry the role implicitly; use `role` only when semantics can't be expressed otherwise
+
+<span class="note"><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles">ARIA Roles on MDN</a></span>
+
+---
+
 # Structured Data & the Semantic Web
 
   - Goal: embed **machine-readable semantics** into HTML pages
