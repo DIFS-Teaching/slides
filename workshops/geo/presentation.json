@@ -1,0 +1,18 @@
+{
+    "id": "geo",
+    "title": "Geovizualizace - workshop pro středoškoláky",
+    "author": "Jiří Hynek <hynek@vut.cz>",
+    "lang": "cs",
+    "template": {
+        "name": "fit",
+        "properties": {
+            "footer": "Geovizualizace"
+        }
+    },
+    "contents": [
+        "c000title.md",
+        "c010motivace.md",
+        "c020data.md",
+        "c999final.md"
+    ]
+}
