@@ -1,8 +1,8 @@
 <!-- .slide: class="section" -->
 
 <header>
-    <h1>Data</h1>
-    <span>geografická data, informace, znalosti<span>
+    <h1>1. Data</h1>
+    <span>data, informace, znalosti, dimenze<span>
 </header>
 
 ---
@@ -30,64 +30,34 @@
 
 ---
 
-# Příklad: Jízdní řád -- Je možné snadno odvodit znalosti?
+# Příklad: Jízdní řád -- je možné snadno odvodit znalosti?
 
 <div class="block-center"><img src="assets/jr.png" style="max-width: 80%;"></div>
 
-<div class="note">Zdroj: přednáška <a href="https://gitshow.net/https/difs-teaching.github.io/slides/iis/p01_informacni_systemy#/19">Informační systémy</a> -- doc. Ing. Radek Burget, Ph.D.</div>
+<div class="note">Zdroj: přednáška z kurzu <a href="https://gitshow.net/https/difs-teaching.github.io/slides/iis/p01_informacni_systemy#/19">Informační systémy</a> -- doc. Ing. Radek Burget, Ph.D.</div>
 
 ---
 
-# Geografická data
+# Multidimenzionální data
 
-<br>
-
-- data, která navíc obsahují ***informaci o poloze***
-- souřadnice, hranice, tvar geografického objektu
-- ***data*** (co) + ***místo*** (kde) = geografická data
-
-<p class="fragment">V další části si ukážeme, jak takové místo <strong>definovat</strong>.</p>
-
-=--
-
-# Geografická data -- souřadnice
-
-<br>
-
-- poloha jako přímý atribut záznamu -- ***lat***, ***lon***
+- dimenze (databáze): množina hodnot nějakého typu popisující kvantitativní data nebo kvalitativní data
 
 ```json
 {
-  "school": "108047792",
-  "schoolName": "Gymnázium Jihlava",
-  "lat": 49.3961,
-  "lon": 15.5854,
-  "value": 12
+  "school": "Vysoké učení technické v Brně, Fakulta informačních technologií",
+  "street": "Božetěchova 2",
+  "city": "Brno",
+  "zip": "612 66",
+  "students": 2408,
+  "educationQuality": .92,
+  "stressLevel": .80,
+  "placeToxicity": .66,
+  "shallNotPassRatio": .50,
+  "requirements": [ "diligence", "commitment", "very good therapist", "maybe lawyer" ]
 }
 ```
 
-<br>
+- speciální dimenze: ***lokace***
 
-- souřadnice se udávají v souřadnicovém systému **WGS 84** -- celosvětový standard používaný GPS i webovými mapami
-- v dokumentaci se často značí jako ***EPSG:4326***
+<span class="note">Více o zobrazování multidimenzionálních dat: přednáška z kurzu <a href="https://drive.google.com/file/d/14Gs86goHNkRgFUwvHa8qUTNhuvrvSH6_/view?usp=sharing">Pokročilé informační systémy</a></span>
 
-=--
-
-# Geografická data -- reference
-
-<br>
-
-- poloha jako ***odkaz/kód*** na geografický celek -- stát, kraj, město...
-- samotný záznam souřadnice neobsahuje
-
-```json
-{
-  "kraj_kod": "CZ064",
-  "kraj": "Jihomoravský",
-  "value": 31000
-}
-```
-
-<br>
-
-<p class="fragment">Kód se pak <strong>spojí</strong> s definicí místa (hranicemi kraje) -- to uvidíme v sekci <strong>Zobrazení</strong>.</p>

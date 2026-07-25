@@ -69,6 +69,16 @@ a ***chápat souvislosti*** mezi místem,\
 
 <!-- .slide: class="normal fullspace" -->
 
+# Analýza krajů ve volebním období
+
+<iframe src="https://kraje.zastupko.cz/analyzy" style="width: 100%; height: 900px; border: none;" allowfullscreen></iframe>
+
+<div class="note">Zdroj: <a href="https://kraje.zastupko.cz/analyzy">Projekt Zastupko</a></div>
+
+---
+
+<!-- .slide: class="normal fullspace" -->
+
 # data.Brno
 
 <iframe src="https://data.brno.cz/pages/prispevky--interaktivni-mapy" style="width: 100%; height: 900px; border: none;" allowfullscreen></iframe>
