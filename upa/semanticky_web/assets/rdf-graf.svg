@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg viewBox="0 0 1000 420" width="1000" height="420"
+     font-family="sans-serif" font-size="14" fill="#1f2937"
+     version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#4b5563"/>
+    </marker>
+  </defs>
+
+  <!-- Dokument -->
+  <g>
+    <ellipse cx="200" cy="110" rx="130" ry="44" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+    <text x="200" y="104" text-anchor="middle" font-family="monospace" font-size="14" fill="#0c4a6e">doc:clanek42</text>
+    <text x="200" y="124" text-anchor="middle" font-size="11" font-style="italic" fill="#0369a1">článek</text>
+  </g>
+
+  <!-- Osoba -->
+  <g>
+    <ellipse cx="700" cy="110" rx="130" ry="44" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+    <text x="700" y="104" text-anchor="middle" font-family="monospace" font-size="14" fill="#0c4a6e">lide:jan-novak</text>
+    <text x="700" y="124" text-anchor="middle" font-size="11" font-style="italic" fill="#0369a1">osoba</text>
+  </g>
+
+  <line x1="332" y1="110" x2="566" y2="110" stroke="#4b5563" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="449" y="100" text-anchor="middle" font-family="monospace" font-size="14" fill="#374151">dcterms:creator</text>
+
+  <!-- Literál: název s jazykovou značkou -->
+  <g>
+    <rect x="70" y="250" width="260" height="42" rx="4" fill="#ffffff" stroke="#16a34a" stroke-width="2"/>
+    <text x="200" y="277" text-anchor="middle" font-family="monospace" font-size="14" fill="#14532d">"Propojená data"@cs</text>
+  </g>
+  <line x1="200" y1="156" x2="200" y2="244" stroke="#4b5563" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="212" y="206" font-family="monospace" font-size="13" fill="#374151">dcterms:title</text>
+
+  <!-- Literál: datum s datovým typem -->
+  <g>
+    <rect x="370" y="250" width="270" height="42" rx="4" fill="#ffffff" stroke="#16a34a" stroke-width="2"/>
+    <text x="505" y="277" text-anchor="middle" font-family="monospace" font-size="13" fill="#14532d">"2026-03-01"^^xsd:date</text>
+  </g>
+  <line x1="240" y1="148" x2="470" y2="244" stroke="#4b5563" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="392" y="188" font-family="monospace" font-size="13" fill="#374151">dcterms:issued</text>
+
+  <!-- Literál: jméno -->
+  <g>
+    <rect x="690" y="250" width="240" height="42" rx="4" fill="#ffffff" stroke="#16a34a" stroke-width="2"/>
+    <text x="810" y="277" text-anchor="middle" font-family="monospace" font-size="14" fill="#14532d">"Jan Novák"</text>
+  </g>
+  <line x1="730" y1="150" x2="790" y2="244" stroke="#4b5563" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="782" y="198" font-family="monospace" font-size="13" fill="#374151">foaf:name</text>
+
+  <!-- Typ -->
+  <g>
+    <ellipse cx="560" cy="360" rx="120" ry="34" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+    <text x="560" y="366" text-anchor="middle" font-family="monospace" font-size="14" fill="#14532d">foaf:Person</text>
+  </g>
+  <line x1="660" y1="148" x2="600" y2="328" stroke="#4b5563" stroke-width="2" marker-end="url(#arr)"/>
+  <text x="600" y="240" font-family="monospace" font-size="13" fill="#374151">rdf:type</text>
+
+  <!-- Legenda -->
+  <g>
+    <ellipse cx="118" cy="358" rx="46" ry="20" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+    <text x="118" y="363" text-anchor="middle" font-size="12" fill="#0c4a6e">zdroj (IRI)</text>
+    <rect x="200" y="338" width="110" height="40" rx="4" fill="#ffffff" stroke="#16a34a" stroke-width="2"/>
+    <text x="255" y="363" text-anchor="middle" font-size="12" fill="#14532d">literál</text>
+  </g>
+</svg>

@@ -4,9 +4,9 @@
 <div class="main">
     <header>
         <h1>Sémantický web a ontologie</h1>
-        <p class="subtitle">Propojená data a popis jejich sémantiky</p>
+        <p class="subtitle">Globální identifikátory, grafový model a dotazování nad propojenými daty</p>
     </header>
     <p class="author"><strong>doc. Ing. Radek Burget, Ph.D.</strong><br>
-    <a href="mailto:burgetr@fit.vutbr.cz">burgetr@fit.vutbr.cz</a>
+    <a href="mailto:burgetr@fit.vut.cz">burgetr@fit.vut.cz</a>
     </p>
 </div>
