@@ -18,6 +18,8 @@
 
 # Web Design Professions
 
+<div class="small">
+
   * Consultant 
     * What does the client want and need?
   * Copywriter 
@@ -26,7 +28,7 @@
     * How will the user find the relevant information?
   * Graphic designer 
     * How to present the contents in a visual way?
-  * *Frontend / backend developer*
+  * *Frontend / backend developer* -- aka **coder**
     * How to get all this into the user's browser?
   * Accessibility specialist 
     * Can everybody use the web site? (required by law in the EU since 2025)
@@ -34,3 +36,5 @@
     * How to get visitors and how to measure them?
   * Marketing consultant 
     * How to earn money on this?
+
+</div>

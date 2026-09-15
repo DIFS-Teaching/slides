@@ -231,6 +231,8 @@ Host: www.fit.vut.cz
 Accept: text/html,application/xhtml+xml,*/*;q=0.8
 Accept-Encoding: gzip, br
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:140.0) Gecko/20100101 Firefox/140.0
+
+... request body (data), optional ...
 ```
 
 The `Host` header is mandatory in HTTP/1.1 -- a single server may host many web sites.
