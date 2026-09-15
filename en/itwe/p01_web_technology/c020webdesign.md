@@ -8,9 +8,10 @@
     * Graphical design
     * Content preparation
     * Implementation (coding)
-    * Testing
+    * Testing (functionality, accessibility, performance)
     * Publishing on the Web
-    * Monitoring, link building, ...
+    * Legal requirements (accessibility, GDPR and cookie consent)
+    * Monitoring, search engine optimization, ...
   * Usually performed by a *team of experts*
 
 ---
@@ -25,9 +26,11 @@
     * How will the user find the relevant information?
   * Graphic designer 
     * How to present the contents in a visual way?
-  * *Coder*
+  * *Frontend / backend developer*
     * How to get all this into the user's browser?
-  * SEO consultant, link builder 
-    * How to get visitors?
+  * Accessibility specialist 
+    * Can everybody use the web site? (required by law in the EU since 2025)
+  * SEO and analytics specialist 
+    * How to get visitors and how to measure them?
   * Marketing consultant 
     * How to earn money on this?
