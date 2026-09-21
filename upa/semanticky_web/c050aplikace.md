@@ -9,11 +9,11 @@
 
 # SPARQL jako nástroj přípravy dat
 
-- ??**Doplnit** -- k mým záznamům přidat, co o nich ví někdo jiný (*enrichment*)
-- ??**Propojit** -- najít, že dvě různá IRI označují tutéž věc (*entity linking*)
-- ??**Ověřit** -- zkontrolovat vlastní data proti referenčnímu zdroji
+- **Doplnit** -- k mým záznamům přidat, co o nich ví někdo jiný (*enrichment*)
+- **Propojit** -- najít, že dvě různá IRI označují tutéž věc (*entity linking*)
+- **Ověřit** -- zkontrolovat vlastní data proti referenčnímu zdroji
 
-<p class="fragment" style="font-size: 130%; text-align: center; margin-top: 0.8em;">Všechny dotazy na následujících slajdech jsou <strong>živé</strong>. <br>Zkuste je během přednášky.</p>
+<p class="xfragment" style="font-size: 130%; text-align: center; margin-top: 0.8em;">Všechny dotazy na následujících slajdech jsou <strong>živé</strong>. <br>Zkuste je během přednášky.</p>
 
 Note:
 Záměrně to nejsou hračky. Každý z těch dotazů řeší úlohu, která se studentovi
@@ -35,10 +35,10 @@ SELECT ?ico ?firmaLabel ?web ?zalozeno WHERE {
 }
 ```
 
-- `VALUES` je doslova ``vlož sem svůj sloupec''
-- Spojuje se přes **úřední identifikátor**, ne přes název -- žádný fuzzy matching
-
-<p class="fragment"><strong>Enrichment ze 4. přednášky hotový jedním dotazem.</strong></p>
+- `VALUES` definuje uvažované hodnoty `?ico`
+- Kde se ptát?
+  - [https://query.wikidata.org/](https://query.wikidata.org/)
+  - [https://qlever.dev/wikidata](https://qlever.dev/wikidata)
 
 ---
 
@@ -57,10 +57,10 @@ SELECT ?ico ?firmaLabel ?web ?zalozeno WHERE {
 
 </div>
 
-- ??Tři vstupní řádky, **čtyři výstupní** -- VUT má dvě tvrzení o datu vzniku
-- ??Ani jedno není chyba: 1899 je založení české techniky, 1956 dnešní VUT; vícehodnotová vlastnost ⇒ **kartézský součin** ⇒ duplicity v exportu
+- Tři vstupní řádky, **čtyři výstupní** -- VUT má dvě tvrzení o datu vzniku
+- Ani jedno není chyba: 1899 je založení české techniky, 1956 dnešní VUT; vícehodnotová vlastnost ⇒ **kartézský součin** ⇒ duplicity v exportu
 
-<p class="fragment" style="text-align: center; font-size: 125%;">Tohle vás v projektu potká. <br>Řešení: kvalifikátory, agregace, nebo vědomá volba jedné hodnoty.</p>
+<p class="xfragment" style="text-align: center; font-size: 125%;">Řešení: kvalifikátory, agregace, nebo vědomá volba jedné hodnoty.</p>
 
 </div>
 
@@ -68,6 +68,22 @@ Note:
 Nechat sál chvíli hádat, proč jsou tam čtyři řádky. Je to přesně ten typ tiché
 chyby, která se v pipeline projeví až o tři kroky dál jako ``máme víc firem,
 než jsme scrapovali''.
+
+---
+
+# Oficiální název přes P1448
+
+```sparql
+SELECT ?ico ?nazev ?web ?zalozeno WHERE {
+  VALUES ?ico { "00216305" "45274649" "00025593" }
+  ?firma wdt:P4156 ?ico .                # IČO
+  ?firma wdt:P1448 ?nazev .              # Nazev
+  OPTIONAL { ?firma wdt:P856 ?web }      # web
+  OPTIONAL { ?firma wdt:P571 ?zalozeno } # datum vzniku
+}
+```
+
+- Ještě větší exploze stavů
 
 ---
 
@@ -90,6 +106,8 @@ yago-knowledge.org/Brno  ← YAGO
 de.dbpedia.org/Brünn     ← DBpedia (de)
 ```
 
+- [https://dbpedia.org/sparql](https://dbpedia.org/sparql?default-graph-uri=http%3A%2F%2Fdbpedia.org&query=SELECT+%3Fstejny+WHERE+%7B+dbr%3ABrno+owl%3AsameAs+%3Fstejny+%7D&format=text%2Fhtml&timeout=30000&signal_void=on&signal_unconnected=on)
+
 </div>
 <div class="col small">
 
@@ -97,11 +115,6 @@ de.dbpedia.org/Brünn     ← DBpedia (de)
 - Ve výsledku je ale i `wd:Q850531` -- což je **okres Brno-město**, ne město
 
 </div>
-
-@@div style="clear:both"@@@@/div@@
-
-
-<p class="fragment" style="text-align: center; font-size: 125%;">Jeden dotaz, a máte ukázku propojení <strong>i jeho typické chyby</strong>.</p>
 
 Note:
 Endpoint: dbpedia.org/sparql. Tohle je ta praktická výhrada k owl:sameAs
@@ -121,6 +134,7 @@ SELECT ?obecLabel ?ruian ?obyvatel ?sour WHERE {
         wdt:P7606 ?ruian ;        # kód obce v RÚIAN
         wdt:P625  ?sour .         # souřadnice
   OPTIONAL { ?obec wdt:P1082 ?obyvatel }
+  FILTER (?obyvatel > 100000)
   SERVICE wikibase:label { bd:serviceParam wikibase:language "cs". }
 }
 ORDER BY DESC(?obyvatel)
@@ -136,8 +150,11 @@ ORDER BY DESC(?obyvatel)
 
 </div>
 
-**Kód RÚIAN** je spojovací klíč do ČSÚ, ČÚZK, volby.cz i Registru smluv; souřadnice zadarmo ⇒ vstup do 12. přednášky.
+<div class="small">
 
+**Kód RÚIAN** je spojovací klíč do ČSÚ, ČÚZK, volby.cz i Registru smluv; souřadnice zadarmo (na konci bude přednáška o prostorových datech :-)
+
+</div>
 </div>
 
 Note:
@@ -163,8 +180,8 @@ SELECT ?jmeno ?wikidata ?wkt WHERE {
 ```
 
 - Endpoint [qlever.dev](https://qlever.dev/osm-planet) -- celý OpenStreetMap jako RDF
-- ??OSM nese tag `wikidata=*` -- **entity linking dělaný dobrovolníky**
-- ??Geometrie přijde jako **WKT**, tedy ve formátu, který načte PostGIS
+- Geometrie přijde ve formátu **WKT**, který načte PostGIS
+- VUT nemá jednu budovu, zkusme ``Fakulta inform''
 
 Note:
 Mendelova univerzita → Q1783765, Veterinární univerzita → Q7896530.
@@ -196,7 +213,7 @@ SELECT ?jmeno ?nar WHERE {
 Tim Berners-Lee 1955-06-08 | James Hendler 1957-04-02
 ```
 
-<p class="fragment" style="text-align: center; font-size: 125%;"><code>Q29164671</code> je článek <em>The Semantic Web</em> z roku 2001 &ndash; <br>ta citace, kterou dnešní přednáška začala.</p>
+<p class="xfragment" style="text-align: center; font-size: 125%;"><code>Q29164671</code> je článek <em>The Semantic Web</em> z roku 2001 &ndash; <br>ta citace, kterou dnešní přednáška začala.</p>
 
 </div>
 
@@ -211,9 +228,9 @@ distribuované zpracování dotazu.
 
 ---
 
-# Česká otevřená data: ověřte si mě
+# Česká otevřená data
 
-Na úvodní přednášce jsem tvrdil, že se u nás publikuje nejvíc v XML. Odkud to vím?
+Na úvodní přednášce jsem tvrdil, že se u nás publikuje nejvíc v XML.
 
 <div class="col small">
 
@@ -246,12 +263,7 @@ ORDER BY DESC(?n)
 
 @@div style="clear:both"@@@@/div@@
 
-Endpoint [data.gov.cz/sparql](https://data.gov.cz/sparql) -- **dluh č. 3 splacen**.
-
-Note:
-Tohle je ten slajd, kde se studentovi rozsvítí: čísla z první přednášky
-nejsou převzatá odněkud z prezentace, jsou z tohohle dotazu. A může si
-je přepočítat sám, dnes večer.
+Endpoint [data.gov.cz/sparql](https://data.gov.cz/sparql)
 
 ---
 
@@ -259,7 +271,7 @@ je přepočítat sám, dnes večer.
 
 <div class="small">
 
-Chci URL ke stažení všech CSV o kvalitě ovzduší -- bez klikání v katalogu.
+URL ke stažení všech CSV o kvalitě ovzduší
 
 ```sparql
 PREFIX dcat:<http://www.w3.org/ns/dcat#>
@@ -302,21 +314,17 @@ CONSTRUCT {
 ```
 
 - Výsledkem **není tabulka, ale graf** -- přemapovaný na můj vlastní slovník
-- Tenhle výstup nahraju do svého úložiště a dál se ptám jen na něj
-- ??Dotaz jako **ETL transformace**, zapsaná deklarativně
+- Tento výstup nahraju do svého úložiště a dál se ptám jen na něj
+- **ETL transformace**, zapsaná deklarativně
 
 ---
 
 # Kde to naráží
 
-- ??**Timeouty a rate limity** -- veřejný endpoint vám velký dotaz nedopočítá
-- ??**Nerovnoměrné pokrytí** -- Wikidata vědí o Brně všechno a o vaší firmě nic
-- ??**Kvalita** -- historické hodnoty, chybějící kvalifikátory, volně použité `owl:sameAs`
-- ??**Dostupnost** -- endpoint je cizí server; dnes běží, zítra vrací 502 (viz RÚIAN)
-
-<p class="fragment" style="font-size: 125%; text-align: center; margin-top: 0.6em;">Nad určitou velikost se dump <strong>stáhne a nahraje lokálně</strong> <br>(Fuseki, Oxigraph, QLever) &ndash; a tím jsme zpátky u ukládání dat.</p>
-
-Note:
-Poctivý závěr, aby to nebyla reklama. Propojená data nejsou náhrada za
-scrapování ani za vlastní databázi -- jsou to další zdroj, se svými
-vlastními slabinami.
+- **Timeouty a rate limity** -- veřejný endpoint vám velký dotaz nedopočítá
+- **Nerovnoměrné pokrytí** -- Wikidata vědí o Brně všechno a o malé firmě nic
+- **Kvalita** -- historické hodnoty, chybějící kvalifikátory, volně použité `owl:sameAs`
+- **Dostupnost** -- endpoint je cizí server; dnes běží, zítra vrací 502 (viz RÚIAN)
+- Vždy lze dump **stáhnout a nahrát do lokálního úložiště**
+  - Fuseki, Oxigraph, QLever (Ukládání a Příprava Dat :-)
+  - Umožňuje propojit datasety v jednom úložišti (viz podgrafy)

@@ -13,7 +13,7 @@
 	- Možnost sdílet data a jejich sémantiku napříč aplikacemi
 - Běžná reprezentace dat v IS:
 	- Relační/objektové/NoSQL databáze – vázané na aplikaci
-	- Veřejné API + serializace (JSON, XML) – není definována sémantika
+	- Veřejná API + serializace (JSON, XML) – není definována sémantika
 
 ---
 
@@ -63,7 +63,7 @@
 - Lokální identifikátory (např. generované)
 	- Specifické pro konkrétní databázi, při exportu ztrácí smysl
 - Unikátní hodnoty z nějakého číselníku (jsou-li k dispozici)
-	- Specifické pro různé entity: IČ / DIČ / VAT pro firmu, r.č. pro člověka (chceme ho sdílet?), často nic
+	- Specifické pro různé entity: IČ / DIČ / VAT pro firmu, r.č. pro člověka (chceme ho sdílet?), často nic z toho není k dispozici
 
 ---
 
@@ -110,8 +110,8 @@
 	- Obvykle společný *prefix*
 - Existující data -- veřejné znalostní báze
 	- `https://dbpedia.org/resource/Berlin`, `http://www.wikidata.org/entity/Q42`
-- Strukturované slovníky -- ontologie
-	- IRI pro predikáty a pro typy (třídy) objektů
+- Ontologie -- strukturované slovníky
+	- IRI pro **predikáty** a pro **typy** (třídy) objektů
 - Zabudované: `rdf:type`
 
 **Pravidla Linked Data:** používej IRI · používej *HTTP* IRI, aby se daly dereferencovat · po dereferencování vrať užitečná data · odkazuj na cizí IRI
@@ -135,8 +135,9 @@ nevrátí.
 
 ![RDF a schéma](assets/rdf-schema.svg) <!-- .element: style="height:520px;margin:0 auto;display:block" -->
 
-- Propojení přes `rdf:type`; schéma je psané opět v RDF
-- Data a schéma mohou, ale nemusí být v jednom grafu
+- Propojení přes `rdf:type`; schéma je definované opět RDF trojicemi
+	- Jen používáme jiný slovník -- RDFS, OWL
+- Data a schéma mohou, ale nemusí být uložena společně
 
 ---
 
@@ -216,7 +217,7 @@ ex:import-wikidata-2026-03 {
 - **Verzování** -- který import ji přinesl a kdy
 - **Oddělení dat a schématu** -- ontologie zvlášť, instance zvlášť
 
-<p>Při integraci zdrojů: V případě konfliktu umožňuje určit, ze kterého zdroje jaké tvrzení pochází.</p>
+<p>Při integraci zdrojů: Umožňuje určit, ze kterého zdroje jaké tvrzení pochází -- např. v případě konfliktu, aktualizace, apod.</p>
 
 </div>
 
@@ -265,27 +266,7 @@ trojic. Partitioning z přednášky 7 dorazil o pět přednášek dřív.
 	- Má i [SPARQL endpoint](https://data.gov.cz/sparql) -- za chvíli se v něm budeme ptát
 	- Slovník DCAT-AP-CZ, [otevřené formální normy](https://ofn.gov.cz/)
 - **EU:** [data.europa.eu](https://data.europa.eu/) -- i zde [SPARQL endpoint](https://data.europa.eu/data/sparql)
-- Možno importovat do lokálního úložiště a dotazovat se spolu s vlastními daty
-
----
-
-# Dotazování – SPARQL 
-- Výsledkem dotazu je
-	- CSV (tabulka) – dotaz SELECT
-	- Nebo nový graf – dotaz CONSTRUCT
-
-
-```sparql
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX yago: <http://dbpedia.org/class/yago/>
-PREFIX dbpedia-owl: <http://dbpedia.org/ontology/>
-PREFIX dbprop: <http://dbpedia.org/property/>
-SELECT ?place ?name ?label WHERE {
-    ?place rdf:type dbpedia-owl:Country .
-    ?place dbprop:commonName ?name .
-    ?place rdfs:label ?label .
-   OPTIONAL {?place dbprop:yearEnd ?yearEnd}
-   FILTER (!bound(?yearEnd))
-}
-```
+- Serializovaná data (dump), např. v [TriG](https://data.gov.cz/datov%C3%A9-sady?form%C3%A1ty=http%3A%2F%2Fpublications.europa.eu%2Fresource%2Fauthority%2Ffile-type%2FRDF_TRIG&po%C4%8Det-form%C3%A1t%C5%AF=24) nebo [Turtle](https://data.gov.cz/datov%C3%A9-sady?form%C3%A1ty=http%3A%2F%2Fpublications.europa.eu%2Fresource%2Fauthority%2Ffile-type%2FRDF_TRIG&form%C3%A1ty=http%3A%2F%2Fpublications.europa.eu%2Fresource%2Fauthority%2Ffile-type%2FRDF_TURTLE&po%C4%8Det-form%C3%A1t%C5%AF=24)
+	- Možno importovat do lokálního úložiště a dotazovat se spolu s vlastními daty
+	- Např. [Číselník pro sporty](https://data.dia.gov.cz/soubory/%C4%8D%C3%ADseln%C3%ADky/sporty.ttl), [Přehled OSVČ](https://data.gov.cz/datov%C3%A1-sada?iri=https%3A%2F%2Fdata.gov.cz%2Fzdroj%2Fdatov%C3%A9-sady%2F00006963%2F8b8c88fda13b39a12d24ff73a0f5980d)
 

@@ -59,10 +59,10 @@ Microdata ze starší šablony a JSON-LD z novějšího pluginu.
 </script>
 ```
 
-- Celý trik je `@context`: mapuje krátké klíče na IRI
-	- ??`"name"` ⇒ `https://schema.org/name`
-- ??Běžná aplikace to čte jako obyčejný JSON, RDF nástroj jako graf
-- ??JSON-LD 1.1 je **W3C Recommendation** (2020)
+- `@context`: mapuje krátké klíče na IRI
+	- `"name"` ⇒ `https://schema.org/name`
+- Běžná aplikace vidí obyčejný JSON, RDF nástroj jako graf
+- JSON-LD 1.1 je **W3C Recommendation** (2020)
 
 </div>
 
@@ -99,7 +99,7 @@ Microdata ze starší šablony a JSON-LD z novějšího pluginu.
 
 
 - Obojí anotuje **přímo zobrazovaný obsah** -- nehrozí rozpor mezi tím, co vidí člověk a co stroj
-- ??Zato se to rozbije při každé změně šablony -- proto JSON-LD vyhrál
+- Zato se to rozbije při každé změně šablony -- proto JSON-LD vyhrál
 - Zkrácený zápis (`schema:Person`) se expanduje na plné IRI podle `vocab` / `prefix`
 
 ---
@@ -140,11 +140,11 @@ co ta IRI znamenají. Teď to student má celé: IRI, slovník i nástroj.
 - Publikující web za to dostane **lepší vzhled ve výsledcích vyhledávání**
 - Dokumentace: [Produkty](https://developers.google.com/search/docs/appearance/structured-data/product), [Filmy](https://developers.google.com/search/docs/appearance/structured-data/movie), [Recepty](https://developers.google.com/search/docs/appearance/structured-data/recipe)
 
-<p class="fragment" style="font-size: 130%; text-align: center; margin-top: 0.6em;">Sémantický web na webu nevznikl z ideálů, ale protože se to <strong>vyplatí</strong>.</p>
+- Pokrytí je **nevyvážené** -- e-shopy, recepty, události a firmy ano; cokoli jiného spíš ne
+- A publikovaná data jsou **marketingová** -- cena bez DPH, dostupnost ``skladem''
 
-- ??Důsledek pro nás: pokrytí je **vychýlené** -- e-shopy, recepty, události a firmy ano; cokoli jiného spíš ne
-- ??A publikovaná data jsou **marketingová** -- cena bez DPH, dostupnost ``skladem''
-
+<p class="xfragment" style="font-size: 130%; text-align: center; margin-top: 0.6em;">Sémantický web a web jsou <strong>různé věci</strong>.</p>
+<p class="fragment" style="font-size: 130%; text-align: center; margin-top: 0.6em;"><strong>RDF data mohou existovat bez WWW stránek.</strong></p>
 Note:
 Dobrá chvíle připomenout kritický odstup z minulé přednášky: že jsou data
 strojově čitelná, neznamená, že jsou pravdivá. Jen se vám lépe stahují.

@@ -25,6 +25,30 @@ SELECT ?mesto ?pocet WHERE {
 
 ---
 
+# Kde to spustit
+
+- Veřejné endpointy: [query.wikidata.org](https://query.wikidata.org) · [dbpedia.org/sparql](https://dbpedia.org/sparql) · [data.gov.cz/sparql](https://data.gov.cz/sparql) · [qlever.dev](https://qlever.dev/)
+- Editor [YASGUI](https://yasgui.triply.cc/) -- zvýrazňování, našeptávání, export
+- Z programu: HTTP GET/POST na endpoint, výsledek jako JSON nebo CSV
+
+```python
+import requests
+
+r = requests.get("https://query.wikidata.org/sparql",
+                 params={"query": open("dotaz.rq").read()},
+                 headers={"Accept": "text/csv"})
+open("obce.csv", "w").write(r.text)
+```
+
+- Vždy začínejte s `LIMIT` -- endpointy mají **timeout i rate limit**
+- Na velký objem stáhnout dump a nahrát lokálně (Fuseki, Oxigraph, QLever)
+
+Note:
+Ten curl je záměrně tentýž tvar jako minulý týden u ARES a ČNB. Jediný rozdíl
+je, že se neptám na soubor, ale na graf.
+
+---
+
 # Čtyři formy dotazu
 
 <div class="small">
@@ -62,37 +86,60 @@ SELECT ?mesto ?nazev ?pocet WHERE {
 # Dotaz na DBPedia
 
 ```sparql
-TODO
+PREFIX dbprop: <http://dbpedia.org/property/>
+PREFIX dbo: <http://dbpedia.org/ontology/>
+SELECT DISTINCT ?country ?name ?curLabel ?cur
+WHERE 
+{  ?country rdf:type dbo:Country;
+      dbprop:commonName ?name ;
+      dbo:currency ?cur .
+   ?cur rdfs:label ?curLabel .
+   OPTIONAL {?country dbprop:yearEnd ?yearEnd}
+   FILTER (!bound(?yearEnd) && lang(?curLabel) = "en")
+}
 ```
+
+- [https://dbpedia.org/sparql](https://dbpedia.org/sparql)
+- [https://qlever.dev/dbpedia/](https://qlever.dev/dbpedia/)
 
 ---
 
 # Dotaz data.gov.cz
 
+- Rejstřík orgánů veřejné moci: ID datových schránek všech krajských úřadů
+
 ```sparql
-TODO
+PREFIX ovm: <https://slovník.gov.cz/legislativní/sbírka/111/2009/pojem/>
+PREFIX rpp: <https://slovník.gov.cz/agendový/104/pojem/>
+
+SELECT ?nazev ?ico ?schranka WHERE {
+  ?z    rpp:zařazuje-do-kategorie/ovm:má-název-kategorie "Krajské úřady"@cs ;
+        rpp:má-zařazený-subjekt  ?urad .
+  ?urad ovm:má-název-orgánu-veřejné-moci ?nazev ;
+        ovm:má-identifikační-číslo-osoby-orgánu-veřejné-moci ?ico ;
+        ovm:má-datovou-schránku-orgánu-veřejné-moci/ovm:má-identifikátor-datové-schránky ?schranka .
+}
+ORDER BY ?nazev
 ```
+
+- [data.gov.cz/sparql](https://data.gov.cz/sparql) -- 13 krajů, IRI včetně diakritiky
 
 ---
 
-# Kde to spustit
+# Výsledek
 
-- Veřejné endpointy: [query.wikidata.org](https://query.wikidata.org) · [dbpedia.org/sparql](https://dbpedia.org/sparql) · [data.gov.cz/sparql](https://data.gov.cz/sparql) · [qlever.dev](https://qlever.dev/)
-- Editor [YASGUI](https://yasgui.triply.cc/) -- zvýrazňování, našeptávání, export
-- Z programu: HTTP GET/POST na endpoint, výsledek jako JSON nebo CSV
+<div class="small">
 
-```python
-import requests
+| nazev | ico | schranka |
+|---|---|---|
+| Jihomoravský kraj | 70888337 | x2pbqzq |
+| Jihočeský kraj | 70890650 | kdib3rr |
+| Karlovarský kraj | 70891168 | siqbxt2 |
+| Kraj Vysočina | 70890749 | ksab3eu |
+| Královéhradecký kraj | 70889546 | gcgbp3q |
+| ... | ... | ... |
 
-r = requests.get("https://query.wikidata.org/sparql",
-                 params={"query": open("dotaz.rq").read()},
-                 headers={"Accept": "text/csv"})
-open("obce.csv", "w").write(r.text)
-```
+</div>
 
-- Vždy začínejte s `LIMIT` -- endpointy mají **timeout i rate limit**
-- Na velký objem stáhnout dump a nahrát lokálně (Fuseki, Oxigraph, QLever)
-
-Note:
-Ten curl je záměrně tentýž tvar jako minulý týden u ARES a ČNB. Jediný rozdíl
-je, že se neptám na soubor, ale na graf.
+- `?z` je **pomocný uzel** -- zařazení do kategorie nese i datum, proto není vztah přímý
+- `/` je **property path**: zkratka za průchod přes mezilehlý uzel
