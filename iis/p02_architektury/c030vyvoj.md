@@ -15,15 +15,16 @@
 ---
 
 # Protokol HTTP
-- Aplikační protokol nad TCP/IP (Hypertext Transfer Protocol)
+- Aplikační protokol (Hypertext Transfer Protocol)
+	- HTTP/1.1, HTTP/2 nad TCP; HTTP/3 nad QUIC (UDP)
 - Komunikaci začíná klient
 	- Naváže spojení se serverem
 	- Vyšle HTTP požadavek
 - Server reaguje HTTP odpovědí
 	- Stav – výsledek vyhodnocení požadavku
 	- Požadovaný (nebo chybový) dokument
-- Rozlišení typy dokumentů: MIME typ
-- Detaily: např. v [přednáškách ITW](https://www.fit.vutbr.cz/study/courses/ITW/private/prednasky/p01/slide0250.html)
+- Rozlišení typů dokumentů: MIME typ
+- Detaily: např. v [přednáškách ITW](https://gitshow.net/https/difs-teaching.github.io/slides/en/itwe/p01_web_technology#/15)
 
 ---
 
@@ -32,8 +33,8 @@
 
 ```http
 GET /data.html HTTP/1.1
-Host: www.fit.vutbr.cz
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:69.0) Firefox/69.0
+Host: www.fit.vut.cz
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:140.0) Gecko/20100101 Firefox/140.0
 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
 Accept-Language: cs,en-US;q=0.7,en;q=0.3
 … 
@@ -41,11 +42,10 @@ Accept-Language: cs,en-US;q=0.7,en;q=0.3
 
 ```http
 POST /api/login.php HTTP/1.1
-Host: www.fit.vutbr.cz
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:69.0) Firefox/69.0
+Host: www.fit.vut.cz
 Accept: application/json, text/plain, */*
 Content-Type: application/json
-Content-Length: 39
+Content-Length: 38
 
 {"username":"john","password":"mypwd"} 
 ```
@@ -66,9 +66,9 @@ Content-Length: 39
 
 ```http
 HTTP/1.1 200 OK
-Date: Wed, 02 Oct 2019 12:11:55 GMT
-Server: Apache/2.4.38 (Debian)
-Content-type: text/html; charset=utf-8
+Date: Wed, 23 Sep 2026 12:11:55 GMT
+Server: Apache/2.4.65 (Debian)
+Content-Type: text/html; charset=utf-8
 …
 
 <!DOCTYPE html>
@@ -79,11 +79,11 @@ Content-type: text/html; charset=utf-8
 ---
 
 # MIME typ obsahu
-- Hlavička `Content-type`
-- Specifikace typu ve tvaru `třída/typ`
+- Hlavička `Content-Type`
+- Specifikace typu ve tvaru `typ/podtyp`
 - Standardní typy
 	- `text/plain`, `text/html`, `text/xml`
-	- `application/json`, `application/x-www-form-urlencoded`
+	- `application/json`, `application/x-www-form-urlencoded`, `multipart/form-data`
 	- `image/jpeg`, `image/png`
 
 ---
@@ -109,22 +109,23 @@ Content-type: text/html; charset=utf-8
 - Externí program spouštěný HTTP serverem
 - Nezávislé na implementačním jazyce
 	- Výměna dat přes stdin/stdout a proměnné prostředí
-	- Programování v C, PERL, Python, …
+	- Programování v C, Perl, Python, …
 - Velká režie
 	- Nový proces pro každý HTTP požadavek
-- [Příklad CGI skriptu v PERLu](https://github.com/DIFS-Teaching/basic-demos/blob/master/cgi/cgi_perl.cgi)
+- [Příklad CGI skriptu v Perlu](https://github.com/DIFS-Teaching/basic-demos/blob/master/cgi/cgi_perl.cgi)
 
 ---
 
 # Efektivnější řešení
 - FastCGI
 	- Trvale běžící proces zpracovává více HTTP požadavků
+	- Např. PHP-FPM (dnes nejběžnější nasazení PHP)
 - Rozšíření běžícího HTTP serveru
 	- Rozšiřující moduly
-	- Např. PHP (mod_php)
+	- Např. PHP (mod_php) – dříve běžné, princip viz dále
 - Specializovaný HTTP server pro specifickou platformu
-	- Např. Java EE server (Tomcat, Glassfish, …)
-	- Podobně JavaScript (nodejs), .NET, … 
+	- Např. Java – Jakarta EE (WildFly, GlassFish, …), servletový kontejner Tomcat
+	- Podobně JavaScript (Node.js), Python (WSGI/ASGI), .NET (ASP.NET Core), … 
 
 ---
 
@@ -172,14 +173,14 @@ Content-type: text/html; charset=utf-8
 - Cookie: Malý objem dat, který serverová aplikace může uložit na straně klienta (v prohlížeči)
 - Každý cookie má **_jméno_** a **_hodnotu_**
 - Pro každý cookie je navíc definována **_cesta_** a **_expirace_**
-	- Přístupovat ke cookies mohou pouze stránky se stejnou cestou jako je stránka, která cookie uložila
-	- Lze nastavit jiný adresář (nejčastěji kořenový, aby celá aplikace mohla číst všechna svoje cookie)
+	- Cookie se odesílá jen s požadavky na stejnou doménu a cestu (včetně podadresářů)
+	- Výchozí cesta je adresář stránky, která cookie uložila; lze nastavit jinou (nejčastěji kořenovou, aby celá aplikace mohla číst všechna svoje cookie)
 
 ---
 
 # Trvanlivost cookies (expirace)
-- Lze zadat přesný čas, dokdy má být cookie uložen v prohlížeči – tzv. **_expirace_**
-- Pokud není expirace zadána, cookie se vymaže se zavřením prohlížeče
+- Lze zadat přesný čas (`Expires`) nebo dobu platnosti (`Max-Age`), po kterou má být cookie uložen v prohlížeči – tzv. **_expirace_**
+- Pokud není expirace zadána, cookie se vymaže se zavřením prohlížeče (obnova relace v prohlížeči ho však může zachovat)
 
 ---
 
@@ -187,10 +188,10 @@ Content-type: text/html; charset=utf-8
 - Server v rámci **odpovědi** na nějaký požadavek použije hlavičky `Set-Cookie`
 
 ```http
-HTTP/1.0 200 OK
-Content-type: text/html
-Set-Cookie: theme=light; Path=/; Domain=.example.com
-Set-Cookie: sessionToken=abc123; Expires=Wed, 09 Jun 2021 10:18:14 GMT
+HTTP/1.1 200 OK
+Content-Type: text/html
+Set-Cookie: theme=light; Path=/; Expires=Wed, 09 Jun 2027 10:18:14 GMT
+Set-Cookie: sessionToken=abc123; Path=/; HttpOnly
 … 
 ```
 
@@ -198,7 +199,7 @@ Set-Cookie: sessionToken=abc123; Expires=Wed, 09 Jun 2021 10:18:14 GMT
 
 ```http
 GET /spec.html HTTP/1.1
-Host: www.example.org
+Host: www.example.com
 Cookie: theme=light; sessionToken=abc123
 … 
 ```
@@ -210,7 +211,7 @@ Cookie: theme=light; sessionToken=abc123
 	- Server shromáždí hodnoty z HTTP hlaviček a zpřístupní aplikaci
 	- Např. v proměnných prostředí, speciální proměnné, apod.
 - Na straně klienta
-	- JavaScriptové API v prohlížeči
+	- JavaScriptové API v prohlížeči (kromě HttpOnly cookies)
 
 ---
 
@@ -228,7 +229,7 @@ Cookie: theme=light; sessionToken=abc123
 - Zcizení Session ID (session stealing)
 	- Síťový odposlech – šifrování (HTTPS)
 	- Útok na klientský prohlížeč (XSS)
-		- http-only cookies
+		- HttpOnly cookies
 	- Útok na klientské zařízení
 		- Datové soubory prohlížeče
 

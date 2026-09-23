@@ -11,11 +11,11 @@
 ---
 
 # Centrální informační systémy
-- Centrálního počítač (_mainframe_) s databází a aplikacemi
+- Centrální počítač (_mainframe_) s databází a aplikacemi
 - Aktivace aplikačních programů z terminálů (_pracovních stanic_)
 - Z hlediska architektury není použita síťová komunikace (není klient)
 
-![Centrální architektura](assets/klientserver1.png) 
+![Centrální architektura](assets/klientserver1.svg) <!-- .element: style="width:1100px" -->
 <!-- .element: style="text-align:center" -->
 
 ---
@@ -24,23 +24,24 @@
 - Zavedení lokálního klienta (osobní počítač -- PC)
 - Aplikace na PC, databáze na speciálním serveru v rámci lokální sítě
 
-![File-server](assets/klientserver2.png)
+![File-server](assets/klientserver2.svg) <!-- .element: style="width:1100px" -->
 <!-- .element: style="text-align:center" -->
 
 ---
 
 # Lokální síť
 - Není použita globální síť a standardní protokoly Internetu a TCP-IP
-- Snížení rychlosti přenosů, bezpečnosti a zabezpečení integrity
+- Server pouze sdílí soubory (_file-server_), SŘBD i aplikace běží na každém PC
+	- Po síti se přenášejí celé soubory databáze → pomalé přenosy, nízká bezpečnost, obtížné zajištění integrity
 - Vstupuje otázka **_izolovanosti transakcí_**, tj. možnosti **_víceuživatelského přístupu_**
 
 ---
 
 # Architektura klient-server (dvouvrstvá)
 - Užity dva druhy oddělených výpočetních systémů **_klient_** a **_server_**.
-- **_Tloušťka_** klienta odpovídá jeho "**_inteligenci"_**
+- **_Tloušťka_** klienta odpovídá jeho "**_inteligenci_**"
 
-![Klient-server](assets/klientserver3.png)
+![Klient-server](assets/klientserver3.svg) <!-- .element: style="width:1100px" -->
 <!-- .element: style="text-align:center" -->
 
 ---
@@ -50,7 +51,7 @@
 - Chování klienta a serveru rovněž standardizováno
 	- Server specializovaný pro databázové dotazy
 	- Po síti se přenášejí pouze dotazy a výsledky
-- Ve vyšších vrstvách aplikačních protokolů se nejčastěji komunikuje **_serializovanými daty_**, případně v SQL
+- Klient posílá přímo **_SQL dotazy_** protokolem databázového serveru (ovladače ODBC, JDBC, …), zpět dostává **_serializovaná data_** (výsledky)
 
 ---
 
@@ -81,7 +82,7 @@
 
 <div class="fragment box shadow" style="position:absolute;left:1200px;top:840px;padding:10px;">
 Database server<br/>
-(MySQL, Oracle, ...)
+(PostgreSQL, MySQL, Oracle, ...)
 </div>
 
 <div class="fragment box shadow" style="position:absolute;left:1200px;top:240px;padding:10px;">
@@ -90,7 +91,7 @@ Web browser
 
 <div class="fragment box shadow" style="position:absolute;left:1200px;top:540px;padding:10px;">
 Application server<br/>
-(PHP, Java, .NET, ...)
+(PHP, Java, .NET, Node.js, Python, ...)
 </div>
 
 <div class="fragment box shadow" style="position:absolute;right:1200px;top:320px;padding:10px;">
@@ -126,13 +127,14 @@ Datový model (objektový, relační, ...)
 
 # Dvojvrstvá ⨉ Třívrstvá architektura
 
-- Základní rozdíl: Oddělená prezentační vrstva
-	- Standardní webový prohlížeč
-- Snazší nasazení
-	- Není třeba nic instalovat na klientská zařízení
-	- Centrální aktualizace
-- Lepší přístupnost
-	- Klient není omezen na konkrétní zařízení nebo operační systém
+- Základní rozdíl: Oddělená aplikační logika
+	- Klient nepřistupuje přímo k databázi: bezpečnost, škálovatelnost, logika na jednom místě
+- Klientem je typicky standardní webový prohlížeč
+	- Snazší nasazení
+		- Není třeba nic instalovat na klientská zařízení
+		- Centrální aktualizace
+	- Lepší přístupnost
+		- Klient není omezen na konkrétní zařízení nebo operační systém
 
 ---
 
@@ -140,7 +142,8 @@ Datový model (objektový, relační, ...)
 - Monolitický systém (typické pro třívrstvou architekturu)
 	- Vyvíjí se a nasazuje jako jeden celek
 	- \+ snáze zvládnutelný vývoj, testování
-	- \- obtížnější a pomalejší nasazování nových verzí
+	- \- obtížnější a pomalejší nasazování nových verzí, škálování jen jako celek
+	- Kompromis: _modulární monolit_ – jasně oddělené moduly v jednom nasazení
 - Distribuované architektury
 	- Service-oriented architecture (SOA)
 	- Microservices (mikroslužby)
@@ -152,8 +155,8 @@ Datový model (objektový, relační, ...)
 - Aplikace je rozdělena na malé části
 	- Vlastní databáze (nepřístupná vně)
 	- Business logika
-	- Aplikační rozhraní (sítové)
-- Typicky malý tým vývojářů na každou část (2 pizzas rule)
+	- Aplikační rozhraní (síťové)
+- Typicky malý tým vývojářů na každou část (_two-pizza team_, Amazon)
 - Nasazují se odděleně
 - \+ Technologická nezávislost, rychlé aktualizace
-- \- Testovatelnost, režie komunikace, riziko nekompatibility, řetězové selhání, …
+- \- Testovatelnost, režie komunikace, konzistence dat (distribuované transakce), riziko nekompatibility, řetězové selhání, …

@@ -8,10 +8,10 @@
 ---
 
 # Model
-- Modelování je prováděno jistým typem systému pro řízení báze dat, tedy, např.:
-	- **_relačním modelem_** (nejčastěji),
-	- objektovým modelem,
-	- případně jinak.
+- Stav modelu je uchováván v databázi podle zvoleného datového modelu, např.:
+	- **_relační model_** (nejčastěji),
+	- dokumentový, grafový a další modely (NoSQL),
+	- objektový model, případně jinak.
 
 ---
 
@@ -25,9 +25,9 @@
 
 # Procesy
 - Modelovacím prostředím **_procesů modelu_** je nejčastěji nějaký univerzální programovací jazyk kompilovaný nebo i interpretovaný. 
-- Snahy o modelování  formálnějšími prostředky jako jsou např. různé modifikace automatů nebo **_Petriho_** **_sítě_**. Při modelování procesů se musíme zabývat zejména:
+- Snahy o modelování formálnějšími prostředky jako jsou např. různé modifikace automatů, **_Petriho_** **_sítě_** nebo dnes nejčastěji notace **_BPMN_**. Při modelování procesů se musíme zabývat zejména:
 	- udržováním **_konzistence_** systému,
-	- **_paralelním během procesů  (vícenásobným přístupem)_** a  vzájemným, ovlivňováním a
+	- **_paralelním během procesů (vícenásobným přístupem)_** a vzájemným ovlivňováním a
 	- **_transakčním zpracováním_**_._
 
 ---
@@ -37,7 +37,7 @@
 - Způsobem vytváření modelů, **_modelovacími technikami_** a to zejména:
 	- **_konceptuálním modelováním_** jako výchozím prostředkem pro modelování dat (tj. definicí modelu stavu fyzického systému na jisté úrovni abstrakce), převodem konceptuálního modelu na model databázový,
 	- **_modelováním procesů_** a tedy i
-	- **_univerzálními modelovacími prostředky_**, jako je např. UML.
+	- **_univerzálními modelovacími prostředky_**, jako je např. UML nebo BPMN.
 
 ---
 
@@ -51,15 +51,16 @@
 	- **_formálními metodami definice procesů_** a workflow systémy,
 	- souvislosti procesů s transakcemi a integritou,
 	- metodami **_spouštění procesů_**.
+- **_Bezpečností_** – autentizace, autorizace, ochrana osobních údajů (GDPR).
 
 ---
 
 # Nezbytné znalosti technologie
 - **_Počítačovými sítěmi_** a to zejména:
 	- technologií **_klient-server_** a vytváření klientské a serverové části informačního systému
-	- **_internetovými službami_**
+	- **_webovými službami_** a API (REST)
 - **_Vizualizací_** **_dat_** a to zejména:
-	- hypertextovou prezentací popsatelnou v _HTML_ a pokročilejších technikách využívajících skripty a model DOM.
-	- prezentací sloužící pro dolování dat nebo **_OLAP technologie_**.
+	- hypertextovou prezentací v _HTML_ a pokročilejšími technikami (skripty, DOM),
+	- prezentací pro dolování dat, **_OLAP_** a business intelligence.
 - **_Mnohé z těchto témat pokrývají jeden nebo více samostatných povinných nebo volitelných předmětů. Zde se zabýváme jejich základy, zopakováním, doplněním a zejména spoluprací při vytváření komplexního systému_**.
 
