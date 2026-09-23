@@ -235,6 +235,20 @@ Cookie: theme=light; sessionToken=abc123
 
 ---
 
+# Bezpečnostní atributy cookies
+- `Secure` – cookie se odesílá pouze přes HTTPS
+- `HttpOnly` – cookie není dostupný z JavaScriptu (ochrana proti zcizení pomocí XSS)
+- `SameSite=Strict|Lax|None` – zda se cookie odesílá i s požadavky vyvolanými z cizích stránek
+	- Ochrana proti **CSRF** (podvržení požadavku z jiného webu)
+	- Prohlížeče založené na Chromiu bez uvedení atributu použijí `Lax`
+- Po přihlášení vygenerovat nové Session ID (ochrana proti _session fixation_)
+
+```http
+Set-Cookie: sessionToken=abc123; Path=/; Secure; HttpOnly; SameSite=Lax
+```
+
+---
+
 # Architektura znovu
 <!-- .slide: class="normal centered fullspace" data-transition="slide-in fade-out" -->
 
@@ -267,6 +281,47 @@ Cookie: theme=light; sessionToken=abc123
 <!-- .slide: class="normal centered fullspace" data-transition="fade-in slide-out" -->
 
 ![Třívrstvá architektura](assets/v4.svg) <!-- .element: style="width:1200px;margin-top:30px;margin-left:-40px;" -->
+
+---
+
+# Škálování třívrstvé architektury
+<!-- .slide: class="normal centered fullspace" -->
+
+![Škálování](assets/skalovani.svg) <!-- .element: style="width:1600px;margin-top:40px;" -->
+
+---
+
+# Škálování třívrstvé architektury
+- **Vertikální** škálování – výkonnější server
+- **Horizontální** škálování – více instancí aplikačního serveru
+	- Požadavky rozděluje _load balancer_ (reverse proxy, např. nginx)
+	- Proxy obvykle také zajišťuje HTTPS a statické soubory
+- Úzkým hrdlem bývá databáze – replikace, cache
+- Problém: **session** uložená v paměti jednoho serveru
+	- _Sticky sessions_ – klient je směrován stále na stejný server (výpadek = ztráta session)
+	- Sdílené úložiště session – databáze, Redis (aplikační servery zůstávají bezstavové)
+	- Stav u klienta – podepsaný token (JWT, viz klientská část IS)
+
+---
+
+# Nasazení: kontejnery
+- Kontejner = aplikace + všechny závislosti, izolovaný běh (Docker, Podman)
+- Každá část systému ve vlastním kontejneru, sestava popsaná v `compose.yaml`
+- Stejné prostředí pro vývoj i provoz; ve větším měřítku orchestrace (Kubernetes)
+
+```yaml
+services:
+  web:
+    image: nginx
+    ports: ["443:443"]
+  app:
+    image: php:8.4-fpm
+  db:
+    image: postgres:17
+    volumes: ["dbdata:/var/lib/postgresql/data"]
+volumes:
+  dbdata:
+```
 
 ---
 

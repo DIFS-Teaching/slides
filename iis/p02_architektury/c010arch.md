@@ -5,6 +5,7 @@
 - Klient-server
 - Monolitické architektury
 	- Třívrstvá architektura
+	- Modulární monolit
 - Distribuované informační systémy
 	- Architektury založené na službách
 
@@ -127,7 +128,7 @@ Datový model (objektový, relační, ...)
 
 # Dvojvrstvá ⨉ Třívrstvá architektura
 
-- Základní rozdíl: Oddělená aplikační logika
+- Základní rozdíl: Aplikační logika oddělená od prezentační
 	- Klient nepřistupuje přímo k databázi: bezpečnost, škálovatelnost, logika na jednom místě
 - Klientem je typicky standardní webový prohlížeč
 	- Snazší nasazení
@@ -143,11 +144,22 @@ Datový model (objektový, relační, ...)
 	- Vyvíjí se a nasazuje jako jeden celek
 	- \+ snáze zvládnutelný vývoj, testování
 	- \- obtížnější a pomalejší nasazování nových verzí, škálování jen jako celek
-	- Kompromis: _modulární monolit_ – jasně oddělené moduly v jednom nasazení
+	- Kompromis: _modulární monolit_
 - Distribuované architektury
 	- Service-oriented architecture (SOA)
 	- Microservices (mikroslužby)
 	- Spíše řešeno v rámci Pokročilých informačních systémů
+
+---
+
+# Modulární monolit
+- Nasazuje se jako jeden celek, uvnitř je rozdělen na **moduly** podle oblastí (objednávky, sklad, uživatelé, …)
+- Moduly spolu komunikují jen přes **veřejné rozhraní**
+	- Volání v rámci jednoho procesu, ne po síti
+- Každý modul spravuje svá data (vlastní tabulky / schéma), ostatní moduly k nim nepřistupují přímo
+- \+ jednoduché nasazení a transakce, přehledná struktura kódu
+- \+ modul lze později vyčlenit do samostatné služby
+- Podpora např. Spring Modulith, moduly a balíčky v aplikačních frameworcích
 
 ---
 
