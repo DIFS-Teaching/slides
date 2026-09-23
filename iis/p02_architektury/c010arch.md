@@ -34,13 +34,13 @@
 - Není použita globální síť a standardní protokoly Internetu a TCP-IP
 - Server pouze sdílí soubory (_file-server_), SŘBD i aplikace běží na každém PC
 	- Po síti se přenášejí celé soubory databáze → pomalé přenosy, nízká bezpečnost, obtížné zajištění integrity
-- Vstupuje otázka **_izolovanosti transakcí_**, tj. možnosti **_víceuživatelského přístupu_**
+- Vstupuje otázka _izolovanosti transakcí_, tj. možnosti _víceuživatelského přístupu_
 
 ---
 
 # Architektura klient-server (dvouvrstvá)
-- Užity dva druhy oddělených výpočetních systémů **_klient_** a **_server_**.
-- **_Tloušťka_** klienta odpovídá jeho "**_inteligenci_**"
+- Užity dva druhy oddělených výpočetních systémů **klient** a **server**.
+- _Tloušťka_ klienta odpovídá jeho „inteligenci“
 
 ![Klient-server](assets/klientserver3.svg) <!-- .element: style="width:1100px" -->
 <!-- .element: style="text-align:center" -->
@@ -52,13 +52,13 @@
 - Chování klienta a serveru rovněž standardizováno
 	- Server specializovaný pro databázové dotazy
 	- Po síti se přenášejí pouze dotazy a výsledky
-- Klient posílá přímo **_SQL dotazy_** protokolem databázového serveru (ovladače ODBC, JDBC, …), zpět dostává **_serializovaná data_** (výsledky)
+- Klient posílá přímo **SQL dotazy** protokolem databázového serveru (ovladače ODBC, JDBC, …), zpět dostává **serializovaná data** (výsledky)
 
 ---
 
 # Třívrstvá architektura
-- _(three-tier architecture)_ 
-- **Prezentační vrstva** – **vizualizuje** informace pro uživatele, většinou formou grafického uživatelského rozhraní, může kontrolovat zadávané vstupy, neobsahuje však zpracování dat
+- (_three-tier architecture_) 
+- **Prezentační vrstva** – vizualizuje informace pro uživatele, většinou formou grafického uživatelského rozhraní, může kontrolovat zadávané vstupy, neobsahuje však zpracování dat
 - **Aplikační vrstva** – jádro aplikace, logika a funkce, výpočty a zpracování dat
 - **Datová vrstva** – nejčastěji databáze. Může zde být ale také (síťový) souborový systém, webová služba nebo jiná aplikace.
 
@@ -70,9 +70,9 @@
 	- Tomu odpovídá volba technologií pro realizaci jednotlivých částí
 - **Layer** – logická vrstva – jednotka organizace kódu
 	- Obvykle řešena v rámci aplikační vrstvy
-	- _Data_ _layer_ – část řešící komunikaci s databází
-	- _Business_ _layer_ – část implementující logiku aplikace
-	- _Presentation_ _layer_ – komunikace s klientem
+	- _Data layer_ – část řešící komunikaci s databází
+	- _Business layer_ – část implementující logiku aplikace
+	- _Presentation layer_ – komunikace s klientem
 
 ---
 

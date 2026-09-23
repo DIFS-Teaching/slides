@@ -171,15 +171,15 @@ Content-Type: text/html; charset=utf-8
 
 # Cookies
 - Cookie: Malý objem dat, který serverová aplikace může uložit na straně klienta (v prohlížeči)
-- Každý cookie má **_jméno_** a **_hodnotu_**
-- Pro každý cookie je navíc definována **_cesta_** a **_expirace_**
+- Každý cookie má **jméno** a **hodnotu**
+- Pro každý cookie je navíc definována **cesta** a **expirace**
 	- Cookie se odesílá jen s požadavky na stejnou doménu a cestu (včetně podadresářů)
 	- Výchozí cesta je adresář stránky, která cookie uložila; lze nastavit jinou (nejčastěji kořenovou, aby celá aplikace mohla číst všechna svoje cookie)
 
 ---
 
 # Trvanlivost cookies (expirace)
-- Lze zadat přesný čas (`Expires`) nebo dobu platnosti (`Max-Age`), po kterou má být cookie uložen v prohlížeči – tzv. **_expirace_**
+- Lze zadat přesný čas (`Expires`) nebo dobu platnosti (`Max-Age`), po kterou má být cookie uložen v prohlížeči – tzv. _expirace_
 - Pokud není expirace zadána, cookie se vymaže se zavřením prohlížeče (obnova relace v prohlížeči ho však může zachovat)
 
 ---
