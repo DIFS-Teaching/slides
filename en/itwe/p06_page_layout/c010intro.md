@@ -24,7 +24,7 @@
   - Disadvantages 
     - Page layout is defined directly in HTML
     - Long and obscure code (`<tr><td><tr><td>`)
-    - The table is displayed after being read completely (slow)
+    - Poor accessibility and no responsiveness
 
 <span class="note">See examples below</span>
 

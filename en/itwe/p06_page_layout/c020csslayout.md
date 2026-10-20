@@ -517,7 +517,7 @@ body {
 
 # Floating Blocks -- Container with overflow
 
-- With `overflow: hidden`, the block `.columns` encloses all floating blocks
+- With `overflow: hidden` (or `display: flow-root`), the block `.columns` encloses all floating blocks
 
 <div class="col">
 

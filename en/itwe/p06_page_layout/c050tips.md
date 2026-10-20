@@ -21,7 +21,7 @@
 
   - `id` attribute 
     - For unique elements
-    - Easier to use (more specific selector)
+    - Higher specificity – harder to override
     - Clearer style sheet
   - `class` attribute 
     - For repeating elements

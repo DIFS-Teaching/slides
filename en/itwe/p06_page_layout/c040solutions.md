@@ -108,7 +108,7 @@ ul.hlist li { display: inline-block; }
 
 - Multiple images in one larger image
 - The individual images are extracted using the background positioning
-- More efficient and smooth user experience
+- Fewer HTTP requests (less relevant with HTTP/2)
 - [Image sprite 1](https://difs-teaching.github.io/slides/en/itwe/p06_page_layout/assets/examples/imageSprite.png)
 - [Image sprite 2](https://difs-teaching.github.io/slides/en/itwe/p06_page_layout/assets/examples/imageSprite2.png)
 
