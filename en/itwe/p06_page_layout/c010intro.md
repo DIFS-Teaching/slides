@@ -1,7 +1,7 @@
 # Layout
 
   - **Layout** = visual and logical organization of a page
-  - Division of the page to logical units and their positioning
+  - Division of the page into logical units and their positioning
   - Goals 
     - Clarity of the content
     - Ease of use
