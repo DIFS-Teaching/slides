@@ -10,7 +10,7 @@
 
 # Postup návrhu IS s UML
 
-![Postup návrhu IS](assets/postup_navrhu.svg) <!-- .element: style="width:1150px" -->
+![Postup návrhu IS](assets/postup_navrhu.svg) <!-- .element: style="width:1450px" -->
 
 Postup je **iterativní** -- jednotlivé kroky se navzájem upřesňují.
 

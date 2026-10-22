@@ -10,7 +10,7 @@
 
 # Jeden model -- více reprezentací
 
-![Model a vrstvy IS](assets/model_vrstvy.svg) <!-- .element: style="width:1150px" -->
+![Model a vrstvy IS](assets/model_vrstvy.svg) <!-- .element: style="width:1450px" -->
 
 ---
 

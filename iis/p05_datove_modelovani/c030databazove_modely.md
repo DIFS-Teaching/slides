@@ -205,15 +205,13 @@ end object
 # Jiné transformace
 
 - Diagram tříd lze transformovat na relační model obdobně jako E-R diagram
-	- Je nutno řešit **dědičnost** -- různé strategie:
-		- Jedna tabulka pro celou hierarchii (+ sloupec určující typ)
-		- Tabulka pro každou konkrétní třídu (zděděné atributy se opakují)
-		- Tabulka pro každou třídu, propojené primárním klíčem (_joined_)
+	- Je nutno řešit **dědičnost**
+		- různé strategie, podrobně v Pokročilých informačních systémech
 - Pro objektový databázový model lze přímo použít diagram tříd
 	- V modelu se přímo definují třídy a jejich vlastnosti
 	- Vztahy jsou reprezentovány vlastnostmi tříd
 	- Odkazy na jiné objekty
-		- např. `zbozi.vyrobna`
+		- např. `zbozi.vyrobce`
 
 ---
 
