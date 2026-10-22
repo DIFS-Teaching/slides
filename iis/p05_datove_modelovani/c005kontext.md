@@ -74,10 +74,10 @@ Scénář případu užití _Zápis kurzu_:
 # Od doménového modelu k implementaci
 
 - Doménový model je **konceptuální** -- popisuje realitu, ne implementaci
-- V návrhu a implementaci z něj vznikají různé **reprezentace dat**:
-	- **Schéma databáze** -- produkční (např. relační) model, ORM
-	- **Datové formáty** pro komunikaci -- serializace, webová API
-	- **Uživatelské rozhraní** -- formuláře, tabulky, vizualizace
+- V jednotlivých vrstvách IS z něj vznikají různé **reprezentace dat**:
+	- Databázová vrstva -- **schéma databáze** (produkční model, ORM)
+	- Business vrstva -- **objekty** v paměti aplikace a jejich operace
+	- Prezentační vrstva -- **vizualizace** (formuláře, tabulky) a **serializace** (webová API)
 - Všechny vycházejí ze stejného modelu → potřebujeme umět:
 	- Data _obecně popsat_ (struktury, kolekce, vztahy)
 	- Popis _transformovat_ mezi různými modely
