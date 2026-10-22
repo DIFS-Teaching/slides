@@ -171,7 +171,7 @@ collection of
 structure VLASTNIK
    properties
       A: integer
-      B: collection of CLEN
+      B: CLEN
 end structure
 
 object CLEN
