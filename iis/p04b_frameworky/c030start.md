@@ -25,30 +25,34 @@
 	- `.htaccess`
 - Konfigurační soubory aplikace
 - Dočasné soubory
-	- *Adresáře s právem zápisu*
+	- Adresáře s právem zápisu
 	- `/var/*`, `/temp`, `/log` apod.
 
 ---
 
-# Spolupráce s HTTP serverem Apache
+# Spolupráce s HTTP serverem
 
-- Apache musí mít přístup jen do adresáře s webovými soubory! 
-- Konfigurace v souboru `.htaccess`
-- Nejčastěji přepisování URL pomocí `mod_rewrite`
-	- Přesměrování na front controller `index.php`
-	- Ošetření výjimek
-- Nastavení viditelnosti adresářů apod.
+- Document root musí směřovat do `/www` či `/public`; ostatní soubory nesmějí být přímo dostupné přes HTTP!
+- Apache
+	- Konfigurace v souboru `.htaccess`
+	- Nejčastěji přepisování URL pomocí `mod_rewrite`
+		- Přesměrování na front controller `index.php`
+		- Ošetření výjimek
+	- Nastavení viditelnosti adresářů apod.
+- nginx
+	- Nepoužívá `.htaccess`, vše v konfiguraci serveru (`try_files`)
+	- PHP spouští přes PHP-FPM (FastCGI)
 
 ---
 
 # Laravel
 
 - Instalace a první aplikace \
-	https://laravel.com/docs/8.x/installation
+	https://laravel.com/docs/installation
 - Vlastní nástroj `laravel` nebo `composer`
 - Demo aplikace
-	- Jednoduchá https://github.com/laravel/quickstart-basic
-	- RealWorld https://github.com/gothinkster/laravel-realworld-example-app/tree/master/app
+	- Oficiální kurz https://laravel.com/learn/getting-started-with-laravel
+	- Starter kity https://laravel.com/starter-kits
 
 ---
 
@@ -65,8 +69,8 @@
 # Nette
 
 - Instalace a první aplikace \
-	https://doc.nette.org/cs/3.0/quickstart/getting-started
+	https://doc.nette.org/cs/quickstart
 - Používá `composer`
 - Demo aplikace
-	- https://github.com/nette/tutorial-quickstart/tree/v3.0
+	- https://github.com/nette-examples/quickstart
 

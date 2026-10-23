@@ -10,9 +10,9 @@
 # Data, metadata, atd.
 
 - **Data**
-	- Konkrétní hodnota (*výskyt*)
+	- Konkrétní hodnota (_výskyt_)
 	- Např. "Jan Novák", "1250 Kč", ... (i strukturované hodnoty)
-- **Metadata** = jak vypadají data
+- **Metadata** = jaký tvar mají data
 	- Formální popis struktury dat
 	- Záleží na datovém modelu:
 		- Relační: definice struktury tabulek (relací)
@@ -38,22 +38,23 @@
 	- Zjednodušení reality pro potřeby návrhu IS -- abstrakce
 	- Konzultace s odborníky na cílovou doménu -- spolupráce
 - Vytvořit popis pomocí prostředků příslušného datového modelu
-	- Vytvořit **metadata** -- implementace
+	- Vytvořit metadata -- implementace
 	- Různé prostředky podle způsobu použití
+- Podklad pro implementaci **všech vrstev** IS
 
 ---
 
 # Databázové modely
-- Modely, které je schopen interpretovat systém pro řízení databázového systému SŘBD
+- Modely, které je schopen interpretovat systém řízení báze dat (SŘBD)
 - Jinak též zvané **produkční modely**
-- V jejich definičním jazyku musejí být zapsána **metadata** pro všechny datové struktury uložené v databázi
-- Prozatím budeme uvažovat jako produkční **relační a objektový datový model**.
+- V jejich definičním jazyku musejí být zapsána metadata pro všechny datové struktury uložené v databázi
+- Prozatím budeme uvažovat jako produkční _relační a objektový datový model_.
 
 ---
 
 # Konceptuální modely
 - Slouží pro komunikaci mezi návrháři, případně se zákazníky
-- Jsou formálně přesné a **převoditelné** na produkční modely
+- Jsou dostatečně přesné, aby byly **převoditelné** na produkční modely
 - Často jsou grafické pro větší přehlednost
 - Nejběžnější konceptuální modely **diagram tříd (UML)** a **E-R diagram**
 
@@ -76,12 +77,12 @@
 # Entity-relationship (E-R) diagram
 - Hlavní komponenty E-R diagramu jsou:
 	- **entita** a 
-	- **vztah** (**_relationship_** nikoliv **_relation_**).
-- **Entity** modelují objekty, které se vyskytují v modelovaném fyzickém systému
+	- **vztah** (_relationship_ nikoliv _relation_).
+- Entity modelují objekty, které se vyskytují v modelovaném fyzickém systému
 	- např. studenti, profesoři, předměty na vysoké škole
 	- a jejich **atributy**
-- **Vztahy** modelují spojení mezi entitami -- například profesoři _učí_ předměty. 
-- Navíc tvoří důležitou část E-R specifikace **integritních omezení** na entitách a vztazích, např. profesor učí **pouze jeden předmět** v daném čase.
+- Vztahy modelují spojení mezi entitami -- například profesoři _učí_ předměty. 
+- Navíc tvoří důležitou část E-R specifikace _integritních omezení_ na entitách a vztazích, např. profesor učí pouze jeden předmět v daném čase.
 
 ---
 
@@ -96,7 +97,7 @@
 # Diagram tříd
 
 - **Třídy**
-	- Jejich **vlastnosti** (jméno a datový typ)
+	- Jejich vlastnosti (jméno a datový typ)
 - **Vztahy**
 	- S různou kardinalitou
 - **Dědičnost**
@@ -120,25 +121,26 @@
 ---
 
 # Relační model dat
-- Tabulka (= **relace**) v relačním modelu je _kolekcí struktur_, přičemž datové typy vlastností jsou _jednoduché_ (tedy především _ne odkazy/vztahy_)
+- Tabulka (= **relace**) v relačním modelu je **kolekcí struktur**, přičemž datové typy vlastností jsou _jednoduché_ (tedy především ne odkazy/vztahy)
 - Srovnej: _Podmnožina kartézského součinu_
+	- Relace je _množina_ (bez duplicit a bez pořadí), SQL tabulka je však _multimnožina_
 
-```vbnet
+```
 collection of
-	structure
-		properties
-			jméno vlastnosti1: jednoduchý datový typ1
-			jméno vlastnosti2: jednoduchý datový typ2
-			…
-			jméno vlastnostin: jednoduchý datový typn
-	end structure
+   structure
+      properties
+         jméno_vlastnosti_1: jednoduchý_datový_typ_1
+         jméno_vlastnosti_2: jednoduchý_datový_typ_2
+         …
+         jméno_vlastnosti_n: jednoduchý_datový_typ_n
+   end structure
 ```
 
 ---
 
 # Vztahy
-- Umožňují odkazovat z jedné (strukturované) hodnoty (vlastníka) jinou (člen)
-- Musí existovat datový typ _jednoznačné identifikující (odkazující) strukturovanou hodnotu_ (např. OID)
+- Umožňují odkazovat z jedné (strukturované) hodnoty (vlastníka) na jinou (člen)
+- Musí existovat datový typ jednoznačně identifikující (odkazující) strukturovanou hodnotu (např. OID)
 - Vztah je definován prvkem vlastníka typu odkaz (reference) a členem, který je hodnotou odkazu identifikován. 
 
 ---
@@ -160,7 +162,7 @@ collection of
 	- Kolekce (někdy omezení pouze na kolekce prostých struktur a OID)
 	- Prosté struktury (ostatní)
 - Další vlastnosti zde neřešené (dědičnost apod.)
-- **Odpadá nutnost transformace objektového modelu na schéma relační databáze**
+- Při použití objektové databáze **odpadá nutnost transformace** objektového modelu na schéma relační databáze
 
 ---
 
@@ -170,17 +172,18 @@ collection of
 structure VLASTNIK
    properties
       A: integer
-      B: CLEN 
+      B: CLEN
 end structure
 
 object CLEN
    properties
       C: integer
       D: structure
-      …
+            …
+         end structure
 end object
 ```
-<!-- .element: style="height: 12em" -->
+<!-- .element: style="height: 13em" -->
 
 ---
 
@@ -188,6 +191,27 @@ end object
 # Graf hodnoty odkazovaných typů
 
 ![Graf hodnoty odkazovaných typů](assets/graf_objektu.svg) <!-- .element: style="height:700px" -->
+
+---
+
+# Transformace modelů
+
+- Mezi modely mohou existovat transformace, zejména, pokud jsou si _sémanticky blízké_
+- Velmi častou je transformace E-R diagramu na relační datový model
+	- viz postup z IDS
+
+---
+
+# Jiné transformace
+
+- Diagram tříd lze transformovat na relační model obdobně jako E-R diagram
+	- Je nutno řešit **dědičnost**
+		- různé strategie, podrobně v Pokročilých informačních systémech
+- Pro objektový databázový model lze přímo použít diagram tříd
+	- V modelu se přímo definují třídy a jejich vlastnosti
+	- Vztahy jsou reprezentovány vlastnostmi tříd
+	- Odkazy na jiné objekty
+		- např. `zbozi.vyrobce`
 
 ---
 
@@ -206,39 +230,10 @@ end object
 
 # ORM řešení
 - Java
-	- Standardní aplikační rozhraní JPA, Hibernate, ...
+	- Standard Jakarta Persistence (JPA), implementace např. Hibernate
 - PHP
-	- Např. knihovna Doctrine
+	- Např. Doctrine (Symfony), Eloquent (Laravel)
 	- Použití do značné míry shodné s JPA
 - Obdobně na dalších platformách
 	- .NET, Python, JavaScript, …
 - Více v předmětu Pokročilé informační systémy
-
----
-
-# Transformace modelů
-
-- Mezi modely mohou existovat transformace, zejména, pokud jsou si *sémanticky blízké*
-- Velmi častou je transformace **E-R diagramu na relační datový model**
-	- viz. postup z IDS
-
----
-
-# Jiné transformace
-
-- Diagram tříd lze transformovat na relační model obdobně jako E-R diagram
-	- Je nutno řešit dědičnost – různé strategie
-- Pro objektový databázový model lze přímo použít diagram tříd
-	- V modelu se přímo definují třídy a jejich vlastnosti
-	- Vztahy jsou reprezentovány vlastnostmi tříd
-	- Odkazy na jiné objekty
-		- např. `zbozi.vyrobna`
-
----
-
-# Závěr
-- **Ze struktur, kolekcí a základních typů můžeme vytvořit známé produkční i konceptuální modely**
-- Reprezentace kolekcí a struktur:
-	- Textová reprezentace ve formálních jazycích -- **serializace** (1D) -- komunikace mezi složkami systému
-	- Grafická reprezentace - **vizualizace** (2D) -- vstup a výstup systému
-
