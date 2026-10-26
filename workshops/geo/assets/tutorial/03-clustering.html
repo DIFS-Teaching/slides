@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<title>Tutorial -- 3. clustering</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<!-- NOVÉ v kroku 3: styly pluginu Leaflet.markercluster -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
+<style>
+  html, body, #map { height: 100%; margin: 0; }
+
+  /* kruhový marker s číslem uprostřed */
+  .value-marker {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #5b9bd5;
+    color: white;
+    border: 2px solid white;
+    box-shadow: 0 0 3px rgba(0, 0, 0, .5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+<div id="map"></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<!-- NOVÉ v kroku 3: plugin Leaflet.markercluster -->
+<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+<script>
+  const map = L.map('map');
+
+  // podkladová vrstva (OpenStreetMap dlaždice)
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+
+  // ikona -- kruh s číslem "value" uprostřed
+  function valueIcon(value) {
+    return L.divIcon({
+      className: '',
+      html: `<div class="value-marker">${value}</div>`,
+      iconSize: [30, 30]
+    });
+  }
+
+  // NOVÉ v kroku 3: vytváření markerů vytaženo do funkce, protože je teď potřebujeme dvakrát
+  // (jednou pro vrstvu bez shlukování, jednou pro vrstvu se shlukováním)
+  function createMarkers(schools) {
+    return schools.map(s =>
+      L.marker([s.lat, s.lon], { icon: valueIcon(s.value) })
+        .bindPopup(`<b>${s.schoolName}</b><br>Počet studentů: ${s.value}`)
+    );
+  }
+
+  // načtení dat -- pokud stránka běží vložená v prezentaci, cesta je vůči jejímu kořeni;
+  // pokud je stránka otevřená přímo (staženou kostru), zkusí se cesta vůči tomuto souboru
+  function fetchData(pathFromRoot, pathFromFile) {
+    return fetch(pathFromRoot).then(r => r.ok ? r : fetch(pathFromFile));
+  }
+
+  // načtení škol a vykreslení bodové mapy
+  fetchData('assets/data/schools.json', '../data/schools.json')
+    .then(response => response.json())
+    .then(data => {
+      const schools = data.schools.filter(s => s.lat && s.lon);
+
+      // vrstva bez shlukování -- každá škola samostatně (dosud jediná varianta z kroku 1-2)
+      const plainLayer = L.layerGroup(createMarkers(schools));
+
+      // NOVÉ v kroku 3: vrstva se shlukováním -- blízké školy se spojí do jedné bubliny
+      const clusterLayer = L.markerClusterGroup();
+      clusterLayer.addLayers(createMarkers(schools));
+
+      // NOVÉ v kroku 3: přepínač mezi vrstvami -- pouze jedna může být zobrazena zároveň
+      L.control.layers({
+        "Bez shlukování": plainLayer,
+        "Se shlukováním": clusterLayer
+      }).addTo(map);
+
+      clusterLayer.addTo(map);
+
+      // přiblížení mapy na hranice všech škol
+      map.fitBounds(clusterLayer.getBounds(), { padding: [20, 20] });
+    });
+</script>
+</body>
+</html>

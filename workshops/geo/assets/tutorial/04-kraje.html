@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<title>Tutorial -- 4. vrstva krajů</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
+<style>
+  html, body, #map { height: 100%; margin: 0; }
+
+  /* kruhový marker s číslem uprostřed */
+  .value-marker {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #5b9bd5;
+    color: white;
+    border: 2px solid white;
+    box-shadow: 0 0 3px rgba(0, 0, 0, .5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+<div id="map"></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+<script>
+  const map = L.map('map');
+
+  // podkladová vrstva (OpenStreetMap dlaždice)
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+
+  // ikona -- kruh s číslem "value" uprostřed
+  function valueIcon(value) {
+    return L.divIcon({
+      className: '',
+      html: `<div class="value-marker">${value}</div>`,
+      iconSize: [30, 30]
+    });
+  }
+
+  function createMarkers(schools) {
+    return schools.map(s =>
+      L.marker([s.lat, s.lon], { icon: valueIcon(s.value) })
+        .bindPopup(`<b>${s.schoolName}</b><br>Počet studentů: ${s.value}`)
+    );
+  }
+
+  // NOVÉ v kroku 4: vrstva hranic krajů (GeoJSON), zatím prázdná -- data doplní addData() níže
+  const krajeLayer = L.geoJSON(null, {
+    style: {
+      color: '#2a6f97',
+      weight: 2,
+      fillOpacity: 0
+    },
+    onEachFeature: (feature, layer) => {
+      layer.bindPopup(feature.properties.name);
+    }
+  });
+
+  // načtení dat -- pokud stránka běží vložená v prezentaci, cesta je vůči jejímu kořeni;
+  // pokud je stránka otevřená přímo (staženou kostru), zkusí se cesta vůči tomuto souboru
+  function fetchData(pathFromRoot, pathFromFile) {
+    return fetch(pathFromRoot).then(r => r.ok ? r : fetch(pathFromFile));
+  }
+
+  // NOVÉ v kroku 4: kromě schools.json teď načítáme i kraje.json -- Promise.all počká na obě
+  Promise.all([
+    fetchData('assets/data/schools.json', '../data/schools.json').then(r => r.json()),
+    fetchData('assets/data/kraje.json', '../data/kraje.json').then(r => r.json())
+  ]).then(([schoolsData, krajeData]) => {
+    const schools = schoolsData.schools.filter(s => s.lat && s.lon);
+
+    // vrstva bez shlukování -- každá škola samostatně (z kroku 1-2)
+    const plainLayer = L.layerGroup(createMarkers(schools));
+
+    // vrstva se shlukováním -- blízké školy se spojí do jedné bubliny (z kroku 3)
+    const clusterLayer = L.markerClusterGroup();
+    clusterLayer.addLayers(createMarkers(schools));
+
+    // NOVÉ v kroku 4: naplnění vrstvy krajů daty z kraje.json
+    krajeLayer.addData(krajeData);
+
+    // NOVÉ v kroku 4: krajeLayer je přidána jako druhá skupina (překryvná vrstva) --
+    // na rozdíl od "Bez shlukování"/"Se shlukováním" ji lze zapnout/vypnout nezávisle na markerech
+    L.control.layers(
+      {
+        "Bez shlukování": plainLayer,
+        "Se shlukováním": clusterLayer
+      },
+      {
+        "Kraje ČR": krajeLayer
+      }
+    ).addTo(map);
+
+    clusterLayer.addTo(map);
+    krajeLayer.addTo(map);
+
+    // přiblížení mapy na hranice ČR (kraje pokrývají celé území)
+    map.fitBounds(krajeLayer.getBounds(), { padding: [20, 20] });
+  });
+</script>
+</body>
+</html>
