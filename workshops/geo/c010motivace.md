@@ -11,7 +11,7 @@ který se v tabulce čísel ztratí.
 
 # ArcGIS Storymap: Analýza kvality sítí veřejné dopravy
 
-<iframe src="https://storymaps.arcgis.com/stories/adf1ac76c6ce43bba59ae5b18044db89" style="width: 100%; height: 900px; border: none;" allowfullscreen></iframe>
+<iframe data-src="https://storymaps.arcgis.com/stories/adf1ac76c6ce43bba59ae5b18044db89" style="width: 100%; height: 900px; border: none;" allowfullscreen></iframe>
 
 <div class="note">Zdroj: <a href="https://storymaps.arcgis.com/stories/adf1ac76c6ce43bba59ae5b18044db89">ArcGIS StoryMaps</a> -- Bc. Jan Kvapil, student VUT FIT, 2026</div>
 
@@ -31,7 +31,7 @@ do školy a práce nebo jen na výlet.
 
 # Routio: multimodální plánování MHD + kolo
 
-<iframe src="https://dexter.fit.vutbr.cz/routio" style="width: 100%; height: 900px; border: none;" allowfullscreen></iframe>
+<iframe data-src="https://dexter.fit.vutbr.cz/routio" style="width: 100%; height: 900px; border: none;" allowfullscreen></iframe>
 
 <div class="note">Zdroj: <a href="https://dexter.fit.vutbr.cz/routio">Aplikace v React + Leaflet + OTP2</a> -- Bc. Andrea Svitková, studentka VUT FIT, 2026</div>
 
@@ -41,7 +41,7 @@ do školy a práce nebo jen na výlet.
 
 # Lissy: multimodální plánování MHD + auto + chůze
 
-<iframe src="https://dexter.fit.vutbr.cz/lissy/planner" style="width: 100%; height: 900px; border: none;" allowfullscreen></iframe>
+<iframe data-src="https://dexter.fit.vutbr.cz/lissy/planner" style="width: 100%; height: 900px; border: none;" allowfullscreen></iframe>
 
 <div class="note">Zdroj: <a href="https://dexter.fit.vutbr.cz/lissy/planner">Aplikace v Angular + Leaflet + OTP2</a> -- Bc. Adam Včelař, student VUT FIT, 2026</div>
 
@@ -61,7 +61,7 @@ a ***chápat souvislosti*** mezi místem,\
 
 # Lissy: Analýza zpoždění MHD
 
-<iframe src="https://dexter.fit.vutbr.cz/lissy/delayTrips" style="width: 100%; height: 900px; border: none;" allowfullscreen></iframe>
+<iframe data-src="https://dexter.fit.vutbr.cz/lissy/delayTrips" style="width: 100%; height: 900px; border: none;" allowfullscreen></iframe>
 
 <div class="note">Zdroj: <a href="https://dexter.fit.vutbr.cz/lissy/delayTrips">Aplikace v Angular + Leaflet</a> -- Ing. Juraj Lazúr, doktorand VUT FIT, spolupráce s <a href="https://www.idsjmk.cz/a/kordis-jmk.html">Kordis JMK</a></div>
 
@@ -71,7 +71,7 @@ a ***chápat souvislosti*** mezi místem,\
 
 # data.Brno
 
-<iframe src="https://data.brno.cz/pages/prispevky-interaktivni-mapy" style="width: 100%; height: 900px; border: none;" allowfullscreen></iframe>
+<iframe data-src="https://data.brno.cz/pages/prispevky-interaktivni-mapy" style="width: 100%; height: 900px; border: none;" allowfullscreen></iframe>
 
 <div class="note">Zdroj: <a href="https://data.brno.cz">data.brno.cz</a></div>
 

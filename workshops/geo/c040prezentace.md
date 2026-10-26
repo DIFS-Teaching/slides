@@ -29,7 +29,7 @@
 
 # Příklady: Geovisto
 
-<iframe src="https://geovisto.com/geovisto-map/?path=/story/demo--geovisto-map" style="width: 100%; height: 850px; border: none;" allowfullscreen></iframe>
+<iframe data-src="https://geovisto.com/geovisto-map/?path=/story/demo--geovisto-map" style="width: 100%; height: 850px; border: none;" allowfullscreen></iframe>
 
 <div class="note">Projekt <a href="https://geovisto.com/">Geovisto</a></div>
 
@@ -60,7 +60,7 @@
 
 # Leafletjs.com
 
-<iframe src="https://leafletjs.com/" style="width: 100%; height: 900px; border: none;" allowfullscreen></iframe>
+<iframe data-src="https://leafletjs.com/" style="width: 100%; height: 900px; border: none;" allowfullscreen></iframe>
 
 <div class="note"><a href="https://leafletjs.com/">Leaflet</a></div>
 

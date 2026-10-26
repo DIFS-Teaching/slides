@@ -46,7 +46,7 @@
 
 # EPSG:4326
 
-<iframe src="https://epsg.io/map#srs=4326&x=16.596737&y=49.226538&z=16&layer=streets" style="width: 100%; height: 850px; border: none;" allowfullscreen></iframe>
+<iframe data-src="https://epsg.io/map#srs=4326&x=16.596737&y=49.226538&z=16&layer=streets" style="width: 100%; height: 850px; border: none;" allowfullscreen></iframe>
 
 <div class="note">Zdroj: <a href="https://epsg.io/map#srs=4326&x=16.596737&y=49.226538&z=16&layer=streets">epsg.io</a></div>
 
@@ -79,7 +79,7 @@ out center tags;
 
 # Overpass Turbo
 
-<iframe src="https://overpass-turbo.eu/s/2tLJ" style="width: 100%; height: 900px; border: none;" allowfullscreen></iframe>
+<iframe data-src="https://overpass-turbo.eu/s/2tLJ" style="width: 100%; height: 900px; border: none;" allowfullscreen></iframe>
 
 <div class="note">Zdroj: <a href="https://overpass-turbo.eu/s/2tLJ">overpass-turbo.eu</a>, stiskněte ▶ Spustit</div>
 
@@ -161,7 +161,7 @@ out geom;
 
 # Overpass Turbo
 
-<iframe src="https://overpass-turbo.eu/s/2tLZ" style="width: 100%; height: 900px; border: none;" allowfullscreen></iframe>
+<iframe data-src="https://overpass-turbo.eu/s/2tLZ" style="width: 100%; height: 900px; border: none;" allowfullscreen></iframe>
 
 <div class="note">Zdroj: <a href="https://overpass-turbo.eu/s/2tLZ">overpass-turbo.eu</a>, stiskněte ▶ Spustit</div>
 
@@ -190,7 +190,7 @@ out geom;
 
 # geojson.io
 
-<iframe src="https://geojson.io/?map=5.99/48.9057/17.14766" style="width: 100%; height: 850px; border: none;" allowfullscreen></iframe>
+<iframe data-src="https://geojson.io/?map=5.99/48.9057/17.14766" style="width: 100%; height: 850px; border: none;" allowfullscreen></iframe>
 
 <div class="note">Zdroj: <a href="https://geojson.io/?map=5.99/48.9057/17.14766">geojson.io</a></div>
 
