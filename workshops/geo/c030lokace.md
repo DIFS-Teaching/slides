@@ -14,7 +14,7 @@
 
 <br>
 
-<div class="block-center"><img src="assets/geo-data.gif" style="width: 600px;"></div>
+<div class="block-center"><img src="assets/images/geo-data.gif" style="width: 600px;"></div>
 
 <div class="note">Zdroj: <a href="https://doc.esri.com/en/arcgis-pro/latest/help/data/geodatabases/overview/feature-class-basics.html">doc.esri.com</a></div>
 
@@ -41,6 +41,8 @@
 - v dokumentaci se často značí jako ***EPSG:4326***
 
 ---
+
+<!-- .slide: class="normal fullspace" -->
 
 # EPSG:4326
 
@@ -183,6 +185,8 @@ out geom;
 ```
 
 ---
+
+<!-- .slide: class="normal fullspace" -->
 
 # geojson.io
 

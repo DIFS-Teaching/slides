@@ -63,17 +63,7 @@ a ***chápat souvislosti*** mezi místem,\
 
 <iframe src="https://dexter.fit.vutbr.cz/lissy/delayTrips" style="width: 100%; height: 900px; border: none;" allowfullscreen></iframe>
 
-<div class="note">Zdroj: <a href="https://dexter.fit.vutbr.cz/lissy/delayTrips">Aplikace v Angular + Leaflet</a> -- Ing. Juraj Lazúr, doktorand VUT FIT, spolupráce s <a href="https://www.kordis-jmk.cz">Kordis JMK</a></div>
-
----
-
-<!-- .slide: class="normal fullspace" -->
-
-# Analýza krajů ve volebním období
-
-<iframe src="https://kraje.zastupko.cz/analyzy" style="width: 100%; height: 900px; border: none;" allowfullscreen></iframe>
-
-<div class="note">Zdroj: <a href="https://kraje.zastupko.cz/analyzy">Projekt Zastupko</a></div>
+<div class="note">Zdroj: <a href="https://dexter.fit.vutbr.cz/lissy/delayTrips">Aplikace v Angular + Leaflet</a> -- Ing. Juraj Lazúr, doktorand VUT FIT, spolupráce s <a href="https://www.idsjmk.cz/a/kordis-jmk.html">Kordis JMK</a></div>
 
 ---
 
@@ -81,7 +71,7 @@ a ***chápat souvislosti*** mezi místem,\
 
 # data.Brno
 
-<iframe src="https://data.brno.cz/pages/prispevky--interaktivni-mapy" style="width: 100%; height: 900px; border: none;" allowfullscreen></iframe>
+<iframe src="https://data.brno.cz/pages/prispevky-interaktivni-mapy" style="width: 100%; height: 900px; border: none;" allowfullscreen></iframe>
 
 <div class="note">Zdroj: <a href="https://data.brno.cz">data.brno.cz</a></div>
 

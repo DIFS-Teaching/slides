@@ -18,7 +18,7 @@
 - **znalosti** -- pochopení souvislostí, umožňují rozhodování
   - např. *"Brno má hodně studentů, tak je to nejspíš univerzitní město a má hodně univerzit."*
 
-<div class="block-center"><img src="assets/cat.jpg" style="max-width: 30%;"></div>
+<div class="block-center"><img src="assets/images/cat.jpg" style="max-width: 30%;"></div>
 
 ---
 
@@ -32,7 +32,7 @@
 
 # Příklad: Jízdní řád -- je možné snadno odvodit znalosti?
 
-<div class="block-center"><img src="assets/jr.png" style="max-width: 80%;"></div>
+<div class="block-center"><img src="assets/images/jr.png" style="max-width: 80%;"></div>
 
 <div class="note">Zdroj: přednáška z kurzu <a href="https://gitshow.net/https/difs-teaching.github.io/slides/iis/p01_informacni_systemy#/19">Informační systémy</a> -- doc. Ing. Radek Burget, Ph.D.</div>
 
