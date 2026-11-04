@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<title>Leaflet -- půdorysy budov</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<style>
+  html, body, #map { height: 100%; margin: 0; }
+</style>
+</head>
+<body>
+<div id="map"></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+  const map = L.map('map');
+
+  // podkladová vrstva (OpenStreetMap dlaždice)
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+
+  // načtení dat -- pokud stránka běží vložená v prezentaci, cesta je vůči jejímu kořeni;
+  // pokud je stránka otevřená přímo, zkusí se cesta vůči tomuto souboru
+  function fetchData(pathFromRoot, pathFromFile) {
+    return fetch(pathFromRoot).then(r => r.ok ? r : fetch(pathFromFile));
+  }
+
+  // načtení půdorysů budov z GeoJSON souboru a jejich vykreslení
+  fetchData('assets/data/fit-buildings.geojson', '../data/fit-buildings.geojson')
+    .then(response => response.json())
+    .then(buildings => {
+      const buildingsLayer = L.geoJSON(buildings, {
+        style: {
+          color: '#bb1e09',
+          weight: 2,
+          fillColor: '#bb1e09',
+          fillOpacity: 0.3
+        },
+        // popup s názvem pro každou budovu zvlášť
+        onEachFeature: (feature, layer) => {
+          layer.bindPopup(feature.properties.name);
+        }
+      }).addTo(map);
+
+      // přiblížení mapy na hranice všech budov
+      map.fitBounds(buildingsLayer.getBounds(), { padding: [20, 20] });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Geovizualizace — workshop</title>
+<style>
+  :root {
+    --blue-dark: #0f2f4d;
+    --blue: #1b4d7a;
+    --blue-light: #2a6f97;
+    --accent: #bb1e09;
+    --bg: #f4f6f8;
+    --card-bg: #ffffff;
+    --text: #23303b;
+    --text-muted: #5a6b78;
+    --border: #e1e6ea;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --blue-dark: #0a1f33;
+      --blue: #163f63;
+      --blue-light: #4a8fc2;
+      --accent: #ff6b4a;
+      --bg: #12181f;
+      --card-bg: #1b232c;
+      --text: #e7edf2;
+      --text-muted: #9aa8b3;
+      --border: #2b3540;
+    }
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Ubuntu", "Segoe UI", system-ui, -apple-system, sans-serif;
+    line-height: 1.5;
+  }
+
+  .hero {
+    background: linear-gradient(135deg, var(--blue-dark), var(--blue) 60%, var(--blue-light));
+    color: white;
+    padding: 4rem 1.5rem 3rem;
+    text-align: center;
+  }
+
+  .hero .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-size: 0.85rem;
+    opacity: 0.85;
+    margin: 0 0 0.75rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+    margin: 0 0 0.5rem;
+    font-weight: 700;
+  }
+
+  .hero .subtitle {
+    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+    font-weight: 300;
+    margin: 0 0 2rem;
+    opacity: 0.95;
+  }
+
+  .badges {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 2.25rem;
+  }
+
+  .cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: white;
+    color: var(--blue-dark);
+    font-size: 1.15rem;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 0.9rem 1.8rem;
+    border-radius: 999px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 26px rgba(0, 0, 0, 0.28);
+  }
+
+  .badge {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(4px);
+    padding: 0.55rem 1.1rem;
+    border-radius: 999px;
+    font-size: 0.95rem;
+    white-space: nowrap;
+  }
+
+  main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 4rem;
+  }
+
+  section { margin-bottom: 3rem; }
+
+  h2 {
+    font-size: 1.5rem;
+    margin: 0 0 1rem;
+    color: var(--blue-light);
+  }
+
+  .lead {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    text-align: justify;
+  }
+
+  .agenda {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    counter-reset: step;
+  }
+
+  .agenda li {
+    counter-increment: step;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.2rem 1.2rem 1.2rem 3.2rem;
+    position: relative;
+  }
+
+  .agenda li::before {
+    content: counter(step);
+    position: absolute;
+    left: 1.1rem;
+    top: 1.1rem;
+    width: 1.7rem;
+    height: 1.7rem;
+    border-radius: 50%;
+    background: var(--blue-light);
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .agenda strong { display: block; margin-bottom: 0.2rem; }
+  .agenda span { color: var(--text-muted); font-size: 0.92rem; }
+
+  .tiles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .tile {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.4rem;
+    text-decoration: none;
+    color: var(--text);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+  }
+
+  .tile:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px rgba(15, 47, 77, 0.12);
+    border-color: var(--blue-light);
+  }
+
+  .tile .icon {
+    font-size: 1.9rem;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg);
+    border-radius: 10px;
+  }
+
+  .tile .title { font-weight: 700; font-size: 1.05rem; }
+  .tile .desc { color: var(--text-muted); font-size: 0.9rem; }
+
+  .tiles.steps {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    margin-top: 1rem;
+  }
+
+  .tiles.steps .tile {
+    padding: 1.2rem 1.2rem 1.2rem 3.2rem;
+    position: relative;
+    gap: 0.2rem;
+  }
+
+  .tiles.steps .tile .icon {
+    position: absolute;
+    left: 1.1rem;
+    top: 1.1rem;
+    width: 1.7rem;
+    height: 1.7rem;
+    background: var(--blue-light);
+    color: white;
+    border-radius: 50%;
+    font-size: 0.9rem;
+    font-weight: 700;
+    font-family: "Ubuntu", "Segoe UI", system-ui, -apple-system, sans-serif;
+  }
+
+  .tile-start .icon {
+    background: var(--accent);
+    color: white;
+    font-size: 1.6rem;
+  }
+
+  .subgroup { margin-bottom: 1.75rem; }
+  .subgroup:last-child { margin-bottom: 0; }
+
+  h3 {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    margin: 0 0 0.8rem;
+  }
+
+  .refs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  .ref-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.6rem 1rem;
+    text-decoration: none;
+    color: var(--text);
+    font-size: 0.92rem;
+    transition: border-color 0.15s ease, transform 0.15s ease;
+  }
+
+  .ref-link:hover {
+    border-color: var(--blue-light);
+    transform: translateY(-2px);
+  }
+
+  .ref-link .icon { font-size: 1.1rem; }
+
+  footer {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 1.5rem 3rem;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    border-top: 1px solid var(--border);
+    padding-top: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  footer a { color: var(--blue-light); }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <p class="eyebrow">Workshop</p>
+  <h1>Geovizualizace</h1>
+  <p class="subtitle">Od dat k vlastní interaktivní tematické mapě</p>
+  <div class="badges">
+    <span class="badge">⏱️ 120–180 minut</span>
+    <span class="badge">🎓 středoškoláci a nadšenci do geodat</span>
+    <span class="badge">👤 Ing. Jiří Hynek, Ph.D.</span>
+    <span class="badge">💻 PC/notebook s prohlížečem</span>
+  </div>
+  <a class="cta-button" href="dist/index.html">🗺️ Spustit prezentaci</a>
+</div>
+
+<main>
+
+  <section>
+    <h2>O čem to bude</h2>
+    <p class="lead">
+      Projdeme si cestu od surových geodat až po vlastní interaktivní mapu v prohlížeči.
+      Ukážeme si, jak se geografická data reprezentují (souřadnice vs. reference), co je
+      to GeoJSON a jak z něj postavit tematickou mapu. Druhou část workshopu strávíme naživo
+      programováním v Leafletu – krok za krokem přidáme bodovou mapu, vlastní markery,
+      shlukování, vrstvu krajů, choropleth i teplotní mapu.
+    </p>
+    <p class="lead">
+      <strong>Prerekvizity:</strong> Základy HTML/JS/CSS jsou výhodou,
+      není to ale podmínka – každý krok stavíme na tom předchozím a kód je k dispozici
+      ke stažení.
+    </p>
+  </section>
+
+  <section>
+    <h2>Co vás čeká</h2>
+    <ul class="agenda">
+      <li><strong>Motivace</strong><span>Proč geovizualizace -- ukázky reálných projektů a map kolem nás</span></li>
+      <li><strong>Data</strong><span>Data, informace, znalosti a proč jsou geodata speciální</span></li>
+      <li><strong>Lokace</strong><span>Souřadnice, GeoJSON, Overpass API, reverzní geocoding</span></li>
+      <li><strong>Prezentace</strong><span>Tematické mapy, projekce, JS mapové knihovny, Leaflet</span></li>
+      <li><strong>Tutoriál</strong><span>Live-coding: vlastní mapa škol krok za krokem</span></li>
+      <li><strong>Shrnutí</strong><span>Rekapitulace, pojmy a odkazy k dalšímu studiu</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Zdrojové kódy</h2>
+
+    <div class="subgroup">
+      <h3>Základní příklady</h3>
+      <div class="tiles">
+        <a class="tile" href="dist/assets/examples/leaflet.html">
+          <span class="icon">📍</span>
+          <span class="title">Bod na mapě</span>
+          <span class="desc">leaflet.html</span>
+        </a>
+        <a class="tile" href="dist/assets/examples/leaflet-layers.html">
+          <span class="icon">🗺️</span>
+          <span class="title">Podkladové mapy</span>
+          <span class="desc">leaflet-layers.html</span>
+        </a>
+        <a class="tile" href="dist/assets/examples/leaflet-buildings.html">
+          <span class="icon">🏢</span>
+          <span class="title">Půdorysy budov</span>
+          <span class="desc">leaflet-buildings.html</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="subgroup">
+      <h3>Tutoriál krok za krokem</h3>
+      <div class="tiles">
+        <a class="tile tile-start" href="dist/assets/tutorial/00-prazdna-mapa.html">
+          <span class="icon">📥</span>
+          <span class="title">Prázdná mapa</span>
+          <span class="desc">výchozí kostra ke stažení</span>
+        </a>
+      </div>
+      <div class="tiles steps">
+        <a class="tile" href="dist/assets/tutorial/01-body-mapa.html">
+          <span class="icon">1</span>
+          <span class="title">Bodová mapa</span>
+          <span class="desc">01-body-mapa.html</span>
+        </a>
+        <a class="tile" href="dist/assets/tutorial/02-hodnoty.html">
+          <span class="icon">2</span>
+          <span class="title">Hodnota na markeru</span>
+          <span class="desc">02-hodnoty.html</span>
+        </a>
+        <a class="tile" href="dist/assets/tutorial/03-clustering.html">
+          <span class="icon">3</span>
+          <span class="title">Clustering</span>
+          <span class="desc">03-clustering.html</span>
+        </a>
+        <a class="tile" href="dist/assets/tutorial/04-kraje.html">
+          <span class="icon">4</span>
+          <span class="title">Vrstva krajů</span>
+          <span class="desc">04-kraje.html</span>
+        </a>
+        <a class="tile" href="dist/assets/tutorial/05-choropleth.html">
+          <span class="icon">5</span>
+          <span class="title">Choropleth</span>
+          <span class="desc">05-choropleth.html</span>
+        </a>
+        <a class="tile" href="dist/assets/tutorial/06-heatmap.html">
+          <span class="icon">6</span>
+          <span class="title">Heatmap</span>
+          <span class="desc">hotové řešení celého tutoriálu</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="subgroup">
+      <h3>Datové sady</h3>
+      <div class="tiles">
+        <a class="tile" href="dist/assets/data/schools.json">
+          <span class="icon">🏫</span>
+          <span class="title">Data škol</span>
+          <span class="desc">schools.json</span>
+        </a>
+        <a class="tile" href="dist/assets/data/kraje.json">
+          <span class="icon">🏛️</span>
+          <span class="title">Data krajů</span>
+          <span class="desc">kraje.json (GeoJSON)</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Reference</h2>
+    <div class="refs">
+      <a class="ref-link" href="https://leafletjs.com/" target="_blank" rel="noopener"><span class="icon">📚</span>Leaflet</a>
+      <a class="ref-link" href="https://openlayers.org/" target="_blank" rel="noopener"><span class="icon">📚</span>OpenLayers</a>
+      <a class="ref-link" href="https://maplibre.org/maplibre-gl-js/docs/" target="_blank" rel="noopener"><span class="icon">📚</span>MapLibre GL JS</a>
+      <a class="ref-link" href="https://docs.mapbox.com/mapbox-gl-js/" target="_blank" rel="noopener"><span class="icon">📚</span>Mapbox GL JS</a>
+      <a class="ref-link" href="https://cesium.com/platform/cesiumjs/" target="_blank" rel="noopener"><span class="icon">🌐</span>CesiumJS</a>
+      <a class="ref-link" href="https://geojson.org/" target="_blank" rel="noopener"><span class="icon">🧾</span>GeoJSON.org</a>
+      <a class="ref-link" href="https://geojson.io/" target="_blank" rel="noopener"><span class="icon">✏️</span>geojson.io</a>
+      <a class="ref-link" href="https://overpass-turbo.eu/" target="_blank" rel="noopener"><span class="icon">🔎</span>Overpass Turbo</a>
+      <a class="ref-link" href="https://nominatim.openstreetmap.org/" target="_blank" rel="noopener"><span class="icon">📮</span>Nominatim</a>
+      <a class="ref-link" href="https://github.com/Leaflet/Leaflet.markercluster" target="_blank" rel="noopener"><span class="icon">🐙</span>Leaflet.markercluster</a>
+      <a class="ref-link" href="https://github.com/Leaflet/Leaflet.heat" target="_blank" rel="noopener"><span class="icon">🐙</span>Leaflet.heat</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <span>VUT FIT</span>
+  <span>2026</span>
+</footer>
+
+</body>
+</html>

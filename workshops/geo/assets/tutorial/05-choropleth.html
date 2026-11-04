@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<title>Tutorial -- 5. choropleth</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
+<style>
+  html, body, #map { height: 100%; margin: 0; }
+
+  /* kruhový marker s číslem uprostřed */
+  .value-marker {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #5b9bd5;
+    color: white;
+    border: 2px solid white;
+    box-shadow: 0 0 3px rgba(0, 0, 0, .5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+  }
+
+  /* NOVÉ v kroku 5: legenda barevné škály choropleth */
+  .legend {
+    background: white;
+    padding: 8px 10px;
+    border-radius: 4px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, .4);
+    line-height: 1.4;
+    font-size: 13px;
+  }
+  .legend i {
+    width: 16px;
+    height: 16px;
+    float: left;
+    margin-right: 6px;
+    opacity: 0.8;
+  }
+</style>
+</head>
+<body>
+<div id="map"></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+<script>
+  const map = L.map('map');
+
+  // podkladová vrstva (OpenStreetMap dlaždice)
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+
+  // ikona -- kruh s číslem "value" uprostřed
+  function valueIcon(value) {
+    return L.divIcon({
+      className: '',
+      html: `<div class="value-marker">${value}</div>`,
+      iconSize: [30, 30]
+    });
+  }
+
+  function createMarkers(schools) {
+    return schools.map(s =>
+      L.marker([s.lat, s.lon], { icon: valueIcon(s.value) })
+        .bindPopup(`<b>${s.schoolName}</b><br>Počet studentů: ${s.value}`)
+    );
+  }
+
+  // NOVÉ v kroku 5: barevná škála pro choropleth podle součtu "value" v kraji
+  const breaks = [10, 25, 50, 100, 200];
+  const colors = ['#FFEDA0', '#FEB24C', '#FD8D3C', '#E31A1C', '#BD0026', '#800026'];
+
+  function getColor(sum) {
+    for (let i = breaks.length - 1; i >= 0; i--) {
+      if (sum > breaks[i]) return colors[i + 1];
+    }
+    return colors[0];
+  }
+
+  // načtení dat -- pokud stránka běží vložená v prezentaci, cesta je vůči jejímu kořeni;
+  // pokud je stránka otevřená přímo (staženou kostru), zkusí se cesta vůči tomuto souboru
+  function fetchData(pathFromRoot, pathFromFile) {
+    return fetch(pathFromRoot).then(r => r.ok ? r : fetch(pathFromFile));
+  }
+
+  Promise.all([
+    fetchData('assets/data/schools.json', '../data/schools.json').then(r => r.json()),
+    fetchData('assets/data/kraje.json', '../data/kraje.json').then(r => r.json())
+  ]).then(([schoolsData, krajeData]) => {
+    const schools = schoolsData.schools.filter(s => s.lat && s.lon);
+
+    // vrstva bez shlukování -- každá škola samostatně
+    const plainLayer = L.layerGroup(createMarkers(schools));
+
+    // vrstva se shlukováním -- blízké školy se spojí do jedné bubliny
+    const clusterLayer = L.markerClusterGroup();
+    clusterLayer.addLayers(createMarkers(schools));
+
+    // NOVÉ v kroku 5: agregace hodnoty "value" po krajích (klíč = ISO3166-2-lvl4, stejný jako id v kraje.json)
+    const sumsByKraj = {};
+    schools.forEach(s => {
+      const id = s.address && s.address['ISO3166-2-lvl4'];
+      if (!id) return;
+      sumsByKraj[id] = (sumsByKraj[id] ?? 0) + s.value;
+    });
+
+    // NOVÉ v kroku 5: krajeLayer teď dostává data i styl (funkci getColor) přímo při vytvoření,
+    // místo prázdné vrstvy naplněné přes addData() jako v kroku 4
+    const krajeLayer = L.geoJSON(krajeData, {
+      style: feature => {
+        const sum = sumsByKraj[feature.properties.id] ?? 0;
+        return {
+          color: '#555',
+          weight: 1,
+          fillColor: getColor(sum),
+          fillOpacity: 0.7
+        };
+      },
+      onEachFeature: (feature, layer) => {
+        const sum = sumsByKraj[feature.properties.id] ?? 0;
+        layer.bindPopup(`<b>${feature.properties.name.trim()}</b><br>Součet hodnot: ${sum}`);
+      }
+    });
+
+    // základní vrstvy (jen jedna zobrazena) a překryvná vrstva krajů
+    L.control.layers(
+      {
+        "Bez shlukování": plainLayer,
+        "Se shlukováním": clusterLayer
+      },
+      {
+        "Choropleth krajů": krajeLayer
+      }
+    ).addTo(map);
+
+    clusterLayer.addTo(map);
+    krajeLayer.addTo(map);
+
+    // NOVÉ v kroku 5: legenda barevné škály
+    const legend = L.control({ position: 'bottomright' });
+    legend.onAdd = () => {
+      const div = L.DomUtil.create('div', 'legend');
+      div.innerHTML = '<b>Součet hodnot</b><br>';
+      for (let i = 0; i < colors.length; i++) {
+        const from = i === 0 ? 0 : breaks[i - 1] + 1;
+        const label = i === colors.length - 1 ? `${from}+` : `${from}&ndash;${breaks[i]}`;
+        div.innerHTML += `<i style="background:${colors[i]}"></i>${label}<br>`;
+      }
+      return div;
+    };
+    legend.addTo(map);
+
+    // přiblížení mapy na hranice ČR (kraje pokrývají celé území)
+    map.fitBounds(krajeLayer.getBounds(), { padding: [20, 20] });
+  });
+</script>
+</body>
+</html>

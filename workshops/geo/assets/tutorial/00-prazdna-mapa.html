@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<title>Tutorial -- 0. prázdná mapa</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<style>
+  html, body, #map { height: 100%; margin: 0; }
+</style>
+</head>
+<body>
+<div id="map"></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+  // KOSTRA -- výchozí bod pro tutoriál, sem budeme postupně přidávat funkcionalitu
+
+  // mapa vycentrovaná na Českou republiku
+  const map = L.map('map').setView([49.8, 15.5], 7);
+
+  // podkladová vrstva (OpenStreetMap dlaždice)
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+</script>
+</body>
+</html>
